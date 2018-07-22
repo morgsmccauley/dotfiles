@@ -1,5 +1,6 @@
 call plug#begin()
 
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'maximbaz/lightline-ale'
 Plug 'pangloss/vim-javascript'
 Plug 'isruslan/vim-es6'
