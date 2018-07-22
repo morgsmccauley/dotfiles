@@ -1,5 +1,7 @@
 let mapleader=" "
 
+nmap ; A;<Esc>
+
 " faster scrolling
 nnoremap <silent> <C-e> 5<C-e>
 nnoremap <silent> <C-y> 5<C-y>
@@ -29,6 +31,11 @@ nnoremap gb :ls<CR>:b<Space>
 nnoremap <Leader>nh :noh<CR>
 
 nnoremap <C-p> :GFiles<CR>
+
+cnoreabbrev tree NERDTreeToggle
+cnoreabbrev blame Gblame
+cnoreabbrev find NERDTreeFind
+cnoreabbrev diff Gdiff
 
 nnoremap <Leader>gg :Ggrep<space>-i<space>
 nnoremap <Leader>gb :Gblame<CR>

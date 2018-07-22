@@ -1,8 +1,11 @@
 call plug#begin()
 
 Plug 'maximbaz/lightline-ale'
-Plug 'chemzqm/vim-jsx-improve'
+Plug 'pangloss/vim-javascript'
+Plug 'isruslan/vim-es6'
+Plug 'mxw/vim-jsx'
 Plug 'morhetz/gruvbox'
+Plug 'jacoborus/tender.vim'
 Plug 'powerline/powerline'
 Plug 'itchyny/lightline.vim'
 Plug 'shinchu/lightline-gruvbox.vim'

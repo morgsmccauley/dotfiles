@@ -1,7 +1,15 @@
 alias ls='ls -l -a'
-alias v='nvim'
+alias v=openNvim
 alias config='v ~/.config/nvim/'
 alias cht='cht.sh'
+
+function openNvim {
+  if [ $# -eq 0 ]; then
+    nvim ./
+  else
+    nvim $1
+  fi
+}
 
 export CLICOLOR=1
 

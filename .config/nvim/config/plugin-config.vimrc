@@ -19,7 +19,7 @@ let g:lightline = {
    \  'linter_warnings': 'warning',
    \  'linter_errors': 'error',
    \ },
-   \ 'colorscheme': 'gruvbox'
+   \ 'colorscheme': 'tender'
    \}
 let g:lightline#ale#indicator_checking = "\uf254"
 let g:lightline#ale#indicator_warnings = "\uf071  "
@@ -43,7 +43,15 @@ let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
 " Theme
 set background=dark
-colorscheme gruvbox
+colorscheme tender
+highlight SignColumn guibg=none
+" If you have vim >=8.0 or Neovim >= 0.1.5
+if (has("termguicolors"))
+ set termguicolors
+endif
+
+" For Neovim 0.1.3 and 0.1.4
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 " Enable persistent undo so that undo history persists across vim sessions
 let g:flow#enable = 0
@@ -55,6 +63,7 @@ let NERDTreeQuitOnOpen=1
 let NERDTreeAutoDeleteBuffer=1
 let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
+let NERDTreeShowLineNumbers=1
 "autocmd bufenter * if (winnr(“$”) == 1 && exists(“b:NERDTreeType”) && b:NERDTreeType == “primary”) | q | endif
 
 " NERDCommenter
