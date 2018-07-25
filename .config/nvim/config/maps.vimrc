@@ -53,3 +53,11 @@ nnoremap <Leader>q :q<CR>
 imap cll console.log()<Esc>_f(a
 vmap cll yocll<Esc>p
 nmap cll yiwocll<Esc>a'<Esc>a<Esc>pf)i, <Esc>p
+
+" Repeat the last command in the last tmux pane
+function! s:TmuxRepeat()
+  silent! exec "!tmux select-pane -l && tmux send up enter && tmux select-pane -l"
+  redraw!
+endfunction
+
+nnoremap <Leader>r :call <SID>TmuxRepeat()<CR>

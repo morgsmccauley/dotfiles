@@ -4,7 +4,7 @@ let g:closetag_filenames = '*.html,*.js,*.jsx'
 let g:lightline = {
    \ 'active': {
    \   'left': [['mode', 'paste'], ['gitbranch', 'filename', 'modified']],
-   \   'right': [['linter_errors', 'linter_warnings'], ['percent', 'lineinfo'], ['fileformat', 'fileencoding', 'filetype']]
+   \   'right': [['linter_errors', 'linter_warnings'], ['percent', 'lineinfo', 'linter_checking', 'linter_ok'], ['fileformat', 'fileencoding', 'filetype']]
    \ },
    \ 'component_function': {
    \   'gitbranch': 'fugitive#head'
@@ -13,17 +13,18 @@ let g:lightline = {
    \  'linter_checking': 'lightline#ale#checking',
    \  'linter_warnings': 'lightline#ale#warnings',
    \  'linter_errors': 'lightline#ale#errors',
+   \  'linter_ok': 'lightline#ale#ok',
    \ },
    \ 'component_type': {
-   \  'linter_checking': 'left',
    \  'linter_warnings': 'warning',
    \  'linter_errors': 'error',
    \ },
    \ 'colorscheme': 'tender'
    \}
-let g:lightline#ale#indicator_checking = "\uf254"
+let g:lightline#ale#indicator_checking = "\uf017 "
 let g:lightline#ale#indicator_warnings = "\uf071  "
 let g:lightline#ale#indicator_errors = "\uf05e  "
+let g:lightline#ale#indicator_ok = "\uf00c "
 
 autocmd User ALELint call s:MaybeUpdateLightline()
 
