@@ -36,23 +36,16 @@ cnoreabbrev tree NERDTreeToggle
 cnoreabbrev blame Gblame
 cnoreabbrev find NERDTreeFind
 cnoreabbrev diff Gdiff
+cnoreabbrev grep Ggrep<space>-i
 
-nnoremap <Leader>gg :Ggrep<space>-i<space>
-nnoremap <Leader>gb :Gblame<CR>
-nnoremap <Leader>gd :Gdiff<CR>
-nnoremap <Leader>n :NERDTreeToggle<CR>
-nnoremap <Leader>nf :NERDTreeFind<CR>
-nnoremap <Leader>tn :tabNext<CR>
-nnoremap <Leader>tp :tabPrev<CR>
-nnoremap <Leader>t :tabn<space>
 nnoremap <Leader>nh :noh<CR>
 
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 
-imap cll console.log()<Esc>_f(a
-vmap cll yocll<Esc>p
-nmap cll yiwocll<Esc>a'<Esc>a<Esc>pf)i, <Esc>p
+" quick logs
+nmap <Leader>ll yiwoconsole.log('',)<Esc>_f'pf,p$
+nmap <Leader>tt yiwoR.tap(args => console.log('', args))<Esc>_f'p$
 
 " Repeat the last command in the last tmux pane
 function! s:TmuxRepeat()
@@ -60,4 +53,4 @@ function! s:TmuxRepeat()
   redraw!
 endfunction
 
-nnoremap <Leader>r :call <SID>TmuxRepeat()<CR>
+noremap <Leader>r :call <SID>TmuxRepeat()<CR>
