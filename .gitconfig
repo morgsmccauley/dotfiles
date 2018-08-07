@@ -5,5 +5,10 @@
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	dc = diff --cached
 	adi = add -i
+	rmu = !git stash save --keep-index --include-untracked '' && git stash drop
 [core]
 	editor = nvim
+[color "grep"]
+	linenumber = yellow bold
+	match = red
+	filename = magenta
