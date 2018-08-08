@@ -1,5 +1,9 @@
 call plug#begin()
 
+" Plug 'leafgarland/typescript-vim'
+Plug 'HerringtonDarkholme/yats'
+Plug 'ianks/vim-tsx'
+
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'maximbaz/lightline-ale'
 Plug 'pangloss/vim-javascript'
