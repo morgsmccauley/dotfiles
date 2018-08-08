@@ -1,4 +1,5 @@
-let g:closetag_filenames = '*.html,*.js,*.jsx'
+" closetag
+let g:closetag_filenames = '*.html,*.js,*.jsx, *.ts, *.tsx'
 
 " Lightline
 let g:lightline = {
@@ -39,9 +40,15 @@ endfunction
 
 " ale
 let g:ale_linters_explicit = 1
-let g:ale_linters = { 'javascript': ['eslint', 'flow'] }
-let g:ale_fixers = { 'javascript': ['eslint'] }
-
+let g:ale_linters = {
+      \'javascript': ['eslint', 'flow'],
+      \'typescript': ['tslint', 'tsserver', 'typecheck']
+      \}
+let g:ale_fixers = {
+      \'javascript': ['eslint'],
+      \'typescript': ['tslint']
+      \}
+let g:ale_use_global_executables = 1
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
 " Theme

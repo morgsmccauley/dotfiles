@@ -1,14 +1,19 @@
 call plug#begin()
 
-" status bar
-Plug 'maximbaz/lightline-ale'
-Plug 'itchyny/lightline.vim'
+" typescript
+Plug 'leafgarland/typescript-vim'
+Plug 'HerringtonDarkholme/yats'
+Plug 'ianks/vim-tsx'
 
 " javascript
 Plug 'pangloss/vim-javascript'
 Plug 'isruslan/vim-es6'
 Plug 'mxw/vim-jsx'
 Plug 'flowtype/vim-flow'
+
+" status bar
+Plug 'maximbaz/lightline-ale'
+Plug 'itchyny/lightline.vim'
 
 " visual
 Plug 'jacoborus/tender.vim'
