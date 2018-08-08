@@ -4,7 +4,7 @@ let g:closetag_filenames = '*.html,*.js,*.jsx'
 let g:lightline = {
    \ 'active': {
    \   'left': [['mode', 'paste'], ['gitbranch', 'filename', 'modified']],
-   \   'right': [['linter_errors', 'linter_warnings'], ['percent', 'lineinfo', 'linter_checking', 'linter_ok'], ['fileformat', 'fileencoding', 'filetype']]
+   \   'right': [['linter_errors', 'linter_warnings'], ['percent', 'lineinfo', 'linter_checking', 'linter_ok'], ['filetype']]
    \ },
    \ 'component_function': {
    \   'gitbranch': 'fugitive#head'
@@ -32,9 +32,9 @@ autocmd User ALELint call s:MaybeUpdateLightline()
 
 " Update and show lightline but only if it's visible (e.g., not in Goyo)
 function! s:MaybeUpdateLightline()
-if exists('#lightline')
- call lightline#update()
-end
+  if exists('#lightline')
+    call lightline#update()
+  end
 endfunction
 
 " ale
