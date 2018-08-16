@@ -9,7 +9,14 @@ nmap <Leader>g :Ggrep --break --heading --line-number -i
 nmap <Leader>gg yiw:Ggrep --break --heading --line-number <C-r>"<CR>
 vmap <Leader>gv y:Ggrep --break --heading --line-number <C-r>"<CR>
 nmap <Leader>gl yiw:Ggrep -l <C-r>"<CR>
-" nnoremap <Leader>gg :!tmux split-window "!git --git-dir=/Users/morganmccauley/.git --no-pager grep -n --break --heading --line-number --color nnoremap"
+
+" go to file
+nmap <silent> <Leader>gf gd$h<C-w>gf
+
+" tabs
+" why cant i map this initially..
+nnoremap <Tab> gt
+nnoremap <S-Tab> gT
 
 " quick logs
 nmap <Leader>ll yiwoconsole.log('', )<Esc>_f'pf p$
@@ -41,8 +48,12 @@ noremap <Right> <nop>
 
 map <CR> o<Esc>k
 
-" indent paragraph
+" indent
 nnoremap <Leader>i vip=
+nnoremap <Leader>I ggvG=2<C-o>zz
+
+" comment
+nnoremap <Leader>cc vip<space>c<space>
 
 " fast reload
 nnoremap <Leader>e :edit!<CR>

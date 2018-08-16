@@ -17,6 +17,7 @@ Plug 'itchyny/lightline.vim'
 
 " visual
 Plug 'jacoborus/tender.vim'
+Plug 'altercation/vim-colors-solarized'
 Plug 'ryanoasis/vim-devicons'
 Plug 'vim-scripts/vim-webdevicons'
 

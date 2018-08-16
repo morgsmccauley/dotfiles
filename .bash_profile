@@ -3,6 +3,7 @@ alias v=openNvim
 alias config='v ~/.config/nvim/'
 alias cht='cht.sh'
 alias ta='tmux a -t'
+alias R='ramda-repl'
 
 function openNvim {
   if [ $# -eq 0 ]; then
