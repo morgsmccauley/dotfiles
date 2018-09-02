@@ -10,9 +10,12 @@ nnoremap <Leader>T :RunJestOnBuffer<CR>
 " vmap <Leader>gv y:Ggrep --break --heading --line-number <C-r>"<CR>
 " nmap <Leader>gl yiw:Ggrep -l <C-r>"<CR>
 
-" go to file
+" grep
 nmap <Leader>g :VimuxRunCommand "ggrep "<Left>
 nmap <Leader>gg yiw:VimuxRunCommand "ggrep <C-r>""<CR>
+
+" go to file
+nmap <silent> <Leader>gf gd/'<CR><C-w>gf<Esc>
 
 " tabs
 " why cant i map this initially..

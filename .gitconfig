@@ -6,6 +6,8 @@
 	dc = diff --cached
 	adi = add -i
 	rmu = !git stash save --keep-index --include-untracked '' && git stash drop
+	cn = commit --no-verify
+  pn = push --no-verify
 [core]
 	editor = nvim
 [color "grep"]
