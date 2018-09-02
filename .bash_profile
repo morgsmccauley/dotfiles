@@ -4,6 +4,7 @@ alias config='v ~/.config/nvim/'
 alias cht='cht.sh'
 alias ta='tmux a -t'
 alias R='ramda-repl'
+alias ggrep='git grep --heading --break --line-number --ignore-case -p'
 
 function openNvim {
   if [ $# -eq 0 ]; then

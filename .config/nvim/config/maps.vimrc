@@ -5,13 +5,14 @@ nnoremap <Leader>q :q<CR>
 nnoremap <Leader>t :RunJestFocused<CR>
 nnoremap <Leader>T :RunJestOnBuffer<CR>
 
-nmap <Leader>g :Ggrep --break --heading --line-number -i 
-nmap <Leader>gg yiw:Ggrep --break --heading --line-number <C-r>"<CR>
-vmap <Leader>gv y:Ggrep --break --heading --line-number <C-r>"<CR>
-nmap <Leader>gl yiw:Ggrep -l <C-r>"<CR>
+" nmap <Leader>g :Ggrep --break --heading --line-number -i
+" nmap <Leader>gg yiw:Ggrep --break --heading --line-number <C-r>"<CR>
+" vmap <Leader>gv y:Ggrep --break --heading --line-number <C-r>"<CR>
+" nmap <Leader>gl yiw:Ggrep -l <C-r>"<CR>
 
 " go to file
-nmap <silent> <Leader>gf gd$h<C-w>gf
+nmap <Leader>g :VimuxRunCommand "ggrep "<Left>
+nmap <Leader>gg yiw:VimuxRunCommand "ggrep <C-r>""<CR>
 
 " tabs
 " why cant i map this initially..
@@ -20,7 +21,7 @@ nnoremap <S-Tab> gT
 
 " quick logs
 nmap <Leader>ll yiwoconsole.log('', )<Esc>_f'pf p$
-nmap <Leader>tt yiwoR.tap(args => console.log('', args))<Esc>_f'p$
+nmap <Leader>tt yiwoR.tap(args => console.log('', args)),<Esc>_f'p$
 
 " quick jsx comment
 nmap <Leader>jl o{ /*  */<Esc>_f*la
