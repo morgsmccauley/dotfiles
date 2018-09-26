@@ -10,12 +10,26 @@ nnoremap <Leader>T :RunJestOnBuffer<CR>
 " vmap <Leader>gv y:Ggrep --break --heading --line-number <C-r>"<CR>
 " nmap <Leader>gl yiw:Ggrep -l <C-r>"<CR>
 
+" split resize
+nmap <Leader>> 20<C-w>>
+nmap <Leader>< 20<C-w><
+
+" quick semi
+nmap <Leader>; $a;<Esc>
+inoremap ; <C-o>A;<Esc>
+
+" fold
+nmap <Leader>ff Vi}zf
+
 " grep
-nmap <Leader>g :VimuxRunCommand "ggrep "<Left>
-nmap <Leader>gg yiw:VimuxRunCommand "ggrep <C-r>""<CR>
+nmap <Leader>g :VimuxRunCommand "git grp "<Left>
+nmap <Leader>gg yiw:VimuxRunCommand "git grp <C-r>""<CR>
 
 " go to file
 nmap <silent> <Leader>gf gd/'<CR><C-w>gf<Esc>
+
+" delete surrounding function
+nmap <Leader>df diwds(
 
 " tabs
 " why cant i map this initially..
@@ -23,7 +37,8 @@ nnoremap <Tab> gt
 nnoremap <S-Tab> gT
 
 " quick logs
-nmap <Leader>ll yiwoconsole.log('', )<Esc>_f'pf p$
+nmap <Leader>lb i!console.log('') && <Esc>_f'a
+nmap <Leader>lv yiwoconsole.log('', )<Esc>_f'pf p$
 nmap <Leader>tt yiwoR.tap(args => console.log('', args)),<Esc>_f'p$
 
 " quick jsx comment
@@ -43,12 +58,6 @@ nnoremap <silent> <C-e> 5<C-e>
 nnoremap <silent> <C-y> 5<C-y>
 noremap <C-j> 5j
 noremap <C-k> 5k
-
-" Prevent arrows
-noremap <Up> <nop>
-noremap <Down> <nop>
-noremap <Left> <nop>
-noremap <Right> <nop>
 
 map <CR> o<Esc>k
 
@@ -70,10 +79,10 @@ cnoreabbrev diff Gdiff
 " cnoreabbrev grep Ggrep<space>-i
 
 " centre after changin cursor position
-nnoremap n nzz
-nnoremap N Nzz
-nnoremap } }zz
-nnoremap { {zz
+" nnoremap n nzz
+" nnoremap N Nzz
+" nnoremap } }zz
+" nnoremap { {zz
 nnoremap <C-o> <C-o>zz
 nnoremap <C-i> <C-i>zz
 

@@ -4,7 +4,7 @@ let g:closetag_filenames = '*.html,*.js,*.jsx,*.ts,*.tsx'
 " Lightline
 let g:lightline = {
    \ 'active': {
-   \   'left': [['mode', 'paste'], ['gitbranch', 'filename', 'modified']],
+   \   'left': [['mode', 'paste'], ['gitbranch', 'filename', 'modified', 'bufferinfo']],
    \   'right': [['linter_errors', 'linter_warnings'], ['percent', 'lineinfo', 'linter_checking', 'linter_ok'], ['filetype']]
    \ },
    \ 'component_function': {
@@ -50,6 +50,8 @@ let g:ale_fixers = {
       \}
 " let g:ale_use_global_executables = 1
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+
+let g:tern#command = ['--no-port-file']
 
 " Theme
 set background=dark

@@ -1,14 +1,15 @@
 call plug#begin()
 
+Plug 'sheerun/vim-polyglot'
 " typescript
-Plug 'leafgarland/typescript-vim'
-Plug 'HerringtonDarkholme/yats'
+" Plug 'leafgarland/typescript-vim'
+" Plug 'HerringtonDarkholme/yats'
 Plug 'ianks/vim-tsx'
 
 " javascript
-Plug 'pangloss/vim-javascript'
-Plug 'isruslan/vim-es6'
-Plug 'mxw/vim-jsx'
+" Plug 'pangloss/vim-javascript'
+" Plug 'isruslan/vim-es6'
+" Plug 'mxw/vim-jsx'
 Plug 'flowtype/vim-flow'
 
 " status bar
@@ -41,10 +42,14 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'w0rp/ale'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-repeat'
+Plug 'yggdroot/indentline'
 
 " autocomplete
 Plug 'Shougo/deoplete.nvim', { 'do': 'UpdateRemotePlugins' }
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
 Plug 'carlitux/deoplete-ternjs'
+" Plug 'wokalski/autocomplete-flow'
+" Plug 'Shougo/neosnippet'
+" Plug 'Shougo/neosnippet-snippets'
 
 call plug#end()
