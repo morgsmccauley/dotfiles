@@ -1,5 +1,6 @@
 call plug#begin()
 
+" syntax
 Plug 'sheerun/vim-polyglot'
 Plug 'ianks/vim-tsx'
 
@@ -10,10 +11,14 @@ Plug 'flowtype/vim-flow'
 Plug 'maximbaz/lightline-ale'
 Plug 'itchyny/lightline.vim'
 
-" visual
+" themes
 Plug 'jacoborus/tender.vim'
 Plug 'yarisgutierrez/ayu-lightline'
 Plug 'ayu-theme/ayu-vim'
+Plug 'altercation/vim-colors-solarized'
+
+" tree
+Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'vim-scripts/vim-webdevicons'
 
@@ -28,8 +33,12 @@ Plug 'tyewang/vimux-jest-test'
 Plug 'benmills/vimux'
 Plug 'christoomey/vim-tmux-navigator'
 
+" autocomplete
+Plug 'Shougo/deoplete.nvim', { 'do': 'UpdateRemotePlugins' }
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
+Plug 'carlitux/deoplete-ternjs'
+
 " additional
-Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'

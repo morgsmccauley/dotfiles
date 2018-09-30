@@ -16,7 +16,6 @@ nmap <Leader>< 20<C-w><
 
 " quick semi
 nmap <Leader>; $a;<Esc>
-inoremap ; <C-o>A;<Esc>
 
 " fold
 nmap <Leader>ff Vi}zf
