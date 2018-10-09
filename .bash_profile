@@ -1,5 +1,7 @@
 alias ls='ls -l -a'
 alias v=openNvim
+alias n='npm'
+alias g='git'
 alias config='v ~/.config/nvim/'
 alias cht='cht.sh'
 alias ta='tmux a -t'

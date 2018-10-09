@@ -20,7 +20,7 @@ let g:lightline = {
    \  'linter_warnings': 'warning',
    \  'linter_errors': 'error',
    \ },
-   \ 'colorscheme': 'tender'
+   \ 'colorscheme': 'ayu'
    \}
 let g:lightline#ale#indicator_checking = "\uf017 "
 let g:lightline#ale#indicator_warnings = "\uf071  "
@@ -54,14 +54,13 @@ let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 let g:tern#command = ['--no-port-file']
 
 " Theme
-set background=dark
-colorscheme tender
+set termguicolors
+" let ayucolor="light"
+let ayucolor="mirage"
+" let ayucolor="dark"
+" set background=dark
+colorscheme ayu
 highlight SignColumn guibg=none
-" let g:solarized_termcolors=256
-" If you have vim >=8.0 or Neovim >= 0.1.5
-if (has("termguicolors"))
- set termguicolors
-endif
 
 " For Neovim 0.1.3 and 0.1.4
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1

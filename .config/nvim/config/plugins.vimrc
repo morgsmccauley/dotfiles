@@ -1,15 +1,9 @@
 call plug#begin()
 
 Plug 'sheerun/vim-polyglot'
-" typescript
-" Plug 'leafgarland/typescript-vim'
-" Plug 'HerringtonDarkholme/yats'
 Plug 'ianks/vim-tsx'
 
 " javascript
-" Plug 'pangloss/vim-javascript'
-" Plug 'isruslan/vim-es6'
-" Plug 'mxw/vim-jsx'
 Plug 'flowtype/vim-flow'
 
 " status bar
@@ -18,7 +12,8 @@ Plug 'itchyny/lightline.vim'
 
 " visual
 Plug 'jacoborus/tender.vim'
-Plug 'altercation/vim-colors-solarized'
+Plug 'yarisgutierrez/ayu-lightline'
+Plug 'ayu-theme/ayu-vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'vim-scripts/vim-webdevicons'
 
@@ -48,8 +43,5 @@ Plug 'yggdroot/indentline'
 Plug 'Shougo/deoplete.nvim', { 'do': 'UpdateRemotePlugins' }
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
 Plug 'carlitux/deoplete-ternjs'
-" Plug 'wokalski/autocomplete-flow'
-" Plug 'Shougo/neosnippet'
-" Plug 'Shougo/neosnippet-snippets'
 
 call plug#end()
