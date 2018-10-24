@@ -2,8 +2,10 @@ let mapleader=" "
 
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
-nnoremap <Leader>t :RunJestFocused<CR>
-nnoremap <Leader>T :RunJestOnBuffer<CR>
+
+nnoremap <Leader>t :TestNearest<CR>
+nnoremap <Leader>T :TestFile<CR>
+nnoremap <Leader>TT :TestSuite<CR>
 
 " split resize
 nnoremap <Leader>> 20<C-w>>

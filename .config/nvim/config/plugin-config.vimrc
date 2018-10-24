@@ -1,7 +1,16 @@
-" closetag
+" ----------------------------------- TESTING -----------------------------------
+let test#strategy = "vimux"
+let test#enabled_runners = ["javascript#mocha", "javascript#jest"]
+
+let test#javascript#mocha#file_pattern = "\\v((spec|test).*)$"
+let test#javascript#mocha#executable = "npm test -s --"
+
+let test#javascript#jest#file_pattern = "\\v((Enzyme|Test).*)$"
+
+" ----------------------------------- HTML/JSX -----------------------------------
 let g:closetag_filenames = '*.html,*.js,*.jsx,*.ts,*.tsx'
 
-" Lightline
+" ----------------------------------- LIGHTLINE -----------------------------------
 let g:lightline = {
    \ 'active': {
    \   'left': [['mode', 'paste'], ['gitbranch', 'filename', 'modified', 'bufferinfo']],
@@ -38,7 +47,7 @@ function! s:MaybeUpdateLightline()
   end
 endfunction
 
-" ale
+" ----------------------------------- ALE -----------------------------------
 let g:ale_linters_explicit = 1
 let g:ale_linters = {
       \'javascript': ['eslint', 'flow'],
@@ -51,9 +60,7 @@ let g:ale_fixers = {
 " let g:ale_use_global_executables = 1
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
-let g:tern#command = ['--no-port-file']
-
-" Theme
+" ----------------------------------- THEME -----------------------------------
 set termguicolors
 " let ayucolor="light"
 let ayucolor="mirage"
@@ -62,13 +69,12 @@ let ayucolor="mirage"
 colorscheme ayu
 highlight SignColumn guibg=none
 
-" For Neovim 0.1.3 and 0.1.4
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-
+" ----------------------------------- FLOW -----------------------------------
 let g:flow#enable = 0
 let g:javascript_plugin_flow = 1
 
-" NERDTree
+" ----------------------------------- NERD -----------------------------------
+"  tree
 let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen=1
 let NERDTreeAutoDeleteBuffer=1
@@ -77,13 +83,14 @@ let NERDTreeDirArrows=1
 let NERDTreeShowLineNumbers=1
 "autocmd bufenter * if (winnr(“$”) == 1 && exists(“b:NERDTreeType”) && b:NERDTreeType == “primary”) | q | endif
 
-" NERDCommenter
+" commenter
 let g:NERDSpaceDelims=1
 let g:NERDDefaultAlign='left'
 let g:NERDCommentEmptyLines=1
 let g:NERDTrimTrailingWhitespace=1
 let g:NERDCompactSexyComs=1
 
+" ----------------------------------- AUTOCOMPLETE -----------------------------------
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 " tern
@@ -98,6 +105,7 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 augroup end
+
 " tern
 if exists('g:plugs["tern_for_vim"]')
 let g:tern_show_argument_hints = 'on_hold'
@@ -117,4 +125,7 @@ let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
 let g:tern_request_timeout = 1
 let g:tern_request_timeout = 6000
 let g:tern#command = ["tern"]
-let g:tern#arguments = ["--persistent"]
+let g:tern#arguments = ["--persistent", "--no-port-file"]
+
+" For Neovim 0.1.3 and 0.1.4
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1

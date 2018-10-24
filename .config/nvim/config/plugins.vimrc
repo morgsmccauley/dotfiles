@@ -15,7 +15,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'jacoborus/tender.vim'
 Plug 'yarisgutierrez/ayu-lightline'
 Plug 'ayu-theme/ayu-vim'
-Plug 'altercation/vim-colors-solarized'
 
 " tree
 Plug 'scrooloose/nerdtree'
@@ -29,7 +28,6 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 
 " tmux
-Plug 'tyewang/vimux-jest-test'
 Plug 'benmills/vimux'
 Plug 'christoomey/vim-tmux-navigator'
 
@@ -38,19 +36,20 @@ Plug 'Shougo/deoplete.nvim', { 'do': 'UpdateRemotePlugins' }
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
 Plug 'carlitux/deoplete-ternjs'
 
-" additional
-Plug 'tpope/vim-fugitive'
+" test
+Plug 'tyewang/vimux-jest-test'
+Plug 'janko-m/vim-test'
+
+" IDE
+Plug 'w0rp/ale'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/nerdcommenter'
-Plug 'w0rp/ale'
 Plug 'mhinz/vim-signify'
-Plug 'tpope/vim-repeat'
 Plug 'yggdroot/indentline'
+Plug 'scrooloose/nerdcommenter'
 
-" autocomplete
-Plug 'Shougo/deoplete.nvim', { 'do': 'UpdateRemotePlugins' }
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
-Plug 'carlitux/deoplete-ternjs'
+" additional
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
 
 call plug#end()
