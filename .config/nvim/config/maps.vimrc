@@ -5,30 +5,29 @@ nnoremap <Leader>q :q<CR>
 nnoremap <Leader>t :RunJestFocused<CR>
 nnoremap <Leader>T :RunJestOnBuffer<CR>
 
-" nmap <Leader>g :Ggrep --break --heading --line-number -i
-" nmap <Leader>gg yiw:Ggrep --break --heading --line-number <C-r>"<CR>
-" vmap <Leader>gv y:Ggrep --break --heading --line-number <C-r>"<CR>
-" nmap <Leader>gl yiw:Ggrep -l <C-r>"<CR>
-
 " split resize
-nmap <Leader>> 20<C-w>>
-nmap <Leader>< 20<C-w><
+nnoremap <Leader>> 20<C-w>>
+nnoremap <Leader>< 20<C-w><
 
 " quick semi
-nmap <Leader>; $a;<Esc>
+nnoremap <Leader>; $a;<Esc>
 
 " fold
-nmap <Leader>ff Vi}zf
+nnoremap <Leader>ff Vi}zf
 
 " grep
-nmap <Leader>g :VimuxRunCommand "git grp "<Left>
-nmap <Leader>gg yiw:VimuxRunCommand "git grp <C-r>""<CR>
+nnoremap <Leader>g :VimuxRunCommand "git grp "<Left>
+nnoremap <Leader>gg yiw:VimuxRunCommand "git grp <C-r>""<CR>
+
+" search and replace
+nnoremap <Leader>sr yiw:%s/<C-r>"//gc<left><left><left>
+vnoremap <Leader>sr y:%s/<C-r>"//gc<left><left><left>
 
 " go to file
-nmap <silent> <Leader>gf gd/'<CR><C-w>gf<Esc>
+nnoremap <silent> <Leader>gf gd/'<CR><C-w>gf<Esc>
 
 " delete surrounding function
-nmap <Leader>df diwds(
+nnoremap <Leader>df diwds(
 
 " tabs
 " why cant i map this initially..
@@ -36,16 +35,16 @@ nnoremap <Tab> gt
 nnoremap <S-Tab> gT
 
 " quick logs
-nmap <Leader>lb i!console.log('') && <Esc>_f'a
-nmap <Leader>lv yiwoconsole.log('', )<Esc>_f'pf p$
-nmap <Leader>tt yiwoR.tap(args => console.log('', args)),<Esc>_f'p$
+nnoremap <Leader>lb i!console.log('') && <Esc>_f'a
+nnoremap <Leader>lv yiwoconsole.log('', )<Esc>_f'pf p$
+nnoremap <Leader>tt yiwoR.tap(args => console.log('', args)),<Esc>_f'p$
 
 " quick jsx comment
-nmap <Leader>jl o{ /*  */<Esc>_f*la
+nnoremap <Leader>jl o{ /*  */<Esc>_f*la
 
 " upper case
-nmap <Leader>c' vi'~
-nmap <Leader>cw viw~
+nnoremap <Leader>c' vi'~e
+nnoremap <Leader>cw viw~e
 
 " always add semi to end of line
 " nmap ; A;<Esc>
