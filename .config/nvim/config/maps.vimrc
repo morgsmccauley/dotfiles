@@ -18,11 +18,13 @@ nnoremap <Leader>; $a;<Esc>
 nnoremap <Leader>ff Vi}zf
 
 " grep
-nnoremap <Leader>g :VimuxRunCommand "git grp "<Left>
-nnoremap <Leader>gg yiw:VimuxRunCommand "git grp <C-r>""<CR>
+nnoremap <Leader>gg :VimuxRunCommand "git grp "<Left>
+nnoremap <Leader>ggw yiw:VimuxRunCommand "git grp <C-r>""<CR>
+nnoremap <Leader>ggf :let @" = expand("%")<cr>:VimuxRunCommand "git grp <C-r><C-w> -- '<C-r>"'"<CR>
 
 " search and replace
 nnoremap <Leader>sr yiw:%s/<C-r>"//gc<left><left><left>
+nnoremap <Leader>sra yiw:%s/<C-r>"//g<left><left>
 vnoremap <Leader>sr y:%s/<C-r>"//gc<left><left><left>
 
 " go to file
@@ -76,18 +78,13 @@ cnoreabbrev tree NERDTreeToggle
 cnoreabbrev blame Gblame
 cnoreabbrev find NERDTreeFind
 cnoreabbrev diff Gdiff
-" cnoreabbrev grep Ggrep<space>-i
+cnoreabbrev config source ~/.config/nvim/init.vim
 
 " centre after changin cursor position
-" nnoremap n nzz
-" nnoremap N Nzz
-" nnoremap } }zz
-" nnoremap { {zz
 nnoremap <C-o> <C-o>zz
 nnoremap <C-i> <C-i>zz
 
 nnoremap QQ :qall<CR>
-" nnoremap gb :ls<CR>:b<Space>
 
 nnoremap <C-p> :GFiles<CR>
 

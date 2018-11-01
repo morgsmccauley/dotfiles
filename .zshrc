@@ -110,6 +110,7 @@ alias config='v ~/.config/nvim/'
 alias cht='cht.sh'
 alias R='ramda-repl'
 alias c='clear'
+alias ag='alias | grep '
 
 function openNvim {
   if [ $# -eq 0 ]; then
