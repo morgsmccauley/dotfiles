@@ -12,6 +12,7 @@
 	grp=grep --heading --break --line-number --ignore-case
 [core]
 	editor = nvim
+	pager = less
 [color "grep"]
 	linenumber = yellow bold
 	match = red

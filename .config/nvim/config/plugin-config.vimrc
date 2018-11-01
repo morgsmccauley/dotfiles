@@ -12,25 +12,33 @@ let g:closetag_filenames = '*.html,*.js,*.jsx,*.ts,*.tsx'
 
 " ----------------------------------- LIGHTLINE -----------------------------------
 let g:lightline = {
-   \ 'active': {
-   \   'left': [['mode', 'paste'], ['gitbranch', 'filename', 'modified', 'bufferinfo']],
-   \   'right': [['linter_errors', 'linter_warnings'], ['percent', 'lineinfo', 'linter_checking', 'linter_ok'], ['filetype']]
-   \ },
-   \ 'component_function': {
-   \   'gitbranch': 'fugitive#head'
-   \ },
-   \ 'component_expand': {
-   \  'linter_checking': 'lightline#ale#checking',
-   \  'linter_warnings': 'lightline#ale#warnings',
-   \  'linter_errors': 'lightline#ale#errors',
-   \  'linter_ok': 'lightline#ale#ok',
-   \ },
-   \ 'component_type': {
-   \  'linter_warnings': 'warning',
-   \  'linter_errors': 'error',
-   \ },
-   \ 'colorscheme': 'ayu'
-   \}
+      \ 'active': {
+      \   'left': [['mode', 'paste'], ['filename', 'bufnum', 'modified']],
+      \   'right': [['linter_errors', 'linter_warnings'], ['percent', 'lineinfo', 'linter_checking', 'linter_ok'], ['gitbranch']]
+      \ },
+      \ 'inactive': {
+      \   'left': [['filename', 'bufnum']],
+      \   'right': [['inactive']]
+      \ },
+      \ 'component': {
+      \   'bufnum': '%n',
+      \   'inactive': 'INACTIVE'
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ 'component_expand': {
+      \  'linter_checking': 'lightline#ale#checking',
+      \  'linter_warnings': 'lightline#ale#warnings',
+      \  'linter_errors': 'lightline#ale#errors',
+      \  'linter_ok': 'lightline#ale#ok',
+      \ },
+      \ 'component_type': {
+      \  'linter_warnings': 'warning',
+      \  'linter_errors': 'error',
+      \ },
+      \ 'colorscheme': 'ayu'
+      \}
 let g:lightline#ale#indicator_checking = "\uf017 "
 let g:lightline#ale#indicator_warnings = "\uf071  "
 let g:lightline#ale#indicator_errors = "\uf05e  "
@@ -65,7 +73,6 @@ set termguicolors
 " let ayucolor="light"
 let ayucolor="mirage"
 " let ayucolor="dark"
-" set background=dark
 colorscheme ayu
 highlight SignColumn guibg=none
 
