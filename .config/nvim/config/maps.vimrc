@@ -3,9 +3,14 @@ let mapleader=" "
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 
+" testing
 nnoremap <Leader>t :TestNearest<CR>
 nnoremap <Leader>T :TestFile<CR>
 nnoremap <Leader>TT :TestSuite<CR>
+
+" yank file path
+nnoremap <Leader>yp :let @" = expand("%")
+
 
 " split resize
 nnoremap <Leader>> 20<C-w>>

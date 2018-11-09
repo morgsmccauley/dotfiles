@@ -111,6 +111,10 @@ alias cht='cht.sh'
 alias R='ramda-repl'
 alias c='clear'
 alias ag='alias | grep '
+alias gai='git add -i'
+alias gcn='git commit -v --no-verify'
+alias gcan='git commit -a -v --no-verify'
+alias gpn='git push --no-verify'
 
 function openNvim {
   if [ $# -eq 0 ]; then

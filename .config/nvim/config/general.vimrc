@@ -60,3 +60,5 @@ set noshowmode                                                  "dont show --INS
 autocmd VimEnter * source ~/.config/nvim/config/maps.vimrc
 " adding this here because doesnt seem to work in maps..
 autocmd VimEnter * nmap <tab> gt
+
+au FocusGained,BufEnter * :edit
