@@ -13,16 +13,16 @@ let g:closetag_filenames = '*.html,*.js,*.jsx,*.ts,*.tsx'
 " ----------------------------------- LIGHTLINE -----------------------------------
 let g:lightline = {
       \ 'active': {
-      \   'left': [['mode', 'paste'], ['filename', 'bufnum', 'modified']],
-      \   'right': [['linter_errors', 'linter_warnings'], ['percent', 'lineinfo', 'linter_checking', 'linter_ok'], ['gitbranch']]
+      \   'left': [['mode', 'paste'], [], ['filename', 'modified']],
+      \   'right': [['linter_errors', 'linter_warnings', 'linter_ok', 'linter_checking'], ['percent', 'lineinfo'], ['gitbranch']]
       \ },
       \ 'inactive': {
-      \   'left': [['filename', 'bufnum']],
-      \   'right': [['inactive']]
+      \   'left': [['inactive']],
+      \   'right': [['bufnum']]
       \ },
       \ 'component': {
       \   'bufnum': '%n',
-      \   'inactive': 'INACTIVE'
+      \   'inactive': 'inactive'
       \ },
       \ 'component_function': {
       \   'gitbranch': 'fugitive#head'
@@ -37,7 +37,11 @@ let g:lightline = {
       \  'linter_warnings': 'warning',
       \  'linter_errors': 'error',
       \ },
-      \ 'colorscheme': 'ayu'
+      \ 'colorscheme': 'ayu',
+      \ 'subseparator': {
+      \   'left': '',
+      \   'right': ''
+      \ }
       \}
 let g:lightline#ale#indicator_checking = "\uf017 "
 let g:lightline#ale#indicator_warnings = "\uf071  "
