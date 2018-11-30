@@ -140,3 +140,8 @@ let g:tern#arguments = ["--persistent", "--no-port-file"]
 
 " For Neovim 0.1.3 and 0.1.4
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+
+" UltiSnips
+let g:UltiSnipsExpandTrigger='<c-l>'
+let g:UltiSnipsJumpForwardTrigger='<c-l>'
+let g:UltiSnipsJumpBackwardTrigger='<c-h>'

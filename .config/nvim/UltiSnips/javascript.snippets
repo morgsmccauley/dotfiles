@@ -1,0 +1,79 @@
+snippet cl "console.log()" b
+console.log(${1:'$2': $3})
+endsnippet
+
+snippet im "import from ''" b
+import ${1:{ $2 }} from '$3'
+endsnippet
+
+snippet arf "() => {}" i
+const $1 = ${2:($3)} => ${4:{
+  $5
+}}
+endsnippet
+
+snippet anf "() => {}" i
+${2:($3)} => ${4:{
+  $5
+}}
+endsnippet
+
+snippet cf "() {}" b
+$1 ($2) {
+  $3
+}
+endsnippet
+
+snippet rf "function () {}" b
+function $1 ($2) {
+  $3
+}
+endsnippet
+
+snippet it "it('', () => {})" b
+it('$1', () => {
+  $2
+})
+endsnippet
+
+snippet describe "describe('', () => {})" b
+describe('$1', () => {
+  $2
+})
+endsnippet
+
+snippet const "const = " b
+const $1 = $2
+endsnippet
+
+snippet let "let = " b
+let $1 = $2
+endsnippet
+
+snippet obj "= {}" b
+const $1 = {
+  $2
+}
+endsnippet
+
+snippet arr "= []" b
+const $1 = [
+  $2
+]
+endsnippet
+
+snippet des "const {} =" b
+const { $1 } = $2
+endsnippet
+
+snippet rfc "React function component" b
+import React from 'react'
+import { ${4} } from 'react-native'
+
+const $1 = ${2:( $3 )} => (
+  <$4>
+    $5
+  </$4>
+)
+export default $1
+endsnippet

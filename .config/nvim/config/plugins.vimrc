@@ -35,6 +35,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'Shougo/deoplete.nvim', { 'do': 'UpdateRemotePlugins' }
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
 Plug 'carlitux/deoplete-ternjs'
+Plug 'sirver/ultisnips'
 
 " test
 Plug 'tyewang/vimux-jest-test'

@@ -17,3 +17,6 @@
 	linenumber = yellow bold
 	match = red
 	filename = magenta
+[user]
+	name = Morgan McCauley
+	email = morgan@mccauley.co.nz

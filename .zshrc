@@ -100,11 +100,6 @@ export CLICOLOR=1
 export EDITOR='nvim'
 export GIT_EDITOR='nvim'
 
-export HTTP_PROXY=http://localhost:8181
-export HTTPS_PROXY=http://localhost:8181
-export http_proxy=http://localhost:8181
-export https_proxy=http://localhost:8181
-
 alias v=openNvim
 alias config='v ~/.config/nvim/'
 alias cht='cht.sh'
