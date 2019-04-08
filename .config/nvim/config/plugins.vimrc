@@ -4,25 +4,18 @@ call plug#begin()
 Plug 'sheerun/vim-polyglot'
 Plug 'ianks/vim-tsx'
 
-" javascript
-Plug 'flowtype/vim-flow'
-
 " status bar
 Plug 'maximbaz/lightline-ale'
 Plug 'itchyny/lightline.vim'
 
 " themes
-Plug 'jacoborus/tender.vim'
 Plug 'yarisgutierrez/ayu-lightline'
 Plug 'ayu-theme/ayu-vim'
 
 " tree
 Plug 'scrooloose/nerdtree'
-Plug 'ryanoasis/vim-devicons'
-Plug 'vim-scripts/vim-webdevicons'
 
 " typing
-Plug 'mattn/emmet-vim'
 Plug 'alvan/vim-closetag'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
@@ -32,25 +25,28 @@ Plug 'benmills/vimux'
 Plug 'christoomey/vim-tmux-navigator'
 
 " autocomplete
-Plug 'Shougo/deoplete.nvim', { 'do': 'UpdateRemotePlugins' }
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
-Plug 'carlitux/deoplete-ternjs'
 Plug 'sirver/ultisnips'
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'neoclide/coc-tsserver', { 'do': { -> 'yarn install --frozen-lockfile' } }
+Plug 'neoclide/coc-prettier', { 'do': { -> 'yarn install --frozen-lockfile' } }
+Plug 'neoclide/coc-json', { 'do': { -> 'yarn install --frozen-lockfile' } }
+Plug 'neoclide/coc-tslint-plugin', { 'do': { -> 'yarn install --frozen-lockfile' } }
+Plug 'neoclide/coc-eslint', { 'do': { -> 'yarn install --frozen-lockfile' } }
 
 " test
 Plug 'tyewang/vimux-jest-test'
 Plug 'janko-m/vim-test'
 
 " IDE
-Plug 'w0rp/ale'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'mhinz/vim-signify'
 Plug 'yggdroot/indentline'
 Plug 'scrooloose/nerdcommenter'
 
-" additional
+" git
 Plug 'tpope/vim-fugitive'
+
 Plug 'tpope/vim-repeat'
 
 call plug#end()

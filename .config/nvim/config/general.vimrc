@@ -58,5 +58,6 @@ set noshowmode                                                  "dont show --INS
 
 " override tmux maps
 autocmd VimEnter * source ~/.config/nvim/config/maps.vimrc
+
 " adding this here because doesnt seem to work in maps..
-autocmd VimEnter * nmap <tab> gt
+" autocmd VimEnter * nmap <tab> gt

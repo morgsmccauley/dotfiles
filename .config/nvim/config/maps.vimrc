@@ -13,8 +13,8 @@ nnoremap <Leader>yp :let @" = expand("%")
 
 
 " split resize
-nnoremap <Leader>> 20<C-w>>
-nnoremap <Leader>< 20<C-w><
+nnoremap <Leader>> 10<C-w>>
+nnoremap <Leader>< 10<C-w><
 
 " quick semi
 nnoremap <Leader>; $a;<Esc>
@@ -27,38 +27,11 @@ nnoremap <Leader>gg :VimuxRunCommand "git grp "<Left>
 nnoremap <Leader>ggw yiw:VimuxRunCommand "git grp <C-r>""<CR>
 nnoremap <Leader>ggf :let @" = expand("%")<cr>:VimuxRunCommand "git grp <C-r><C-w> -- '<C-r>"'"<CR>
 
-" search and replace
-nnoremap <Leader>sr yiw:%s/<C-r>"//gc<left><left><left>
-nnoremap <Leader>sra yiw:%s/<C-r>"//g<left><left>
-vnoremap <Leader>sr y:%s/<C-r>"//gc<left><left><left>
-
-" go to file
-nnoremap <silent> <Leader>gf gd/'<CR><C-w>gf<Esc>
-
-" delete surrounding function
-nnoremap <Leader>df diwds(
-
-" tabs
-" why cant i map this initially..
-nnoremap <Tab> gt
-nnoremap <S-Tab> gT
-
-" quick logs
-nnoremap <Leader>lb i!console.log('') && <Esc>_f'a
-nnoremap <Leader>lv yiwoconsole.log('', )<Esc>_f'pf p$
-nnoremap <Leader>tt yiwoR.tap(args => console.log('', args)),<Esc>_f'p$
-
-" quick jsx comment
-nnoremap <Leader>jl o{ /*  */<Esc>_f*la
-
 " upper case
 nnoremap <Leader>c' vi'~e
 nnoremap <Leader>cw viw~e
 
-" always add semi to end of line
-" nmap ; A;<Esc>
-
-nnoremap <C-[> :noh<Esc>
+nnoremap <C> :noh<Esc>
 
 " faster scrolling
 nnoremap <silent> <C-e> 5<C-e>
@@ -85,10 +58,6 @@ cnoreabbrev find NERDTreeFind
 cnoreabbrev diff Gdiff
 cnoreabbrev config source ~/.config/nvim/init.vim
 
-" centre after changin cursor position
-nnoremap <C-o> <C-o>zz
-nnoremap <C-i> <C-i>zz
-
 nnoremap QQ :qall<CR>
 
 nnoremap <C-p> :GFiles<CR>
@@ -100,3 +69,23 @@ function! s:TmuxRepeat()
 endfunction
 
 noremap <Leader>r :call <SID>TmuxRepeat()<CR>
+
+" CoC
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>ac  <Plug>(coc-codeaction)
+nmap <leader>fe  <Plug>(coc-fix-current)
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+cnoreabbrev errors CocList diagnostics
+
+" Use `:Format` for format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` for fold current buffer
+command! -nargs=? Fold :call CocAction('fold', <f-args>)
