@@ -40,9 +40,7 @@ set listchars=space:·,tab:▸\ ,trail:▫,extends:>,precedes:<,nbsp:+,eol:¬
 
 " Javascript
 autocmd BufRead *.js set filetype=javascript
-autocmd BufRead *.es6 set filetype=javascript
 autocmd BufRead *.jsx set filetype=javascript
-
 augroup filetype javascript syntax=javascript
 
 " Enable persistent undo so that undo history persists across vim sessions
@@ -58,6 +56,3 @@ set noshowmode                                                  "dont show --INS
 
 " override tmux maps
 autocmd VimEnter * source ~/.config/nvim/config/maps.vimrc
-
-" adding this here because doesnt seem to work in maps..
-" autocmd VimEnter * nmap <tab> gt
