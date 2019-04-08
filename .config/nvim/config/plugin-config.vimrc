@@ -5,7 +5,7 @@ let test#enabled_runners = ["javascript#mocha", "javascript#jest"]
 let test#javascript#mocha#file_pattern = "\\v((spec|test).*)$"
 let test#javascript#mocha#executable = "npm test -s --"
 
-let test#javascript#jest#file_pattern = "\\v((Enzyme|Test).*)$"
+let test#javascript#jest#file_pattern = "\\v((Enzyme|Test|test).*)$"
 
 " ----------------------------------- HTML/JSX -----------------------------------
 let g:closetag_filenames = '*.html,*.js,*.jsx,*.ts,*.tsx'
@@ -13,11 +13,11 @@ let g:closetag_filenames = '*.html,*.js,*.jsx,*.ts,*.tsx'
 " ----------------------------------- LIGHTLINE -----------------------------------
 let g:lightline = {
       \ 'active': {
-      \   'left': [['mode', 'paste'], [], ['filename', 'modified']],
+      \   'left': [['mode', 'paste'], [], ['relativepath', 'modified']],
       \   'right': [['linter_errors', 'linter_warnings', 'linter_ok', 'linter_checking'], ['percent', 'lineinfo'], ['gitbranch']]
       \ },
       \ 'inactive': {
-      \   'left': [['inactive']],
+      \   'left': [['inactive'], ['relativepath']],
       \   'right': [['bufnum']]
       \ },
       \ 'component': {
