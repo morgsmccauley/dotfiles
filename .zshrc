@@ -86,6 +86,9 @@ source $ZSH/oh-my-zsh.sh
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
+# turn off autocorrect
+unsetopt correct_all
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -110,6 +113,11 @@ alias gai='git add -i'
 alias gcn='git commit -v --no-verify'
 alias gcan='git commit -a -v --no-verify'
 alias gpn='git push --no-verify'
+alias gpod='git push origin --delete'
+
+alias rnri='node_modules/.bin/react-native run-ios'
+alias rnra='node_modules/.bin/react-native run-android'
+alias nvip='nvm use && npm install && npm prune'
 
 function openNvim {
   if [ $# -eq 0 ]; then
