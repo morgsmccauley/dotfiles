@@ -118,6 +118,7 @@ alias gpod='git push origin --delete'
 alias rnri='node_modules/.bin/react-native run-ios'
 alias rnra='node_modules/.bin/react-native run-android'
 alias nvip='nvm use && npm install && npm prune'
+alias dc='docker-compose'
 
 function openNvim {
   if [ $# -eq 0 ]; then

@@ -60,7 +60,10 @@ cnoreabbrev config source ~/.config/nvim/init.vim
 
 nnoremap QQ :qall<CR>
 
-nnoremap <C-p> :GFiles<CR>
+nnoremap <C-p> :GFiles!<CR>
+nnoremap <C-g> :Ag!<CR>
+
+nnoremap <Leader><Space> :suspend<CR>
 
 " Repeat the last command in the last tmux pane
 function! s:TmuxRepeat()

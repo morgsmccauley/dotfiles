@@ -20,9 +20,8 @@ Plug 'alvan/vim-closetag'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 
-" tmux
-Plug 'benmills/vimux'
-Plug 'christoomey/vim-tmux-navigator'
+" Plug 'benmills/vimux'
+" Plug 'christoomey/vim-tmux-navigator'
 
 " autocomplete
 Plug 'sirver/ultisnips'
@@ -34,7 +33,6 @@ Plug 'neoclide/coc-tslint-plugin', { 'do': { -> 'yarn install --frozen-lockfile'
 Plug 'neoclide/coc-eslint', { 'do': { -> 'yarn install --frozen-lockfile' } }
 
 " test
-Plug 'tyewang/vimux-jest-test'
 Plug 'janko-m/vim-test'
 
 " IDE
@@ -48,5 +46,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 
 Plug 'tpope/vim-repeat'
+
+Plug 'airblade/vim-rooter'
 
 call plug#end()

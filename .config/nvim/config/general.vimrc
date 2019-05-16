@@ -55,4 +55,3 @@ set laststatus=2                                                "always display 
 set noshowmode                                                  "dont show --INSERT--
 
 " override tmux maps
-autocmd VimEnter * source ~/.config/nvim/config/maps.vimrc

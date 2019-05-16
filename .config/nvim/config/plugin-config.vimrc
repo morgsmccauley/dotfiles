@@ -1,5 +1,5 @@
 " ----------------------------------- TESTING -----------------------------------
-let test#strategy = "vimux"
+let test#strategy = "neovim"
 let test#enabled_runners = ["javascript#mocha", "javascript#jest"]
 
 let test#javascript#mocha#file_pattern = "\\v((spec|test).*)$"
@@ -82,6 +82,8 @@ endfunction
 " Coc only does snippet and additional edit on confirm.
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
+let g:coc_node_path = '/Users/morganmccauley/.nvm/versions/node/v10.5.0/bin/node'
+
 " Use <c-space> for trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
@@ -94,3 +96,15 @@ highlight link CocErrorSign GruvboxRed
 
 " For Neovim 0.1.3 and 0.1.4
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+
+" vim rooter
+let g:rooter_patterns = ['package.json', '.git/']
+let g:rooter_resolve_links = 1
+
+let g:javascript_plugin_flow = 1
+
+command! -bang -nargs=? -complete=dir GFiles
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+command! -bang -nargs=* Ag
+  \ call fzf#vim#ag(<q-args>, fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
