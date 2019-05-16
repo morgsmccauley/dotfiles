@@ -20,9 +20,6 @@ Plug 'alvan/vim-closetag'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 
-" Plug 'benmills/vimux'
-" Plug 'christoomey/vim-tmux-navigator'
-
 " autocomplete
 Plug 'sirver/ultisnips'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}

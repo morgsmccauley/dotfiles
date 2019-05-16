@@ -1,5 +1,5 @@
 {
-  "tsserver.enableJavascript": false,
+  "tsserver.enableJavascript": true,
   "diagnostic.checkCurrentLine": true,
   "languageserver": {
     "flow": {

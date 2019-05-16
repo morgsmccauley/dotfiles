@@ -22,22 +22,15 @@ nnoremap <Leader>; $a;<Esc>
 " fold
 nnoremap <Leader>ff Vi}zf
 
-" grep
-nnoremap <Leader>gg :VimuxRunCommand "git grp "<Left>
-nnoremap <Leader>ggw yiw:VimuxRunCommand "git grp <C-r>""<CR>
-nnoremap <Leader>ggf :let @" = expand("%")<cr>:VimuxRunCommand "git grp <C-r><C-w> -- '<C-r>"'"<CR>
-
 " upper case
 nnoremap <Leader>c' vi'~e
 nnoremap <Leader>cw viw~e
 
-nnoremap <C> :noh<Esc>
+nnoremap <Esc> :noh<CR><Esc>
 
 " faster scrolling
 nnoremap <silent> <C-e> 5<C-e>
 nnoremap <silent> <C-y> 5<C-y>
-noremap <C-j> 5j
-noremap <C-k> 5k
 
 map <CR> o<Esc>k
 
@@ -51,27 +44,23 @@ nnoremap <Leader>cc vip<space>c<space>
 " fast reload
 nnoremap <Leader>e :edit!<CR>
 
-" shorter commands
-cnoreabbrev tree NERDTreeToggle
-cnoreabbrev blame Gblame
-cnoreabbrev find NERDTreeFind
-cnoreabbrev diff Gdiff
-cnoreabbrev config source ~/.config/nvim/init.vim
-
 nnoremap QQ :qall<CR>
 
 nnoremap <C-p> :GFiles!<CR>
 nnoremap <C-g> :Ag!<CR>
+nnoremap <C-c> :BCommits!<CR>
+nnoremap <C-b> :Buffers<CR>
+nnoremap <C-f> :History<CR>
+
+nnoremap <C-,> :bp<CR>
+nnoremap <C-.> :bn<CR>
+
+nnoremap <C-h> <C-w><C-h>
+nnoremap <C-j> <C-w><C-j>
+nnoremap <C-k> <C-w><C-k>
+nnoremap <C-l> <C-w><C-l>
 
 nnoremap <Leader><Space> :suspend<CR>
-
-" Repeat the last command in the last tmux pane
-function! s:TmuxRepeat()
-  silent! exec "!tmux select-pane -l && tmux send up enter && tmux select-pane -l"
-  redraw!
-endfunction
-
-noremap <Leader>r :call <SID>TmuxRepeat()<CR>
 
 " CoC
 nmap <silent> gd <Plug>(coc-definition)
@@ -85,10 +74,16 @@ nmap <leader>fe  <Plug>(coc-fix-current)
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-cnoreabbrev errors CocList diagnostics
-
 " Use `:Format` for format current buffer
 command! -nargs=0 Format :call CocAction('format')
 
 " Use `:Fold` for fold current buffer
 command! -nargs=? Fold :call CocAction('fold', <f-args>)
+
+" shorter commands
+cnoreabbrev tree NERDTreeToggle
+cnoreabbrev blame Gblame
+cnoreabbrev find NERDTreeFind
+cnoreabbrev diff Gdiff
+cnoreabbrev config source ~/.config/nvim/init.vim
+cnoreabbrev errors CocList diagnostics
