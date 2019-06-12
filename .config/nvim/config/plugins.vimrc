@@ -14,6 +14,7 @@ Plug 'ayu-theme/ayu-vim'
 
 " tree
 Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " typing
 Plug 'alvan/vim-closetag'
@@ -33,7 +34,7 @@ Plug 'neoclide/coc-eslint', { 'do': { -> 'yarn install --frozen-lockfile' } }
 Plug 'janko-m/vim-test'
 
 " IDE
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mhinz/vim-signify'
 Plug 'yggdroot/indentline'
@@ -44,6 +45,6 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'tpope/vim-repeat'
 
-Plug 'airblade/vim-rooter'
+" Plug 'airblade/vim-rooter'
 
 call plug#end()

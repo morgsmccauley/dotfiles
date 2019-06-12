@@ -46,19 +46,19 @@ nnoremap <Leader>e :edit!<CR>
 
 nnoremap QQ :qall<CR>
 
-nnoremap <C-p> :GFiles!<CR>
-nnoremap <C-g> :Ag!<CR>
-nnoremap <C-c> :BCommits!<CR>
-nnoremap <C-b> :Buffers<CR>
-nnoremap <C-f> :History<CR>
+nnoremap <C-p> :GFiles<CR>
+nnoremap <C-g> :Ag<CR>
+nnoremap <C-c> :BCommits<CR>
+nnoremap <C-b> :History<CR>
+nnoremap <C-f> :Buffers<CR>
 
 nnoremap <C-,> :bp<CR>
 nnoremap <C-.> :bn<CR>
 
 nnoremap <C-h> <C-w><C-h>
-nnoremap <C-j> <C-w><C-j>
-nnoremap <C-k> <C-w><C-k>
 nnoremap <C-l> <C-w><C-l>
+noremap <C-k> 5k
+noremap <C-j> 5j
 
 nnoremap <Leader><Space> :suspend<CR>
 

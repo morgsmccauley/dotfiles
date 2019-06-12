@@ -1,15 +1,15 @@
 snippet cl "console.log()" b
-console.log(${1:'$2': $3})
+console.log(${1:'$2': $3});
 endsnippet
 
 snippet im "import from ''" b
-import ${1:{ $2 }} from '$3'
+import ${2:{ $3 }} from '$1';
 endsnippet
 
-snippet arf "() => {}" i
+snippet ar "() => {}" i
 const $1 = ${2:($3)} => ${4:{
   $5
-}}
+}};
 endsnippet
 
 snippet anf "() => {}" i
@@ -42,7 +42,7 @@ describe('$1', () => {
 })
 endsnippet
 
-snippet const "const = " b
+snippet co "const = " b
 const $1 = $2
 endsnippet
 
