@@ -1,15 +1,22 @@
-call plug#begin()
+" download vim-plug if we don't have it
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+  echo "Downloading vim-plug..."
+  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | q | source ~/.config/nvim/init.vim
+endif
+
+call plug#begin('~/.config/nvim/plugged')
 
 " syntax
 Plug 'sheerun/vim-polyglot'
 Plug 'ianks/vim-tsx'
 
 " status bar
-Plug 'maximbaz/lightline-ale'
 Plug 'itchyny/lightline.vim'
 
 " themes
-Plug 'yarisgutierrez/ayu-lightline'
+Plug 'yarisgutierrez/ayu-lightline', { 'do': 'cp ./ayu.vim ~/.config/nvim/plugged/lightline.vim/autoload/lightline/colorscheme/' }
 Plug 'ayu-theme/ayu-vim'
 
 " tree
@@ -23,12 +30,7 @@ Plug 'tpope/vim-surround'
 
 " autocomplete
 Plug 'sirver/ultisnips'
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-Plug 'neoclide/coc-tsserver', { 'do': { -> 'yarn install --frozen-lockfile' } }
-Plug 'neoclide/coc-prettier', { 'do': { -> 'yarn install --frozen-lockfile' } }
-Plug 'neoclide/coc-json', { 'do': { -> 'yarn install --frozen-lockfile' } }
-Plug 'neoclide/coc-tslint-plugin', { 'do': { -> 'yarn install --frozen-lockfile' } }
-Plug 'neoclide/coc-eslint', { 'do': { -> 'yarn install --frozen-lockfile' } }
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 " test
 Plug 'janko-m/vim-test'

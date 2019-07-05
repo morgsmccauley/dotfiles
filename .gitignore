@@ -1,0 +1,9 @@
+.config/nvim/plugged/**/*
+
+.config/coc/**/*
+
+.config/configstore/**/*
+
+.config/karabiner/automatic_backups/**/*
+
+**/*/.netrwhist

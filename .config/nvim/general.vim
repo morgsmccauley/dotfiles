@@ -1,3 +1,5 @@
+set pyxversion=3
+
 set mouse=a
 
 set numberwidth=1

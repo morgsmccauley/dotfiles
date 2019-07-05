@@ -37,10 +37,12 @@ let g:lightline = {
 
 " ----------------------------------- THEME -----------------------------------
 set termguicolors
-" let ayucolor="light"
-let ayucolor="mirage"
-" let ayucolor="dark"
-colorscheme ayu
+if !empty(glob('~/.config/nvim/plugged'))
+  " let ayucolor="light"
+  " let ayucolor="dark"
+  let ayucolor="mirage"
+  colorscheme ayu
+endif
 highlight SignColumn guibg=none
 
 " ----------------------------------- NERD -----------------------------------
@@ -75,6 +77,19 @@ let g:UltiSnipsJumpForwardTrigger='<c-l>'
 let g:UltiSnipsJumpBackwardTrigger='<c-h>'
 
 " ----------------------------------- CoC -----------------------------------
+
+let g:coc_node_path = '/Users/morganmccauley/.nvm/versions/node/v10.5.0/bin/node'
+let g:coc_global_extensions = [
+      \'coc-tsserver',
+      \'coc-rls',
+      \'coc-tslint',
+      \'coc-eslint',
+      \'coc-json',
+      \'coc-snippets',
+      \'coc-prettier',
+      \'coc-css',
+      \]
+
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 inoremap <silent><expr> <TAB>
@@ -91,8 +106,6 @@ endfunction
 " Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
 " Coc only does snippet and additional edit on confirm.
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-let g:coc_node_path = '/Users/morganmccauley/.nvm/versions/node/v10.5.0/bin/node'
 
 " Use <c-space> for trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()

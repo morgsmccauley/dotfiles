@@ -1,6 +1,6 @@
-source $HOME/.config/nvim/config/general.vimrc
-source $HOME/.config/nvim/config/plugins.vimrc
-source $HOME/.config/nvim/config/plugin-config.vimrc
-source $HOME/.config/nvim/config/maps.vimrc
+source $HOME/.config/nvim/general.vim
+source $HOME/.config/nvim/plugins.vim
+source $HOME/.config/nvim/plugin-config.vim
+source $HOME/.config/nvim/maps.vim
 
 set shell=zsh\ -l

@@ -1,5 +1,5 @@
 snippet cl "console.log()" b
-console.log(${1:'$2': $3});
+console.log(${1});
 endsnippet
 
 snippet im "import from ''" b
@@ -42,28 +42,12 @@ describe('$1', () => {
 })
 endsnippet
 
-snippet co "const = " b
-const $1 = $2
+snippet let "let {} =" b
+let { $2 } = $1
 endsnippet
 
-snippet let "let = " b
-let $1 = $2
-endsnippet
-
-snippet obj "= {}" b
-const $1 = {
-  $2
-}
-endsnippet
-
-snippet arr "= []" b
-const $1 = [
-  $2
-]
-endsnippet
-
-snippet des "const {} =" b
-const { $1 } = $2
+snippet const "const {} =" b
+const { $2 } = $1
 endsnippet
 
 snippet rfc "React function component" b
