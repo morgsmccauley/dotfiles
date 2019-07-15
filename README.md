@@ -1,5 +1,5 @@
 # Development environment setup
-These are the configuration files for my development environment setup on macbook. I am currently using neovim, zshell, iterm2, and karabiner to achieve my desired workflow. Below are the steps required to get up and running.
+These are the configuration files for my development environment on macbook. I am currently using neovim, zshell, iterm2, and karabiner elements to achieve my desired workflow. Below are the steps required to get up and running.
 
 ## Install brew & brew packages
 ```sh
@@ -11,13 +11,15 @@ brew install --HEAD neovim
 brew install node
 brew install python3
 brew install zsh
+brew install the_silver_searcher
 
 brew cask install karabiner-elements
 brew cask install --HEAD iterm2
 ```
-* The nightly build of neovim is required for CoC (intellisense in vim) pop up windows
-* Python 3 is required for UltiSnips
-* karabiner-elements is used for soft keyboard modifiers. After symlinking `.config`, it will automatically point to the configuration file defined here.
+* The nightly build of neovim is required for [CoC](https://github.com/neoclide/coc.nvim] CoC (intellisense in vim) (Intellisense) pop up windows
+* Python 3 is required by [UltiSnips](https://github.com/SirVer/ultisnips)
+* [Karabiner elements](https://github.com/tekezo/Karabiner-Elements) is used for soft keyboard modifiers
+* [The silver searcher](https://github.com/ggreer/the_silver_searcher) (Ag) is used to search for text globally
 
 ## Download oh-my-zsh
 ```sh
@@ -42,7 +44,7 @@ ln -s ~/.dotfiles/.zshrc ~/.zshrc
 ```
 ## Configuring iterm
 
-Open iterm and point it to the configuration file
+Open iterm and load the configuation file:  
 Preferences > General > Load preferences from a custom folder or URL > ``~/.iterm``
 
 ## install nvm and node
@@ -67,7 +69,9 @@ npm install -g neovim
 ```sh
 v
 ```
-Neovim (nvim) is aliased as `v`. When neovim opens it will automatically download [vim-plug](https://github.com/junegunn/vim-plug) and all plugins listed in [plugins](./.config/plugins.vim). Coc will also install all language server dependencies.
-Remember to install all node dependencies of the project as Coc will sometimes target these directly for intellisense.
+Neovim is aliased as `v`. When neovim opens it will automatically download [vim-plug](https://github.com/junegunn/vim-plug) and all plugins listed in [plugins](./.config/plugins.vim). CoC then install all language server dependencies.
+Remember to install all node dependencies of the project as CoC will sometimes target these directly for intellisense.
 
-## All done!
+## To Do
+- [ ] Remove tmux config files
+- [ ] Replace inputrc with zshell config
