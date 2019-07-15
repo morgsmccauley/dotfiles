@@ -150,3 +150,5 @@ npm() {
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+[ -f ~/.work-specific.zsh ] && source ~/.work-specific.zsh

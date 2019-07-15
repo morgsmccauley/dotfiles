@@ -1,3 +1,5 @@
+set updatetime=500
+
 set pyxversion=3
 
 set mouse=a

@@ -80,15 +80,15 @@ let g:UltiSnipsJumpBackwardTrigger='<c-h>'
 
 let g:coc_node_path = '/Users/morganmccauley/.nvm/versions/node/v10.5.0/bin/node'
 let g:coc_global_extensions = [
-      \'coc-tsserver',
-      \'coc-rls',
-      \'coc-tslint',
-      \'coc-eslint',
-      \'coc-json',
-      \'coc-snippets',
-      \'coc-prettier',
-      \'coc-css',
-      \]
+    \'coc-tsserver',
+    \'coc-rls',
+    \'coc-tslint',
+    \'coc-eslint',
+    \'coc-json',
+    \'coc-snippets',
+    \'coc-prettier',
+    \'coc-css',
+    \]
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -171,10 +171,6 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 " -------------------------------- FZF ---------------------------------------------
 
-if executable('ag')
-  " let g:ackprg = 'ag --nogroup --column --ignore=*.jsbundle --ignore-dir=*node_modules'
-endif
-
 command! -bang -nargs=? -complete=dir GFiles
   \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview(), <bang>0)
 
@@ -185,9 +181,5 @@ command! -bang -nargs=* Ag
 
 " For Neovim 0.1.3 and 0.1.4
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-
-" vim rooter
-" let g:rooter_patterns = ['package.json', '.git/']
-" let g:rooter_resolve_links = 1
 
 let g:javascript_plugin_flow = 1
