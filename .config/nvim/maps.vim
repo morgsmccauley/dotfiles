@@ -49,8 +49,9 @@ nnoremap QQ :qall<CR>
 nnoremap <C-p> :GFiles<CR>
 nnoremap <C-g> :Ag<CR>
 nnoremap <C-c> :BCommits<CR>
-nnoremap <C-b> :History<CR>
-nnoremap <C-f> :Buffers<CR>
+nnoremap <C-b> :Buffers<CR>
+nnoremap <C-f> :GFiles?<CR>
+nnoremap <C-s> :Gstatus<CR>
 
 nnoremap <C-,> :bp<CR>
 nnoremap <C-.> :bn<CR>
@@ -65,7 +66,7 @@ nnoremap <Leader><Space> :suspend<CR>
 " CoC
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 nmap <leader>rn <Plug>(coc-rename)

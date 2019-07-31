@@ -1,11 +1,12 @@
 " ----------------------------------- TESTING -----------------------------------
 let test#strategy = "neovim"
-let test#enabled_runners = ["javascript#mocha", "javascript#jest"]
+" let test#enabled_runners = ["javascript#mocha", "javascript#jest"]
 
 let test#javascript#mocha#file_pattern = "\\v((spec|test).*)$"
 let test#javascript#mocha#executable = "npm test -s --"
-
-let test#javascript#jest#file_pattern = "\\v((Enzyme|Test|test).*)$"
+"
+" let test#javascript#jest#file_pattern = "\\v((Enzyme|Test|test).*)$"
+let test#javascript#jest#executable = "npm test -s --"
 
 " ----------------------------------- HTML/JSX -----------------------------------
 let g:closetag_filenames = '*.html,*.js,*.jsx,*.ts,*.tsx'
@@ -14,7 +15,7 @@ let g:closetag_filenames = '*.html,*.js,*.jsx,*.ts,*.tsx'
 let g:lightline = {
       \ 'active': {
       \   'left': [['mode', 'paste'], [], ['relativepath', 'modified']],
-      \   'right': [['cocstatus'], ['filetype', 'percent', 'lineinfo'], ['gitbranch']]
+      \   'right': [[], ['filetype', 'percent', 'lineinfo', 'cocstatus'], ['gitbranch']]
       \ },
       \ 'inactive': {
       \   'left': [['inactive'], ['relativepath']],
@@ -88,6 +89,8 @@ let g:coc_global_extensions = [
     \'coc-snippets',
     \'coc-prettier',
     \'coc-css',
+    \'coc-yank',
+    \'coc-git',
     \]
 
 " Use tab for trigger completion with characters ahead and navigate.

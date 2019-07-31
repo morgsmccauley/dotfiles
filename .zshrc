@@ -107,7 +107,7 @@ alias v=openNvim
 alias config='v ~/.config/nvim/'
 alias cht='cht.sh'
 alias R='ramda-repl'
-alias c='clear'
+alias c='cargo'
 alias ag='alias | grep '
 alias gai='git add -i'
 alias gcn='git commit -v --no-verify'
@@ -115,10 +115,13 @@ alias gcan='git commit -a -v --no-verify'
 alias gpn='git push --no-verify'
 alias gpod='git push origin --delete'
 
-alias rnri='node_modules/.bin/react-native run-ios'
-alias rnra='node_modules/.bin/react-native run-android'
+alias rn='node_modules/.bin/react-native'
+alias rnri='rn run-ios'
+alias rnra='rn run-android'
 alias nvip='nvm use && npm install && npm prune'
 alias dc='docker-compose'
+alias d='docker'
+alias de='docker exec'
 
 function openNvim {
   if [ $# -eq 0 ]; then

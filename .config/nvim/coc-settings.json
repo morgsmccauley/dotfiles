@@ -11,5 +11,6 @@
       "settings": {},
       "rootPatterns": [".flowconfig"]
     }
-  }
+  },
+  "git.enableGutters": true
 }

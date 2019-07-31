@@ -1166,6 +1166,8 @@
 	<false/>
 	<key>HideScrollbar</key>
 	<true/>
+	<key>HideTab</key>
+	<true/>
 	<key>HideTabCloseButton</key>
 	<false/>
 	<key>HideTabNumber</key>
@@ -1226,7 +1228,7 @@
 	<key>NSWindow Frame SharedPreferences</key>
 	<string>203 474 796 486 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 697 570 330 0 0 1680 1027 </string>
+	<string>-1680 0 1680 1050 -1680 0 1680 1050 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>0 36 1674 991 0 0 1680 1027 </string>
 	<key>New Bookmarks</key>
@@ -1997,13 +1999,13 @@
 	<key>NoSyncInstallationId</key>
 	<string>7EAD623E-8C4B-486A-8273-6AFB7ABBA99E</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>1</integer>
+	<integer>4</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
 	<integer>0</integer>
 	<key>NoSyncNextAnnoyanceTime</key>
-	<real>584008136.88004303</real>
+	<real>585037626.307863</real>
 	<key>NoSyncOnboardingWindowHasBeenShown</key>
 	<true/>
 	<key>NoSyncRecordedVariables</key>
@@ -2666,6 +2668,8 @@
 	</dict>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
 	<real>583824383.40162098</real>
+	<key>NoSyncTipOfTheDayEligibilityBeganTime</key>
+	<real>584864826.30761397</real>
 	<key>PMPrintingExpandedStateForPrint2</key>
 	<false/>
 	<key>PointerActions</key>
@@ -2714,7 +2718,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-07-04T08:27:49Z</date>
+	<date>2019-07-16T21:44:54Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SavePasteHistory</key>
@@ -2722,7 +2726,7 @@
 	<key>Selection Respects Soft Boundaries</key>
 	<true/>
 	<key>ShowFullScreenTabBar</key>
-	<false/>
+	<true/>
 	<key>SoundForEsc</key>
 	<false/>
 	<key>SplitPaneDimmingAmount</key>

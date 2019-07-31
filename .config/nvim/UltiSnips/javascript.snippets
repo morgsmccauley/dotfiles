@@ -2,29 +2,27 @@ snippet cl "console.log()" b
 console.log(${1});
 endsnippet
 
+snippet if "if () { ... }" b
+if (${1}) {
+  ${2}
+}
+endsnippet
+
 snippet im "import from ''" b
 import ${2:{ $3 }} from '$1';
 endsnippet
 
-snippet ar "() => {}" i
-const $1 = ${2:($3)} => ${4:{
+snippet const "const = () => {}" b
+const $1 = ${2:{ $3 }} => ${4:{
   $5
 }};
 endsnippet
 
-snippet anf "() => {}" i
-${2:($3)} => ${4:{
-  $5
-}}
+snippet const "const {} =" b
+const ${2:{ $3 }} = $1
 endsnippet
 
-snippet cf "() {}" b
-$1 ($2) {
-  $3
-}
-endsnippet
-
-snippet rf "function () {}" b
+snippet function "function () {}" b
 function $1 ($2) {
   $3
 }
@@ -40,14 +38,6 @@ snippet describe "describe('', () => {})" b
 describe('$1', () => {
   $2
 })
-endsnippet
-
-snippet let "let {} =" b
-let { $2 } = $1
-endsnippet
-
-snippet const "const {} =" b
-const { $2 } = $1
 endsnippet
 
 snippet rfc "React function component" b
