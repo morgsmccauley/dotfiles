@@ -31,8 +31,7 @@ This creates `.pre-oh-my-zsh` files to preserve anything it replaces. Make sure 
 ## Clone this repository
 Clone this repository in to `~/.dotfiles`
 ```sh
-cd ~
-git clone git@github.com:morgsmccauley/dotfiles.git .dotfiles
+git clone git@github.com:morgsmccauley/dotfiles.git ~/.dotfiles
 ```
 ## Symlink all dotfiles to ~
 ```sh
@@ -64,8 +63,7 @@ npm install -g neovim
 ```sh
 v
 ```
-Neovim is aliased as `v`. When neovim opens it will automatically download [vim-plug](https://github.com/junegunn/vim-plug) and all plugins listed in [plugins](./.config/plugins.vim). CoC then install all language server dependencies.
-Remember to install all node dependencies of the project as CoC will sometimes target these directly for intellisense.
+Neovim is aliased as `v`. When neovim opens it will automatically download [vim-plug](https://github.com/junegunn/vim-plug) and all plugins listed in [plugins](./.config/plugins.vim). CoC will then install all language server dependencies listed in [plugin-config.vim](./config/nvim/plugin-config.vim).
 
 ## To Do
 - [ ] Remove tmux config files
