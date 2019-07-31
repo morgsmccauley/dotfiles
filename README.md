@@ -12,11 +12,12 @@ brew install node
 brew install python3
 brew install zsh
 brew install the_silver_searcher
+brew install nvm
 
 brew cask install karabiner-elements
 brew cask install --HEAD iterm2
 ```
-* The nightly build of neovim is required for [CoC](https://github.com/neoclide/coc.nvim] CoC (intellisense in vim) (Intellisense) pop up windows
+* The nightly build of neovim is required for [CoC](https://github.com/neoclide/coc.nvim) (Intellisense) pop up windows
 * Python 3 is required by [UltiSnips](https://github.com/SirVer/ultisnips)
 * [Karabiner elements](https://github.com/tekezo/Karabiner-Elements) is used for soft keyboard modifiers
 * [The silver searcher](https://github.com/ggreer/the_silver_searcher) (Ag) is used to search for text globally
@@ -33,7 +34,6 @@ Clone this repository in to `~/.dotfiles`
 cd ~
 git clone git@github.com:morgsmccauley/dotfiles.git .dotfiles
 ```
-
 ## Symlink all dotfiles to ~
 ```sh
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
@@ -42,29 +42,24 @@ ln -s ~/.dotfiles/.inputrc ~/.inputrc
 ln -s ~/.dotfiles/.iterm ~/.iterm
 ln -s ~/.dotfiles/.zshrc ~/.zshrc
 ```
+Restart iterm so all dotfiles are loaded.
+
 ## Configuring iterm
 
 Open iterm and load the configuation file:  
 Preferences > General > Load preferences from a custom folder or URL > ``~/.iterm``
 
-## install nvm and node
-```sh
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
-```
-Restart iterm so nvm is loaded correctly in to zshell. `.zshrc` already contains the correct path config so don't worrty about updating that.
+## install node 10 for intellisense
+Node 10.5.0 is targetted directly by CoC.
 ```sh
 nvm install 10.5.0
 ```
-This is the only version needed off the bat as it is targetted directly by CoC. All other versions can be installed as required.
-
-
 ## Install python and node neovim packages
 This is used for communication between Python/Node and neovim. This is not neovim itself.
 ```sh
 pip3 install neovim
 npm install -g neovim
 ```
-
 ## Open neovim
 ```sh
 v
