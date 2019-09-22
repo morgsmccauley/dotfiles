@@ -47,6 +47,9 @@ autocmd BufRead *.js set filetype=javascript
 autocmd BufRead *.jsx set filetype=javascript
 augroup filetype javascript syntax=javascript
 
+augroup filetype markdown syntax=markdown
+augroup filetype markdown set conceallevel=2
+
 " Enable persistent undo so that undo history persists across vim sessions
 set undofile
 set undodir=~/.vim/undo
@@ -57,3 +60,7 @@ set cursorline
 
 set laststatus=2                                                "always display status line
 set noshowmode                                                  "dont show --INSERT--
+
+set conceallevel=0
+
+set splitright

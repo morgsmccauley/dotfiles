@@ -51,3 +51,13 @@ const $1 = ${2:( $3 )} => (
 )
 export default $1
 endsnippet
+
+snippet class "React class component" b
+class $1 extends React.component${2:<Props, State>} {
+  render() {
+    return (
+      $3
+    );
+  }
+}
+endsnippet

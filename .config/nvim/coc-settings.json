@@ -12,5 +12,13 @@
       "rootPatterns": [".flowconfig"]
     }
   },
-  "git.enableGutters": true
+  "git.enableGutters": false,
+  "eslint.filetypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "eslint.autoFixOnSave": true,
+  "coc.preferences.rootPatterns": [".git"]
 }

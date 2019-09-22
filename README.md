@@ -46,7 +46,7 @@ Restart iterm so all dotfiles are loaded.
 ## Configuring iterm
 
 Open iterm and load the configuation file:  
-Preferences > General > Load preferences from a custom folder or URL > ``~/.iterm``
+Preferences > General > Load preferences from a custom folder or URL > `~/.iterm`
 
 ## install node 10 for intellisense
 Node 10.5.0 is targetted directly by CoC.

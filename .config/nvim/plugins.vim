@@ -35,11 +35,14 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 " test
 Plug 'janko-m/vim-test'
 
-" IDE
+" fuzzy search
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+
 Plug 'mhinz/vim-signify'
+
 Plug 'yggdroot/indentline'
+
 Plug 'scrooloose/nerdcommenter'
 
 " git
@@ -47,6 +50,6 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'tpope/vim-repeat'
 
-" Plug 'airblade/vim-rooter'
+Plug 'vimwiki/vimwiki'
 
 call plug#end()

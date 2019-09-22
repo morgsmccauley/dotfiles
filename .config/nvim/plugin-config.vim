@@ -18,8 +18,8 @@ let g:lightline = {
       \   'right': [[], ['filetype', 'percent', 'lineinfo', 'cocstatus'], ['gitbranch']]
       \ },
       \ 'inactive': {
-      \   'left': [['inactive'], ['relativepath']],
-      \   'right': [['bufnum']]
+      \   'left': [['relativepath']],
+      \   'right': []
       \ },
       \ 'component': {
       \   'bufnum': '%n',
@@ -27,7 +27,8 @@ let g:lightline = {
       \ },
       \ 'component_function': {
       \   'gitbranch': 'fugitive#head',
-      \   'cocstatus': 'coc#status'
+      \   'cocstatus': 'coc#status',
+      \   'blame': 'coc_git_blame'
       \ },
       \ 'colorscheme': 'ayu',
       \ 'subseparator': {
@@ -72,18 +73,22 @@ let g:NERDCommentEmptyLines=1
 let g:NERDTrimTrailingWhitespace=1
 let g:NERDCompactSexyComs=1
 
+let g:NERDTreeWinSize=45
+
+" If more than one window and previous buffer was NERDTree, go back to it.
+" autocmd BufEnter * if bufname('#') =~# "^NERD_tree_" && winnr('$') > 1 | b# | endif
+
 " ----------------------------------- UltiSnips -----------------------------------
 let g:UltiSnipsExpandTrigger='<c-l>'
 let g:UltiSnipsJumpForwardTrigger='<c-l>'
 let g:UltiSnipsJumpBackwardTrigger='<c-h>'
 
 " ----------------------------------- CoC -----------------------------------
-
 let g:coc_node_path = '/Users/morganmccauley/.nvm/versions/node/v10.5.0/bin/node'
 let g:coc_global_extensions = [
     \'coc-tsserver',
     \'coc-rls',
-    \'coc-tslint',
+    \'coc-tslint-plugin',
     \'coc-eslint',
     \'coc-json',
     \'coc-snippets',
@@ -179,6 +184,13 @@ command! -bang -nargs=? -complete=dir GFiles
 
 command! -bang -nargs=* Ag
   \ call fzf#vim#ag(<q-args>, fzf#vim#with_preview(), <bang>0)
+" ------------------------------- VIM WIKi--------------------------------------------
+
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+      \'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_global_ext = 0
+let g:vimwiki_conceallevel = 0
+let g:indentLine_conceallevel = 0
 
 " ---------------------------------------------------------------------------------
 

@@ -6,4 +6,6 @@
 
 .config/karabiner/automatic_backups/**/*
 
+.config/gatsby
+
 **/*/.netrwhist

@@ -32,7 +32,7 @@ nnoremap <Esc> :noh<CR><Esc>
 nnoremap <silent> <C-e> 5<C-e>
 nnoremap <silent> <C-y> 5<C-y>
 
-map <CR> o<Esc>k
+" map <CR> o<Esc>k
 
 " indent
 nnoremap <Leader>i vip=
@@ -48,10 +48,46 @@ nnoremap QQ :qall<CR>
 
 nnoremap <C-p> :GFiles<CR>
 nnoremap <C-g> :Ag<CR>
-nnoremap <C-c> :BCommits<CR>
+nnoremap <C-c> :CocList commands<CR>
 nnoremap <C-b> :Buffers<CR>
 nnoremap <C-f> :GFiles?<CR>
 nnoremap <C-s> :Gstatus<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>
+
+function! OpenTerminal()
+  " move to right most buffer
+  execute "normal 5\<C-l>"
+
+  let bufNum = bufnr("%")
+  let bufType = getbufvar(bufNum, "&buftype", "not found")
+
+  if bufType == "terminal"
+    " close existing terminal
+    execute "q"
+  else
+    " open terminal
+    execute "vsp term://zsh"
+
+    " turn off numbers
+    " execute "set nonu"
+    " execute "set nornu"
+    " execute "set noshowmode"
+    " execute "set noruler"
+    " execute "set laststatus=0"
+    " execute "set noshowcmd"
+
+    " toggle insert on enter/exit
+    silent au BufLeave <buffer> stopinsert!
+    silent au BufWinEnter,WinEnter <buffer> startinsert!
+
+    " set maps inside terminal buffer
+    execute "tnoremap <buffer> <C-h> <C-\\><C-n><C-w><C-h>"
+    execute "tnoremap <buffer> <C-t> <C-\\><C-n>:q<CR>"
+
+    startinsert!
+  endif
+endfunction
+nnoremap <C-t> :call OpenTerminal()<CR>
 
 nnoremap <C-,> :bp<CR>
 nnoremap <C-.> :bn<CR>
@@ -60,8 +96,6 @@ nnoremap <C-h> <C-w><C-h>
 nnoremap <C-l> <C-w><C-l>
 noremap <C-k> 5k
 noremap <C-j> 5j
-
-nnoremap <Leader><Space> :suspend<CR>
 
 " CoC
 nmap <silent> gd <Plug>(coc-definition)
@@ -82,7 +116,6 @@ command! -nargs=0 Format :call CocAction('format')
 command! -nargs=? Fold :call CocAction('fold', <f-args>)
 
 " shorter commands
-cnoreabbrev tree NERDTreeToggle
 cnoreabbrev blame Gblame
 cnoreabbrev find NERDTreeFind
 cnoreabbrev diff Gdiff
