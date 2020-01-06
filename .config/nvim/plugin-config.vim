@@ -30,7 +30,7 @@ let g:lightline = {
       \   'cocstatus': 'coc#status',
       \   'blame': 'coc_git_blame'
       \ },
-      \ 'colorscheme': 'ayu',
+      \ 'colorscheme': 'Tomorrow_Night_Eighties',
       \ 'subseparator': {
       \   'left': '',
       \   'right': ''
@@ -42,8 +42,9 @@ set termguicolors
 if !empty(glob('~/.config/nvim/plugged'))
   " let ayucolor="light"
   " let ayucolor="dark"
-  let ayucolor="mirage"
-  colorscheme ayu
+  " let ayucolor="mirage"
+  let base16colorspace=256
+  colorscheme base16-tomorrow-night-eighties
 endif
 highlight SignColumn guibg=none
 
@@ -189,8 +190,8 @@ command! -bang -nargs=* Ag
 let g:vimwiki_list = [{'path': '~/vimwiki/',
       \'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_global_ext = 0
-let g:vimwiki_conceallevel = 0
-let g:indentLine_conceallevel = 0
+" let g:vimwiki_conceallevel = 0
+" let g:indentLine_conceallevel = 0
 
 " ---------------------------------------------------------------------------------
 
@@ -198,3 +199,5 @@ let g:indentLine_conceallevel = 0
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 let g:javascript_plugin_flow = 1
+
+let g:indentLine_char = "|"

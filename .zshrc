@@ -152,6 +152,10 @@ npm() {
   npm $@
 }
 
+if [ $ITERM_SESSION_ID ]; then
+  export PROMPT_COMMAND='echo -ne "\033];${PWD##*/}\007"; ':"$PROMPT_COMMAND";
+fi
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 [ -f ~/.work-specific.zsh ] && source ~/.work-specific.zsh
@@ -165,3 +169,6 @@ npm() {
 # tabtab source for slss package
 # uninstall by removing these lines or running `tabtab uninstall slss`
 [[ -f /Users/morganmccauley/.nvm/versions/node/v8.15.0/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/morganmccauley/.nvm/versions/node/v8.15.0/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

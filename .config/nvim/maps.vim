@@ -54,6 +54,8 @@ nnoremap <C-f> :GFiles?<CR>
 nnoremap <C-s> :Gstatus<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
 
+nnoremap <c-w>gf :vertical wincmd f<CR>
+
 function! OpenTerminal()
   " move to right most buffer
   execute "normal 5\<C-l>"
@@ -69,18 +71,19 @@ function! OpenTerminal()
     execute "vsp term://zsh"
 
     " turn off numbers
-    " execute "set nonu"
-    " execute "set nornu"
-    " execute "set noshowmode"
-    " execute "set noruler"
-    " execute "set laststatus=0"
-    " execute "set noshowcmd"
+    execute "setlocal nonu"
+    execute "setlocal nornu"
+    execute "setlocal noshowmode"
+    execute "setlocal noruler"
+    " execute "setlocal laststatus=0"
+    execute "setlocal noshowcmd"
 
     " toggle insert on enter/exit
     silent au BufLeave <buffer> stopinsert!
     silent au BufWinEnter,WinEnter <buffer> startinsert!
 
     " set maps inside terminal buffer
+    execute "tnoremap <buffer> <C-\\><C-\\> <C-\\><C-n>"
     execute "tnoremap <buffer> <C-h> <C-\\><C-n><C-w><C-h>"
     execute "tnoremap <buffer> <C-t> <C-\\><C-n>:q<CR>"
 

@@ -40,7 +40,8 @@ set encoding=utf-8
 set autowrite
 
 set list                                                     " show trailing whitespace
-set listchars=space:·,tab:▸\ ,trail:▫,extends:>,precedes:<,nbsp:+,eol:¬
+set listchars=tab:\|\ ,trail:▫,extends:>,precedes:<,nbsp:+
+" ,eol:¬,space:·,
 
 " Javascript
 autocmd BufRead *.js set filetype=javascript
@@ -48,7 +49,7 @@ autocmd BufRead *.jsx set filetype=javascript
 augroup filetype javascript syntax=javascript
 
 augroup filetype markdown syntax=markdown
-augroup filetype markdown set conceallevel=2
+" augroup filetype markdown set conceallevel=2
 
 " Enable persistent undo so that undo history persists across vim sessions
 set undofile
@@ -61,6 +62,6 @@ set cursorline
 set laststatus=2                                                "always display status line
 set noshowmode                                                  "dont show --INSERT--
 
-set conceallevel=0
+set conceallevel=2
 
 set splitright
