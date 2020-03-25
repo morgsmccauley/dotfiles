@@ -9,8 +9,7 @@ nnoremap <Leader>T :TestFile<CR>
 nnoremap <Leader>TT :TestSuite<CR>
 
 " yank file path
-nnoremap <Leader>yp :let @" = expand("%")
-
+nnoremap <Leader>yp :let @" = expand("%")<CR>
 
 " split resize
 nnoremap <Leader>> 10<C-w>>
@@ -47,12 +46,12 @@ nnoremap <Leader>e :edit!<CR>
 nnoremap QQ :qall<CR>
 
 nnoremap <C-p> :GFiles<CR>
-nnoremap <C-g> :Ag<CR>
+nnoremap <C-g> :Rg<CR>
 nnoremap <C-c> :CocList commands<CR>
 nnoremap <C-b> :Buffers<CR>
-nnoremap <C-f> :GFiles?<CR>
+" nnoremap <C-f> :GFiles?<CR>
 nnoremap <C-s> :Gstatus<CR>
-nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <C-n> :NERDTreeFind<CR>
 
 nnoremap <c-w>gf :vertical wincmd f<CR>
 
@@ -92,6 +91,15 @@ function! OpenTerminal()
 endfunction
 nnoremap <C-t> :call OpenTerminal()<CR>
 
+function! Fold()
+  if (foldclosed('.') > -1)
+    execute "normal zd"
+  else
+    execute "normal vi{zf"
+  endif
+endfunction
+nnoremap <C-f> :call Fold()<CR>
+
 nnoremap <C-,> :bp<CR>
 nnoremap <C-.> :bn<CR>
 
@@ -119,6 +127,7 @@ command! -nargs=0 Format :call CocAction('format')
 command! -nargs=? Fold :call CocAction('fold', <f-args>)
 
 " shorter commands
+cnoreabbrev name echo @%
 cnoreabbrev blame Gblame
 cnoreabbrev find NERDTreeFind
 cnoreabbrev diff Gdiff

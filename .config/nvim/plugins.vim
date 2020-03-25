@@ -16,10 +16,10 @@ Plug 'ianks/vim-tsx'
 Plug 'itchyny/lightline.vim'
 
 " themes
-" Plug 'yarisgutierrez/ayu-lightline', { 'do': 'cp ./ayu.vim ~/.config/nvim/plugged/lightline.vim/autoload/lightline/colorscheme/' }
+Plug 'yarisgutierrez/ayu-lightline', { 'do': 'cp ./ayu.vim ~/.config/nvim/plugged/lightline.vim/autoload/lightline/colorscheme/' }
 Plug 'chriskempson/base16-vim'
 Plug 'mike-hearn/base16-vim-lightline'
-" Plug 'ayu-theme/ayu-vim'
+Plug 'arzg/vim-colors-xcode'
 
 " tree
 Plug 'scrooloose/nerdtree'
@@ -52,6 +52,6 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'tpope/vim-repeat'
 
-Plug 'vimwiki/vimwiki'
+Plug 'majutsushi/tagbar'
 
 call plug#end()
