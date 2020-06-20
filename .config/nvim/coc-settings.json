@@ -1,6 +1,9 @@
 {
   "tsserver.enableJavascript": true,
   "diagnostic.checkCurrentLine": true,
+  "diagnostic.errorSign": "x",
+  "diagnostic.infoSign": "ℹ",
+  "diagnostic.warningSign": "!",
   "languageserver": {
     "flow": {
       "command": "./node_modules/.bin/flow",
@@ -20,5 +23,8 @@
     "typescriptreact"
   ],
   "eslint.autoFixOnSave": true,
-  "coc.preferences.rootPatterns": [".git"]
+  "coc.preferences.rootPatterns": [".git"],
+  "snippets.ultisnips.directories": [
+    "UltiSnips"
+  ]
 }

@@ -118,6 +118,11 @@ alias gcf='git commit --fixup'
 alias gcaf='git commit --all --fixup'
 alias grbia='git rebase --interactive --autosquash'
 
+alias gpc='gh pr create'
+alias gpv='gh pr view'
+alias gps='gh pr status'
+alias gpl='gh pr list'
+
 alias rn='node_modules/.bin/react-native'
 alias rnri='rn run-ios'
 alias rnra='rn run-android'

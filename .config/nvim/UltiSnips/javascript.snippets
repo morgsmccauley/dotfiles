@@ -1,63 +1,45 @@
-snippet cl "console.log()" b
+snippet it "test block" b
+it('${1}', () => {
+  ${2}
+});
+endsnippet
+
+snippet describe "describe block" b
+describe('${1}', () => {
+  ${2}
+});
+endsnippet
+
+snippet cl "log" b
 console.log(${1});
 endsnippet
 
-snippet if "if () { ... }" b
-if (${1}) {
-  ${2}
-}
+snippet clj "formatted json log" b
+console.log(JSON.stringify({ ${1} }, null, 2));
 endsnippet
 
-snippet im "import from ''" b
-import ${2:{ $3 }} from '$1';
+snippet import "module import" b
+import ${2:{ $3 }} from '${1}';
 endsnippet
 
-snippet const "const = () => {}" b
-const $1 = ${2:{ $3 }} => ${4:{
-  $5
-}};
+snippet export "module export" b
+export ${1:${3:{ ${4} }} from '${2}'};
 endsnippet
 
-snippet const "const {} =" b
-const ${2:{ $3 }} = $1
+snippet react_function_component "react function component" b
+// @flow
+
+import React from './react';
+
+type Props = {
+  ${3}
+};
+
+const ${1} = (${2}: Props) => ${4};
+
+export default $1;
 endsnippet
 
-snippet function "function () {}" b
-function $1 ($2) {
-  $3
-}
-endsnippet
-
-snippet it "it('', () => {})" b
-it('$1', () => {
-  $2
-})
-endsnippet
-
-snippet describe "describe('', () => {})" b
-describe('$1', () => {
-  $2
-})
-endsnippet
-
-snippet rfc "React function component" b
-import React from 'react'
-import { ${4} } from 'react-native'
-
-const $1 = ${2:( $3 )} => (
-  <$4>
-    $5
-  </$4>
-)
-export default $1
-endsnippet
-
-snippet class "React class component" b
-class $1 extends React.component${2:<Props, State>} {
-  render() {
-    return (
-      $3
-    );
-  }
-}
+snippet const "variable" b
+const ${2:{ ${3} }} = ${1};
 endsnippet

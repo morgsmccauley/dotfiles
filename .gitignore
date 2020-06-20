@@ -8,4 +8,6 @@
 
 .config/gatsby
 
+.config/gh
+
 **/*/.netrwhist
