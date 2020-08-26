@@ -45,6 +45,14 @@ nnoremap <Leader>e :edit!<CR>
 
 nnoremap QQ :qall<CR>
 
+nnoremap / :BLines<CR>
+nnoremap * yiw:BLines <C-r>+<CR>
+
+nnoremap <Leader>/ :Rg<CR>
+nnoremap <Leader>* yiw:Rg <C-r>+<CR>
+nnoremap <Leader>. :GFiles<CR>
+nnoremap <Leader>, :Buffers<CR>
+
 nnoremap <C-p> :GFiles<CR>
 nnoremap <C-g> :Rg<CR>
 nnoremap <C-c> :CocList commands<CR>
@@ -55,41 +63,22 @@ nnoremap <C-n> :NERDTreeFind<CR>
 
 nnoremap <c-w>gf :vertical wincmd f<CR>
 
-function! OpenTerminal()
-  " move to right most buffer
-  execute "normal 5\<C-l>"
-
-  let bufNum = bufnr("%")
-  let bufType = getbufvar(bufNum, "&buftype", "not found")
-
-  if bufType == "terminal"
-    " close existing terminal
-    execute "q"
-  else
-    " open terminal
-    execute "vsp term://zsh"
-
-    " turn off numbers
-    execute "setlocal nonu"
-    execute "setlocal nornu"
-    execute "setlocal noshowmode"
-    execute "setlocal noruler"
-    " execute "setlocal laststatus=0"
-    execute "setlocal noshowcmd"
-
-    " toggle insert on enter/exit
-    silent au BufLeave <buffer> stopinsert!
-    silent au BufWinEnter,WinEnter <buffer> startinsert!
-
-    " set maps inside terminal buffer
-    execute "tnoremap <buffer> <C-\\><C-\\> <C-\\><C-n>"
-    execute "tnoremap <buffer> <C-h> <C-\\><C-n><C-w><C-h>"
-    execute "tnoremap <buffer> <C-t> <C-\\><C-n>:q<CR>"
-
-    startinsert!
-  endif
+function! s:list_buffers()
+  redir => list
+  silent ls
+  redir END
+  return split(list, "\n")
 endfunction
-nnoremap <C-t> :call OpenTerminal()<CR>
+
+function! s:delete_buffers(lines)
+  execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
+endfunction
+
+command! BD call fzf#run(fzf#wrap({
+  \ 'source': s:list_buffers(),
+  \ 'sink*': { lines -> s:delete_buffers(lines) },
+  \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
+\ }))
 
 function! Fold()
   if (foldclosed('.') > -1)
@@ -133,3 +122,79 @@ cnoreabbrev find NERDTreeFind
 cnoreabbrev diff Gdiff
 cnoreabbrev config source ~/.config/nvim/init.vim
 cnoreabbrev errors CocList diagnostics
+
+let s:monkey_terminal_window = -1
+let s:monkey_terminal_buffer = -1
+let s:monkey_terminal_job_id = -1
+
+function! MonkeyTerminalOpen()
+  " Check if buffer exists, if not create a window and a buffer
+  if !bufexists(s:monkey_terminal_buffer)
+    " Creates a window call monkey_terminal
+    new monkey_terminal
+    " Moves to the window the right the current one
+    wincmd L
+    let s:monkey_terminal_job_id = termopen($SHELL, { 'detach': 1 })
+
+    " Change the name of the buffer to "Terminal 1"
+    silent file Terminal\ 1
+    " Gets the id of the terminal window
+    let s:monkey_terminal_window = win_getid()
+    let s:monkey_terminal_buffer = bufnr('%')
+
+    " The buffer of the terminal won't appear in the list of the buffers
+    " when calling :buffers command
+    " set nobuflisted
+
+    " silent au BufLeave <buffer> stopinsert!
+    silent au BufWinEnter,WinEnter <buffer> startinsert!
+
+    execute "tnoremap <buffer> <Esc> <C-\\><C-n>"
+    execute "tnoremap <buffer> <C-h> <C-\\><C-n><C-w><C-h>"
+
+    startinsert!
+  else
+    if !win_gotoid(s:monkey_terminal_window)
+    sp
+    " Moves to the window below the current one
+    wincmd L
+    buffer Terminal\ 1
+     " Gets the id of the terminal window
+     let s:monkey_terminal_window = win_getid()
+    endif
+    startinsert!
+  endif
+endfunction
+
+function! MonkeyTerminalToggle()
+  if win_gotoid(s:monkey_terminal_window)
+    call MonkeyTerminalClose()
+  else
+    call MonkeyTerminalOpen()
+  endif
+endfunction
+
+function! MonkeyTerminalClose()
+  if win_gotoid(s:monkey_terminal_window)
+    " close the current window
+    hide
+  endif
+endfunction
+
+function! MonkeyTerminalExec(cmd)
+  if !win_gotoid(s:monkey_terminal_window)
+    call MonkeyTerminalOpen()
+  endif
+
+  " clear current input
+  call jobsend(s:monkey_terminal_job_id, "clear\n")
+
+  " run cmd
+  call jobsend(s:monkey_terminal_job_id, a:cmd . "\n")
+  normal! G
+  wincmd p
+endfunction
+
+" With this maps you can now toggle the terminal
+nnoremap <C-t> :call MonkeyTerminalToggle()<cr>
+tnoremap <C-t> <C-\><C-n>:call MonkeyTerminalToggle()<cr>

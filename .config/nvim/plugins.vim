@@ -28,5 +28,8 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'majutsushi/tagbar'
+" Plug 'easymotion/vim-easymotion'
+" Plug 'haya14busa/incsearch.vim'
+" Plug 'haya14busa/incsearch-easymotion.vim'
 
 call plug#end()

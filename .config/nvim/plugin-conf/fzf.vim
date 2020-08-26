@@ -36,7 +36,7 @@ endfunction
 
 augroup _fzf
   " make fzf a floating window
-  let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+  " let g:fzf_layout = { 'window': 'call FloatingFZF()' }
   autocmd!
   autocmd VimEnter,ColorScheme * call s:update_fzf_colors()
 augroup END

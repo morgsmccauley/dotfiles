@@ -6,7 +6,7 @@ set mouse=a
 
 set numberwidth=1
 
-set relativenumber
+set norelativenumber
 
 set clipboard=unnamed
 
@@ -30,8 +30,8 @@ set incsearch                   " incremental searching
 set ignorecase                  " searches are case insensitive...
 set smartcase                   " ... unless they contain at least one capital letter
 
-set number
-set ruler
+set nonumber
+set noruler
 
 set showmatch
 

@@ -39,8 +39,8 @@ inoremap <silent><expr> <c-space> coc#refresh()
 autocmd ColorScheme * highlight CocInfoSign ctermfg=Blue guifg=#15aabf
 " highlight link CocHintSign GruvboxRed
 
-autocmd BufEnter *.js :silent let myIndex = SearchPatternInFile("@flow") | call SwitchFlowOrTsLsps(myIndex)
-autocmd BufEnter *.jsx :silent let myIndex = SearchPatternInFile("@flow") | call SwitchFlowOrTsLsps(myIndex)
+" autocmd BufEnter *.js :silent let myIndex = SearchPatternInFile("@flow") | call SwitchFlowOrTsLsps(myIndex)
+" autocmd BufEnter *.jsx :silent let myIndex = SearchPatternInFile("@flow") | call SwitchFlowOrTsLsps(myIndex)
 
 function! SwitchFlowOrTsLsps(flowIndex)
   silent let stats = CocAction("extensionStats")
@@ -97,7 +97,7 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 imap <C-l> <Plug>(coc-snippets-expand)
 
 " Use <C-j> for select text for visual placeholder of snippet.
-vmap <C-j> <Plug>(coc-snippets-select)
+" vmap <C-j> <Plug>(coc-snippets-select)
 
 " Use <C-j> for jump to next placeholder, it's default of coc.nvim
 let g:coc_snippet_next = '<c-l>'

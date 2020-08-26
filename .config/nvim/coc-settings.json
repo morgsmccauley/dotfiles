@@ -26,5 +26,6 @@
   "coc.preferences.rootPatterns": [".git"],
   "snippets.ultisnips.directories": [
     "UltiSnips"
-  ]
+  ],
+  "rust-analyzer.lens.enable": false
 }

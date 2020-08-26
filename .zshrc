@@ -122,6 +122,7 @@ alias gpc='gh pr create'
 alias gpv='gh pr view'
 alias gps='gh pr status'
 alias gpl='gh pr list'
+alias gpch='gh pr checkout'
 
 alias rn='node_modules/.bin/react-native'
 alias rnri='rn run-ios'
