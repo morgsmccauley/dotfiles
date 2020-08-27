@@ -82,7 +82,7 @@ let g:which_key_map['f'] = {
 
 let g:which_key_map['b'] = {
       \ 'name': '+buffer',
-      \ 'k': [':bwipeout', 'Kill buffer'],
+      \ 'k': [':bwipeout!', 'Kill buffer'],
       \ 'K': [':call BufferDelete()', 'Kill buffer'],
       \ 'r': [':edit!', 'Reload buffer'],
       \ 'l': [':BLines', 'Buffer lines'],
