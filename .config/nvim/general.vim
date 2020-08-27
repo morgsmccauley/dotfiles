@@ -65,3 +65,5 @@ set noshowmode                                                  "dont show --INS
 set conceallevel=2
 
 set splitright
+
+set timeoutlen=500

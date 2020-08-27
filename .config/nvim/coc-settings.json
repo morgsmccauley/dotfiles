@@ -15,7 +15,10 @@
       "rootPatterns": [".flowconfig"]
     }
   },
-  "git.enableGutters": false,
+  "git.enableGutters": true,
+  "git.addedSign.text": "+",
+  "git.changedSign.text": "~",
+  "git.removedSign.text": "_",
   "eslint.filetypes": [
     "javascript",
     "javascriptreact",

@@ -16,8 +16,8 @@ let g:closetag_filenames = '*.html,*.js,*.jsx,*.ts,*.tsx'
 let g:lightline = {
       \ 'colorscheme': 'solarized',
       \ 'active': {
-      \   'left': [['mode', 'paste'], [], ['filename', 'modified']],
-      \   'right': [[], ['filetype', 'percent', 'lineinfo', 'cocstatus'], ['gitbranch']]
+      \   'left': [['mode', 'paste'], [], ['relativepath', 'modified'], ['lineinfo', 'percent']],
+      \   'right': [[], ['filetype', 'cocstatus'], ['gitbranch']]
       \ },
       \ 'inactive': {
       \   'left': [['relativepath']],
@@ -77,6 +77,8 @@ let g:NERDTrimTrailingWhitespace=1
 let g:NERDCompactSexyComs=1
 
 let g:NERDTreeWinSize=45
+
+let g:NERDCreateDefaultMappings = 0
 
 " If more than one window and previous buffer was NERDTree, go back to it.
 " autocmd BufEnter * if bufname('#') =~# "^NERD_tree_" && winnr('$') > 1 | b# | endif

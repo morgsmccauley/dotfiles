@@ -39,8 +39,8 @@ inoremap <silent><expr> <c-space> coc#refresh()
 autocmd ColorScheme * highlight CocInfoSign ctermfg=Blue guifg=#15aabf
 " highlight link CocHintSign GruvboxRed
 
-" autocmd BufEnter *.js :silent let myIndex = SearchPatternInFile("@flow") | call SwitchFlowOrTsLsps(myIndex)
-" autocmd BufEnter *.jsx :silent let myIndex = SearchPatternInFile("@flow") | call SwitchFlowOrTsLsps(myIndex)
+autocmd BufEnter *.js :silent let myIndex = SearchPatternInFile("@flow") | call SwitchFlowOrTsLsps(myIndex)
+autocmd BufEnter *.jsx :silent let myIndex = SearchPatternInFile("@flow") | call SwitchFlowOrTsLsps(myIndex)
 
 function! SwitchFlowOrTsLsps(flowIndex)
   silent let stats = CocAction("extensionStats")
@@ -107,3 +107,5 @@ let g:coc_snippet_prev = '<c-h>'
 
 " Use <C-j> for both expand and jump (make expand higher priority.)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
