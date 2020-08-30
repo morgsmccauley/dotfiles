@@ -14,10 +14,10 @@ let g:closetag_filenames = '*.html,*.js,*.jsx,*.ts,*.tsx'
 " ----------------------------------- LIGHTLINE -----------------------------------
 " let lightlineColorscheme = isDarkThemeEnabled ? ''
 let g:lightline = {
-      \ 'colorscheme': 'solarized',
+      \ 'colorscheme': 'one',
       \ 'active': {
       \   'left': [['mode', 'paste'], [], ['relativepath', 'modified'], ['lineinfo', 'percent']],
-      \   'right': [[], ['filetype', 'cocstatus'], ['gitbranch']]
+      \   'right': [[], ['filetype', 'cocstatus'], ['gitHunkSummary', 'gitbranch']]
       \ },
       \ 'inactive': {
       \   'left': [['relativepath']],
@@ -29,6 +29,7 @@ let g:lightline = {
       \ },
       \ 'component_function': {
       \   'gitbranch': 'fugitive#head',
+      \   'gitHunkSummary': 'GitStatus',
       \   'cocstatus': 'coc#status',
       \   'blame': 'coc_git_blame'
       \ },
@@ -38,14 +39,22 @@ let g:lightline = {
       \ }
       \}
 
+function! GitStatus()
+  let [a,m,r] = GitGutterGetHunkSummary()
+  return printf('+%d ~%d -%d', a, m, r)
+endfunction
+
 " ----------------------------------- THEME -----------------------------------
 set termguicolors
+colorscheme one
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+let g:one_allow_italics = 1
 if !empty(glob('~/.config/nvim/plugged'))
   let base16colorspace=256
   if isDarkThemeEnabled
-    colorscheme xcodedark
+    set background=dark
   else
-    colorscheme xcodelight
+    set background=light
   endif
 endif
 highlight SignColumn guibg=none
@@ -112,3 +121,63 @@ let g:indentLine_char = "|"
 " noremap <silent><expr> /  incsearch#go(<SID>incsearch_config())
 " noremap <silent><expr> ?  incsearch#go(<SID>incsearch_config({'command': '?'}))
 " noremap <silent><expr> g/ incsearch#go(<SID>incsearch_config({'is_stay': 1}))
+
+let g:gitgutter_map_keys = 0
+
+highlight GitGutterChange guifg=#ffa500 ctermfg=3
+
+" returns all modified files of the current git repo
+" `2>/dev/null` makes the command fail quietly, so that when we are not
+" in a git repo, the list will be empty
+function! s:gitModified()
+    let files = systemlist('git ls-files -m 2>/dev/null')
+    return map(files, "{'line': v:val, 'path': v:val}")
+endfunction
+
+" same as above, but show untracked files, honouring .gitignore
+function! s:gitUntracked()
+    let files = systemlist('git ls-files -o --exclude-standard 2>/dev/null')
+    return map(files, "{'line': v:val, 'path': v:val}")
+endfunction
+
+function! s:list_commits()
+  let commits = systemlist('git log --oneline --pretty="'' <%an> %s (%cr)" -10')
+  return map(commits, '{"line": matchstr(v:val, "\\s\\zs.*"), "cmd": "'. 'Git' .' show ". matchstr(v:val, "^\\x\\+") }')
+endfunction
+
+let g:startify_files_number = 5
+
+let third_window_size = winwidth(0) / 4
+let g:startify_padding_left = third_window_size
+
+let g:startify_enable_special = 0
+
+let g:vim_logo = [
+      \'    ##############..... ##############   ',
+      \'    ##############......##############   ',
+      \'      ##########..........##########     ',
+      \'      ##########........##########       ',
+      \'      ##########.......##########        ',
+      \'      ##########.....##########..        ',
+      \'      ##########....##########.....      ',
+      \'    ..##########..##########.........    ',
+      \'  ....##########.#########.............  ',
+      \'    ..################JJJ............    ',
+      \'      ################.............      ',
+      \'      ##############.JJJ.JJJJJJJJJJ      ',
+      \'      ############...JJ...JJ..JJ  JJ     ',
+      \'      ##########....JJ...JJ..JJ  JJ      ',
+      \'      ########......JJJ..JJJ JJJ JJJ     ',
+      \'      ######    .........                ',
+      \'                  .....                  ',
+      \'                    .                    ',
+      \]
+
+let g:startify_custom_header = 'startify#center(g:vim_logo)'
+
+let g:startify_lists = [
+  \ { 'type': 'dir', 'header': [repeat(" ", third_window_size) . substitute(getcwd(), '^.*/', '', '')] },
+  \ { 'type': function('s:gitModified'),  'header': [repeat(" ", third_window_size) . 'Modified']},
+  \ { 'type': function('s:gitUntracked'), 'header': [repeat(" ", third_window_size) . 'Untracked']},
+  \ { 'type': function('s:list_commits'), 'header': [repeat(" ", third_window_size) . 'Commits']},
+  \ ]

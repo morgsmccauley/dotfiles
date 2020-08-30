@@ -28,8 +28,8 @@ set incsearch
 set ignorecase
 set smartcase
 
-set nonumber
-set noruler
+set number
+set ruler
 
 set showmatch
 

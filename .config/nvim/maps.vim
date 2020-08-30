@@ -21,23 +21,63 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+nnoremap <C-t> :call MonkeyTerminalToggle()<CR>
+
 let g:which_key_map =  {
-      \ '*': ['yiw:Rg <C-r>+', 'Search for symbol globally'],
       \ '/': [':Rg', 'Search globally'],
-      \ '.': [':GFiles', 'Find file'],
       \ ',': [':Buffers', 'Switch buffer'],
       \ '\': [':source ~/.config/nvim/init.vim', 'Reload config'],
       \ }
 
+" Defining the '.' binding inside the key map causes delays for some reason
+let g:which_key_map['.'] = 'Find file'
+nnoremap <leader>. :GFiles<cr>
+
+let g:which_key_map['*'] = 'Search for symbol globally'
+nnoremap <leader>* yiw:Rg <C-r>+<CR>
+
+let g:which_key_map['m'] = {
+      \ 'name': '+motion',
+      \ 'l': ['<Plug>(easymotion-overwin-line)', 'Move to line'],
+      \ 's': ['<Plug>(easymotion-overwin-f2)', 'Move to 2 char'],
+      \ 'c': ['<Plug>(easymotion-overwin-f)', 'Move to char'],
+      \ 'w': ['<Plug>(easymotion-overwin-w)', 'Move to word']
+      \ }
+
+let list = {
+      \ 'name': '+list',
+      \ 'c': [':call GitCommit()', 'Commits'],
+      \ 'B': [':BCommits', 'Buffer commits'],
+      \ 'b': [':call GitBranch()', 'Branches'],
+      \ 'p': [':call GitPullRequest()', 'Pull requests'],
+      \ 'm': [':GFiles?', 'Modified'],
+      \ 's': [':call GitStash()', 'Stash'],
+      \ }
+
+let remote = {
+      \ 'name': '+remote',
+      \ 'p': [':Gpush', 'Push'],
+      \ 'P': ['!gpsup', 'Push creating upstream'],
+      \ 'l': ['!Gpull', 'Pull'],
+      \ 'y': [':CocCommand git.copyUrl', 'Copy GitHub URL of current line'],
+      \ 'c': [':call MonkeyTerminalExec("gh pr create")', 'Create PR'],
+      \ }
+
+let hunk = {
+      \ 'name': '+hunk',
+      \ 'i': ['<plug>(GitGutterPreviewHunk)', 'Preview hunk'],
+      \ 'u': ['<plug>(GitGutterUndoHunk)', 'Undo hunk'],
+      \ 'p': ['<plug>(GitGutterPrevHunk)', 'Go to prev hunk'],
+      \ 'n': ['<plug>(GitGutterNextHunk)', 'Go to next hunk'],
+      \ }
+
 let g:which_key_map['g'] = {
       \ 'name': '+git',
-      \ 'i': [':CocCommand git.chunkInfo', 'Chunk info'],
-      \ 'u': [':CocCommand git.chunkUndo', 'Chunk undo'],
-      \ 'U': [':CocCommand git.copyUrl', 'Copy GitHub URL of current line'],
-      \ 'g': [':Git', 'Git status'],
-      \ 'b': [':Gblame', 'Git Blame'],
-      \ 'C': [':Commits', 'Commits'],
-      \ 'B': [':BCommits', 'Buffer commits'],
+      \ 'l': list,
+      \ 'r': remote,
+      \ 'h': hunk,
+      \ 'b': [':Gblame', 'Blame'],
+      \ 'g': [':Git', 'Git'],
       \ }
 
 let g:which_key_map['c'] = {
@@ -56,7 +96,9 @@ let g:which_key_map['w'] = {
       \ 'name': '+window' ,
       \ 'w': ['<C-W>w', 'Other window'],
       \ 'q': [':q', 'Quit window'],
+      \ 'Q': [':wq', 'Save and quit window'],
       \ 'd': ['<C-W>c', 'Delete window'],
+      \ 'D': [':only', 'Delete all other windows'],
       \ '-': ['<C-W>s', 'Split window below'],
       \ '|': ['<C-W>v', 'Split window right'],
       \ '2': ['<C-W>v', 'Layout double columns'],
@@ -83,7 +125,7 @@ let g:which_key_map['f'] = {
 let g:which_key_map['b'] = {
       \ 'name': '+buffer',
       \ 'k': [':bwipeout!', 'Kill buffer'],
-      \ 'K': [':call BufferDelete()', 'Kill buffer'],
+      \ 'K': [':call BufferDelete()', 'Kill buffers'],
       \ 'r': [':edit!', 'Reload buffer'],
       \ 'l': [':BLines', 'Buffer lines'],
       \ }
@@ -95,9 +137,16 @@ let g:which_key_map['o'] = {
       \ 'P': [':NERDTreeFind', 'Find file in project side bar'],
       \ }
 
+" let g:which_key_map['t'] = {
+      " \ 'name': '+test',
+      " \ 't': [':TestNearest', 'Run test at point'],
+      " \ 'f': [':TestNearest', 'Run tests in file'],
+      " \ 'p': [':TestNearest', 'Run project tests'],
+      " \ }
+
 let g:which_key_map['t'] = {
-      \ 'name': '+test',
-      \ 't': [':TestNearest', 'Run test at point'],
-      \ 'f': [':TestNearest', 'Run tests in file'],
-      \ 'p': [':TestNearest', 'Run project tests'],
+      \ 'name': '+terminal',
+      \ 't': [':call MonkeyTerminalOpen()', 'Open or go to terminal'],
+      \ 'h': [':call MonkeyTerminalClose()', 'Hide terminal'],
+      \ 'r': [':call MonkeyTerminalExecLastCommand()', 'Repeat last command'],
       \ }

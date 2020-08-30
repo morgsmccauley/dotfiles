@@ -103,7 +103,7 @@ export CLICOLOR=1
 export EDITOR='nvim'
 export GIT_EDITOR='nvim'
 
-alias v=openNvim
+alias v='nvim'
 alias config='v ~/.config/nvim/'
 alias cht='cht.sh'
 alias R='ramda-repl'
@@ -131,14 +131,6 @@ alias nvip='nvm use && npm install && npm prune'
 alias dc='docker-compose'
 alias d='docker'
 alias de='docker exec'
-
-function openNvim {
-  if [ $# -eq 0 ]; then
-    nvim ./
-  else
-    nvim $1
-  fi
-}
 
 lazynvm() {
   unset -f nvm node npm
