@@ -24,6 +24,12 @@ nmap <silent> gr <Plug>(coc-references)
 
 nnoremap <C-t> :call MonkeyTerminalToggle()<CR>
 
+" function ReloadLightLine()
+"   call lightline#init()
+"   call lightline#colorscheme()
+"   call lightline#update()
+" endfunction
+
 let g:which_key_map =  {
       \ '/': [':Rg', 'Search globally'],
       \ ',': [':Buffers', 'Switch buffer'],
@@ -45,16 +51,6 @@ let g:which_key_map['m'] = {
       \ 'w': ['<Plug>(easymotion-overwin-w)', 'Move to word']
       \ }
 
-let list = {
-      \ 'name': '+list',
-      \ 'c': [':call GitCommit()', 'Commits'],
-      \ 'B': [':BCommits', 'Buffer commits'],
-      \ 'b': [':call GitBranch()', 'Branches'],
-      \ 'p': [':call GitPullRequest()', 'Pull requests'],
-      \ 'm': [':GFiles?', 'Modified'],
-      \ 's': [':call GitStash()', 'Stash'],
-      \ }
-
 let remote = {
       \ 'name': '+remote',
       \ 'p': [':Gpush', 'Push'],
@@ -74,10 +70,14 @@ let hunk = {
 
 let g:which_key_map['g'] = {
       \ 'name': '+git',
-      \ 'l': list,
+      \ 'l': [':call GitLog()', 'Log'],
+      \ 'p': [':call GitPullRequest()', 'Pull requests'],
+      \ 'b': [':call GitBranch()', 'Branches'],
+      \ 's': [':call GitStash()', 'Stash'],
+      \ 'L': [':BCommits', 'Buffer log'],
       \ 'r': remote,
       \ 'h': hunk,
-      \ 'b': [':Gblame', 'Blame'],
+      \ 'B': [':Gblame', 'Blame'],
       \ 'g': [':Git', 'Git'],
       \ }
 

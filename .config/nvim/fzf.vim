@@ -91,17 +91,32 @@ function! BufferDelete()
 endfunction
 
 function! s:checkout_branch(line)
-  echom 'Checking out branch: '. a:line
-  silent exec '!git checkout ' a:line
+  if a:line[0] == 'ctrl-n'
+    echom 'wait for input for new branch name'
+    let name = input("Branch name: ")
+    exec '!git checkout -b '.name.' '.a:line[1]
+    echom name
+    return
+  end
+
+  if a:line[0] == 'ctrl-r'
+    exec '!git rebase '.a:line[1]
+    echom 'Rebased on to: '.a:line[1]
+    return
+  end
+
+  echom 'Checking out branch: '. a:line[1]
+  silent exec '!git checkout ' a:line[1]
 endfunction
 
 function! GitBranch()
   call fzf#run(fzf#wrap({
         \ 'source': 'git branch',
-        \ 'sink': function('s:checkout_branch'),
+        \ 'sink*': function('s:checkout_branch'),
         \ 'options': [
         \ '--prompt', 'Branches> ',
-        \ '--preview', '',
+        \ '--expect', 'ctrl-r,ctrl-n',
+        \ '--header', ':: '.s:magenta('ENTER', 'Special').'-checkout, '.s:magenta('CTRL-N', 'Special').'-new branch, '.s:magenta('CTRL-R', 'Special').'-rebase.',
         \ ],
         \ }))
 endfunction
@@ -130,7 +145,7 @@ function! GitPullRequest()
         \ }))
 endfunction
 
-function! s:git_commit(line) 
+function! s:git_log(line) 
   let pat = '[0-9a-f]\{7,9}'
   let hash = join(filter(map(a:line[1:], 'matchstr(v:val, pat)'), 'len(v:val)'))
 
@@ -138,12 +153,12 @@ function! s:git_commit(line)
     return s:yank_to_register(hash)
   end
 
-  if a:line[0] == 'ctrl-r'
+  if a:line[0] == 'ctrl-s'
     silent exec '!git reset --soft '.hash.'~1'
     return
   end
 
-  if a:line[0] == 'ctrl-i'
+  if a:line[0] == 'ctrl-r'
     exec 'Git rebase -i --autostash --autosquash '.hash.'~1'
     return
   end
@@ -156,15 +171,15 @@ function! s:git_commit(line)
 endfunction
 
 " \ '--preview', 'echo {} | grep -o "[a-f0-9]\{7,\}" | head -1 | xargs git show --format=format: --color=always | head -1000',
-function! GitCommit()
+function! GitLog()
   call fzf#run(fzf#wrap({
         \ 'source': 'git log --color=always '.fzf#shellescape('--format=%C(auto)%h%d %s %C(green)%cr'),
-        \ 'sink*': function('s:git_commit'),
+        \ 'sink*': function('s:git_log'),
         \ 'options': [
         \ '--ansi',
-        \ '--prompt', 'Commits> ',
-        \ '--expect', 'ctrl-y,ctrl-f,ctrl-r,ctrl-i',
-        \ '--header', ':: '.s:magenta('ENTER', 'Special').'-view, '.s:magenta('CTRL-Y', 'Special').'-yank, '.s:magenta('CTRL-F', 'Special').'-fixup, '.s:magenta('CTRL-R', 'Special').'-reset, '.s:magenta('CTRL-I', 'Special').'-rebase.',
+        \ '--prompt', 'Log> ',
+        \ '--expect', 'ctrl-y,ctrl-f,ctrl-r,ctrl-s',
+        \ '--header', ':: '.s:magenta('ENTER', 'Special').'-view, '.s:magenta('CTRL-Y', 'Special').'-yank, '.s:magenta('CTRL-F', 'Special').'-fixup, '.s:magenta('CTRL-R', 'Special').'-rebase, '.s:magenta('CTRL-s', 'Special').'-soft reset.',
         \ '--preview', 'echo {} | grep -o "[a-f0-9]\{7,\}" | head -1 | xargs git show --stat -p --color=always | head -1000',
         \ ],
         \ }))

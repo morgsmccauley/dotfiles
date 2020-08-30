@@ -11,7 +11,7 @@ brew install --HEAD neovim
 brew install node
 brew install python3
 brew install zsh
-brew install the_silver_searcher
+brew install ripgrep
 brew install nvm
 
 brew cask install karabiner-elements
@@ -20,7 +20,7 @@ brew cask install --HEAD iterm2
 * The nightly build of neovim is required for [CoC](https://github.com/neoclide/coc.nvim) (Intellisense) pop up windows
 * Python 3 is required by [UltiSnips](https://github.com/SirVer/ultisnips)
 * [Karabiner elements](https://github.com/tekezo/Karabiner-Elements) is used for soft keyboard modifiers
-* [The silver searcher](https://github.com/ggreer/the_silver_searcher) (Ag) is used to search for text globally
+* [Ripgrep](https://github.com/ggreer/the_silver_searcher) (Rg) is used to search for text globally
 
 ## Download oh-my-zsh
 ```sh
