@@ -1,9 +1,12 @@
 {
   "tsserver.enableJavascript": true,
   "diagnostic.checkCurrentLine": true,
+  "diagnostic.messageTarget": "echo",
+  "diagnostic.virtualText": true,
   "diagnostic.errorSign": "x",
   "diagnostic.infoSign": "ℹ",
   "diagnostic.warningSign": "!",
+  "diagnostic.virtualTextPrefix": "-- ",
   "languageserver": {
     "flow": {
       "command": "./node_modules/.bin/flow",
@@ -22,7 +25,7 @@
     "typescript",
     "typescriptreact"
   ],
-  "eslint.autoFixOnSave": true,
+  "eslint.autoFixOnSave": false,
   "coc.preferences.rootPatterns": [".git"],
   "snippets.ultisnips.directories": [
     "UltiSnips"

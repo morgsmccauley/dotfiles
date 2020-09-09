@@ -1,4 +1,3 @@
-
 " let g:coc_node_path = '/Users/morganmccauley/.nvm/versions/node/v10.5.0/bin/node'
 let g:coc_global_extensions = [
     \'coc-tsserver',
@@ -36,8 +35,13 @@ inoremap <silent><expr> <c-space> coc#refresh()
 
 " highlight link CocErrorSign GruvboxRed
 " highlight link CocWarningSign GruvboxRed
-autocmd ColorScheme * highlight CocInfoSign ctermfg=Blue guifg=#15aabf
+autocmd ColorScheme * hi CocInfoSign ctermfg=Blue guifg=#15aabf
 " highlight link CocHintSign GruvboxRed
+
+autocmd ColorScheme * hi default link CocErrorHighlight None
+autocmd ColorScheme * hi default link CocWarningHighlight None
+autocmd ColorScheme * hi default link CocInfoHighlight None
+autocmd ColorScheme * hi default link CocHintHighlight None
 
 autocmd BufEnter *.js :silent let myIndex = SearchPatternInFile("@flow") | call SwitchFlowOrTsLsps(myIndex)
 autocmd BufEnter *.jsx :silent let myIndex = SearchPatternInFile("@flow") | call SwitchFlowOrTsLsps(myIndex)

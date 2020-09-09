@@ -21,7 +21,10 @@ let g:fzf_colors = {
   \ }
 
 let $FZF_DEFAULT_OPTS = '--layout=reverse --bind ctrl-u:preview-page-up,ctrl-d:preview-page-down'
-let g:fzf_layout = { 'down': '60%' }
+let g:fzf_layout = { 'down': '50%' }
+
+let isDarkThemeEnabled = system('defaults read .GlobalPreferences.plist AppleInterfaceStyle') =~ 'Dark'
+let $BAT_THEME= isDarkThemeEnabled ? "OneHalfDark" : "OneHalfLight"
 
 function! s:delete_buffers(lines)
   execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
