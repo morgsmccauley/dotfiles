@@ -103,6 +103,10 @@ export CLICOLOR=1
 export EDITOR='nvim'
 export GIT_EDITOR='nvim'
 
+export COLORTERM="truecolor"
+
+export BAT_THEME="OneHalfLight"
+
 alias v='nvim'
 alias config='v ~/.config/nvim/'
 alias cht='cht.sh'

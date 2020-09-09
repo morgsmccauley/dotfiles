@@ -12,7 +12,7 @@ let test#javascript#jest#executable = "npm test -s --"
 let g:closetag_filenames = '*.html,*.js,*.jsx,*.ts,*.tsx'
 
 " ----------------------------------- LIGHTLINE -----------------------------------
-" let lightlineColorscheme = isDarkThemeEnabled ? ''
+
 let g:lightline = {
       \ 'colorscheme': 'one',
       \ 'active': {
@@ -181,3 +181,6 @@ let g:startify_lists = [
   \ { 'type': function('s:gitUntracked'), 'header': [repeat(" ", third_window_size) . 'Untracked']},
   \ { 'type': function('s:list_commits'), 'header': [repeat(" ", third_window_size) . 'Commits']},
   \ ]
+
+" Could use bookmarks to switch projects
+let g:startify_change_to_dir = 0

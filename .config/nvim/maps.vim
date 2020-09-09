@@ -24,12 +24,6 @@ nmap <silent> gr <Plug>(coc-references)
 
 nnoremap <C-t> :call MonkeyTerminalToggle()<CR>
 
-" function ReloadLightLine()
-"   call lightline#init()
-"   call lightline#colorscheme()
-"   call lightline#update()
-" endfunction
-
 let g:which_key_map =  {
       \ '/': [':Rg', 'Search globally'],
       \ ',': [':Buffers', 'Switch buffer'],
@@ -55,17 +49,10 @@ let remote = {
       \ 'name': '+remote',
       \ 'p': [':Gpush', 'Push'],
       \ 'P': ['!gpsup', 'Push creating upstream'],
-      \ 'l': ['!Gpull', 'Pull'],
+      \ 'l': [':Gpull', 'Pull'],
+      \ 'f': [':Gfetch', 'Fetch'],
       \ 'y': [':CocCommand git.copyUrl', 'Copy GitHub URL of current line'],
       \ 'c': [':call MonkeyTerminalExec("gh pr create")', 'Create PR'],
-      \ }
-
-let hunk = {
-      \ 'name': '+hunk',
-      \ 'i': ['<plug>(GitGutterPreviewHunk)', 'Preview hunk'],
-      \ 'u': ['<plug>(GitGutterUndoHunk)', 'Undo hunk'],
-      \ 'p': ['<plug>(GitGutterPrevHunk)', 'Go to prev hunk'],
-      \ 'n': ['<plug>(GitGutterNextHunk)', 'Go to next hunk'],
       \ }
 
 let g:which_key_map['g'] = {
@@ -75,14 +62,45 @@ let g:which_key_map['g'] = {
       \ 'b': [':call GitBranch()', 'Branches'],
       \ 's': [':call GitStash()', 'Stash'],
       \ 'L': [':BCommits', 'Buffer log'],
+      \ 'i': ['<plug>(GitGutterPreviewHunk)', 'Preview hunk'],
+      \ 'u': ['<plug>(GitGutterUndoHunk)', 'Undo hunk'],
+      \ '[': ['<plug>(GitGutterPrevHunk)', 'Go to prev hunk'],
+      \ ']': ['<plug>(GitGutterNextHunk)', 'Go to next hunk'],
       \ 'r': remote,
-      \ 'h': hunk,
-      \ 'B': [':Gblame', 'Blame'],
+      \ 'B': [':Gblame', 'Blame annotations'],
+      \ 'C': [':CocCommand git.showCommit', 'Show commit'],
       \ 'g': [':Git', 'Git'],
       \ }
 
+command! -nargs=? -range Align <line1>,<line2>call AlignSection('<args>')
+
+function! AlignSection(regex) range
+  let extra = 1
+  let sep = empty(a:regex) ? '=' : a:regex
+  let maxpos = 0
+  let section = getline(a:firstline, a:lastline)
+  for line in section
+    let pos = match(line, ' *'.sep)
+    if maxpos < pos
+      let maxpos = pos
+    endif
+  endfor
+  call map(section, 'AlignLine(v:val, sep, maxpos, extra)')
+  call setline(a:firstline, section)
+endfunction
+
+function! AlignLine(line, sep, maxpos, extra)
+  let m = matchlist(a:line, '\(.\{-}\) \{-}\('.a:sep.'.*\)')
+  if empty(m)
+    return a:line
+  endif
+  let spaces = repeat(' ', a:maxpos - strlen(m[1]) + a:extra)
+  return m[1] . spaces . m[2]
+endfunction
+
 let g:which_key_map['c'] = {
       \ 'name': '+code',
+      \ 'a': [":'<,'>Align", 'Align selection by ='],
       \ 'd': ['<Plug>coc-definition', 'Go to definition'],
       \ 'r': ['<Plug>coc-references', 'List references'],
       \ 'n': ['<Plug>coc-rename', 'Rename variable'],
@@ -91,6 +109,35 @@ let g:which_key_map['c'] = {
       \ 'I': ['ggvG=2', 'Indent file'],
       \ '/': ['<Plug>NERDCommenterToggle', 'Comment line or selection'],
       \ 'e': [':CocList diagnostics', 'List errors'],
+      \ 'c': [':CocCommand', 'List Coc commands'],
+      \ }
+
+function! SearchAndReplaceGlobal()
+  let search_term = input("Search term: ")
+  let replace_term = input("Replace with: ")
+  let confirm = input("Confirm replaces? (y)es/(n)o: ")
+
+  if confirm == 'y'
+    exec 'cdo s/'.search_term.'/'.replace_term.'/egc | update'
+    return
+  end
+
+  if confirm == 'n'
+    exec 'cdo s/'.search_term.'/'.replace_term.'/eg | update'
+    return
+  end
+
+  echom 'Invalid confirm input'
+endfunction
+
+let g:which_key_map['q'] = {
+      \ 'name': '+quickfix',
+      \ 'q': ['ccl', 'Quit'],
+      \ 'n': ['cn | zz', 'Next'],
+      \ 'p': ['cp | zz', 'Previous'],
+      \ 'f': ['cfirst', 'First'],
+      \ 'l': ['clast', 'Last'],
+      \ 'a': [':call SearchAndReplaceGlobal()', 'Do a global search/replace'],
       \ }
 
 let g:which_key_map['w'] = {
@@ -121,6 +168,8 @@ let g:which_key_map['f'] = {
       \ 's': [':w', 'Save file'],
       \ 'S': [':source %', 'Source file'],
       \ 'y': [':let @" = expand("%")', 'Yank filename'],
+      \ 'f': ['vi{zf', 'Fold inside {}'],
+      \ 'o': ['zo', 'Open fold'],
       \ }
 
 let g:which_key_map['b'] = {

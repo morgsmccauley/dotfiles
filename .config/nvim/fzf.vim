@@ -4,63 +4,24 @@ command! -bang -nargs=? -complete=dir GFiles
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview(), <bang>0)
 
-function! s:update_fzf_colors()
-  let rules =
-  \ { 'fg':      [['Normal',       'fg']],
-    \ 'bg':      [['Normal',       'bg']],
-    \ 'hl':      [['Comment',      'fg']],
-    \ 'fg+':     [['CursorColumn', 'fg'], ['Normal', 'fg']],
-    \ 'bg+':     [['CursorColumn', 'bg']],
-    \ 'hl+':     [['Statement',    'fg']],
-    \ 'info':    [['PreProc',      'fg']],
-    \ 'prompt':  [['Conditional',  'fg']],
-    \ 'pointer': [['Exception',    'fg']],
-    \ 'marker':  [['Keyword',      'fg']],
-    \ 'spinner': [['Label',        'fg']],
-    \ 'header':  [['Comment',      'fg']] }
-  let cols = []
-  for [name, pairs] in items(rules)
-    for pair in pairs
-      let code = synIDattr(synIDtrans(hlID(pair[0])), pair[1])
-      if !empty(name) && !empty(code)
-        call add(cols, name.':'.code)
-        break
-      endif
-    endfor
-  endfor
-  " temp putting here because i don't know the timing of autocmd
-  let $FZF_DEFAULT_OPTS = '--layout=reverse'
-  let s:orig_fzf_default_opts = get(s:, 'orig_fzf_default_opts', $FZF_DEFAULT_OPTS)
-  let $FZF_DEFAULT_OPTS = s:orig_fzf_default_opts . (empty(cols) ? '' : (' --color='.join(cols, ',')))
-endfunction
+let g:fzf_colors = {
+  \ 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment']
+  \ }
 
-augroup _fzf
-  " make fzf a floating window
-  " let g:fzf_layout = { 'window': 'call FloatingFZF()' }
-  let g:fzf_layout = { 'down': '50%' }
-  autocmd!
-  autocmd VimEnter,ColorScheme * call s:update_fzf_colors()
-augroup END
-
-function! FloatingFZF()
-  let buf = nvim_create_buf(v:false, v:true)
-  call setbufvar(buf, '&signcolumn', 'no')
-
-  let height = float2nr((&lines - 3) / 2)
-  let width = float2nr(&columns - (&columns * 2 / 10))
-  let col = float2nr((&columns - width) / 2)
-  let row = float2nr((&lines - height) / 2)
-
-  let opts = {
-        \ 'relative': 'editor',
-        \ 'row': row,
-        \ 'col': col,
-        \ 'width': width,
-        \ 'height': height
-        \ }
-
-  call nvim_open_win(buf, v:true, opts)
-endfunction
+let $FZF_DEFAULT_OPTS = '--layout=reverse --bind ctrl-u:preview-page-up,ctrl-d:preview-page-down'
+let g:fzf_layout = { 'down': '60%' }
 
 function! s:delete_buffers(lines)
   execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
@@ -91,45 +52,51 @@ function! BufferDelete()
 endfunction
 
 function! s:checkout_branch(line)
+  let target_branch = a:line[1][2:]
   if a:line[0] == 'ctrl-n'
     echom 'wait for input for new branch name'
     let name = input("Branch name: ")
-    exec '!git checkout -b '.name.' '.a:line[1]
-    echom name
+    exec '!git checkout -b '.name.' '.target_branch
     return
   end
 
   if a:line[0] == 'ctrl-r'
-    exec '!git rebase '.a:line[1]
-    echom 'Rebased on to: '.a:line[1]
+    " Fetch before rebasing?
+    exec '!git rebase --autostash '.target_branch
+    echom 'Rebased on to: '.target_branch
     return
   end
 
-  echom 'Checking out branch: '. a:line[1]
-  silent exec '!git checkout ' a:line[1]
+  if a:line[0] == 'ctrl-d'
+    exec '!git branch -D '.target_branch
+    return
+  end
+
+  echom 'Checking out branch: '.target_branch
+  exec '!git checkout '.target_branch
 endfunction
 
 function! GitBranch()
   call fzf#run(fzf#wrap({
-        \ 'source': 'git branch',
+        \ 'source': 'git branch -a',
         \ 'sink*': function('s:checkout_branch'),
         \ 'options': [
         \ '--prompt', 'Branches> ',
-        \ '--expect', 'ctrl-r,ctrl-n',
-        \ '--header', ':: '.s:magenta('ENTER', 'Special').'-checkout, '.s:magenta('CTRL-N', 'Special').'-new branch, '.s:magenta('CTRL-R', 'Special').'-rebase.',
+        \ '--expect', 'ctrl-r,ctrl-n,ctrl-d',
+        \ '--header', ':: '.s:magenta('ENTER', 'Special').'-checkout, '.s:magenta('CTRL-N', 'Special').'-new branch, '.s:magenta('CTRL-R', 'Special').'-rebase, '.s:magenta('CTRL-D', 'Special').'-delete.',
         \ ],
         \ }))
 endfunction
 
 function! s:checkout_pull(line)
   if a:line[0] == 'ctrl-o'
-    echom 'Opening PR in web: ' . a:line[1]
-    silent exec '!gh pr view --web ' . a:line[1]
-    return 
+    echom 'Opening PR in web: '.a:line[1]
+    silent exec '!gh pr view --web '.a:line[1]
+    return
   end
 
-  echom 'Checking out PR: ' . a:line[1]
-  silent exec '!gh pr checkout ' a:line[1]
+  echom 'Checking out PR: 'a:line[1]
+  silent exec '!gh pr checkout '.a:line[1]
 endfunction
 
 function! GitPullRequest()
@@ -154,7 +121,7 @@ function! s:git_log(line)
   end
 
   if a:line[0] == 'ctrl-s'
-    silent exec '!git reset --soft '.hash.'~1'
+    exec '!git reset --soft '.hash.'~1'
     return
   end
 
@@ -168,6 +135,8 @@ function! s:git_log(line)
     exec '!GIT_SEQUENCE_EDITOR=: git rebase -i --autosquash --autostash '.hash.'~1'
     return
   end
+
+  silent exec 'Gvdiffsplit '.hash.'~1'
 endfunction
 
 " \ '--preview', 'echo {} | grep -o "[a-f0-9]\{7,\}" | head -1 | xargs git show --format=format: --color=always | head -1000',
@@ -204,15 +173,29 @@ function! s:git_stash(line)
   let stash = split(a:line[1])[0]
 
   if a:line[0] == 'ctrl-a'
-    silent exec '!git stash apply '.stash
+    exec '!git stash apply '.stash
+    return
   end
 
   if a:line[0] == 'ctrl-p'
-    silent exec '!git stash pop '.stash
+    exec '!git stash pop '.stash
+    return
   end
 
   if a:line[0] == 'ctrl-d'
-    silent exec '!git stash drop '.stash
+    exec '!git stash drop '.stash
+    return
+  end
+
+  if a:line[0] == 'ctrl-n'
+    let message = input('Message: ')
+    if message == ''
+      exec '!git stash push'
+      return
+    end
+
+    exec '!git stash push --message='.message
+    return
   end
 
   silent exec 'Gdiff '.stash
@@ -226,9 +209,9 @@ function! GitStash()
         \ '--ansi',
         \ '--multi',
         \ '--prompt', 'Stash> ',
-        \ '--expect', 'ctrl-a,ctrl-p,ctrl-d',
+        \ '--expect', 'ctrl-a,ctrl-p,ctrl-d,ctrl-n',
         \ '--preview', 'git stash show --stat -p --color=always {1}',
-        \ '--header', ':: '.s:magenta('ENTER', 'Special').'-view, '.s:magenta('CTRL-A', 'Special').'-apply, '.s:magenta('CTRL-P', 'Special').'-pop, '.s:magenta('CTRL-D', 'Special').'-drop',
+        \ '--header', ':: '.s:magenta('ENTER', 'Special').'-view, '.s:magenta('CTRL-A', 'Special').'-apply, '.s:magenta('CTRL-P', 'Special').'-pop, '.s:magenta('CTRL-D', 'Special').'-drop, '.s:magenta('CTRL-N', 'Special').'-new stash',
         \ ],
         \ }))
 endfunction
@@ -278,3 +261,8 @@ for s:color_name in keys(s:ansi)
         \ "endfunction"
 endfor
 
+if has('nvim')
+  autocmd! FileType fzf
+  autocmd  FileType fzf set laststatus=0 noshowmode noruler
+    \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+endif
