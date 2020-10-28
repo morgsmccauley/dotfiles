@@ -20,7 +20,7 @@ brew cask install --HEAD iterm2
 * The nightly build of neovim is required for [CoC](https://github.com/neoclide/coc.nvim) (Intellisense) pop up windows
 * Python 3 is required by [UltiSnips](https://github.com/SirVer/ultisnips)
 * [Karabiner elements](https://github.com/tekezo/Karabiner-Elements) is used for soft keyboard modifiers
-* [Ripgrep](https://github.com/ggreer/the_silver_searcher) (Rg) is used to search for text globally
+* [Ripgrep](https://github.com/BurntSushi/ripgrep) (Rg) is used to search for text globally
 
 ## Download oh-my-zsh
 ```sh
@@ -37,7 +37,6 @@ git clone git@github.com:morgsmccauley/dotfiles.git ~/.dotfiles
 ```sh
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/.config ~/.config
-ln -s ~/.dotfiles/.inputrc ~/.inputrc
 ln -s ~/.dotfiles/.iterm ~/.iterm
 ln -s ~/.dotfiles/.zshrc ~/.zshrc
 ```
@@ -64,7 +63,3 @@ npm install -g neovim
 v
 ```
 Neovim is aliased as `v`. When neovim opens it will automatically download [vim-plug](https://github.com/junegunn/vim-plug) and all plugins listed in [plugins](./.config/plugins.vim). CoC will then install all language server dependencies listed in [plugin-config.vim](./config/nvim/plugin-config.vim).
-
-## To Do
-- [ ] Remove tmux config files
-- [ ] Replace inputrc with zshell config
