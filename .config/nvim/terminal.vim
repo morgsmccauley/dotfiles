@@ -30,9 +30,9 @@ function! MonkeyTerminalOpen()
     silent au BufLeave <buffer> stopinsert!
     silent au BufWinEnter,WinEnter <buffer> startinsert!
 
-    execute "tnoremap <C-t> <C-\\><C-n> :call MonkeyTerminalClose()<CR>"
     execute "tnoremap <buffer> <C-\\> <C-\\><C-n>"
     execute "tnoremap <buffer> <C-h> <C-\\><C-n><C-w><C-h>"
+    execute "tnoremap <buffer> <C-t> <C-\\><C-n> :call MonkeyTerminalClose()<CR>"
 
     startinsert!
   else
@@ -53,6 +53,10 @@ function! MonkeyTerminalToggle()
   else
     call MonkeyTerminalOpen()
   endif
+endfunction
+
+function! MonkeyTerminalQuit()
+  execute "bdelete! ".s:monkey_terminal_buffer
 endfunction
 
 function! MonkeyTerminalClose()

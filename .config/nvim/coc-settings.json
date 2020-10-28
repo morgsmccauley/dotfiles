@@ -30,5 +30,6 @@
   "snippets.ultisnips.directories": [
     "UltiSnips"
   ],
-  "rust-analyzer.lens.enable": false
+  "rust-analyzer.lens.enable": false,
+  "rust-analyzer.checkOnSave.command": "clippy"
 }

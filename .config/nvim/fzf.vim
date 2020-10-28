@@ -4,6 +4,25 @@ command! -bang -nargs=? -complete=dir GFiles
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview(), <bang>0)
 
+command! -bang -nargs=* LinesWithPreview
+    \ call fzf#vim#grep(
+    \   'rg --column --line-number --no-heading --color=always --smart-case . '.fnameescape(expand('%')), 1,
+    \   fzf#vim#with_preview({'options': '--delimiter : --nth 4.. --no-sort'}),
+    \   <bang>0)
+
+function! LinesWithPreview()
+  call fzf#run(fzf#wrap({
+        \ 'source': s:list_buffers(),
+        \ 'sink*': { lines -> s:delete_buffers(lines) },
+        \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
+        \ '--preview', 'echo {} | grep -o "[a-f0-9]\{7,\}" | head -1 | xargs git show --stat -p --color=always | head -1000',
+        \ }));
+endfunction
+
+let g:rg_command = 'rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always" -g "*.{js,json,php,md,styl,jade,html,config,py,cpp,c,go,hs,rb,conf,scss}" -g "!*.{min.js,swp,o,zip}" -g "!{.git,node_modules,vendor}/*" '
+
+command! -bang -nargs=* F call fzf#vim#grep(g:rg_command.shellescape(<q-args>), 1, <bang>0)
+
 let g:fzf_colors = {
   \ 'fg':      ['fg', 'Normal'],
   \ 'bg':      ['bg', 'Normal'],
@@ -63,6 +82,12 @@ function! s:checkout_branch(line)
     return
   end
 
+  " if a:line[0] == 'ctrl-m'
+  "   echom 'Merging: '.target_branch
+  "   exec '!git merge '.target_branch
+  "   return
+  " end
+
   if a:line[0] == 'ctrl-r'
     " Fetch before rebasing?
     exec '!git rebase --autostash '.target_branch
@@ -71,7 +96,11 @@ function! s:checkout_branch(line)
   end
 
   if a:line[0] == 'ctrl-d'
-    exec '!git branch -D '.target_branch
+    if confirm("Delete branch: ".target_branch."?") == 1
+      exec '!git branch -D '.target_branch
+    else
+      echom 'Cancelling'
+    endif
     return
   end
 
@@ -84,9 +113,11 @@ function! GitBranch()
         \ 'source': 'git branch -a',
         \ 'sink*': function('s:checkout_branch'),
         \ 'options': [
+        \ '--ansi',
         \ '--prompt', 'Branches> ',
-        \ '--expect', 'ctrl-r,ctrl-n,ctrl-d',
-        \ '--header', ':: '.s:magenta('ENTER', 'Special').'-checkout, '.s:magenta('CTRL-N', 'Special').'-new branch, '.s:magenta('CTRL-R', 'Special').'-rebase, '.s:magenta('CTRL-D', 'Special').'-delete.',
+        \ '--preview', 'git log --color=always --stat master..{1}',
+        \ '--expect', 'ctrl-r,ctrl-n,ctrl-d,ctrl-m',
+        \ '--header', ':: '.s:magenta('ENTER', 'Special').'-checkout, '.s:magenta('CTRL-N', 'Special').'-new branch, '.s:magenta('CTRL-R', 'Special').'-rebase, '.s:magenta('CTRL-D', 'Special').'-delete, '.s:magenta('CTRL-M', 'Special').'-merge',
         \ ],
         \ }))
 endfunction
@@ -97,6 +128,14 @@ function! s:checkout_pull(line)
     silent exec '!gh pr view --web '.a:line[1]
     return
   end
+
+  if a:line[0] == 'ctrl-n'
+    let title = input("Title: ")
+    let review = confirm("Ready to review? ", "&yes\n&no")
+    let reviewFlag = review == 1 ? ' --label "ready for review"' : ''
+    exec '!gh pr create --title '.title.reviewFlag
+    return
+  endif
 
   echom 'Checking out PR: 'a:line[1]
   silent exec '!gh pr checkout '.a:line[1]
@@ -109,8 +148,8 @@ function! GitPullRequest()
         \ 'options': [
         \ '--prompt', 'Pull Requests> ',
         \ '--preview', 'gh pr view {1}',
-        \ '--header', ':: '.s:magenta('ENTER', 'Special').'-checkout, '.s:magenta('CTRL-O', 'Special').'-view',
-        \ '--expect', 'ctrl-o',
+        \ '--header', ':: '.s:magenta('ENTER', 'Special').'-checkout, '.s:magenta('CTRL-O', 'Special').'-view, '.s:magenta('CTRL-N', 'Special').'-new',
+        \ '--expect', 'ctrl-o,ctrl-n',
         \ ],
         \ }))
 endfunction
@@ -161,13 +200,13 @@ function! s:git_stash(line)
   if len(a:line) > 2
     let stashes = reverse(map(a:line[1:], {_, line -> split(line)[0]}))
 
-    if a:line[0] == 'ctrl-d'
-      for stash in stashes
-        echom 'Dropping stash: '.stash
-        silent exec '!git stash drop '.stash
-      endfor
-      return
-    end
+    " if a:line[0] == 'ctrl-d'
+    "   for stash in stashes
+    "     echom 'Dropping stash: '.stash
+    "     silent exec '!git stash drop '.stash
+    "   endfor
+    "   return
+    " end
 
     echom 'No associated action for multiple lines'
     return
@@ -185,10 +224,10 @@ function! s:git_stash(line)
     return
   end
 
-  if a:line[0] == 'ctrl-d'
-    exec '!git stash drop '.stash
-    return
-  end
+  " if a:line[0] == 'ctrl-d'
+  "   exec '!git stash drop '.stash
+  "   return
+  " end
 
   if a:line[0] == 'ctrl-n'
     let message = input('Message: ')
@@ -212,9 +251,19 @@ function! GitStash()
         \ '--ansi',
         \ '--multi',
         \ '--prompt', 'Stash> ',
-        \ '--expect', 'ctrl-a,ctrl-p,ctrl-d,ctrl-n',
+        \ '--expect', 'ctrl-a,ctrl-p,ctrl-n',
         \ '--preview', 'git stash show --stat -p --color=always {1}',
         \ '--header', ':: '.s:magenta('ENTER', 'Special').'-view, '.s:magenta('CTRL-A', 'Special').'-apply, '.s:magenta('CTRL-P', 'Special').'-pop, '.s:magenta('CTRL-D', 'Special').'-drop, '.s:magenta('CTRL-N', 'Special').'-new stash',
+        \ ],
+        \ }))
+endfunction
+
+function! Sessions()
+  call fzf#run(fzf#wrap({
+        \ 'source': 'ls ~/.local/share/nvim/session',
+        \ 'sink': 'SLoad',
+        \ 'options': [
+        \ '--prompt', 'Sessions> ',
         \ ],
         \ }))
 endfunction

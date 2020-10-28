@@ -45,14 +45,21 @@ let g:which_key_map['m'] = {
       \ 'w': ['<Plug>(easymotion-overwin-w)', 'Move to word']
       \ }
 
+let g:which_key_map['s'] = {
+      \ 'name': '+session',
+      \ 'l': [':call Sessions()', 'List'],
+      \ 'q': [':SClose', 'Quit'],
+      \ 's': [':SSave!', 'Save']
+      \ }
+
 let remote = {
       \ 'name': '+remote',
-      \ 'p': [':Gpush', 'Push'],
-      \ 'P': ['!gpsup', 'Push creating upstream'],
-      \ 'l': [':Gpull', 'Pull'],
-      \ 'f': [':Gfetch', 'Fetch'],
+      \ 'p': [':echo "Pushing to remote..." | Gpush', 'Push'],
+      \ 'P': [':echo "Force pushing to remote..." | Gpush --force-with-lease', 'Force push'],
+      \ 'u': ['!gpsup', 'Push creating upstream'],
+      \ 'l': [':echo "Pulling from remote..." | Gpull', 'Pull'],
+      \ 'f': [':echo "Fetching remote..." | Gfetch', 'Fetch'],
       \ 'y': [':CocCommand git.copyUrl', 'Copy GitHub URL of current line'],
-      \ 'c': [':call MonkeyTerminalExec("gh pr create")', 'Create PR'],
       \ }
 
 let g:which_key_map['g'] = {
@@ -110,6 +117,7 @@ let g:which_key_map['c'] = {
       \ '/': ['<Plug>NERDCommenterToggle', 'Comment line or selection'],
       \ 'e': [':CocList diagnostics', 'List errors'],
       \ 'c': [':CocCommand', 'List Coc commands'],
+      \ 'f': [':CocCommand eslint.executeAutofix', 'Execute eslint fix'],
       \ }
 
 function! SearchAndReplaceGlobal()
