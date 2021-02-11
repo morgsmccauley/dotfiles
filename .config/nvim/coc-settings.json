@@ -1,14 +1,13 @@
 {
   "tsserver.enableJavascript": true,
   "diagnostic.checkCurrentLine": true,
-  "diagnostic.messageTarget": "echo",
-  "diagnostic.virtualText": true,
   "diagnostic.errorSign": "x",
   "diagnostic.infoSign": "ℹ",
   "diagnostic.warningSign": "!",
   "diagnostic.virtualTextPrefix": "-- ",
   "languageserver": {
     "flow": {
+      "progressOnInitialization": true,
       "command": "./node_modules/.bin/flow",
       "args": ["lsp"],
       "filetypes": ["javascript", "javascriptreact"],

@@ -56,12 +56,14 @@ function! MonkeyTerminalToggle()
 endfunction
 
 function! MonkeyTerminalQuit()
-  execute "bdelete! ".s:monkey_terminal_buffer
+  if s:monkey_terminal_buffer != -1
+    execute "silent bd! ".s:monkey_terminal_buffer
+  endif
 endfunction
 
 function! MonkeyTerminalClose()
+  echom s:monkey_terminal_window
   if win_gotoid(s:monkey_terminal_window)
-    " close the current window
     hide
   endif
 endfunction

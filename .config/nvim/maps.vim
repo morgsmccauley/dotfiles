@@ -27,7 +27,7 @@ nnoremap <C-t> :call MonkeyTerminalToggle()<CR>
 let g:which_key_map =  {
       \ '/': [':Rg', 'Search globally'],
       \ ',': [':Buffers', 'Switch buffer'],
-      \ '\': [':source ~/.config/nvim/init.vim', 'Reload config'],
+      \ '\': [':call MonkeyTerminalQuit() | source ~/.config/nvim/init.vim', 'Reload config'],
       \ }
 
 " Defining the '.' binding inside the key map causes delays for some reason
@@ -54,11 +54,11 @@ let g:which_key_map['s'] = {
 
 let remote = {
       \ 'name': '+remote',
-      \ 'p': [':echo "Pushing to remote..." | Gpush', 'Push'],
-      \ 'P': [':echo "Force pushing to remote..." | Gpush --force-with-lease', 'Force push'],
+      \ 'p': [':echo "Pushing to remote..." | Gpush | echom ""', 'Push'],
+      \ 'P': [':echo "Force pushing to remote..." | Gpush --force-with-lease | echom ""', 'Force push'],
       \ 'u': ['!gpsup', 'Push creating upstream'],
-      \ 'l': [':echo "Pulling from remote..." | Gpull', 'Pull'],
-      \ 'f': [':echo "Fetching remote..." | Gfetch', 'Fetch'],
+      \ 'l': [':echo "Pulling from remote..." | Gpull | echom ""', 'Pull'],
+      \ 'f': [':echo "Fetching remote..." | Gfetch | echom ""', 'Fetch'],
       \ 'y': [':CocCommand git.copyUrl', 'Copy GitHub URL of current line'],
       \ }
 
@@ -150,10 +150,13 @@ let g:which_key_map['q'] = {
 
 let g:which_key_map['w'] = {
       \ 'name': '+window' ,
+      \ 'a': ['1<C-w>w', 'Go to first window'],
+      \ 's': ['2<C-W>w', 'Go to second window'],
+      \ 'd': ['3<C-W>w', 'Go to third window'],
+      \ 'f': ['4<C-W>w', 'Go to fourth window'],
       \ 'w': ['<C-W>w', 'Other window'],
       \ 'q': [':q', 'Quit window'],
       \ 'Q': [':wq', 'Save and quit window'],
-      \ 'd': ['<C-W>c', 'Delete window'],
       \ 'D': [':only', 'Delete all other windows'],
       \ '-': ['<C-W>s', 'Split window below'],
       \ '|': ['<C-W>v', 'Split window right'],
@@ -167,7 +170,6 @@ let g:which_key_map['w'] = {
       \ 'L': ['<C-W>5>', 'Expand window right'],
       \ 'K': [':resize -5', 'Expand window up'],
       \ '=': ['<C-W>=', 'Balance windows'],
-      \ 's': ['<C-W>s', 'Split window below'],
       \ 'v': ['<C-W>v', 'Split window below'],
       \ }
 
@@ -180,10 +182,29 @@ let g:which_key_map['f'] = {
       \ 'o': ['zo', 'Open fold'],
       \ }
 
+function! CloseHiddenBuffers()
+  " figure out which buffers are visible in any tab
+  let visible = {}
+  for t in range(1, tabpagenr('$'))
+    for b in tabpagebuflist(t)
+      let visible[b] = 1
+    endfor
+  endfor
+  " close any buffer that are loaded and not visible
+  let l:tally = 0
+  for b in range(1, bufnr('$'))
+    if buflisted(b) && !has_key(visible, b)
+      let l:tally += 1
+      exe 'bw ' . b
+    endif
+  endfor
+  echon "Deleted " . l:tally . " buffers"
+endfun
+
 let g:which_key_map['b'] = {
       \ 'name': '+buffer',
       \ 'k': [':bwipeout!', 'Kill buffer'],
-      \ 'K': [':call BufferDelete()', 'Kill buffers'],
+      \ 'K': [':call CloseHiddenBuffers()', 'Kill nested buffers'],
       \ 'r': [':edit!', 'Reload buffer'],
       \ 'l': [':BLines', 'Buffer lines'],
       \ }

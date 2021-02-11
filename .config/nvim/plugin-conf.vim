@@ -11,39 +11,6 @@ let test#javascript#jest#executable = "npm test -s --"
 " ----------------------------------- HTML/JSX -----------------------------------
 let g:closetag_filenames = '*.html,*.js,*.jsx,*.ts,*.tsx'
 
-" ----------------------------------- LIGHTLINE -----------------------------------
-
-let g:lightline = {
-      \ 'colorscheme': 'one',
-      \ 'active': {
-      \   'left': [['mode', 'paste'], [], ['relativepath', 'modified'], ['lineinfo', 'percent']],
-      \   'right': [[], ['filetype', 'cocstatus'], ['gitHunkSummary', 'gitbranch']]
-      \ },
-      \ 'inactive': {
-      \   'left': [['relativepath']],
-      \   'right': []
-      \ },
-      \ 'component': {
-      \   'bufnum': '%n',
-      \   'inactive': 'inactive'
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head',
-      \   'gitHunkSummary': 'GitStatus',
-      \   'cocstatus': 'coc#status',
-      \   'blame': 'coc_git_blame'
-      \ },
-      \ 'subseparator': {
-      \   'left': '',
-      \   'right': ''
-      \ }
-      \}
-
-function! GitStatus()
-  let [a,m,r] = GitGutterGetHunkSummary()
-  return printf('+%d ~%d -%d', a, m, r)
-endfunction
-
 " ----------------------------------- THEME -----------------------------------
 set termguicolors
 colorscheme one
@@ -58,6 +25,45 @@ if !empty(glob('~/.config/nvim/plugged'))
   endif
 endif
 highlight SignColumn guibg=none
+
+" ----------------------------------- LIGHTLINE -----------------------------------
+
+let g:lightline = {
+      \ 'colorscheme': 'one',
+      \ 'active': {
+      \   'left': [['mode', 'paste'], [], ['relativepath', 'modified'], ['lineinfo', 'percent']],
+      \   'right': [['dir'], ['filetype', 'cocstatus'], ['gitHunkSummary', 'gitbranch']]
+      \ },
+      \ 'inactive': {
+      \   'left': [['relativepath']],
+      \   'right': []
+      \ },
+      \ 'component': {
+      \   'bufnum': '%n',
+      \   'inactive': 'inactive'
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head',
+      \   'gitHunkSummary': 'GitStatus',
+      \   'cocstatus': 'coc#status',
+      \   'blame': 'coc_git_blame',
+      \   'dir': 'CurrentDir'
+      \ },
+      \ 'subseparator': {
+      \   'left': '',
+      \   'right': ''
+      \ }
+      \}
+
+function! CurrentDir()
+  let paths  = split(getcwd(), "/")
+  return paths[len(paths) - 1]
+endfunction
+
+function! GitStatus()
+  let [a,m,r] = GitGutterGetHunkSummary()
+  return printf('+%d ~%d -%d', a, m, r)
+endfunction
 
 " ----------------------------------- NERD -----------------------------------
 "  tree
@@ -147,7 +153,7 @@ endfunction
 
 let g:startify_files_number = 5
 
-let third_window_size = winwidth(0) / 4
+let third_window_size = winwidth(0) / 3
 let g:startify_padding_left = third_window_size
 
 let g:startify_enable_special = 0
@@ -176,30 +182,19 @@ let g:vim_logo = [
 let g:startify_custom_header = 'startify#center(g:vim_logo)'
 
 let g:startify_lists = [
-  \ { 'type': 'dir', 'header': [repeat(" ", third_window_size) . substitute(getcwd(), '^.*/', '', '')] },
+  \ { 'type': 'sessions', 'header': [repeat(" ", third_window_size) . 'Sessions']},
   \ { 'type': function('s:gitModified'),  'header': [repeat(" ", third_window_size) . 'Modified']},
   \ { 'type': function('s:gitUntracked'), 'header': [repeat(" ", third_window_size) . 'Untracked']},
-  \ { 'type': 'bookmarks', 'header': [repeat(" ", third_window_size) . 'Bookmarks']},
-  \ { 'type': 'sessions', 'header': [repeat(" ", third_window_size) . 'Sessions']},
-  \ { 'type': function('s:list_commits'), 'header': [repeat(" ", third_window_size) . 'Commits']},
   \ ]
 
-" Could use bookmarks to switch projects
+let g:startify_session_sort = 1
 let g:startify_change_to_dir = 0
 let g:startify_change_to_vcs_root = 1
 let g:startify_session_persistence = 1
 let g:startify_session_autoload = 1
 let NERDTreeHijackNetrw = 0
 let g:startify_session_before_save = [
-      \ 'echo "Cleaning up before saving.."',
+      \ 'echo "Cleaning up before saving..."',
       \ 'silent! NERDTreeClose',
       \ 'silent! call MonkeyTerminalQuit()'
-      \ ]
-let g:startify_bookmarks = [
-      \ '~/workspace/capps-platform',
-      \ '~/workspace/capps-react-app',
-      \ '~/workspace/paddock',
-      \ '~/workspace/platform-services',
-      \ '~/workspace/component-library',
-      \ '~/workspace/full-stack-todo'
       \ ]

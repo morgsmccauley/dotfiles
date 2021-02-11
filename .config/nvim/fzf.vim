@@ -4,21 +4,6 @@ command! -bang -nargs=? -complete=dir GFiles
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview(), <bang>0)
 
-command! -bang -nargs=* LinesWithPreview
-    \ call fzf#vim#grep(
-    \   'rg --column --line-number --no-heading --color=always --smart-case . '.fnameescape(expand('%')), 1,
-    \   fzf#vim#with_preview({'options': '--delimiter : --nth 4.. --no-sort'}),
-    \   <bang>0)
-
-function! LinesWithPreview()
-  call fzf#run(fzf#wrap({
-        \ 'source': s:list_buffers(),
-        \ 'sink*': { lines -> s:delete_buffers(lines) },
-        \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
-        \ '--preview', 'echo {} | grep -o "[a-f0-9]\{7,\}" | head -1 | xargs git show --stat -p --color=always | head -1000',
-        \ }));
-endfunction
-
 let g:rg_command = 'rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always" -g "*.{js,json,php,md,styl,jade,html,config,py,cpp,c,go,hs,rb,conf,scss}" -g "!*.{min.js,swp,o,zip}" -g "!{.git,node_modules,vendor}/*" '
 
 command! -bang -nargs=* F call fzf#vim#grep(g:rg_command.shellescape(<q-args>), 1, <bang>0)
@@ -40,14 +25,9 @@ let g:fzf_colors = {
   \ }
 
 let $FZF_DEFAULT_OPTS = '--layout=reverse --bind ctrl-u:preview-page-up,ctrl-d:preview-page-down'
-let g:fzf_layout = { 'down': '50%' }
+let g:fzf_layout = { 'down': '25%' }
 
 let isDarkThemeEnabled = system('defaults read .GlobalPreferences.plist AppleInterfaceStyle') =~ 'Dark'
-let $BAT_THEME= isDarkThemeEnabled ? "OneHalfDark" : "OneHalfLight"
-
-function! s:delete_buffers(lines)
-  execute 'bwipeout' join(map(a:lines, {_, line -> split(line)[0]}))
-endfunction
 
 " doesn't work yet: https://github.com/junegunn/fzf/issues/1885
 " let g:fzf_action = {
@@ -78,15 +58,15 @@ function! s:checkout_branch(line)
   if a:line[0] == 'ctrl-n'
     echom 'wait for input for new branch name'
     let name = input("Branch name: ")
-    exec '!git checkout -b '.name.' '.target_branch
+    exec 'Git checkout -b '.name.' '.target_branch
     return
   end
 
-  " if a:line[0] == 'ctrl-m'
-  "   echom 'Merging: '.target_branch
-  "   exec '!git merge '.target_branch
-  "   return
-  " end
+  if a:line[0] == 'ctrl-e'
+    echom 'Merging: '.target_branch
+    exec 'Git merge '.target_branch
+    return
+  end
 
   if a:line[0] == 'ctrl-r'
     " Fetch before rebasing?
@@ -95,7 +75,7 @@ function! s:checkout_branch(line)
     return
   end
 
-  if a:line[0] == 'ctrl-d'
+  if a:line[0] == 'ctrl-x'
     if confirm("Delete branch: ".target_branch."?") == 1
       exec '!git branch -D '.target_branch
     else
@@ -105,6 +85,12 @@ function! s:checkout_branch(line)
   end
 
   echom 'Checking out branch: '.target_branch
+
+  if stridx(target_branch, 'remote') == 0
+    exec '!git checkout -t '.target_branch
+    return
+  end
+
   exec '!git checkout '.target_branch
 endfunction
 
@@ -116,8 +102,8 @@ function! GitBranch()
         \ '--ansi',
         \ '--prompt', 'Branches> ',
         \ '--preview', 'git log --color=always --stat master..{1}',
-        \ '--expect', 'ctrl-r,ctrl-n,ctrl-d,ctrl-m',
-        \ '--header', ':: '.s:magenta('ENTER', 'Special').'-checkout, '.s:magenta('CTRL-N', 'Special').'-new branch, '.s:magenta('CTRL-R', 'Special').'-rebase, '.s:magenta('CTRL-D', 'Special').'-delete, '.s:magenta('CTRL-M', 'Special').'-merge',
+        \ '--expect', 'ctrl-r,ctrl-n,ctrl-x,ctrl-e',
+        \ '--header', ':: '.s:magenta('ENTER', 'Special').'-checkout, '.s:magenta('CTRL-N', 'Special').'-new branch, '.s:magenta('CTRL-R', 'Special').'-rebase, '.s:magenta('CTRL-X', 'Special').'-delete, '.s:magenta('CTRL-M', 'Special').'-merge',
         \ ],
         \ }))
 endfunction
@@ -200,13 +186,15 @@ function! s:git_stash(line)
   if len(a:line) > 2
     let stashes = reverse(map(a:line[1:], {_, line -> split(line)[0]}))
 
-    " if a:line[0] == 'ctrl-d'
-    "   for stash in stashes
-    "     echom 'Dropping stash: '.stash
-    "     silent exec '!git stash drop '.stash
-    "   endfor
-    "   return
-    " end
+    if a:line[0] == 'ctrl-x'
+      if confirm("Delete stashes?") == 1
+        for stash in stashes
+          echom 'Dropping stash: '.stash
+          silent exec '!git stash drop '.stash
+        endfor
+      endif
+      return
+    endif
 
     echom 'No associated action for multiple lines'
     return
@@ -224,10 +212,12 @@ function! s:git_stash(line)
     return
   end
 
-  " if a:line[0] == 'ctrl-d'
-  "   exec '!git stash drop '.stash
-  "   return
-  " end
+  if a:line[0] == 'ctrl-x'
+    if confirm("Delete stash?") == 1
+      exec '!git stash drop '.stash
+    endif
+    return
+  end
 
   if a:line[0] == 'ctrl-n'
     let message = input('Message: ')
@@ -251,19 +241,60 @@ function! GitStash()
         \ '--ansi',
         \ '--multi',
         \ '--prompt', 'Stash> ',
-        \ '--expect', 'ctrl-a,ctrl-p,ctrl-n',
+        \ '--expect', 'ctrl-a,ctrl-p,ctrl-n,ctrl-x',
         \ '--preview', 'git stash show --stat -p --color=always {1}',
-        \ '--header', ':: '.s:magenta('ENTER', 'Special').'-view, '.s:magenta('CTRL-A', 'Special').'-apply, '.s:magenta('CTRL-P', 'Special').'-pop, '.s:magenta('CTRL-D', 'Special').'-drop, '.s:magenta('CTRL-N', 'Special').'-new stash',
+        \ '--header', ':: '.s:magenta('ENTER', 'Special').'-view, '.s:magenta('CTRL-A', 'Special').'-apply, '.s:magenta('CTRL-P', 'Special').'-pop, '.s:magenta('CTRL-X', 'Special').'-drop, '.s:magenta('CTRL-N', 'Special').'-new stash',
         \ ],
         \ }))
 endfunction
 
+function s:sessions(line)
+  if a:line[0] == 'ctrl-n'
+    let dir = input("Project directory: ", "", "file")
+
+    if empty(dir)
+      return
+    endif
+
+    exec 'SClose'
+    exec 'cd '.dir
+
+    let paths  = split(getcwd(), "/")
+    let current_dir = paths[len(paths) - 1]
+
+    exec 'SSave! '.current_dir
+    return
+  endif
+
+  if a:line[0] == 'ctrl-x'
+    if confirm("Delete sessions: ".a:line[1]."?") == 1
+      exec 'silent SDelete! '.a:line[1]
+    endif
+    return
+  endif
+
+  exec 'SLoad! '.a:line[1]
+  return
+endfunction
+
 function! Sessions()
   call fzf#run(fzf#wrap({
-        \ 'source': 'ls ~/.local/share/nvim/session',
-        \ 'sink': 'SLoad',
+        \ 'source': 'ls -t ~/.local/share/nvim/session | grep -v __LAST__',
+        \ 'sink*': function('s:sessions'),
         \ 'options': [
         \ '--prompt', 'Sessions> ',
+        \ '--expect', 'ctrl-n,ctrl-x',
+        \ '--header', ':: '.s:magenta('ENTER', 'Special').'-open, '.s:magenta('CTRL-N', 'Special').'-new, '.s:magenta('CTRL-X', 'Special').'-delete'
+        \ ],
+        \ }))
+endfunction
+
+function! Buffers()
+  call fzf#run(fzf#wrap({
+        \ 'source': 'ls',
+        \ 'sink': 'b',
+        \ 'options': [
+        \ '--prompt', 'Buffers> ',
         \ ],
         \ }))
 endfunction
