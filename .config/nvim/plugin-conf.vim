@@ -1,12 +1,18 @@
 let isDarkThemeEnabled = system('defaults read .GlobalPreferences.plist AppleInterfaceStyle') =~ 'Dark'
 
 " ----------------------------------- TESTING -----------------------------------
-let test#strategy = "neovim"
 
-let test#javascript#mocha#file_pattern = "\\v((spec|test).*)$"
-let test#javascript#mocha#executable = "npm test -s --"
+let g:test#custom_strategies = { 'monkey': function('MonkeyTerminalExec') }
+let g:test#strategy = "monkey"
 
-let test#javascript#jest#executable = "npm test -s --"
+let g:test#javascript#jest#executable = "npm test --"
+let g:test#javascript#mocha#executable = "npm test"
+
+let g:test#preserve_screen = 1
+
+" let test#javascript#mocha#executable = "npm test --"
+"
+" let test#javascript#jest#executable = "npm test --"
 
 " ----------------------------------- HTML/JSX -----------------------------------
 let g:closetag_filenames = '*.html,*.js,*.jsx,*.ts,*.tsx'

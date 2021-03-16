@@ -2,9 +2,9 @@ command! -bang -nargs=? -complete=dir GFiles
   \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 command! -bang -nargs=* Rg
-  \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview(), <bang>0)
+  \ call fzf#vim#grep("rg --hidden --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview(), <bang>0)
 
-let g:rg_command = 'rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always" -g "*.{js,json,php,md,styl,jade,html,config,py,cpp,c,go,hs,rb,conf,scss}" -g "!*.{min.js,swp,o,zip}" -g "!{.git,node_modules,vendor}/*" '
+let g:rg_command = 'rg --hidden --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always" -g "*.{js,json,php,md,styl,jade,html,config,py,cpp,c,go,hs,rb,conf,scss}" -g "!*.{min.js,swp,o,zip}" -g "!{.git,node_modules,vendor}/*" '
 
 command! -bang -nargs=* F call fzf#vim#grep(g:rg_command.shellescape(<q-args>), 1, <bang>0)
 
@@ -54,10 +54,16 @@ function! BufferDelete()
 endfunction
 
 function! s:checkout_branch(line)
-  let target_branch = a:line[1][2:]
+
+  let target_branch = trim(a:line[1][2:])
   if a:line[0] == 'ctrl-n'
-    echom 'wait for input for new branch name'
     let name = input("Branch name: ")
+
+    if (empty(name))
+      echom 'No name entered'
+      return
+    endif
+
     exec 'Git checkout -b '.name.' '.target_branch
     return
   end

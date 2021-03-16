@@ -1746,6 +1746,8 @@
 	<true/>
 	<key>HotkeyMigratedFromSingleToMulti</key>
 	<true/>
+	<key>IRMemory</key>
+	<integer>4</integer>
 	<key>MaxVertically</key>
 	<false/>
 	<key>New Bookmarks</key>
@@ -3327,6 +3329,8 @@
 		</dict>
 	</dict>
 	<key>PreserveWindowSizeWhenTabBarVisibilityChanges</key>
+	<false/>
+	<key>PreventEscapeSequenceFromClearingHistory</key>
 	<false/>
 	<key>Print In Black And White</key>
 	<true/>

@@ -5,18 +5,7 @@
   "diagnostic.infoSign": "ℹ",
   "diagnostic.warningSign": "!",
   "diagnostic.virtualTextPrefix": "-- ",
-  "languageserver": {
-    "flow": {
-      "progressOnInitialization": true,
-      "command": "./node_modules/.bin/flow",
-      "args": ["lsp"],
-      "filetypes": ["javascript", "javascriptreact"],
-      "initializationOptions": {},
-      "requireRootPattern": true,
-      "settings": {},
-      "rootPatterns": [".flowconfig"]
-    }
-  },
+  "languageserver": {},
   "git.enableGutters": false,
   "eslint.filetypes": [
     "javascript",
@@ -24,7 +13,7 @@
     "typescript",
     "typescriptreact"
   ],
-  "eslint.autoFixOnSave": false,
+  "eslint.autoFixOnSave": true,
   "coc.preferences.rootPatterns": [".git"],
   "snippets.ultisnips.directories": [
     "UltiSnips"

@@ -54,12 +54,19 @@ let g:which_key_map['s'] = {
 
 let remote = {
       \ 'name': '+remote',
-      \ 'p': [':echo "Pushing to remote..." | Gpush | echom ""', 'Push'],
-      \ 'P': [':echo "Force pushing to remote..." | Gpush --force-with-lease | echom ""', 'Force push'],
+      \ 'p': [':echo "Pushing to remote..." | Git push', 'Push'],
+      \ 'P': [':echo "Force pushing to remote..." | Git push --force-with-lease', 'Force push'],
       \ 'u': ['!gpsup', 'Push creating upstream'],
-      \ 'l': [':echo "Pulling from remote..." | Gpull | echom ""', 'Pull'],
-      \ 'f': [':echo "Fetching remote..." | Gfetch | echom ""', 'Fetch'],
+      \ 'l': [':echo "Pulling from remote..." | Git pull', 'Pull'],
+      \ 'f': [':echo "Fetching remote..." | Git fetch', 'Fetch'],
       \ 'y': [':CocCommand git.copyUrl', 'Copy GitHub URL of current line'],
+      \ }
+
+let rebase = {
+      \ 'name': '+rebase',
+      \ 'skip': ['Git rebase --skip', 'skip'],
+      \ 'continue': ['Git rebase --continue', 'continue'],
+      \ 'abort': ['Git rebase --abort', 'abort'],
       \ }
 
 let g:which_key_map['g'] = {
@@ -74,6 +81,7 @@ let g:which_key_map['g'] = {
       \ '[': ['<plug>(GitGutterPrevHunk)', 'Go to prev hunk'],
       \ ']': ['<plug>(GitGutterNextHunk)', 'Go to next hunk'],
       \ 'r': remote,
+      \ 'R': rebase,
       \ 'B': [':Gblame', 'Blame annotations'],
       \ 'C': [':CocCommand git.showCommit', 'Show commit'],
       \ 'g': [':Git', 'Git'],
@@ -195,7 +203,7 @@ function! CloseHiddenBuffers()
   for b in range(1, bufnr('$'))
     if buflisted(b) && !has_key(visible, b)
       let l:tally += 1
-      exe 'bw ' . b
+      exe 'bw! ' . b
     endif
   endfor
   echon "Deleted " . l:tally . " buffers"

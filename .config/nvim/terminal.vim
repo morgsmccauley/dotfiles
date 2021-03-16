@@ -58,6 +58,7 @@ endfunction
 function! MonkeyTerminalQuit()
   if s:monkey_terminal_buffer != -1
     execute "silent bd! ".s:monkey_terminal_buffer
+    let s:monkey_terminal_buffer = -1
   endif
 endfunction
 
