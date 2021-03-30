@@ -2435,7 +2435,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>Menlo-Regular 14</string>
+			<string>HackNerdFontComplete-Regular 14</string>
 			<key>Only The Default BG Color Uses Transparency</key>
 			<false/>
 			<key>Option Key Sends</key>
@@ -3206,7 +3206,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>Menlo-Regular 14</string>
+			<string>HackNerdFontComplete-Regular 14</string>
 			<key>Only The Default BG Color Uses Transparency</key>
 			<false/>
 			<key>Option Key Sends</key>
@@ -3329,8 +3329,6 @@
 		</dict>
 	</dict>
 	<key>PreserveWindowSizeWhenTabBarVisibilityChanges</key>
-	<false/>
-	<key>PreventEscapeSequenceFromClearingHistory</key>
 	<false/>
 	<key>Print In Black And White</key>
 	<true/>
