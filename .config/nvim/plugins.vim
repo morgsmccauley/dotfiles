@@ -3,7 +3,7 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   echo "Downloading vim-plug..."
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | q | source ~/.config/nvim/init.vim
+  autocmd VimEnter * PlugInstall --sync | q | source ~/.config/nvim/init.vim | Startify
 endif
 
 call plug#begin('~/.config/nvim/plugged')
@@ -17,7 +17,7 @@ Plug 'alvan/vim-closetag'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'sirver/ultisnips'
-Plug 'neoclide/coc.nvim', { 'branch': 'master' }
+Plug 'neoclide/coc.nvim', { 'branch': 'master', 'do': 'npm install && npm run build' }
 Plug 'janko-m/vim-test'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
