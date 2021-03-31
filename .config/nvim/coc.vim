@@ -60,7 +60,5 @@ let g:coc_snippet_prev = '<c-h>'
 " Use <C-j> for both expand and jump (make expand higher priority.)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
 
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
 let g:coc_status_error_sign = 'E:'
 let g:coc_status_warning_sign = 'W:'
