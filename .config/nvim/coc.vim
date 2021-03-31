@@ -1,4 +1,4 @@
-" let g:coc_node_path = '/Users/morganmccauley/.nvm/versions/node/v10.5.0/bin/node'
+let g:coc_node_path = '/Users/morganmccauley/.nvm/versions/node/v12.6.1/bin/node'
 let g:coc_global_extensions = [
     \'coc-tsserver',
     \'coc-rust-analyzer',
