@@ -33,7 +33,15 @@ return require("packer").startup(
           'nvim-telescope/telescope.nvim',
           requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
         }
-        use {"nvim-telescope/telescope-media-files.nvim"}
-        use {"liuchengxu/vim-which-key"}
+        use {'nvim-telescope/telescope-media-files.nvim'}
+        use {
+	  'liuchengxu/vim-which-key',
+	  requires = {{'AckslD/nvim-whichkey-setup.lua'}}
+        }
+        use {
+          'junegunn/fzf.vim',
+          requires = {{'junegunn/fzf'}},
+          run = 'fzf#install'
+        }
     end
 )
