@@ -9,7 +9,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 -- load plugins
-require("pluginsList.lua")
+require("plugins.lua")
 require("web-devicons.lua")
 
 require("utils.lua")
