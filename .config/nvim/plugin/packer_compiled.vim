@@ -104,6 +104,10 @@ _G.packer_plugins = {
   ["vim-closetag"] = {
     loaded = true,
     path = "/Users/morganmccauley/.local/share/nvim/site/pack/packer/start/vim-closetag"
+  },
+  ["vim-which-key"] = {
+    loaded = true,
+    path = "/Users/morganmccauley/.local/share/nvim/site/pack/packer/start/vim-which-key"
   }
 }
 

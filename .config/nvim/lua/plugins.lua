@@ -1,5 +1,17 @@
+local execute = vim.api.nvim_command
+local fn = vim.fn
+
+local install_path = fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
+
+if fn.empty(fn.glob(install_path)) > 0 then
+  execute('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
+  execute 'packadd packer.nvim'
+end
+
 -- check if packer is installed (~/local/share/nvim/site/pack)
 local packer_exists = pcall(vim.cmd, [[packadd packer.nvim]])
+
+vim.cmd("autocmd BufWritePost plugins.lua PackerCompile")
 
 return require("packer").startup(
     function()
@@ -22,5 +34,6 @@ return require("packer").startup(
           requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
         }
         use {"nvim-telescope/telescope-media-files.nvim"}
+        use {"liuchengxu/vim-which-key"}
     end
 )
