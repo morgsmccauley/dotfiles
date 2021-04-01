@@ -10,4 +10,6 @@
 
 .config/gh
 
+.config/nvim/plugin
+
 **/*/.netrwhist
