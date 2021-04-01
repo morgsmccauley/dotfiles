@@ -14,11 +14,11 @@ window['='] = { '<C-w>=', 'Balance windows' }
 
 local git_remote = {
   name = '+remote',
-  p = { ':echo "Pushing to remote..." | Git push', 'Push' },
-  P = { ':echo "Force pushing to remote..." | Git push --force-with-lease', 'Force push' },
-  u = { '!gpsup', 'Push creating upstream' },
-  l = { ':echo "Pulling from remote..." | Git pull', 'Pull' },
-  f = { ':echo "Fetching remote..." | Git fetch', 'Fetch' },
+  p = { ':echo "Pushing to remote..." | Git push<Cr>', 'Push' },
+  P = { ':echo "Force pushing to remote..." | Git push --force-with-lease<Cr>', 'Force push' },
+  u = { '!gpsup<Cr>', 'Push creating upstream' },
+  l = { ':echo "Pulling from remote..." | Git pull<Cr>', 'Pull' },
+  f = { ':echo "Fetching remote..." | Git fetch<Cr>', 'Fetch' },
   y = { ':CocCommand git.copyUrl', 'Copy GitHub URL of current line' },
 }
 

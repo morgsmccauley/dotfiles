@@ -6,6 +6,6 @@ vim.g.startify_session_autoload = 1
 vim.g.startify_disable_at_vimenter = 1
 vim.g.startify_session_before_save = {
   'echo "Cleaning up before saving..."',
-  'silent! NERDTreeClose',
+  'silent! NvimTreeClose',
   'silent! call MonkeyTerminalQuit()',
 }

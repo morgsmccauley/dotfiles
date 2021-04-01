@@ -285,7 +285,7 @@ endfunction
 
 function! Sessions()
   call fzf#run(fzf#wrap({
-        \ 'source': 'ls -t ~/.local/share/nvim/session | grep -v __LAST__',
+        \ 'source': 'ls -tA ~/.local/share/nvim/session | grep -v __LAST__',
         \ 'sink*': function('s:sessions'),
         \ 'options': [
         \ '--prompt', 'Sessions> ',
