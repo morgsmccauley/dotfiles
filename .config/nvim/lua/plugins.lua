@@ -1,11 +1,14 @@
 local execute = vim.api.nvim_command
 local fn = vim.fn
 
-local install_path = fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
-
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
   execute('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
+  execute 'echo 1'
   execute 'packadd packer.nvim'
+  execute 'echo 2'
+  execute 'PackerInstall'
+  execute 'echo 3'
 end
 
 -- check if packer is installed (~/local/share/nvim/site/pack)
@@ -14,8 +17,8 @@ local packer_exists = pcall(vim.cmd, [[packadd packer.nvim]])
 vim.cmd("autocmd BufWritePost plugins.lua PackerCompile")
 
 return require("packer").startup(
-    function()
-        use {"wbthomason/packer.nvim", opt = true}
+    function(use)
+        use {"wbthomason/packer.nvim"}
         use {"kyazdani42/nvim-web-devicons"}
         use {"kyazdani42/nvim-tree.lua"}
         use {"lewis6991/gitsigns.nvim"}
@@ -31,9 +34,12 @@ return require("packer").startup(
         use {"onsails/lspkind-nvim"}
         use {
           'nvim-telescope/telescope.nvim',
-          requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+          requires = {
+            {'nvim-lua/popup.nvim'},
+	    {'nvim-lua/plenary.nvim'},
+            {'nvim-telescope/telescope-media-files.nvim'}
+          }
         }
-        use {'nvim-telescope/telescope-media-files.nvim'}
         use {
 	  'liuchengxu/vim-which-key',
 	  requires = {{'AckslD/nvim-whichkey-setup.lua'}}

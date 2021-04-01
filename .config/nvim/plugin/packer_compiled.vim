@@ -89,9 +89,8 @@ _G.packer_plugins = {
     path = "/Users/morganmccauley/.local/share/nvim/site/pack/packer/start/nvim-whichkey-setup.lua"
   },
   ["packer.nvim"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/Users/morganmccauley/.local/share/nvim/site/pack/packer/opt/packer.nvim"
+    loaded = true,
+    path = "/Users/morganmccauley/.local/share/nvim/site/pack/packer/start/packer.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,
