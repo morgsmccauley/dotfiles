@@ -27,6 +27,9 @@ opt('o', 'clipboard', 'unnamedplus')
 opt('b', 'expandtab', true )
 opt('b', 'shiftwidth', 2 )
 
+vim.cmd 'set undofile'
+vim.cmd 'set undodir=~/.vim/undo'
+
 vim.cmd 'colorscheme base16-onedark'
 vim.cmd 'syntax enable'
 vim.cmd 'syntax on'
@@ -52,18 +55,3 @@ vim.cmd('hi NvimTreeFolderName guifg = #61afef')
 vim.cmd('hi NvimTreeIndentMarker guifg=#545862')
 
 vim.cmd('autocmd BufEnter * lua require\'completion\'.on_attach()')
-
-
-local M = {}
-
-function M.is_buffer_empty()
-    -- Check whether the current buffer is empty
-    return vim.fn.empty(vim.fn.expand("%:t")) == 1
-end
-
-function M.has_width_gt(cols)
-    -- Check if the windows width is greater than a given number of columns
-    return vim.fn.winwidth(0) / 2 > cols
-end
-
-return M

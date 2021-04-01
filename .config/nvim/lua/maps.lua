@@ -15,15 +15,18 @@ local function vnoremap(lhs, rhs, opts)
   vim.api.nvim_set_keymap('v', lhs, rhs, vim.tbl_extend('force', opts, { noremap = true }))
 end
 
+vnoremap('<C-j>', '5j')
+vnoremap('<C-k>', '5k')
+
+nnoremap('<C-t>', ':call MonkeyTerminalToggle()<Cr>', { silent = true })
+nnoremap('<C-n>', ':NvimTreeToggle<Cr>', { silent = true })
 nnoremap('<C-l>', '<C-w>l')
 nnoremap('<C-h>', '<C-w>h')
 nnoremap('<C-j>', '5j')
 nnoremap('<C-k>', '5k')
-vnoremap('<C-j>', '5j')
-vnoremap('<C-k>', '5k')
 nnoremap('<C-e>', '5<C-e>')
 nnoremap('<C-y>', '5<C-y>')
-nnoremap('<Esc>', ':noh<Cr><Esc>')
+nnoremap('<Esc>', ':noh | echo ""<Cr><Esc>', { silent = true })
 nnoremap('QQ', ':qall<CR>')
 
 inoremap('<Tab>', 'pumvisible() ? \\<C-n> : \\<Tab>', { expr = true })

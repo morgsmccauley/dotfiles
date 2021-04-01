@@ -1,3 +1,5 @@
+vim.g.mapleader = " "
+
 local whichkey = require('whichkey_setup')
 
 local window = {
@@ -6,6 +8,7 @@ local window = {
   Q = { ':wq<Cr>', 'Save and quit' },
   w = { ':w<Cr>', 'Save' },
   D = { ':only<Cr>', 'Close all other windows' },
+  l = { ':luafile %<Cr>', 'Source selected lua file' },
 }
 window['='] = { '<C-w>=', 'Balance windows' }
 
@@ -26,6 +29,16 @@ local git_rebase = {
   a = { 'Git rebase --abort', 'abort' },
 }
 
+local git_hunk = {
+  name = '+hunk',
+  s = { ':lua require\'gitsigns\'.stage_hunk()<Cr>', 'Stage' },
+  u = { ':lua require\'gitsigns\'.undo_stage_hunk()<Cr>', 'Undo stage' },
+  i = { ':lua require\'gitsigns\'.preview_hunk()<Cr>', 'Preview' },
+  r = { ':lua require\'gitsigns\'.reset_hunk()<Cr>', 'Reset' },
+  n = { ':lua require\'gitsigns\'.next_hunk()<Cr>', 'Next' },
+  p = { ':lua require\'gitsigns\'.prev_hunk()<Cr>', 'Prev' },
+}
+
 local git = {
   name = '+git',
   l = { ':call GitLog()<Cr>', 'Log' },
@@ -33,32 +46,43 @@ local git = {
   b = { ':call GitBranch()<Cr>', 'Branches' },
   s = { ':call GitStash()<Cr>', 'Stash' },
   L = { ':BCommits<Cr>', 'Buffer log' },
-  i = { '<plug>(GitGutterPreviewHunk)', 'Preview hunk' },
-  u = { '<plug>(GitGutterUndoHunk)', 'Undo hunk' },
+  --lua require\'gitsigns\'.blame_line()<CR>
   B = { ':Gblame<Cr>', 'Blame annotations' },
-  C = { ':CocCommand git.showCommit', 'Show commit' },
   g = { ':Git<Cr>', 'Git' },
+  --h doesnt work???
+  h = git_hunk,
   r = git_remote,
   R = git_rebase,
 }
 git['['] = { '<plug>(GitGutterPrevHunk)', 'Go to prev hunk' }
 git[']'] = { '<plug>(GitGutterNextHunk)', 'Go to next hunk' }
 
+local session = {
+  name = '+session',
+  l = { ':call Sessions()<Cr>', 'List sessions' },
+  q = { ':SClose<Cr>', 'Quit session' },
+  w = { ':SSave<Cr>', 'Write session' },
+}
+
 local keymap = {
   w = window,
   g = git,
-  h = { name = 'hi' },
+  s = session,
 }
 -- need to manually set these as '.' is slow through which-key
-vim.api.nvim_set_keymap('n', '<leader>*', 'yiw:Rg <C-r>+<Cr>', { noremap = true })
 keymap['*'] = 'Search for symbol globally'
 vim.api.nvim_set_keymap('n', '<leader>*', 'yiw:Rg <C-r>+<Cr>', { noremap = true })
+
 keymap['/'] = 'Search globally'
-vim.api.nvim_set_keymap('n', '<leader>,', ':Buffers<Cr>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>/', ':Rg<Cr>', { noremap = true })
+
 keymap[','] = 'Switch buffer'
-vim.api.nvim_set_keymap('n', '<leader>.', ':GitFiles<Cr>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>,', ':Buffers<Cr>', { noremap = true })
+
 keymap['.'] = 'Find file'
-vim.api.nvim_set_keymap('n', '<leader>\\', ':luafile ~/.config/nvim/init.lua<Cr>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>.', ':GitFiles<Cr>', { noremap = true })
+
 keymap['\\'] = 'Reload config'
+vim.api.nvim_set_keymap('n', '<leader>\\', ':luafile ~/.config/nvim/init.lua<Cr>', { noremap = true })
 
 whichkey.register_keymap('leader', keymap)

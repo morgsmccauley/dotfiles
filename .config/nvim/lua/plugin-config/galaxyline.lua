@@ -1,5 +1,8 @@
 local gl = require('galaxyline')
-local gls = gl.section
+local left = gl.section.left
+local right = gl.section.right
+local middle = gl.section.middle
+
 gl.short_line_list = {'LuaTree', 'vista', 'dbui'}
 
 local colors = {
@@ -21,7 +24,7 @@ local colors = {
     greenYel = '#EBCB8B'
 }
 
-gls.left[1] = {
+left[1] = {
     leftRounded = {
         provider = function()
             return ''
@@ -30,7 +33,7 @@ gls.left[1] = {
     }
 }
 
-gls.left[2] = {
+left[2] = {
     ViMode = {
         provider = function()
             return '   '
@@ -41,7 +44,7 @@ gls.left[2] = {
     }
 }
 
-gls.left[3] = {
+left[3] = {
     FileIcon = {
         provider = 'FileIcon',
         condition = buffer_not_empty,
@@ -49,15 +52,16 @@ gls.left[3] = {
     }
 }
 
-gls.left[4] = {
+left[4] = {
     FileName = {
+      -- full path
         provider = {'FileName', 'FileSize'},
         condition = buffer_not_empty,
         highlight = {colors.fg, colors.lightbg}
     }
 }
 
-gls.left[5] = {
+left[5] = {
     teech = {
         provider = function()
             return ''
@@ -75,7 +79,7 @@ local checkwidth = function()
     return false
 end
 
-gls.left[6] = {
+left[6] = {
     DiffAdd = {
         provider = 'DiffAdd',
         condition = checkwidth,
@@ -84,7 +88,7 @@ gls.left[6] = {
     }
 }
 
-gls.left[7] = {
+left[7] = {
     DiffModified = {
         provider = 'DiffModified',
         condition = checkwidth,
@@ -93,7 +97,7 @@ gls.left[7] = {
     }
 }
 
-gls.left[8] = {
+left[8] = {
     DiffRemove = {
         provider = 'DiffRemove',
         condition = checkwidth,
@@ -102,7 +106,7 @@ gls.left[8] = {
     }
 }
 
-gls.left[9] = {
+left[9] = {
     LeftEnd = {
         provider = function()
             return ' '
@@ -113,7 +117,7 @@ gls.left[9] = {
     }
 }
 
-gls.left[10] = {
+left[10] = {
     DiagnosticError = {
         provider = 'DiagnosticError',
         icon = '  ',
@@ -121,7 +125,7 @@ gls.left[10] = {
     }
 }
 
-gls.left[11] = {
+left[11] = {
     Space = {
         provider = function()
             return ' '
@@ -130,7 +134,7 @@ gls.left[11] = {
     }
 }
 
-gls.left[12] = {
+left[12] = {
     DiagnosticWarn = {
         provider = 'DiagnosticWarn',
         icon = '  ',
@@ -138,7 +142,7 @@ gls.left[12] = {
     }
 }
 
-gls.right[1] = {
+right[1] = {
     GitIcon = {
         provider = function()
             return '   '
@@ -148,7 +152,7 @@ gls.right[1] = {
     }
 }
 
-gls.right[2] = {
+right[2] = {
     GitBranch = {
         provider = 'GitBranch',
         condition = require('galaxyline.provider_vcs').check_git_workspace,
@@ -156,7 +160,7 @@ gls.right[2] = {
     }
 }
 
-gls.right[3] = {
+right[3] = {
     right_LeftRounded = {
         provider = function()
             return ''
@@ -167,7 +171,7 @@ gls.right[3] = {
     }
 }
 
-gls.right[4] = {
+right[4] = {
     SiMode = {
         provider = function()
             local alias = {
@@ -185,7 +189,7 @@ gls.right[4] = {
     }
 }
 
-gls.right[5] = {
+right[5] = {
     PerCent = {
         provider = 'LinePercent',
         separator = ' ',
@@ -194,7 +198,7 @@ gls.right[5] = {
     }
 }
 
-gls.right[6] = {
+right[6] = {
     rightRounded = {
         provider = function()
             return ''

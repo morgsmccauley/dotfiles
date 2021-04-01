@@ -32,6 +32,7 @@ return require("packer").startup(
         use {'tpope/vim-surround'}
         use {'tpope/vim-fugitive'}
         use {'tpope/vim-repeat'}
+        use {'mhinz/vim-startify'}
         use {
           'nvim-telescope/telescope.nvim',
           requires = {
