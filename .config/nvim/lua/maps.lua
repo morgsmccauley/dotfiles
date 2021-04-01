@@ -10,10 +10,17 @@ local function inoremap(lhs, rhs, opts)
   vim.api.nvim_set_keymap('i', lhs, rhs, vim.tbl_extend('force', opts, { noremap = true }))
 end
 
+local function vnoremap(lhs, rhs, opts)
+  opts = opts or {}
+  vim.api.nvim_set_keymap('v', lhs, rhs, vim.tbl_extend('force', opts, { noremap = true }))
+end
+
 nnoremap('<C-l>', '<C-w>l')
 nnoremap('<C-h>', '<C-w>h')
 nnoremap('<C-j>', '5j')
 nnoremap('<C-k>', '5k')
+vnoremap('<C-j>', '5j')
+vnoremap('<C-k>', '5k')
 nnoremap('<C-e>', '5<C-e>')
 nnoremap('<C-y>', '5<C-y>')
 nnoremap('<Esc>', ':noh<Cr><Esc>')
