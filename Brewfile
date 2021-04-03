@@ -12,6 +12,7 @@ brew 'bat'
 brew 'gh'
 brew 'lua'
 brew 'awscli'
+brew 'ninja' # for lua lsp
 
 cask 'iterm2'
 cask 'nightowl'

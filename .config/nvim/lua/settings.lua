@@ -30,9 +30,12 @@ opt('b', 'shiftwidth', 2 )
 vim.cmd 'set undofile'
 vim.cmd 'set undodir=~/.vim/undo'
 
-vim.cmd 'colorscheme base16-onedark'
+vim.cmd 'colorscheme base16-one-light'
 vim.cmd 'syntax enable'
 vim.cmd 'syntax on'
+vim.cmd 'set completeopt=menuone,noinsert,noselect'
+vim.cmd 'set shortmess+=c'
+vim.cmd 'set encoding=UTF-8'
 
 -- highlights
 vim.cmd('hi LineNr guibg=NONE')
@@ -53,5 +56,3 @@ vim.cmd('hi PmenuSel  guibg=#98c379')
 vim.cmd('hi NvimTreeFolderIcon guifg = #61afef')
 vim.cmd('hi NvimTreeFolderName guifg = #61afef')
 vim.cmd('hi NvimTreeIndentMarker guifg=#545862')
-
-vim.cmd('autocmd BufEnter * lua require\'completion\'.on_attach()')
