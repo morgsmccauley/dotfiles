@@ -8,9 +8,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
   execute 'PackerInstall'
 end
 
--- check if packer is installed (~/local/share/nvim/site/pack)
-local packer_exists = pcall(vim.cmd, [[packadd packer.nvim]])
-
 vim.cmd("autocmd BufWritePost plugins.lua PackerCompile")
 
 return require("packer").startup(

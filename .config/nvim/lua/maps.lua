@@ -28,7 +28,6 @@ nmap('<C-e>', '5<C-e>', { noremap = true })
 nmap('<C-y>', '5<C-y>', { noremap = true })
 nmap('<Esc>', ':noh | echo ""<Cr><Esc>', { silent = true, noremap = true })
 nmap('QQ', ':qall<CR>', { noremap = true })
-nmap('<C-_>', '<Plug>kommentary_line_default', { noremap = true })
 
 nmap('ga', '<cmd>lua vim.lsp.buf.code_action()<Cr>', { silent = true, noremap = true })
 nmap('<S-k>', '<cmd>lua vim.lsp.buf.hover()<Cr>', { silent = true, noremap = true })
@@ -46,3 +45,7 @@ imap('<S-Tab>', 'pumvisible() ? \"\\<C-p>\" : \"\\<S-Tab>\"', { expr = true, nor
 
 imap('<Tab>', '<Plug>(completion_smart_tab)')
 imap('<S-Tab>', '<Plug>(completion_smart_s_tab)')
+
+--nmap("<C-_>", "<Plug>kommentary_motion_default")
+nmap("<C-_>", "<Plug>kommentary_line_default")
+vmap("<C-_>", "<Plug>kommentary_visual_default")

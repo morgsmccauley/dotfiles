@@ -30,7 +30,7 @@ opt('b', 'shiftwidth', 2 )
 vim.cmd 'set undofile'
 vim.cmd 'set undodir=~/.vim/undo'
 
-vim.cmd 'colorscheme base16-one-light'
+vim.cmd 'colorscheme base16-onedark'
 vim.cmd 'syntax enable'
 vim.cmd 'syntax on'
 vim.cmd 'set completeopt=menuone,noinsert,noselect'

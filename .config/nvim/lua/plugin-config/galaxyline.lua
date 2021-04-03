@@ -4,12 +4,12 @@ local section = galaxyline.section
 galaxyline.short_line_list = {'LuaTree', 'vista', 'dbui'}
 
 local colors = {
-    --bg = '#282c34',
-    bg = '#fafafa',
-    --line_bg = '#282c34',
-    ling_bg = '#fafafa',
-    --fg = '#D8DEE9',
-    fg = '#282c34',
+    bg = '#282c34',
+    --bg = '#fafafa',
+    line_bg = '#282c34',
+    --ling_bg = '#fafafa',
+    fg = '#D8DEE9',
+    --fg = '#282c34',
     fg_green = '#65a380',
     yellow = '#A3BE8C',
     cyan = '#22262C',
@@ -20,8 +20,8 @@ local colors = {
     magenta = '#c678dd',
     blue = '#22262C',
     red = '#DF8890',
-    --lightbg = '#3C4048',
-    lightbg = '#f0f0f1',
+    lightbg = '#3C4048',
+    --lightbg = '#f0f0f1',
     nord = '#81A1C1',
     greenYel = '#EBCB8B'
 }
@@ -86,7 +86,7 @@ section.left = {
         provider = 'DiffAdd',
         condition = checkwidth,
         icon = '   ',
-        highlight = {colors.greenYel, colors.line_bg}
+        highlight = {colors.green, colors.line_bg}
     }
   },
   {
@@ -144,12 +144,12 @@ section.right = {
     GitBranch = {
         provider = 'GitBranch',
         icon = function()
-          local vcs = require('galaxyline.provider_vcs')
+          --local vcs = require('galaxyline.provider_vcs')
           --local dirty = vcs.diff_add() + vcs.diff_modified() + vcs.diff_remove()
           if false then
-            return '  '
+            return ' '
           end
-          return '  '
+          return ' '
         end,
         condition = require('galaxyline.provider_vcs').check_git_workspace,
         highlight = {colors.green, colors.line_bg}
