@@ -21,7 +21,7 @@ return require("packer").startup(
         use 'chriskempson/base16-vim'
         use 'norcalli/nvim-colorizer.lua'
         use 'neovim/nvim-lspconfig'
-        use 'nvim-lua/completion-nvim'
+        use 'hrsh7th/nvim-compe'
         use 'jiangmiao/auto-pairs'
         use 'alvan/vim-closetag'
         use 'tweekmonster/startuptime.vim'

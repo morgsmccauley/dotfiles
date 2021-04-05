@@ -43,8 +43,11 @@ nmap('gW', '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>', { silent = true, norem
 imap('<Tab>', 'pumvisible() ? \"\\<C-n>\" : \"\\<Tab>\"', { expr = true, noremap = true })
 imap('<S-Tab>', 'pumvisible() ? \"\\<C-p>\" : \"\\<S-Tab>\"', { expr = true, noremap = true })
 
-imap('<Tab>', '<Plug>(completion_smart_tab)')
-imap('<S-Tab>', '<Plug>(completion_smart_s_tab)')
+imap('<C-Space>', 'compe#complete()', { expr = true, noremap = true, silent = true })
+imap('<Cr>', 'compe#confirm(\'<Cr>\')', { expr = true, noremap = true, silent = true })
+imap('<C-e>', 'compe#close(\'<C-e>\')', { expr = true, noremap = true, silent = true })
+--[[ imap('<C-f>', 'compe#scroll({ \'delta\': +4 })', { expr = true, noremap = true, silent = true })
+imap('<C-d>', 'compe#scroll({ \'delta\': -4 })', { expr = true, noremap = true, silent = true }) ]]
 
 --nmap("<C-_>", "<Plug>kommentary_motion_default")
 nmap("<C-_>", "<Plug>kommentary_line_default")
