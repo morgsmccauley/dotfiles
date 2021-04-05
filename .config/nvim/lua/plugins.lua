@@ -31,6 +31,7 @@ return require("packer").startup(
         use 'tpope/vim-repeat'
         use 'mhinz/vim-startify'
         use 'b3nj5m1n/kommentary'
+        use 'kosayoda/nvim-lightbulb'
         use {
           'nvim-telescope/telescope.nvim',
           requires = {

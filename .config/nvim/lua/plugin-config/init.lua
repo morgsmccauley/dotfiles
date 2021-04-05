@@ -25,3 +25,15 @@ vim.g.kommentary_create_default_mappings = false
 vim.api.nvim_command 'source ~/.config/nvim/lua/plugin-config/fzf.vim'
 
 vim.cmd('autocmd BufEnter * lua require\'completion\'.on_attach()')
+
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
+
+require'nvim-lightbulb'.update_lightbulb {
+    sign = {
+        enabled = false,
+    },
+    virtual_text = {
+        enabled = true,
+        text = "💡",
+    }
+}
