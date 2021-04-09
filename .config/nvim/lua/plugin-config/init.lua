@@ -24,3 +24,5 @@ vim.g.kommentary_create_default_mappings = false
 
 -- too lazy to migrate to lua yet
 vim.api.nvim_command 'source ~/.config/nvim/lua/plugin-config/fzf.vim'
+
+vim.g.indentLine_char = '▏'

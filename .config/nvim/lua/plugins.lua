@@ -17,7 +17,6 @@ return require("packer").startup(
         use 'kyazdani42/nvim-tree.lua'
         use 'lewis6991/gitsigns.nvim'
         use 'glepnir/galaxyline.nvim'
-        use 'nvim-treesitter/nvim-treesitter'
         use 'chriskempson/base16-vim'
         use 'norcalli/nvim-colorizer.lua'
         use 'neovim/nvim-lspconfig'
@@ -32,6 +31,16 @@ return require("packer").startup(
         use 'mhinz/vim-startify'
         use 'b3nj5m1n/kommentary'
         use 'kosayoda/nvim-lightbulb'
+        --[[ use {
+          'lukas-reineke/indent-blankline.nvim',
+          requires = {
+            'Yggdroot/indentLine'
+          }
+        } ]]
+        use {
+          'nvim-treesitter/nvim-treesitter',
+          run = ':TSUpdate'
+        }
         use {
           'nvim-telescope/telescope.nvim',
           requires = {

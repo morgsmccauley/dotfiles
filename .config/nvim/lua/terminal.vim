@@ -11,13 +11,13 @@ function! MonkeyTerminalOpen()
     wincmd L
     let s:monkey_terminal_job_id = termopen($SHELL, { 'detach': 1 })
 
-    " Change the name of the buffer to "Terminal 1"
-    silent file 'Monkey Terminal'
+    silent file MonkeyTerminal
     " Gets the id of the terminal window
     let s:monkey_terminal_window = win_getid()
     let s:monkey_terminal_buffer = bufnr('%')
 
     execute "setlocal nonu"
+    execute "setlocal filetype=term"
     execute "setlocal nornu"
     execute "setlocal noshowmode"
     execute "setlocal noruler"
@@ -40,7 +40,7 @@ function! MonkeyTerminalOpen()
     sp
     " Moves to the window below the current one
     wincmd L
-    buffer 'Monkey Terminal'
+    buffer MonkeyTerminal
      " Gets the id of the terminal window
      let s:monkey_terminal_window = win_getid()
     endif
@@ -56,8 +56,10 @@ function! MonkeyTerminalToggle()
 endfunction
 
 function! MonkeyTerminalQuit()
+  echom 'exec'
   if s:monkey_terminal_buffer != -1
-    execute "silent bd! ".s:monkey_terminal_buffer
+    echom 'delete'
+    execute "bd! ".s:monkey_terminal_buffer
     let s:monkey_terminal_buffer = -1
   endif
 endfunction

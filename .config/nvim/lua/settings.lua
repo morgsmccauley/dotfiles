@@ -1,10 +1,11 @@
-vim.o.hidden = true
+vim.o.hidden = false
 vim.o.splitright = true
 vim.o.ignorecase = true
 vim.o.splitbelow = true
 vim.o.termguicolors = true
 vim.o.number = true
 vim.o.numberwidth = 2
+vim.o.wrap = false
 
 vim.o.mouse = 'a'
 
@@ -22,12 +23,19 @@ vim.o.completeopt = 'menuone,noselect,noinsert'
 vim.cmd[[set shortmess+=c]]
 vim.o.encoding = 'UTF-8'
 
+vim.g.node_host_prog = '/Users/morganmccauley/.nvm/versions/node/v15.2.0/bin/node'
+vim.cmd[[let g:node_host_prog = '/Users/morganmccauley/.nvm/versions/node/v15.2.0/bin/node']]
+
 vim.o.undofile = true
-vim.o.undodir = '~/.vim/undo'
+vim.cmd[[set undodir=~/.vim/undo]]
 
 vim.cmd 'colorscheme base16-onedark'
 vim.cmd 'syntax enable'
 vim.cmd 'syntax on'
+
+vim.api.nvim_command[[
+autocmd BufEnter *SchemaChangesAreApproved*,*.gql,*.graphql :set filetype=graphql
+]]
 
 -- highlights
 vim.cmd 'hi LineNr guibg=NONE'

@@ -85,7 +85,7 @@ section.left = {
     DiffAdd = {
         provider = 'DiffAdd',
         condition = checkwidth,
-        icon = '   ',
+        icon = '   ',
         highlight = {colors.green, colors.line_bg}
     }
   },
@@ -141,18 +141,30 @@ section.left = {
 
 section.right = {
   {
+    LspClient = {
+      provider = 'GetLspClient',
+      icon = '  ',
+      condition = function()
+        local lsp = require'galaxyline.provider_lsp'
+        return lsp.get_lsp_client() ~= 'No Active Lsp'
+      end,
+      highlight = {colors.blue, colors.bg}
+    }
+  },
+  {
     GitBranch = {
-        provider = 'GitBranch',
-        icon = function()
-          --local vcs = require('galaxyline.provider_vcs')
-          --local dirty = vcs.diff_add() + vcs.diff_modified() + vcs.diff_remove()
-          if false then
-            return ' '
-          end
-          return ' '
-        end,
-        condition = require('galaxyline.provider_vcs').check_git_workspace,
-        highlight = {colors.green, colors.line_bg}
+      provider = 'GitBranch',
+      icon = function()
+        --local vcs = require('galaxyline.provider_vcs')
+        --local dirty = vcs.diff_add() + vcs.diff_modified() + vcs.diff_remove()
+        if false then
+          return ' '
+        end
+        return ' '
+      end,
+      separator = '  ',
+      condition = require('galaxyline.provider_vcs').check_git_workspace,
+      highlight = {colors.green, colors.line_bg}
     }
   },
   {

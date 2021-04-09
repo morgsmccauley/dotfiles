@@ -5,6 +5,7 @@ require'lspconfig'.rust_analyzer.setup {}
 
 local sumneko_path = '/Users/morganmccauley/lua-language-server'
 require'lspconfig'.sumneko_lua.setup {
+  -- name = 'Lua', -- breaks everything
   cmd = {sumneko_path..'/bin/macOS/lua-language-server', '-E', sumneko_path..'/main.lua'},
   settings = {
     Lua = {
@@ -27,7 +28,3 @@ require'lspconfig'.sumneko_lua.setup {
     },
   },
 }
-
-vim.g.completion_matching_smart_case = 1
-vim.g.completion_sorting = 'length'
-vim.g.completion_matching_strategy_list = {'fuzzy'}
