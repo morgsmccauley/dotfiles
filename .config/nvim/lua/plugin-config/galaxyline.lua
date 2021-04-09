@@ -1,7 +1,14 @@
 local galaxyline = require('galaxyline')
+local condition = require('galaxyline.condition')
 local section = galaxyline.section
 
 galaxyline.short_line_list = {'LuaTree', 'vista', 'dbui'}
+
+local custom_icons = require('galaxyline.provider_fileinfo').define_file_icon()
+custom_icons['term'] = {
+  '#61afef',
+  '',
+}
 
 local colors = {
     bg = '#282c34',
@@ -12,23 +19,19 @@ local colors = {
     --fg = '#282c34',
     fg_green = '#65a380',
     yellow = '#A3BE8C',
-    cyan = '#22262C',
+    -- cyan = '#22262C',
     darkblue = '#61afef',
     green = '#BBE67E',
     orange = '#FF8800',
-    purple = '#252930',
+    -- purple = '#252930',
     magenta = '#c678dd',
-    blue = '#22262C',
+    -- blue = '#22262C',
     red = '#DF8890',
     lightbg = '#3C4048',
     --lightbg = '#f0f0f1',
     nord = '#81A1C1',
     greenYel = '#EBCB8B'
 }
-
-local function buffer_not_empty()
-	return vim.fn.empty(vim.fn.expand('%:t')) ~= 1
-end
 
 local checkwidth = function()
     local squeeze_width = vim.fn.winwidth(0) / 2
@@ -60,7 +63,7 @@ section.left = {
   {
     FileIcon = {
         provider = 'FileIcon',
-        condition = buffer_not_empty,
+        condition = condition.buffer_not_empty,
         highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color, colors.lightbg}
     }
   },
@@ -68,7 +71,7 @@ section.left = {
     FileName = {
       -- full path
         provider = {'FileName', 'FileSize'},
-        condition = buffer_not_empty,
+        condition = condition.buffer_not_empty,
         highlight = {colors.fg, colors.lightbg}
     }
   },
@@ -134,7 +137,7 @@ section.left = {
     DiagnosticWarn = {
         provider = 'DiagnosticWarn',
         icon = '  ',
-        highlight = {colors.blue, colors.bg}
+        highlight = {colors.darkblue, colors.bg}
     }
   }
 }
@@ -143,12 +146,12 @@ section.right = {
   {
     LspClient = {
       provider = 'GetLspClient',
-      icon = '  ',
+      icon = ' ',
       condition = function()
         local lsp = require'galaxyline.provider_lsp'
         return lsp.get_lsp_client() ~= 'No Active Lsp'
       end,
-      highlight = {colors.blue, colors.bg}
+      highlight = {colors.darkblue, colors.line_bg}
     }
   },
   {
@@ -163,7 +166,7 @@ section.right = {
         return ' '
       end,
       separator = '  ',
-      condition = require('galaxyline.provider_vcs').check_git_workspace,
+      condition = condition.check_git_workspace,
       highlight = {colors.green, colors.line_bg}
     }
   },

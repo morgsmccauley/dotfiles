@@ -11,7 +11,7 @@ function! MonkeyTerminalOpen()
     wincmd L
     let s:monkey_terminal_job_id = termopen($SHELL, { 'detach': 1 })
 
-    silent file MonkeyTerminal
+    silent file Terminal
     " Gets the id of the terminal window
     let s:monkey_terminal_window = win_getid()
     let s:monkey_terminal_buffer = bufnr('%')
@@ -40,7 +40,7 @@ function! MonkeyTerminalOpen()
     sp
     " Moves to the window below the current one
     wincmd L
-    buffer MonkeyTerminal
+    buffer Terminal
      " Gets the id of the terminal window
      let s:monkey_terminal_window = win_getid()
     endif
