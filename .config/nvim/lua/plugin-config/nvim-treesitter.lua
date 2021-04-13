@@ -1,5 +1,6 @@
 require('nvim-treesitter.configs').setup {
-  ensure_installed = {
+  ensure_installed = 'maintained',
+  --[[ ensure_installed = {
     'javascript',
     'typescript',
     'html',
@@ -15,7 +16,7 @@ require('nvim-treesitter.configs').setup {
     'json',
     'toml',
     'tsx'
-  },
+  }, ]]
   highlight = {
     enable = true,
     use_languagetree = true

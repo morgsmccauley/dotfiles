@@ -6,6 +6,7 @@ vim.o.termguicolors = true
 vim.o.number = true
 vim.o.numberwidth = 2
 vim.o.wrap = false
+vim.cmd[[set noshowmode]]
 
 vim.o.mouse = 'a'
 
@@ -53,6 +54,14 @@ vim.cmd 'hi TelescopePreviewBorder  guifg=#525865'
 vim.cmd 'hi PmenuSel  guibg=#98c379'
 
 -- tree folder name , icon color
-vim.cmd 'hi NvimTreeFolderIcon guifg = #61afef'
-vim.cmd 'hi NvimTreeFolderName guifg = #61afef'
+vim.cmd 'hi NvimTreeFolderIcon guifg=#61afef'
+vim.cmd 'hi NvimTreeFolderName guifg=#61afef'
 vim.cmd 'hi NvimTreeIndentMarker guifg=#545862'
+
+vim.cmd 'hi LspDiagnosticsDefaultError guifg=#DF8890'
+vim.cmd 'hi LspDiagnosticsDefaultWarning guifg=#EBCB8B'
+vim.cmd 'hi LspDiagnosticsDefaultInfofmation guifg=#81A1C1'
+vim.cmd 'hi LspDiagnosticsDefaultHint guifg=#A3BE8C'
+
+-- vim.cmd 'hi NvimTreeOpenedFolderName gui=bold'
+vim.cmd 'hi NvimTreeOpenedFile gui=bold'

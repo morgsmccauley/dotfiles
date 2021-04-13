@@ -10,6 +10,7 @@ vim.g.nvim_tree_root_folder_modifier = ':~'
 vim.g.nvim_tree_tab_open = 1
 vim.g.nvim_tree_allow_resize = 1
 vim.g.nvim_tree_hide_dotfiles = 0
+vim.g.nvim_tree_highlight_opened_files = true
 
 vim.g.nvim_tree_show_icons = {
     git = 1,
@@ -28,9 +29,9 @@ vim.g.nvim_tree_icons = {
         untracked = '★'
     },
     folder = {
-        default = '',
-        open = '',
-        symlink = ''
+        default = '',
+        open = '',
+        symlink = ''
     }
 }
 

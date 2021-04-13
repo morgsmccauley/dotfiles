@@ -74,13 +74,13 @@ keymap['*'] = 'Search for symbol globally'
 vim.api.nvim_set_keymap('n', '<leader>*', 'yiw:Rg <C-r>+<Cr>', { noremap = true })
 
 keymap['/'] = 'Search globally'
-vim.api.nvim_set_keymap('n', '<leader>/', ':Rg<Cr>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>/', ':silent Rg<Cr>', { noremap = true })
 
 keymap[','] = 'Switch buffer'
-vim.api.nvim_set_keymap('n', '<leader>,', ':Buffers<Cr>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>,', ':silent Buffers<Cr>', { noremap = true })
 
 keymap['.'] = 'Find file'
-vim.api.nvim_set_keymap('n', '<leader>.', ':GitFiles<Cr>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>.', ':silent GitFiles<Cr>', { noremap = true })
 
 keymap['\\'] = 'Reload config'
 vim.api.nvim_set_keymap('n', '<leader>\\', ':luafile ~/.config/nvim/init.lua<Cr>', { noremap = true })

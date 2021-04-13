@@ -39,6 +39,9 @@ return require("packer").startup(
         } ]]
         use {
           'nvim-treesitter/nvim-treesitter',
+          requires = {
+            {'sheerun/vim-polyglot'}
+          },
           run = ':TSUpdate'
         }
         use {
