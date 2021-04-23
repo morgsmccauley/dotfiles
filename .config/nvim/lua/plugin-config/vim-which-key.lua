@@ -47,7 +47,8 @@ local git = {
   s = { ':call GitStash()<Cr>', 'Stash' },
   L = { ':BCommits<Cr>', 'Buffer log' },
   --lua require\'gitsigns\'.blame_line()<CR>
-  B = { ':Gblame<Cr>', 'Blame annotations' },
+  B = { ':Git blame<Cr>', 'Blame annotations' },
+  -- B = { ':lua require\'gitsigns\'.blame_line()<Cr>', 'Blame annotations' },
   g = { ':Git<Cr>', 'Git' },
   --h doesnt work???
   h = git_hunk,

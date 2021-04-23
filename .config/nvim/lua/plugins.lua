@@ -19,24 +19,26 @@ return require("packer").startup(
         use 'glepnir/galaxyline.nvim'
         use 'chriskempson/base16-vim'
         use 'norcalli/nvim-colorizer.lua'
-        use 'neovim/nvim-lspconfig'
-        use 'hrsh7th/nvim-compe'
         use 'jiangmiao/auto-pairs'
         use 'alvan/vim-closetag'
         use 'tweekmonster/startuptime.vim'
-        use 'onsails/lspkind-nvim'
         use 'tpope/vim-surround'
         use 'tpope/vim-fugitive'
         use 'tpope/vim-repeat'
         use 'mhinz/vim-startify'
         use 'b3nj5m1n/kommentary'
-        use 'kosayoda/nvim-lightbulb'
         --[[ use {
-          'lukas-reineke/indent-blankline.nvim',
-          requires = {
-            'Yggdroot/indentLine'
-          }
+         'neovim/nvim-lspconfig',
+         requires = {
+           {'hrsh7th/nvim-compe'}
+           {'kosayoda/nvim-lightbulb'}
+           {'onsails/lspkind-nvim'}
+         }
         } ]]
+        use {
+          'neoclide/coc.nvim',
+          run = 'yarn install --frozen-lockfile'
+        }
         use {
           'nvim-treesitter/nvim-treesitter',
           requires = {
@@ -48,13 +50,14 @@ return require("packer").startup(
           'nvim-telescope/telescope.nvim',
           requires = {
             {'nvim-lua/popup.nvim'},
-	    {'nvim-lua/plenary.nvim'},
-            {'nvim-telescope/telescope-media-files.nvim'}
+            {'nvim-lua/plenary.nvim'},
+            {'nvim-telescope/telescope-media-files.nvim'},
+            {'nvim-telescope/telescope-github.nvim'}
           }
         }
         use {
-	  'liuchengxu/vim-which-key',
-	  requires = {{'AckslD/nvim-whichkey-setup.lua'}}
+          'liuchengxu/vim-which-key',
+          requires = {{'AckslD/nvim-whichkey-setup.lua'}}
         }
         use {
           'junegunn/fzf.vim',

@@ -5,7 +5,7 @@ local diagnostic = require('galaxyline.provider_diagnostic')
 local section = galaxyline.section
 
 -- disables statusline in these filetypes
-galaxyline.short_line_list = {'LuaTree', 'vista', 'dbui'}
+galaxyline.short_line_list = {'NvimTree', 'term'}
 
 local colors = {
     bg = '#282c34',
@@ -139,7 +139,7 @@ section.left = {
         highlight = {colors.lightbg, colors.bg}
     }
   },
-  {
+  --[[ {
     DiffAdd = {
         provider = 'DiffAdd',
         condition = condition.hide_in_width,
@@ -162,7 +162,7 @@ section.left = {
         icon = ' ',
         highlight = {colors.red, colors.line_bg}
     }
-  },
+  }, ]]
   {
     LeftEnd = {
         provider = function()
@@ -174,8 +174,6 @@ section.left = {
     }
   },
 }
-
--- section.short_line_left = section.left
 
 section.right = {
   {
@@ -224,7 +222,11 @@ section.right = {
   {
     DiagnosticError = {
       provider = function()
-        return diagnostic.get_diagnostic_error() or '- ' 
+        local error = diagnostic.get_diagnostic_error()
+        if error == nil or error == '' then
+          return '- ' 
+        end
+        return error..' '
       end,
       icon = ' ',
       separator = ' ',
@@ -235,7 +237,11 @@ section.right = {
   {
     DiagnosticWarn = {
       provider = function()
-        return diagnostic.get_diagnostic_warn() or '- '
+        local warn = diagnostic.get_diagnostic_warn()
+        if warn == nil or warn == '' then
+          return '- ' 
+        end
+        return warn..' '
       end,
       icon = ' ',
       highlight = {colors.yellow, colors.lightbg}
@@ -244,7 +250,11 @@ section.right = {
   {
     DiagnosticInfo = {
       provider = function()
-        return diagnostic.get_diagnostic_info() or '- '
+        local info = diagnostic.get_diagnostic_info()
+        if info == nil or info == '' then
+          return '- ' 
+        end
+        return info..' '
       end,
       icon = ' ',
       highlight = {colors.darkblue, colors.lightbg}
@@ -253,7 +263,11 @@ section.right = {
   {
     DiagnoticHint = {
       provider = function()
-        return diagnostic.get_diagnostic_hint() or '- '
+        local hint = diagnostic.get_diagnostic_hint()
+        if hint == nil or hint == '' then
+          return '- ' 
+        end
+        return hint..' '
       end,
       icon = ' ',
       highlight = {colors.army, colors.lightbg}
@@ -268,3 +282,5 @@ section.right = {
     }
   },
 }
+
+section.short_line_left = section.left

@@ -40,7 +40,7 @@ local filetypes = {
 local linters = {
     eslint = {
         sourceName = "eslint",
-        command = "eslint_d",
+        command = "eslint", -- not ideal using global
         rootPatterns = {".eslintrc.js", "package.json"},
         debounce = 100,
         args = {"--stdin", "--stdin-filename", "%filepath", "--format", "json"},
@@ -58,14 +58,7 @@ local linters = {
 }
 
 local formatters = {
-    prettier = {command = "prettier", args = {"--stdin-filepath", "%filepath"}}
-}
-
-local formatFiletypes = {
-    typescript = "prettier",
-    javascript = "prettier",
-    typescriptreact = "prettier",
-    javascriptreact = "prettier",
+    eslint = {command = "eslint", args = {"--fix", "--stdin", "--stdin-filepath", "%filepath"}},
 }
 
 lspconfig.diagnosticls.setup {
@@ -74,6 +67,15 @@ lspconfig.diagnosticls.setup {
         filetypes = filetypes,
         linters = linters,
         formatters = formatters,
-        formatFiletypes = formatFiletypes
+        formatFiletypes = filetypes
     }
 }
+
+vim.cmd [[autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()]]
+
+-- lua vim.lsp.diagnostic.show_line_diagnostics()
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+        virtual_text = false
+    }
+)
