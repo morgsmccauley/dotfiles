@@ -8,10 +8,16 @@ local window = {
   Q = { ':wq<Cr>', 'Save and quit' },
   w = { ':w<Cr>', 'Save' },
   r = { '<C-w>r', 'Rotate' },
+  a = { '1<C-w><C-w>', 'Go to first window' },
+  s = { '2<C-w><C-w>', 'Go to second window' },
+  d = { '3<C-w><C-w>', 'Go to third window' },
+  f = { '4<C-w><C-w>', 'Go to fourth window' },
+  j = { '5<C-w><C-w>', 'Go to fifth window' },
+  k = { '6<C-w><C-w>', 'Go to sixth window' },
   D = { ':only<Cr>', 'Close all other windows' },
   l = { ':luafile %<Cr>', 'Source selected lua file' },
+  ['='] = { '<C-w>=', 'Balance windows' }
 }
-window['='] = { '<C-w>=', 'Balance windows' }
 
 local git_remote = {
   name = '+remote',
@@ -20,7 +26,7 @@ local git_remote = {
   u = { '!gpsup<Cr>', 'Push creating upstream' },
   l = { ':echo "Pulling from remote..." | Git pull<Cr>', 'Pull' },
   f = { ':echo "Fetching remote..." | Git fetch<Cr>', 'Fetch' },
-  y = { ':CocCommand git.copyUrl', 'Copy GitHub URL of current line' },
+  y = { ':CocCommand git.copyUrl<Cr>', 'Copy GitHub URL of current line' },
 }
 
 local git_rebase = {
@@ -42,51 +48,34 @@ local git_hunk = {
 
 local git = {
   name = '+git',
-  l = { ':Telescope git_commits<Cr>', 'Log' },
+  l = { ':lua require\'plugin-config/telescope-nvim\'.commits()<Cr>', 'Log' },
   p = { ':Telescope gh pull_request<Cr>', 'Pull requests' },
   b = { ':lua require\'plugin-config/telescope-nvim\'.branches()<Cr>', 'Branches' },
   s = { ':call GitStash()<Cr>', 'Stash' },
   L = { ':Telescope git_bcommits<Cr>', 'Buffer log' },
-  --lua require\'gitsigns\'.blame_line()<CR>
   B = { ':Git blame<Cr>', 'Blame annotations' },
   -- B = { ':lua require\'gitsigns\'.blame_line()<Cr>', 'Blame annotations' },
   g = { ':Git<Cr>', 'Git' },
-  --h doesnt work???
   h = git_hunk,
   r = git_remote,
   R = git_rebase,
 }
-git['['] = { '<plug>(GitGutterPrevHunk)', 'Go to prev hunk' }
-git[']'] = { '<plug>(GitGutterNextHunk)', 'Go to next hunk' }
 
 local session = {
   name = '+session',
   l = { ':Telescope session_manager load<Cr>', 'List sessions' },
-  q = { ':SClose<Cr>', 'Quit session' },
-  w = { ':SSave<Cr>', 'Write session' },
+  w = { ':SaveSession<Cr>', 'Write session' },
 }
 
 local keymap = {
   w = window,
   g = git,
   s = session,
+  ['*'] = { 'yiw:Rg <C-r>+<Cr>', 'Search for symbol globally' },
+  ['/'] ={ ':silent Rg<Cr>', 'Search globally' },
+  [','] ={ ':lua require\'plugin-config/telescope-nvim\'.buffers()<Cr>', 'Switch buffer' },
+  ['.'] = { ':Telescope git_files<Cr>', 'Find file' },
+  ['\\'] = { ':luafile ~/.config/nvim/init.lua<Cr>', 'Reload config' }
 }
--- need to manually set these as '.' is slow through which-key
-keymap['*'] = 'Search for symbol globally'
-vim.api.nvim_set_keymap('n', '<leader>*', 'yiw:Rg <C-r>+<Cr>', { noremap = true })
-
-keymap['/'] = 'Search globally'
-vim.api.nvim_set_keymap('n', '<leader>/', ':silent Rg<Cr>', { noremap = true })
-
-keymap[','] = 'Switch buffer'
--- vim.api.nvim_set_keymap('n', '<leader>,', ':silent Buffers<Cr>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>,', ':lua require\'plugin-config/telescope-nvim\'.buffers()<Cr>', { noremap = true, silent = true })
-
-keymap['.'] = 'Find file'
--- vim.api.nvim_set_keymap('n', '<leader>.', ':silent GitFiles<Cr>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>.', ':Telescope git_files<Cr>', { noremap = true, silent = true })
-
-keymap['\\'] = 'Reload config'
-vim.api.nvim_set_keymap('n', '<leader>\\', ':luafile ~/.config/nvim/init.lua<Cr>', { noremap = true })
 
 whichkey.register_keymap('leader', keymap)
