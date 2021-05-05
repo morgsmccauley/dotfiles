@@ -58,6 +58,14 @@ nmap('gr', '<Plug>(coc-references)', { silent = true })
 imap('<Tab>', 'pumvisible() ? \"\\<C-n>\" : \"\\<Tab>\"', { expr = true, noremap = true })
 imap('<S-Tab>', 'pumvisible() ? \"\\<C-p>\" : \"\\<S-Tab>\"', { expr = true, noremap = true })
 
+imap('<C-space>', 'coc#refresh()', { expr = true, noremap = true, silent = true })
+
+imap('<C-e>', 'coc#float#has_scroll() ? "\\<c-r>=coc#float#scroll(1)\\<cr>" : "\\<Right>"', { silent = true, nowait = true, expr = true })
+imap('<C-y>', 'coc#float#has_scroll() ? "\\<c-r>=coc#float#scroll(0)\\<cr>" : "\\<Left>"', { silent = true, nowait = true, expr = true })
+
+--[[ nmap('<C-e>', 'coc#float#has_scroll() ? "\\<c-r>=coc#float#scroll(1)\\<cr>" : "\\<C-e>"', { silent = true, nowait = true, expr = true })
+nmap('<C-y>', 'coc#float#has_scroll() ? "\\<c-r>=coc#float#scroll(0)\\<cr>" : "\\<C-y>"', { silent = true, nowait = true, expr = true }) ]]
+
 -- imap('<C-Space>', 'compe#complete()', { expr = true, noremap = true, silent = true })
 -- imap('<Cr>', 'compe#confirm(\'<Cr>\')', { expr = true, noremap = true, silent = true })
 -- imap('<C-e>', 'compe#close(\'<C-e>\')', { expr = true, noremap = true, silent = true })

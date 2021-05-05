@@ -2,31 +2,53 @@ local galaxyline = require('galaxyline')
 local fileinfo = require('galaxyline.provider_fileinfo')
 local condition = require('galaxyline.condition')
 local diagnostic = require('galaxyline.provider_diagnostic')
+local tokyonight = require('tokyonight.theme').setup()
+
+local theme = tokyonight.colors
 local section = galaxyline.section
 
 -- disables statusline in these filetypes
-galaxyline.short_line_list = {'NvimTree', 'term'}
-
-local colors = {
-    bg = '#282c34',
-    --bg = '#fafafa',
-    line_bg = '#282c34',
-    --line_bg = '#fafafa',
-    fg = '#D8DEE9',
-    dark_fg = '#989ba3',
-    --fg = '#282c34',
-    fg_green = '#65a380',
-    army = '#A3BE8C',
-    darkblue = '#61afef',
-    green = '#BBE67E',
-    orange = '#FF8800',
-    magenta = '#c678dd',
-    red = '#DF8890',
-    lightbg = '#3C4048',
-    --lightbg = '#f0f0f1',
-    nord = '#81A1C1',
-    yellow = '#EBCB8B'
+galaxyline.short_line_list = {'NvimTree', 'term', 'LuaTree', 'vista', 'dbui'}
+section.short_line_left = {
+  {
+    empty = {
+      provider = function ()
+        return ''
+      end
+    }
+  }
 }
+
+local dark_colors = {
+  bg = "#24283b",
+  line_bg = "#24283b",
+  fg = "#c0caf5",
+  army = '#A3BE8C',
+  darkblue = '#61afef',
+  green = "#9ece6a",
+  orange = "#ff9e64",
+  magenta = "#bb9af7",
+  red = "#f7768e",
+  lightbg = "#3b4261",
+  nord = '#81A1C1',
+  yellow = "#e0af68",
+}
+
+local light_colors = {
+  bg = "#e1e2e6",
+  line_bg = "#e1e2e6",
+  fg = '#3760bf',
+  darkblue = '#61afef',
+  green = theme.green,
+  orange = theme.orange,
+  magenta = theme.magenta,
+  red = theme.red,
+  lightbg = "#c4c8da",
+  nord = '#81A1C1',
+  yellow = "#e0af68",
+}
+
+local colors = light_colors
 
 local custom_icons = require('galaxyline.provider_fileinfo').define_file_icon()
 custom_icons['term'] = {
@@ -61,7 +83,7 @@ end
 local mode_color_map = {
     n = colors.nord,
     i = colors.red,
-    c = colors.fg_green,
+    c = colors.green,
     V = colors.magenta,
     [''] = colors.magenta,
     v = colors.magenta,
@@ -72,8 +94,6 @@ section.left = {
   {
     LeftRounded = {
         provider = function()
-          --[[ local color = mode_color_map[vim.fn.mode()] or mode_color_map['n']
-          vim.api.nvim_command('hi GalaxyLeftRounded guifg='..color) ]]
           return ''
         end,
         highlight = {colors.lightbg, colors.bg}
@@ -270,7 +290,7 @@ section.right = {
         return hint..' '
       end,
       icon = ' ',
-      highlight = {colors.army, colors.lightbg}
+      highlight = {colors.green, colors.lightbg}
     }
   },
   {
@@ -282,5 +302,3 @@ section.right = {
     }
   },
 }
-
-section.short_line_left = section.left

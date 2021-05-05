@@ -7,6 +7,7 @@ local window = {
   q = { ':q<Cr>', 'Quit' },
   Q = { ':wq<Cr>', 'Save and quit' },
   w = { ':w<Cr>', 'Save' },
+  r = { '<C-w>r', 'Rotate' },
   D = { ':only<Cr>', 'Close all other windows' },
   l = { ':luafile %<Cr>', 'Source selected lua file' },
 }
@@ -41,11 +42,11 @@ local git_hunk = {
 
 local git = {
   name = '+git',
-  l = { ':call GitLog()<Cr>', 'Log' },
-  p = { ':call GitPullRequest()<Cr>', 'Pull requests' },
-  b = { ':call GitBranch()<Cr>', 'Branches' },
+  l = { ':Telescope git_commits<Cr>', 'Log' },
+  p = { ':Telescope gh pull_request<Cr>', 'Pull requests' },
+  b = { ':lua require\'plugin-config/telescope-nvim\'.branches()<Cr>', 'Branches' },
   s = { ':call GitStash()<Cr>', 'Stash' },
-  L = { ':BCommits<Cr>', 'Buffer log' },
+  L = { ':Telescope git_bcommits<Cr>', 'Buffer log' },
   --lua require\'gitsigns\'.blame_line()<CR>
   B = { ':Git blame<Cr>', 'Blame annotations' },
   -- B = { ':lua require\'gitsigns\'.blame_line()<Cr>', 'Blame annotations' },
@@ -60,7 +61,7 @@ git[']'] = { '<plug>(GitGutterNextHunk)', 'Go to next hunk' }
 
 local session = {
   name = '+session',
-  l = { ':call Sessions()<Cr>', 'List sessions' },
+  l = { ':Telescope session_manager load<Cr>', 'List sessions' },
   q = { ':SClose<Cr>', 'Quit session' },
   w = { ':SSave<Cr>', 'Write session' },
 }
@@ -78,10 +79,12 @@ keymap['/'] = 'Search globally'
 vim.api.nvim_set_keymap('n', '<leader>/', ':silent Rg<Cr>', { noremap = true })
 
 keymap[','] = 'Switch buffer'
-vim.api.nvim_set_keymap('n', '<leader>,', ':silent Buffers<Cr>', { noremap = true })
+-- vim.api.nvim_set_keymap('n', '<leader>,', ':silent Buffers<Cr>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>,', ':lua require\'plugin-config/telescope-nvim\'.buffers()<Cr>', { noremap = true, silent = true })
 
 keymap['.'] = 'Find file'
-vim.api.nvim_set_keymap('n', '<leader>.', ':silent GitFiles<Cr>', { noremap = true })
+-- vim.api.nvim_set_keymap('n', '<leader>.', ':silent GitFiles<Cr>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>.', ':Telescope git_files<Cr>', { noremap = true, silent = true })
 
 keymap['\\'] = 'Reload config'
 vim.api.nvim_set_keymap('n', '<leader>\\', ':luafile ~/.config/nvim/init.lua<Cr>', { noremap = true })

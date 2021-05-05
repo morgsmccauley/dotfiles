@@ -54,7 +54,9 @@ return require("packer").startup(
             {'nvim-lua/popup.nvim'},
             {'nvim-lua/plenary.nvim'},
             {'nvim-telescope/telescope-media-files.nvim'},
-            {'nvim-telescope/telescope-github.nvim'}
+            {'nvim-telescope/telescope-github.nvim'},
+            {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+            {'Shatur95/neovim-session-manager'}
           }
         }
         use {

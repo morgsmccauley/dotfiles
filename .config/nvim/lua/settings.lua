@@ -7,6 +7,7 @@ vim.o.number = true
 vim.o.numberwidth = 2
 vim.o.wrap = false
 vim.cmd[[set noshowmode]]
+vim.cmd[[set cursorline]]
 
 vim.o.mouse = 'a'
 
@@ -30,7 +31,11 @@ vim.o.encoding = 'UTF-8'
 vim.o.undofile = true
 vim.cmd[[set undodir=~/.vim/undo]]
 
-vim.cmd 'colorscheme base16-onedark'
+vim.cmd 'colorscheme tokyonight'
+-- vim.o.background = 'light'
+vim.g.tokyonight_sidebars = { "quickfix", "__vista__", "terminal", "fzf" }
+vim.g.tokyonight_italic_keywords = false
+
 vim.cmd 'syntax enable'
 vim.cmd 'syntax on'
 
