@@ -6,41 +6,6 @@ local pickers = require('telescope.pickers')
 local finders = require('telescope.finders')
 local utils = require('telescope.utils')
 
-function print_r(arr, indentLevel)
-    local str = ""
-    local indentStr = "#"
-
-    if(indentLevel == nil) then
-        print(print_r(arr, 0))
-        return
-    end
-
-    for i = 0, indentLevel do
-        indentStr = indentStr.."\t"
-    end
-
-    for index,value in pairs(arr) do
-        if type(value) == "table" then
-            str = str..indentStr..index..": \n"..print_r(value, (indentLevel + 1))
-        else 
-            str = str..indentStr..index..": "..value.."\n"
-        end
-    end
-    return str
-
-end
-
-function CloseHiddenBuffers()
-  local visible_buffers = {}
-  for _, value in ipairs(vim.fn.getbufinfo({ bufloaded = 1 })) do
-    print_r(value.bufnr)
-  end
-  print('---')
-  for _, value in pairs(vim.fn.tabpagebuflist()) do
-    print(value)
-  end
-end
-
 telescope.setup {
   defaults = {
     mappings = {
@@ -50,7 +15,7 @@ telescope.setup {
         ["<C-k>"] = actions.move_selection_previous,
       },
     },
-    set_env = {['COLORTERM'] = 'truecolor'}, -- default = nil,
+    set_env = {['COLORTERM'] = 'truecolor'},
   },
   extensions = {
     fzf = {

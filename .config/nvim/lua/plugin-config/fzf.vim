@@ -29,11 +29,6 @@ let g:fzf_layout = { 'down': '25%' }
 
 let isDarkThemeEnabled = system('defaults read .GlobalPreferences.plist AppleInterfaceStyle') =~ 'Dark'
 
-" doesn't work yet: https://github.com/junegunn/fzf/issues/1885
-" let g:fzf_action = {
-"   \ 'ctrl-x': function('s:delete_buffers')
-"   \ }
-"
 function! s:list_buffers()
   redir => list
   silent ls
@@ -173,7 +168,6 @@ function! s:git_log(line)
   silent exec 'Gvdiffsplit '.hash.'~1'
 endfunction
 
-" \ '--preview', 'echo {} | grep -o "[a-f0-9]\{7,\}" | head -1 | xargs git show --format=format: --color=always | head -1000',
 function! GitLog()
   call fzf#run(fzf#wrap({
         \ 'source': 'git log --color=always '.fzf#shellescape('--format=%C(auto)%h%d %s %C(green)%cr'),

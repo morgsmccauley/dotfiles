@@ -7,6 +7,7 @@ require'plugin-config/telescope-nvim'
 require'plugin-config/vim-which-key'
 require'plugin-config/kommentary'
 require'plugin-config/vim-sneak'
+require'plugin-config/tokyonight'
 
 require'colorizer'.setup()
 

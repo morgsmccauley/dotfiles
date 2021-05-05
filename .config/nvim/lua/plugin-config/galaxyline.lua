@@ -7,7 +7,6 @@ local tokyonight = require('tokyonight.theme').setup()
 local theme = tokyonight.colors
 local section = galaxyline.section
 
--- disables statusline in these filetypes
 galaxyline.short_line_list = {'NvimTree', 'term', 'LuaTree', 'vista', 'dbui'}
 section.short_line_left = {
   {
@@ -48,7 +47,7 @@ local light_colors = {
   yellow = "#e0af68",
 }
 
-local colors = light_colors
+local colors = dark_colors
 
 local custom_icons = require('galaxyline.provider_fileinfo').define_file_icon()
 custom_icons['term'] = {
@@ -63,12 +62,6 @@ custom_icons['Jenkinsfile'] = {
   colors.red,
   '',
 }
-
-local function parent_dir(path)
-  local i = path:find("[\\/:][^\\/:]*$")
-  if not i then return end
-  return path:sub(1, i)
-end
 
 local disabled_filetypes = {
   NvimTree = true,
@@ -118,20 +111,6 @@ section.left = {
         highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color, colors.lightbg}
     }
   },
-  --[[ {
-    FilePath = {
-      provider = function()
-        local parent_path = parent_dir(vim.api.nvim_buf_get_name(0)):gsub('-', '')
-        local git_path = parent_dir(vcs.get_git_dir()):gsub('-', '')
-        local a = parent_path:gsub(git_path, '')
-        return a
-      end,
-      condition = function()
-        return condition.buffer_not_empty() and condition.hide_in_width() and filetype_not_disabled()
-      end,
-      highlight = {colors.dark_fg, colors.lightbg}
-    },
-  }, ]]
   {
     FileName = {
       provider = function()
@@ -159,30 +138,6 @@ section.left = {
         highlight = {colors.lightbg, colors.bg}
     }
   },
-  --[[ {
-    DiffAdd = {
-        provider = 'DiffAdd',
-        condition = condition.hide_in_width,
-        icon = ' ',
-        highlight = {colors.green, colors.line_bg}
-    }
-  },
-  {
-    DiffModified = {
-        provider = 'DiffModified',
-        condition = condition.hide_in_width,
-        icon = ' ',
-        highlight = {colors.orange, colors.line_bg}
-    }
-  },
-  {
-    DiffRemove = {
-        provider = 'DiffRemove',
-        condition = condition.hide_in_width,
-        icon = ' ',
-        highlight = {colors.red, colors.line_bg}
-    }
-  }, ]]
   {
     LeftEnd = {
         provider = function()
@@ -210,14 +165,7 @@ section.right = {
   {
     GitBranch = {
       provider = 'GitBranch',
-      icon = function()
-        --local vcs = require('galaxyline.provider_vcs')
-        --local dirty = vcs.diff_add() + vcs.diff_modified() + vcs.diff_remove()
-        if false then
-          return ' '
-        end
-        return ' '
-      end,
+      icon =  ' ',
       separator = '  ',
       condition = function()
         return condition.check_git_workspace() and condition.hide_in_width()
