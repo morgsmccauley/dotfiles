@@ -29,20 +29,6 @@ nmap('<C-y>', '5<C-y>', { noremap = true })
 nmap('<Esc>', ':noh | echo ""<Cr><Esc>', { silent = true, noremap = true })
 nmap('QQ', ':qall<CR>', { noremap = true })
 
--- nmap('ga', ':Telescope lsp_code_actions<Cr>', { silent = true, noremap = true })
--- nmap('<S-k>', '<cmd>lua vim.lsp.buf.hover()<Cr>', { silent = true, noremap = true })
--- nmap('<S-d>', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<Cr>', { silent = true, noremap = true })
--- nmap('gd', ':Telescope lsp_definitions<Cr>', { silent = true, noremap = true })
--- nmap('gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', { silent = true, noremap = true })
--- nmap('gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', { silent = true, noremap = true })
--- nmap('gr', ':Telescope lsp_references<Cr>', { silent = true, noremap = true })
--- nmap('g0', ':Telescope lsp_document_symbols<Cr>', { silent = true, noremap = true })
--- nmap('gW', ':Telescope lsp_workspace_symbols<Cr>', { silent = true, noremap = true })
--- nmap('gD', ':Telescope lsp_document_diagnostics<Cr>', { silent = true, noremap = true })
--- nmap('gE', ':Telescope lsp_workspace_diagnostics<Cr>', { silent = true, noremap = true })
---nnoremap('<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', { silent = true })
---nnoremap('gd', '<cmd>lua vim.lsp.buf.declaration()<CR>', { silent = true })
-
 function ShowDocumentation()
   if (vim.api.nvim_call_function('coc#rpc#ready', {})) then
     vim.api.nvim_call_function('CocActionAsync', {'doHover'})
@@ -63,15 +49,5 @@ imap('<C-space>', 'coc#refresh()', { expr = true, noremap = true, silent = true 
 imap('<C-e>', 'coc#float#has_scroll() ? "\\<c-r>=coc#float#scroll(1)\\<cr>" : "\\<Right>"', { silent = true, nowait = true, expr = true })
 imap('<C-y>', 'coc#float#has_scroll() ? "\\<c-r>=coc#float#scroll(0)\\<cr>" : "\\<Left>"', { silent = true, nowait = true, expr = true })
 
---[[ nmap('<C-e>', 'coc#float#has_scroll() ? "\\<c-r>=coc#float#scroll(1)\\<cr>" : "\\<C-e>"', { silent = true, nowait = true, expr = true })
-nmap('<C-y>', 'coc#float#has_scroll() ? "\\<c-r>=coc#float#scroll(0)\\<cr>" : "\\<C-y>"', { silent = true, nowait = true, expr = true }) ]]
-
--- imap('<C-Space>', 'compe#complete()', { expr = true, noremap = true, silent = true })
--- imap('<Cr>', 'compe#confirm(\'<Cr>\')', { expr = true, noremap = true, silent = true })
--- imap('<C-e>', 'compe#close(\'<C-e>\')', { expr = true, noremap = true, silent = true })
---[[ imap('<C-f>', 'compe#scroll({ \'delta\': +4 })', { expr = true, noremap = true, silent = true })
-imap('<C-d>', 'compe#scroll({ \'delta\': -4 })', { expr = true, noremap = true, silent = true }) ]]
-
---nmap("<C-_>", "<Plug>kommentary_motion_default")
 nmap("<C-_>", "<Plug>kommentary_line_default")
 vmap("<C-_>", "<Plug>kommentary_visual_default")

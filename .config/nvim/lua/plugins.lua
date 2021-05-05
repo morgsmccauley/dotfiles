@@ -8,8 +8,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
   execute 'PackerInstall'
 end
 
-vim.cmd("autocmd BufWritePost plugins.lua PackerCompile")
-
 return require("packer").startup(
     function(use)
         use 'wbthomason/packer.nvim'
@@ -27,16 +25,7 @@ return require("packer").startup(
         use 'tpope/vim-fugitive'
         use 'tpope/vim-repeat'
         use 'justinmk/vim-sneak'
-        -- use 'mhinz/vim-startify'
         use 'b3nj5m1n/kommentary'
-        --[[ use {
-         'neovim/nvim-lspconfig',
-         requires = {
-           {'hrsh7th/nvim-compe'}
-           {'kosayoda/nvim-lightbulb'}
-           {'onsails/lspkind-nvim'}
-         }
-        } ]]
         use {
           'neoclide/coc.nvim',
           run = 'yarn install --frozen-lockfile'
@@ -66,7 +55,7 @@ return require("packer").startup(
         use {
           'junegunn/fzf.vim',
           requires = {{'junegunn/fzf'}},
-          run = 'fzf#install'
+          run = 'call fzf#install'
         }
     end
 )

@@ -1,5 +1,5 @@
-require('settings')
 require('plugins')
+require('settings')
 require('plugin-config')
 require('maps')
 require('highlights')
