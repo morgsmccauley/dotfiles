@@ -4,7 +4,7 @@ local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
   execute('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
-  execute 'packadd packer.nvim'
+  execute 'packloadall'
   execute 'PackerInstall'
 end
 
@@ -18,6 +18,7 @@ return require("packer").startup(
         use 'lewis6991/gitsigns.nvim'
         use 'glepnir/galaxyline.nvim'
         use 'chriskempson/base16-vim'
+        use 'folke/tokyonight.nvim'
         use 'norcalli/nvim-colorizer.lua'
         use 'jiangmiao/auto-pairs'
         use 'alvan/vim-closetag'
@@ -25,7 +26,8 @@ return require("packer").startup(
         use 'tpope/vim-surround'
         use 'tpope/vim-fugitive'
         use 'tpope/vim-repeat'
-        use 'mhinz/vim-startify'
+        use 'justinmk/vim-sneak'
+        -- use 'mhinz/vim-startify'
         use 'b3nj5m1n/kommentary'
         --[[ use {
          'neovim/nvim-lspconfig',
