@@ -2,8 +2,6 @@ local telescope = require'telescope'
 local actions = require'telescope.actions'
 local action_state = require'telescope.actions.state'
 local builtin = require'telescope.builtin'
-local pickers = require('telescope.pickers')
-local finders = require('telescope.finders')
 local utils = require('telescope.utils')
 
 telescope.setup {
@@ -37,7 +35,7 @@ telescope.load_extension('session_manager')
 
 local M = {}
 
-M.buffers = function()
+M.buffers = function(opts)
   builtin.buffers({
     show_all_buffers = true,
     sort_lastused = true,
@@ -63,13 +61,117 @@ M.buffers = function()
   })
 end
 
+M.commits = function()
+  builtin.git_commits({
+    attach_mappings = function(_, map)
+      local fixup = function(prompt_bufnr)
+        local cwd = action_state.get_current_picker(prompt_bufnr).cwd
+        local commit = action_state.get_selected_entry().value
+
+        local confirmation = vim.fn.input('Fix up commit: ' .. commit .. '? [Y/n] ')
+        if confirmation ~= '' and string.lower(confirmation) ~= 'y' then return end
+        print' '
+
+        actions.close(prompt_bufnr)
+
+        local _, ret, stderr = utils.get_os_command_output({
+          'git',
+          'commit',
+          '--fixup',
+          commit,
+        }, cwd)
+
+        if ret == 0 then
+          print("Created fixup commit for: " .. commit)
+        else
+          print(string.format(
+            'Error when fixing up commit: %s. Git returned: "%s"',
+            commit,
+            table.concat(stderr, '  ')
+          ))
+          return
+        end
+
+        local _, ret, stderr = utils.get_os_command_output(
+          {
+            'git',
+            'rebase',
+            '-i',
+            '--autosquash',
+            '--autostash',
+            commit..'~1'
+          },
+          cwd,
+          { GIT_SEQUENCE_EDITOR = ':' }
+        )
+
+        if ret == 0 then
+          print('Squashed commit: ' .. commit)
+        else
+          print(string.format(
+            'Error when squashing commit: %s. Git returned: "%s"',
+            commit,
+            table.concat(stderr, '  ')
+          ))
+          return
+        end
+      end
+
+      local soft_reset = function(prompt_bufnr)
+        local cwd = action_state.get_current_picker(prompt_bufnr).cwd
+        local commit = action_state.get_selected_entry().value
+
+        local confirmation = vim.fn.input('Soft reset to this commit: ' .. commit .. '? [Y/n] ')
+        if confirmation ~= '' and string.lower(confirmation) ~= 'y' then return end
+        print' '
+
+        actions.close(prompt_bufnr)
+
+        local _, ret, stderr = utils.get_os_command_output({
+          'git',
+          'reset',
+          '--soft',
+          commit..'~1'
+        }, cwd)
+
+        if ret == 0 then
+          print("Soft reset to commit: " .. commit)
+        else
+          print(string.format(
+            'Error soft reseting commit: %s. Git returned: "%s"',
+            commit,
+            table.concat(stderr, '  ')
+          ))
+          return
+        end
+      end
+
+      local interactive_rebase = function(prompt_bufnr)
+        local cwd = action_state.get_current_picker(prompt_bufnr).cwd
+        local commit = action_state.get_selected_entry().value
+
+        local confirmation = vim.fn.input('Interactive rebase from commit: ' .. commit .. '? [Y/n] ')
+        if confirmation ~= '' and string.lower(confirmation) ~= 'y' then return end
+        print' '
+
+        actions.close(prompt_bufnr)
+
+        vim.api.nvim_command('Git rebase -i --autostash --autosquash '..commit..'~1')
+      end
+
+      map('i', '<C-f>', fixup)
+      map('i', '<C-s>', soft_reset)
+      map('i', '<C-r>', interactive_rebase)
+
+      return true
+    end
+  })
+end
+
 M.branches = function()
   builtin.git_branches({
     attach_mappings = function(_, map)
-      map('i', '<C-d>', actions.preview_scrolling_down)
-      map('i', '<C-x>', actions.git_delete_branch)
-      map('i', '<C-n>', actions.git_create_branch)
-      map('i', '<Cr>', function(prompt_bufnr)
+      local checkout = function(prompt_bufnr)
         local cwd = action_state.get_current_picker(prompt_bufnr).cwd
         local selection = action_state.get_selected_entry()
         actions.close(prompt_bufnr)
@@ -94,35 +196,16 @@ M.branches = function()
             table.concat(stderr, '  ')
           ))
         end
-      end)
+      end
+
+      map('i', '<C-d>', actions.preview_scrolling_down)
+      map('i', '<C-x>', actions.git_delete_branch)
+      map('i', '<C-n>', actions.git_create_branch)
+      map('i', '<Cr>', checkout)
 
       return true
     end
   })
-end
-
-M.sessions = function()
-  local results = utils.get_os_command_output({
-    'ls',
-    '-tA',
-    '/Users/morganmccauley/.local/share/nvim/session',
-    '|',
-    'grep',
-    '-v',
-    '__LAST__',
-  })
-  pickers.new({}, {
-    prompt_title = 'Sessions',
-    finder = finders.new_table(results),
-    attach_mappings = function()
-      actions.select_default:replace(function(prompt_bufnr)
-        local selected = actions.get_selected_entry()
-        vim.api.nvim_command('SLoad! '..selected[1])
-      end)
-
-      return true
-    end
-  }):find()
 end
 
 return M
