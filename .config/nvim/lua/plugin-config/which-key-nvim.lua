@@ -22,7 +22,15 @@ local window = {
 local git_remote = {
   name = '+remote',
   p = { ':echo "Pushing to remote..." | Git push<Cr>', 'Push' },
-  P = { ':echo "Force pushing to remote..." | Git push --force-with-lease<Cr>', 'Force push' },
+  P = {
+    function()
+      local confirm = vim.fn.input'Force push to remote? [Y/n] '
+      if string.lower(confirm) ~= 'y' then return end
+
+      vim.api.nvim_command'Git push --force-with-lease'
+    end,
+    'Force push'
+  },
   u = { '!gpsup<Cr>', 'Push creating upstream' },
   l = { ':echo "Pulling from remote..." | Git pull<Cr>', 'Pull' },
   f = { ':echo "Fetching remote..." | Git fetch<Cr>', 'Fetch' },

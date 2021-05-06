@@ -69,7 +69,7 @@ M.commits = function()
         local commit = action_state.get_selected_entry().value
 
         local confirmation = vim.fn.input('Fix up commit: ' .. commit .. '? [Y/n] ')
-        if confirmation ~= '' and string.lower(confirmation) ~= 'y' then return end
+        if string.lower(confirmation) ~= 'y' then return end
         print' '
 
         actions.close(prompt_bufnr)
@@ -122,7 +122,7 @@ M.commits = function()
         local commit = action_state.get_selected_entry().value
 
         local confirmation = vim.fn.input('Soft reset to this commit: ' .. commit .. '? [Y/n] ')
-        if confirmation ~= '' and string.lower(confirmation) ~= 'y' then return end
+        if string.lower(confirmation) ~= 'y' then return end
         print' '
 
         actions.close(prompt_bufnr)
@@ -151,7 +151,7 @@ M.commits = function()
         local commit = action_state.get_selected_entry().value
 
         local confirmation = vim.fn.input('Interactive rebase from commit: ' .. commit .. '? [Y/n] ')
-        if confirmation ~= '' and string.lower(confirmation) ~= 'y' then return end
+        if string.lower(confirmation) ~= 'y' then return end
         print' '
 
         actions.close(prompt_bufnr)
