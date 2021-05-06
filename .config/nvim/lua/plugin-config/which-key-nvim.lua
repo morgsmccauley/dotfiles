@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
 
-local whichkey = require('whichkey_setup')
+local wk = require("which-key")
 
 local window = {
   name = '+window',
@@ -67,7 +67,7 @@ local session = {
   w = { ':SaveSession<Cr>', 'Write session' },
 }
 
-local keymap = {
+local mappings = {
   w = window,
   g = git,
   s = session,
@@ -78,4 +78,8 @@ local keymap = {
   ['\\'] = { ':luafile ~/.config/nvim/init.lua<Cr>', 'Reload config' }
 }
 
-whichkey.register_keymap('leader', keymap)
+local opts = {
+  prefix = '<leader>'
+}
+
+wk.register(mappings, opts)

@@ -26,6 +26,7 @@ return require("packer").startup(
         use 'tpope/vim-repeat'
         use 'justinmk/vim-sneak'
         use 'b3nj5m1n/kommentary'
+        use 'folke/which-key.nvim'
         use {
           'neoclide/coc.nvim',
           run = 'yarn install --frozen-lockfile'
@@ -47,10 +48,6 @@ return require("packer").startup(
             {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
             {'Shatur95/neovim-session-manager'}
           }
-        }
-        use {
-          'liuchengxu/vim-which-key',
-          requires = {{'AckslD/nvim-whichkey-setup.lua'}}
         }
         use {
           'junegunn/fzf.vim',
