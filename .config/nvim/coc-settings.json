@@ -10,8 +10,6 @@
   "git.enableGutters": false,
   "eslint.autoFixOnSave": true,
   "coc.preferences.rootPatterns": [".git"],
-  "diagnostic.virtualText": true,
-  "diagnostic.messageTarget":"echo",
   "diagnostic.enableHighlightLineNumber": false,
   "snippets.ultisnips.directories": [
     "UltiSnips"

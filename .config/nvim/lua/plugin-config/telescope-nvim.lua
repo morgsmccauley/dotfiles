@@ -156,7 +156,7 @@ M.commits = function()
 
         actions.close(prompt_bufnr)
 
-        vim.api.nvim_command('Git rebase -i --autostash --autosquash '..commit..'~1')
+        vim.api.nvim_command('silent Git rebase -i --autostash --autosquash '..commit..'~1')
       end
 
       map('i', '<C-f>', fixup)
@@ -207,5 +207,7 @@ M.branches = function()
     end
   })
 end
+
+-- TODO picker for viewing changes to single file
 
 return M
