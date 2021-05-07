@@ -2,6 +2,13 @@ vim.g.mapleader = " "
 
 local wk = require("which-key")
 
+wk.setup {
+  window = {
+    margin = { 1, 0, 0, 0 },
+    padding = { 2, 2, 2, 2 },
+  },
+}
+
 local window = {
   name = '+window',
   q = { ':q<Cr>', 'Quit' },
