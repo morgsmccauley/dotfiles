@@ -13,11 +13,12 @@ brew 'gh'
 brew 'lua'
 brew 'awscli'
 brew 'ninja' # for lua lsp
+brew 'lazygit'
+brew 'lazydocker'
 
 cask 'iterm2'
 cask 'nightowl'
 cask 'aws-vault'
 cask 'karibiner-elements'
-cask 'nightowl'
 cask 'docker'
 cask 'font-hack-nerd-font'
