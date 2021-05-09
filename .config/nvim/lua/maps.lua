@@ -29,9 +29,15 @@ nmap('<C-y>', '5<C-y>', { noremap = true })
 nmap('<Esc>', ':noh | echo ""<Cr><Esc>', { silent = true, noremap = true })
 nmap('QQ', ':qall<CR>', { noremap = true })
 
+-- can we merge sign/number columns and just highlight numbers?
+
 function ShowDocumentation()
-  if (vim.api.nvim_call_function('coc#rpc#ready', {})) then
+  if (vim.bo.filetype == 'vim' or vim.bo.filetype == 'help') then
+    vim.api.nvim_command('h '..vim.fn.expand'<cword>')
+  elseif (vim.api.nvim_call_function('coc#rpc#ready', {})) then
     vim.api.nvim_call_function('CocActionAsync', {'doHover'})
+  else
+    vim.api.nvim_command('!'..vim.bo.keywordprg..' '..vim.fn.expand('<cword>'))
   end
 end
 
