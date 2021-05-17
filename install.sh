@@ -15,6 +15,7 @@ ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/.config ~/.config
 ln -s ~/.dotfiles/.iterm ~/.iterm
 ln -s ~/.dotfiles/.zshrc ~/.zshrc
+ln -s ~/.dotfiles/lazygit-config.yml ~/Library/Application\ Support/lazygit/config.yml
 
 echo "Installing neovim node/python dependencies..."
 nvm install 12.16.1

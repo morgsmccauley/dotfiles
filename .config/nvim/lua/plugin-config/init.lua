@@ -8,6 +8,7 @@ require'plugin-config/kommentary'
 require'plugin-config/vim-sneak'
 require'plugin-config/tokyonight'
 require'plugin-config/which-key-nvim'
+require('plugin-config/coc-nvim')
 
 require'colorizer'.setup()
 

@@ -107,6 +107,8 @@ export COLORTERM="truecolor"
 
 export BAT_THEME="OneHalfLight"
 
+alias ld='lazydocker'
+alias lg='lazygit'
 alias v='nvim'
 alias config='v ~/.config/nvim/'
 alias cht='cht.sh'

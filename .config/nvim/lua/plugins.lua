@@ -15,7 +15,6 @@ return require("packer").startup(
         use 'kyazdani42/nvim-tree.lua'
         use 'lewis6991/gitsigns.nvim'
         use 'glepnir/galaxyline.nvim'
-        use 'chriskempson/base16-vim'
         use 'folke/tokyonight.nvim'
         use 'norcalli/nvim-colorizer.lua'
         use 'jiangmiao/auto-pairs'
@@ -27,14 +26,20 @@ return require("packer").startup(
         use 'justinmk/vim-sneak'
         use 'b3nj5m1n/kommentary'
         use 'folke/which-key.nvim'
+        use 'sindrets/diffview.nvim'
+        use 'kdheepak/lazygit.nvim'
+        -- use 'SirVer/ultisnips'
         use {
           'neoclide/coc.nvim',
+          -- make sure yarn is installed
           run = 'yarn install --frozen-lockfile'
         }
         use {
           'nvim-treesitter/nvim-treesitter',
           requires = {
-            {'sheerun/vim-polyglot'}
+            {'sheerun/vim-polyglot'},
+            -- doesnt work with which key https://github.com/romgrk/nvim-treesitter-context/issues/40
+            -- {'romgrk/nvim-treesitter-context'}
           },
           run = ':TSUpdate'
         }
@@ -46,7 +51,8 @@ return require("packer").startup(
             {'nvim-telescope/telescope-media-files.nvim'},
             {'nvim-telescope/telescope-github.nvim'},
             {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
-            {'Shatur95/neovim-session-manager'}
+            {'Shatur95/neovim-session-manager'},
+            {'pwntester/octo.nvim'}
           }
         }
         use {

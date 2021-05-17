@@ -23,7 +23,9 @@ local window = {
   k = { '6<C-w><C-w>', 'Go to sixth window' },
   D = { ':only<Cr>', 'Close all other windows' },
   l = { ':luafile %<Cr>', 'Source selected lua file' },
-  ['='] = { '<C-w>=', 'Balance windows' }
+  v = { ':vsp<Cr>', 'Split window vertically' },
+  ['='] = { '<C-w>=', 'Balance windows' },
+  ['-'] = { '<C-w>|', 'Maximise window' }
 }
 
 local git_remote = {
@@ -66,11 +68,11 @@ local git = {
   l = { ':lua require\'plugin-config/telescope-nvim\'.commits()<Cr>', 'Log' },
   p = { ':Telescope gh pull_request<Cr>', 'Pull requests' },
   b = { ':lua require\'plugin-config/telescope-nvim\'.branches()<Cr>', 'Branches' },
-  s = { ':call GitStash()<Cr>', 'Stash' },
+  s = { ':Telescope git_stash<Cr>', 'Stash' },
   L = { ':Telescope git_bcommits<Cr>', 'Buffer log' },
   B = { ':Git blame<Cr>', 'Blame annotations' },
   -- B = { ':lua require\'gitsigns\'.blame_line()<Cr>', 'Blame annotations' },
-  g = { ':Git<Cr>', 'Git' },
+  g = { ':LazyGit<Cr>', 'Git' },
   h = git_hunk,
   r = git_remote,
   R = git_rebase,
@@ -82,10 +84,23 @@ local session = {
   w = { ':SaveSession<Cr>', 'Write session' },
 }
 
+local marks = {
+  name = '+marks',
+  D = { ':delmarks!<Cr>', 'Delete all marks for current buffer' },
+  m = { ':norm\'<Cr>', 'List marks' }
+}
+
+local buffer = {
+  name = '+buffer',
+  e = { ':edit<Cr>', 'Edit buffer' }
+}
+
 local mappings = {
   w = window,
   g = git,
   s = session,
+  m = marks,
+  b = buffer,
   ['*'] = { 'yiw:Rg <C-r>+<Cr>', 'Search for symbol globally' },
   ['/'] ={ ':silent Rg<Cr>', 'Search globally' },
   [','] ={ ':lua require\'plugin-config/telescope-nvim\'.buffers()<Cr>', 'Switch buffer' },
