@@ -16,6 +16,10 @@
   ],
   "rust-analyzer.lens.enable": false,
   "rust-analyzer.checkOnSave.command": "clippy",
+  "snippets.extends": {
+    "javascript": ["typescript"],
+    "typescript": ["javascript"]
+  },
   "suggest.completionItemKindLabels": {
     "text": "",
     "method": "ƒ",

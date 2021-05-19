@@ -60,6 +60,8 @@ imap('<C-y>', 'coc#float#has_scroll() ? "\\<c-r>=coc#float#scroll(0)\\<cr>" : "\
 
 imap('<Cr>', 'pumvisible() ? coc#_select_confirm() : "\\<C-g>u\\<CR>\\<c-r>=coc#on_enter()\\<CR>"', { silent = true, expr = true })
 
+imap('<C-l>', '<Plug>(coc-snippets-expand)')
+
 nmap("<C-_>", "<Plug>kommentary_line_default")
 vmap("<C-_>", "<Plug>kommentary_visual_default")
 
