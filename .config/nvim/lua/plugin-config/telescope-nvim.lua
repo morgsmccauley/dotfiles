@@ -32,6 +32,7 @@ telescope.load_extension('fzf')
 telescope.load_extension('media_files')
 telescope.load_extension('gh')
 telescope.load_extension('session_manager')
+telescope.load_extension('coc')
 
 local M = {}
 
@@ -45,14 +46,14 @@ M.buffers = function(opts)
         local multi_selection = picker:get_multi_selection()
         if (next(multi_selection) ~= nil) then
           for _, selected in ipairs(multi_selection) do
-            pcall(vim.cmd, string.format([[silent bdelete! %s]], selected.bufnr))
+            vim.api.nvim_buf_delete(selected.bufnr, { force = true })
           end
           actions.close(prompt_bufnr)
           return
         end
 
         local selected = actions.get_selected_entry()
-        pcall(vim.cmd, string.format([[silent bdelete! %s]], selected.bufnr))
+        vim.api.nvim_buf_delete(selected.bufnr, { force = true })
         actions.close(prompt_bufnr)
       end)
 

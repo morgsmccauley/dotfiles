@@ -9,6 +9,9 @@
   "languageserver": {},
   "git.enableGutters": false,
   "eslint.autoFixOnSave": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "prisma"
+  ],
   "coc.preferences.rootPatterns": [".git"],
   "diagnostic.enableHighlightLineNumber": false,
   "snippets.ultisnips.directories": [

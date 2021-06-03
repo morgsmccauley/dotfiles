@@ -27,7 +27,7 @@ local window = {
   j = { '5<C-w><C-w>', 'Go to fifth window' },
   K = { '6<C-w><C-w>:q<Cr><C-w><C-p>', 'Close second window' },
   k = { '6<C-w><C-w>', 'Go to sixth window' },
-  O = { ':only<Cr>', 'Close all other windows' },
+  o = { ':only<Cr>', 'Close all other windows' },
   l = { ':luafile %<Cr>', 'Source selected lua file' },
   v = { ':vsp<Cr>', 'Split window vertically' },
   ['='] = { '<C-w>=', 'Balance windows' },
@@ -101,17 +101,25 @@ local buffer = {
   e = { ':edit<Cr>', 'Edit buffer' }
 }
 
+local code = {
+  name = '+code',
+  c = { ':Telescope coc commands<Cr>', 'Commands' },
+  a = { ':Telescope coc code_actions<Cr>', 'Code actions' },
+  d = { ':Telescope coc diagnostics<Cr>', 'File diagnostics' },
+}
+
 local mappings = {
   w = window,
   g = git,
   s = session,
   m = marks,
   b = buffer,
+  c = code,
   ['*'] = { 'yiw:Rg <C-r>+<Cr>', 'Search for symbol globally' },
   ['/'] ={ ':silent Rg<Cr>', 'Search globally' },
   [','] ={ ':lua require\'plugin-config/telescope-nvim\'.buffers()<Cr>', 'Switch buffer' },
   ['.'] = { ':Telescope git_files<Cr>', 'Find file' },
-  ['\\'] = { ':luafile ~/.config/nvim/init.lua<Cr>', 'Reload config' }
+  ['\\'] = { ':luafile ~/.config/nvim/init.lua<Cr>', 'Reload config' },
 }
 
 local opts = {

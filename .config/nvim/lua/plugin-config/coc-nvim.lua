@@ -12,4 +12,5 @@ vim.g.coc_global_extensions = {
   'coc-yank',
   'coc-git',
   'coc-omnisharp',
+  'coc-prisma'
 }

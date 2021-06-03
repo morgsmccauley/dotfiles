@@ -24,6 +24,7 @@ nmap('<C-l>', '<C-w>l', { noremap = true })
 nmap('<C-h>', '<C-w>h', { noremap = true })
 nmap('<C-j>', '5j', { noremap = true })
 nmap('<C-k>', '5k', { noremap = true })
+nmap('<C-m>', '<C-w>|', { noremap = true })
 --[[ nmap('<C-e>', '5<C-e>', { noremap = true })
 nmap('<C-y>', '5<C-y>', { noremap = true }) ]]
 nmap('<Esc>', ':noh | echo ""<Cr><Esc>', { silent = true, noremap = true })
@@ -42,10 +43,11 @@ function ShowDocumentation()
 end
 
 nmap('<S-k>', ':lua ShowDocumentation()<Cr>', { silent = true })
-nmap('gd', '<Plug>(coc-definition)', { silent = true })
-nmap('gy', '<Plug>(coc-type-definition)', { silent = true })
-nmap('gi', '<Plug>(coc-implementation)', { silent = true })
-nmap('gr', '<Plug>(coc-references)', { silent = true })
+
+nmap('gd', ':Telescope coc definitions<Cr>', { silent = true })
+nmap('gy', ':Telescope coc type_definitions<Cr>', { silent = true })
+nmap('gi', ':Telescope coc implementations<Cr>', { silent = true })
+nmap('gr', ':Telescope coc references<Cr>', { silent = true })
 
 nmap('<C-e>', 'coc#float#has_scroll() ? coc#float#scroll(1) : "5<C-e>"', { noremap = true, silent = true, nowait = true, expr = true })
 nmap('<C-y>', 'coc#float#has_scroll() ? coc#float#scroll(0) : "5<C-y>"', { noremap = true, silent = true, nowait = true, expr = true })

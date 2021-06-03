@@ -1,2 +1,3 @@
 gui:
   scrollHeight: 10
+  mainPanelSplitMode: 'vertical'

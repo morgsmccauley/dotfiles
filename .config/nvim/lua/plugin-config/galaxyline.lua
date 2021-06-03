@@ -153,12 +153,11 @@ section.left = {
 section.right = {
   {
     LspClient = {
-      provider = 'GetLspClient',
-      icon = ' ',
-      condition = function()
-        local lsp = require'galaxyline.provider_lsp'
-        return lsp.get_lsp_client() ~= 'No Active Lsp' and condition.hide_in_width()
+      provider = function()
+        return vim.g.coc_status;
       end,
+      icon = ' ',
+      condition = condition.hide_in_width,
       highlight = {colors.darkblue, colors.line_bg}
     }
   },

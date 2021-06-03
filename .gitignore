@@ -12,4 +12,6 @@
 
 .config/nvim/plugin/**/*
 
+.config/AWSVPNClient
+
 **/*/.netrwhist

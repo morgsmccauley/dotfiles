@@ -28,6 +28,7 @@ return require("packer").startup(
         use 'folke/which-key.nvim'
         use 'sindrets/diffview.nvim'
         use 'kdheepak/lazygit.nvim'
+        use 'pantharshit00/vim-prisma'
         -- use 'SirVer/ultisnips'
         use {
           'neoclide/coc.nvim',
@@ -52,7 +53,8 @@ return require("packer").startup(
             {'nvim-telescope/telescope-github.nvim'},
             {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
             {'Shatur95/neovim-session-manager'},
-            {'pwntester/octo.nvim'}
+            {'pwntester/octo.nvim'},
+            {'fannheyward/telescope-coc.nvim'}
           }
         }
         use {
