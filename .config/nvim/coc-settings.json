@@ -6,13 +6,22 @@
   "diagnostic.warningSign": "",
   "diagnostic.hintSign": "",
   "diagnostic.virtualTextPrefix": "-- ",
-  "languageserver": {},
+  "languageserver": {
+    "terraform": {
+      "command": "terraform-ls",
+      "args": ["serve"],
+      "filetypes": ["terraform", "tf"],
+      "initializationOptions": {}
+    }
+  },
   "git.enableGutters": false,
   "eslint.autoFixOnSave": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "prisma"
   ],
   "coc.preferences.rootPatterns": [".git"],
+  "javascript.suggestionActions.enabled": false,
+  "javascript.showUnused": false,
   "diagnostic.enableHighlightLineNumber": false,
   "snippets.ultisnips.directories": [
     "UltiSnips"
@@ -23,6 +32,7 @@
     "javascript": ["typescript"],
     "typescript": ["javascript"]
   },
+  "Lua.diagnostics.globals": ["vim"],
   "suggest.completionItemKindLabels": {
     "text": "",
     "method": "ƒ",
