@@ -134,7 +134,7 @@ alias rn='node_modules/.bin/react-native'
 alias rnri='rn run-ios'
 alias rnra='rn run-android'
 alias nvip='nvm use && npm install && npm prune'
-alias dc='docker-compose'
+alias dc='docker compose'
 alias d='docker'
 alias de='docker exec'
 
