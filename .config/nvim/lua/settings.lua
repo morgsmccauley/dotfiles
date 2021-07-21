@@ -38,3 +38,5 @@ vim.cmd 'syntax on'
 vim.api.nvim_command[[
   autocmd BufEnter *SchemaChangesAreApproved*,*.gql,*.graphql :set filetype=graphql
 ]]
+
+vim.cmd 'colorscheme tokyonight'

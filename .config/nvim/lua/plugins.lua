@@ -23,13 +23,15 @@ return require("packer").startup(
         use 'tpope/vim-surround'
         use 'tpope/vim-fugitive'
         use 'tpope/vim-repeat'
-        use 'justinmk/vim-sneak'
+        use 'phaazon/hop.nvim'
         use 'b3nj5m1n/kommentary'
         use 'folke/which-key.nvim'
         use 'sindrets/diffview.nvim'
-        use 'kdheepak/lazygit.nvim'
         use 'pantharshit00/vim-prisma'
-        -- use 'SirVer/ultisnips'
+        use {
+          'TimUntersberger/neogit',
+          requires = 'nvim-lua/plenary.nvim'
+        }
         use {
           'neoclide/coc.nvim',
           -- make sure yarn is installed
@@ -53,7 +55,7 @@ return require("packer").startup(
             {'nvim-telescope/telescope-github.nvim'},
             {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
             {'Shatur95/neovim-session-manager'},
-            {'pwntester/octo.nvim'},
+            -- {'pwntester/octo.nvim'},
             {'fannheyward/telescope-coc.nvim'}
           }
         }

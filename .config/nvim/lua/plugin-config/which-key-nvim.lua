@@ -4,6 +4,7 @@ local wk = require("which-key")
 
 wk.setup {
   window = {
+    border = 'single',
     margin = { 1, 0, 0, 0 },
     padding = { 2, 2, 2, 2 },
   },
@@ -74,11 +75,12 @@ local git = {
   l = { ':lua require\'plugin-config/telescope-nvim\'.commits()<Cr>', 'Log' },
   p = { ':Telescope gh pull_request<Cr>', 'Pull requests' },
   b = { ':lua require\'plugin-config/telescope-nvim\'.branches()<Cr>', 'Branches' },
-  s = { ':Telescope git_stash<Cr>', 'Stash' },
+  s = { ':lua require\'plugin-config/telescope-nvim\'.stash()<Cr>', 'Stash' },
+  c = { ':Neogit commit<Cr>', 'Commit' },
   L = { ':Telescope git_bcommits<Cr>', 'Buffer log' },
   B = { ':Git blame<Cr>', 'Blame annotations' },
   -- B = { ':lua require\'gitsigns\'.blame_line()<Cr>', 'Blame annotations' },
-  g = { ':LazyGit<Cr>', 'Git' },
+  g = { ':Neogit<Cr>', 'Neogit' },
   h = git_hunk,
   r = git_remote,
   R = git_rebase,
@@ -108,6 +110,15 @@ local code = {
   d = { ':Telescope coc diagnostics<Cr>', 'File diagnostics' },
 }
 
+local hop = {
+  name = '+hop',
+  w = { ':HopWord<Cr>',  'Word' },
+  l = { ':HopLine<Cr>',  'Line' },
+  p = { ':HopPattern<Cr>', 'Pattern' },
+  s = { ':HopChar1<Cr>', 'Single char' },
+  d = { ':HopChar2<Cr>', 'Double char' },
+}
+
 local mappings = {
   w = window,
   g = git,
@@ -115,8 +126,9 @@ local mappings = {
   m = marks,
   b = buffer,
   c = code,
-  ['*'] = { 'yiw:Rg <C-r>+<Cr>', 'Search for symbol globally' },
-  ['/'] ={ ':silent Rg<Cr>', 'Search globally' },
+  h = hop,
+  ['*'] = { ':Telescope grep_string<Cr>', 'Search for symbol globally' },
+  ['/'] ={ ':Telescope live_grep<Cr>', 'Search globally' },
   [','] ={ ':lua require\'plugin-config/telescope-nvim\'.buffers()<Cr>', 'Switch buffer' },
   ['.'] = { ':Telescope git_files<Cr>', 'Find file' },
   ['\\'] = { ':luafile ~/.config/nvim/init.lua<Cr>', 'Reload config' },
