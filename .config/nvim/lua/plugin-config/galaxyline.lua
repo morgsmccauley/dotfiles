@@ -1,10 +1,8 @@
 local galaxyline = require('galaxyline')
-local fileinfo = require('galaxyline.provider_fileinfo')
 local condition = require('galaxyline.condition')
 local diagnostic = require('galaxyline.provider_diagnostic')
-local tokyonight = require('tokyonight.theme').setup()
+local fileinfo = require('galaxyline.provider_fileinfo')
 
-local theme = tokyonight.colors
 local section = galaxyline.section
 
 galaxyline.short_line_list = {'NvimTree', 'term', 'LuaTree', 'vista', 'dbui'}
@@ -38,15 +36,16 @@ local light_colors = {
   line_bg = "#e1e2e6",
   fg = '#3760bf',
   darkblue = '#61afef',
-  green = theme.green,
-  orange = theme.orange,
-  magenta = theme.magenta,
-  red = theme.red,
+  green = "#9ece6a",
+  orange = "#ff9e64",
+  magenta = "#bb9af7",
+  red = "#f7768e",
   lightbg = "#c4c8da",
   nord = '#81A1C1',
   yellow = "#e0af68",
 }
 
+-- local colors = vim.o.background == 'light' and light_colors or dark_colors
 local colors = dark_colors
 
 local custom_icons = require('galaxyline.provider_fileinfo').define_file_icon()
@@ -73,7 +72,7 @@ local filetype_not_disabled = function()
   return not disabled_filetypes[ft]
 end
 
-local mode_color_map = {
+--[[ local mode_color_map = {
     n = colors.nord,
     i = colors.red,
     c = colors.green,
@@ -81,71 +80,115 @@ local mode_color_map = {
     [''] = colors.magenta,
     v = colors.magenta,
     R = colors.yellow
+} ]]
+
+local icons = {
+  locker = '',
+  unsaved = ''
 }
 
 section.left = {
-  {
-    LeftRounded = {
-        provider = function()
-          return ''
-        end,
-        highlight = {colors.lightbg, colors.bg}
-    }
-  },
-  {
+  --[[ {
     ViMode = {
         provider = function()
           local color = mode_color_map[vim.fn.mode()] or mode_color_map['n']
           vim.api.nvim_command('hi GalaxyViMode guifg='..color)
           return '   '
         end,
-        highlight = {colors.bg, colors.lightbg},
+        highlight = {colors.bg, colors.line_bg},
         separator = ' ',
-        separator_highlight = {colors.lightbg, colors.lightbg}
+        separator_highlight = {colors.lightbg, colors.line_bg}
     }
+  }, ]]
+  {
+    Space = {
+      provider = function() return ' ' end,
+      separator = ' ',
+      separator_highlight = {colors.line_bg, colors.line_bg},
+    },
   },
   {
     FileIcon = {
         provider = 'FileIcon',
         condition = condition.buffer_not_empty,
-        highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color, colors.lightbg}
+        highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color, colors.line_bg}
     }
   },
   {
     FileName = {
       provider = function()
-        return fileinfo.get_current_file_name()
+        if not condition.buffer_not_empty() then
+          return ''
+        end
+
+        local fname
+
+        if not condition.hide_in_width() or vim.fn.expand('%'):len() > 50 then
+          fname = vim.fn.expand '%:t' -- filename only
+        else
+          fname = vim.fn.fnamemodify(vim.fn.expand '%', ':~:.') -- full path
+        end
+
+        if #fname == 0 then
+          return ''
+        end
+
+        if vim.bo.readonly then
+          fname = fname .. '   '
+        end
+
+        if vim.bo.modified then
+          fname = fname .. '   '
+        end
+
+        return ' ' .. fname .. ' '
       end,
-      condition = condition.buffer_not_empty,
-      highlight = {colors.fg, colors.lightbg}
+      highlight = {colors.fg, colors.line_bg}
     }
   },
   {
     PerCent = {
       provider = 'LinePercent',
-      highlight = {colors.fg, colors.lightbg},
+      highlight = {colors.fg, colors.line_bg},
       condition = function()
         return filetype_not_disabled() and condition.buffer_not_empty()
       end,
     }
   },
   {
-    teech = {
-        provider = function()
-            return ''
-        end,
-        separator = ' ',
-        highlight = {colors.lightbg, colors.bg}
+    DiagnosticError = {
+      provider = diagnostic.get_diagnostic_error,
+      icon = ' ',
+      separator = ' ',
+      separator_highlight = {colors.lightbg, colors.line_bg},
+      highlight = {colors.red, colors.line_bg}
     }
   },
   {
-    LeftEnd = {
-        provider = function()
-            return ' '
-        end,
-        separator = ' ',
-        separator_highlight = {colors.line_bg, colors.line_bg},
-        highlight = {colors.line_bg, colors.line_bg}
+    DiagnosticWarn = {
+      provider = diagnostic.get_diagnostic_warn,
+      icon = ' ',
+      separator = ' ',
+      separator_highlight = {colors.lightbg, colors.line_bg},
+      highlight = {colors.yellow, colors.line_bg}
+    }
+  },
+  {
+    DiagnosticInfo = {
+      provider = diagnostic.get_diagnostic_info,
+      icon = ' ',
+      separator = ' ',
+      separator_highlight = {colors.lightbg, colors.line_bg},
+      highlight = {colors.darkblue, colors.line_bg}
+    }
+  },
+  {
+    DiagnoticHint = {
+      provider = diagnostic.get_diagnostic_hint,
+      icon = ' ',
+      separator = ' ',
+      separator_highlight = {colors.lightbg, colors.line_bg},
+      highlight = {colors.green, colors.line_bg}
     }
   },
 }
@@ -169,6 +212,7 @@ section.right = {
       condition = function()
         return condition.check_git_workspace() and condition.hide_in_width()
       end,
+      separator_highlight = {colors.lightbg, colors.line_bg},
       highlight = {colors.green, colors.line_bg}
     }
   },
@@ -177,75 +221,5 @@ section.right = {
       provider = function() return ' ' end,
       separator = ''
     },
-  },
-  {
-    LeftRound = {
-        provider = function()
-          return ''
-        end,
-        highlight = {colors.lightbg, colors.bg}
-    }
-  },
-  {
-    DiagnosticError = {
-      provider = function()
-        local error = diagnostic.get_diagnostic_error()
-        if error == nil or error == '' then
-          return '- ' 
-        end
-        return error..' '
-      end,
-      icon = ' ',
-      separator = ' ',
-      separator_highlight = {colors.lightbg, colors.lightbg},
-      highlight = {colors.red, colors.lightbg}
-    }
-  },
-  {
-    DiagnosticWarn = {
-      provider = function()
-        local warn = diagnostic.get_diagnostic_warn()
-        if warn == nil or warn == '' then
-          return '- ' 
-        end
-        return warn..' '
-      end,
-      icon = ' ',
-      highlight = {colors.yellow, colors.lightbg}
-    }
-  },
-  {
-    DiagnosticInfo = {
-      provider = function()
-        local info = diagnostic.get_diagnostic_info()
-        if info == nil or info == '' then
-          return '- ' 
-        end
-        return info..' '
-      end,
-      icon = ' ',
-      highlight = {colors.darkblue, colors.lightbg}
-    }
-  },
-  {
-    DiagnoticHint = {
-      provider = function()
-        local hint = diagnostic.get_diagnostic_hint()
-        if hint == nil or hint == '' then
-          return '- ' 
-        end
-        return hint..' '
-      end,
-      icon = ' ',
-      highlight = {colors.green, colors.lightbg}
-    }
-  },
-  {
-    RightRound = {
-        provider = function()
-            return ''
-        end,
-        highlight = {colors.lightbg, colors.bg}
-    }
   },
 }
