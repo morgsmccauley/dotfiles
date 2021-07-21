@@ -30,6 +30,10 @@ nmap('<C-y>', '5<C-y>', { noremap = true }) ]]
 nmap('<Esc>', ':noh | echo ""<Cr><Esc>', { silent = true, noremap = true })
 nmap('QQ', ':qall<CR>', { noremap = true })
 
+nmap('\\', '<cmd>HopWord<Cr>', { noremap = true, silent = true })
+
+nmap('s', ':HopChar2<Cr>', { noremap = true, silent = true })
+
 -- can we merge sign/number columns and just highlight numbers?
 
 function ShowDocumentation()
