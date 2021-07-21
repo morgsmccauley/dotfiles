@@ -13,7 +13,9 @@ vim.g.nvim_tree_tab_open = 1
 vim.g.nvim_tree_allow_resize = 1
 vim.g.nvim_tree_ignore = {'.git', '.DS_STORE'}
 vim.g.nvim_tree_hide_dotfiles = 0
+vim.g.nvim_tree_disable_window_picker = 1
 vim.g.nvim_tree_highlight_opened_files = true
+vim.g.nvim_tree_special_files = {}
 
 vim.g.nvim_tree_show_icons = {
     git = 1,

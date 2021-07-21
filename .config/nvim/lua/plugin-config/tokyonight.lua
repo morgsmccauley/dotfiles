@@ -1,5 +1,5 @@
-vim.g.tokyonight_sidebars = { "quickfix", "__vista__", "terminal", "fzf" }
+vim.g.tokyonight_sidebars = { "quickfix", "__vista__", "term", "fzf", "fugitive" }
 vim.g.tokyonight_italic_keywords = false
 vim.g.tokyonight_hide_inactive_statusline = true
-
-vim.cmd 'colorscheme tokyonight'
+vim.g.tokyonight_dark_sidebar = false
+vim.g.tokyonight_style = "storm"
