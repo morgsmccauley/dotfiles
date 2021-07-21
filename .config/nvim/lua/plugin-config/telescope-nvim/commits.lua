@@ -2,9 +2,11 @@ local action_state = require'telescope.actions.state'
 local builtin = require'telescope.builtin'
 local utils = require'telescope.utils'
 local actions = require'telescope.actions'
+local previewers = require('telescope.previewers')
 
 return function()
   builtin.git_commits({
+    previewer = previewers.git_commit_diff_as_was.new(),
     attach_mappings = function(_, map)
       local fixup = function(prompt_bufnr)
         local cwd = action_state.get_current_picker(prompt_bufnr).cwd
