@@ -32,3 +32,5 @@ vim.cmd 'hi TelescopeBorder   guifg=#3e4451'
 vim.cmd 'hi TelescopePromptBorder   guifg=#3e4451'
 vim.cmd 'hi TelescopeResultsBorder  guifg=#3e4451'
 vim.cmd 'hi TelescopePreviewBorder  guifg=#525865'
+
+vim.api.nvim_command('highlight HopNextKey2 guifg=#00dfff')

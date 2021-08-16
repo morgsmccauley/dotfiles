@@ -22,6 +22,7 @@ function! MonkeyTerminalOpen()
     execute "setlocal noshowmode"
     execute "setlocal noruler"
     execute "setlocal noshowcmd"
+    execute "setlocal noswapfile"
 
     " The buffer of the terminal won't appear in the list of the buffers
     " when calling :buffers command

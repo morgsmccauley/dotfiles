@@ -24,7 +24,7 @@ nmap('<C-l>', '<C-w>l', { noremap = true })
 nmap('<C-h>', '<C-w>h', { noremap = true })
 nmap('<C-j>', '5j', { noremap = true })
 nmap('<C-k>', '5k', { noremap = true })
-nmap('<C-m>', '<C-w>|', { noremap = true })
+-- nmap('<C-m>', '<C-w>|', { noremap = true })
 --[[ nmap('<C-e>', '5<C-e>', { noremap = true })
 nmap('<C-y>', '5<C-y>', { noremap = true }) ]]
 nmap('<Esc>', ':noh | echo ""<Cr><Esc>', { silent = true, noremap = true })

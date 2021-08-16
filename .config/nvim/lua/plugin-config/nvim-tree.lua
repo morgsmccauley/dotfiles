@@ -40,11 +40,11 @@ vim.g.nvim_tree_icons = {
     }
 }
 
-local get_lua_cb = function(cb_name)
+--[[ local get_lua_cb = function(cb_name)
     return string.format(':lua require\'nvim-tree\'.on_keypress(\'%s\')<CR>', cb_name)
-end
+end ]]
 
-vim.g.nvim_tree_bindings = {
+--[[ vim.g.nvim_tree_bindings = {
     ['<CR>'] = get_lua_cb('edit'),
     ['o'] = get_lua_cb('edit'),
     ['<2-LeftMouse>'] = get_lua_cb('edit'),
@@ -70,4 +70,4 @@ vim.g.nvim_tree_bindings = {
     [']c'] = get_lua_cb('next_git_item'),
     ['-'] = get_lua_cb('dir_up'),
     ['q'] = get_lua_cb('close')
-}
+} ]]

@@ -6,7 +6,7 @@ local previewers = require('telescope.previewers')
 
 return function()
   builtin.git_commits({
-    previewer = previewers.git_commit_diff_as_was.new(),
+    -- previewer = previewers.git_commit_diff_as_was.new({}),
     attach_mappings = function(_, map)
       local fixup = function(prompt_bufnr)
         local cwd = action_state.get_current_picker(prompt_bufnr).cwd

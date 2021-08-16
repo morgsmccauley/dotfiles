@@ -1,8 +1,14 @@
+local builtin = require'telescope.builtin'
 local telescope = require'telescope'
 local actions = require'telescope.actions'
+local previewers = require('telescope.previewers')
 
 telescope.setup {
   defaults = {
+    -- scroll_strategy = 'limit',
+    history = {
+      limit = 500
+    },
     vimgrep_arguments = {
       'rg',
       '--color=never',
@@ -18,6 +24,8 @@ telescope.setup {
         ["<esc>"] = actions.close,
         ["<C-j>"] = actions.move_selection_next,
         ["<C-k>"] = actions.move_selection_previous,
+        ["<C-f>"] = actions.send_selected_to_qflist + actions.open_qflist,
+        ["<C-e>"] = actions.cycle_previewers_next,
       },
     },
     set_env = {['COLORTERM'] = 'truecolor'},
@@ -43,8 +51,14 @@ telescope.load_extension('session_manager')
 telescope.load_extension('coc')
 
 return {
+  jira = require('plugin-config.telescope-nvim.jira'),
   buffers = require('plugin-config.telescope-nvim.buffers'),
   commits = require('plugin-config.telescope-nvim.commits'),
+  bcommits = function()
+    builtin.git_bcommits({
+      -- previewer = previewers.git_commit_diff_as_was.new({})
+    })
+  end,
   branches = require('plugin-config.telescope-nvim.branches'),
   stash = require('plugin-config.telescope-nvim.stash'),
 }

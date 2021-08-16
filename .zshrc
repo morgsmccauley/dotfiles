@@ -62,7 +62,7 @@ HIST_STAMPS="mm/dd/yyyy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git gitfast)
+plugins=(git gitfast z)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -138,6 +138,8 @@ alias dc='docker compose'
 alias d='docker'
 alias de='docker exec'
 
+alias ave='aws-vault exec'
+
 lazynvm() {
   unset -f nvm node npm
   export NVM_DIR=~/.nvm
@@ -179,3 +181,5 @@ fi
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+export PATH="$PATH:$HOME/go/bin"

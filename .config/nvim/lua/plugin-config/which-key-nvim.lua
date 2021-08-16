@@ -37,18 +37,9 @@ local window = {
 
 local git_remote = {
   name = '+remote',
-  p = { ':echo "Pushing to remote..." | Git push<Cr>', 'Push' },
-  P = {
-    function()
-      local confirm = vim.fn.input'Force push to remote? [Y/n] '
-      if string.lower(confirm) ~= 'y' then return end
-
-      vim.api.nvim_command'Git push --force-with-lease'
-    end,
-    'Force push'
-  },
+  p = { ':Neogit push<Cr>', 'Push' },
   u = { '!gpsup<Cr>', 'Push creating upstream' },
-  l = { ':echo "Pulling from remote..." | Git pull<Cr>', 'Pull' },
+  l = { ':Neogit pull<Cr>', 'Pull' },
   f = { ':echo "Fetching remote..." | Git fetch<Cr>', 'Fetch' },
   y = { ':CocCommand git.copyUrl<Cr>', 'Copy GitHub URL of current line' },
 }
@@ -77,9 +68,9 @@ local git = {
   b = { ':lua require\'plugin-config/telescope-nvim\'.branches()<Cr>', 'Branches' },
   s = { ':lua require\'plugin-config/telescope-nvim\'.stash()<Cr>', 'Stash' },
   c = { ':Neogit commit<Cr>', 'Commit' },
-  L = { ':Telescope git_bcommits<Cr>', 'Buffer log' },
-  B = { ':Git blame<Cr>', 'Blame annotations' },
-  -- B = { ':lua require\'gitsigns\'.blame_line()<Cr>', 'Blame annotations' },
+  L = { ':lua require\'plugin-config/telescope-nvim\'.bcommits()<Cr>', 'Buffer log' },
+  B = { ':Gitsigns blame_line<Cr>', 'Blame annotations' },
+  -- B = { ':Gitsigns toggle_current_line_blame<Cr>', 'Blame annotations' },
   g = { ':Neogit<Cr>', 'Neogit' },
   h = git_hunk,
   r = git_remote,
@@ -119,6 +110,11 @@ local hop = {
   d = { ':HopChar2<Cr>', 'Double char' },
 }
 
+local jira = {
+  name = '+jira',
+  l = { ':lua require\'plugin-config.telescope-nvim\'.jira()<Cr>', 'List Issues' }
+}
+
 local mappings = {
   w = window,
   g = git,
@@ -127,6 +123,7 @@ local mappings = {
   b = buffer,
   c = code,
   h = hop,
+  j = jira,
   ['*'] = { ':Telescope grep_string<Cr>', 'Search for symbol globally' },
   ['/'] ={ ':Telescope live_grep<Cr>', 'Search globally' },
   [','] ={ ':lua require\'plugin-config/telescope-nvim\'.buffers()<Cr>', 'Switch buffer' },

@@ -1,0 +1,4 @@
+endpoint: https://pushpay.atlassian.net
+user: morgan.mccauley@pushpay.com
+password-source: keyring
+project: CAPPS
