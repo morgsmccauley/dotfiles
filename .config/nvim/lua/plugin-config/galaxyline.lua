@@ -2,6 +2,7 @@ local galaxyline = require('galaxyline')
 local condition = require('galaxyline.condition')
 local diagnostic = require('galaxyline.provider_diagnostic')
 local fileinfo = require('galaxyline.provider_fileinfo')
+local lsp = require('galaxyline.provider_lsp')
 
 local section = galaxyline.section
 
@@ -196,10 +197,8 @@ section.left = {
 section.right = {
   {
     LspClient = {
-      provider = function()
-        return vim.g.coc_status;
-      end,
-      icon = ' ',
+      provider = lsp.get_lsp_client,
+      icon = '  ',
       condition = condition.hide_in_width,
       highlight = {colors.darkblue, colors.line_bg}
     }

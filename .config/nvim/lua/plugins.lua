@@ -28,16 +28,23 @@ return require("packer").startup(
         use 'folke/which-key.nvim'
         use 'sindrets/diffview.nvim'
         use 'pantharshit00/vim-prisma'
-        -- use 'pwntester/octo.nvim'
+        use 'pwntester/octo.nvim'
+        use 'neovim/nvim-lspconfig'
+        use {
+          'hrsh7th/nvim-cmp',
+          requires = {
+            {'hrsh7th/cmp-nvim-lsp'}
+          }
+        }
         use {
           'TimUntersberger/neogit',
           requires = 'nvim-lua/plenary.nvim'
         }
-        use {
+        --[[ use {
           'neoclide/coc.nvim',
           -- make sure yarn is installed
           run = 'yarn install --frozen-lockfile'
-        }
+        } ]]
         use {
           'nvim-treesitter/nvim-treesitter',
           requires = {
