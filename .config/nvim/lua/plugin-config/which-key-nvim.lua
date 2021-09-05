@@ -96,9 +96,10 @@ local buffer = {
 
 local code = {
   name = '+code',
-  c = { ':Telescope coc commands<Cr>', 'Commands' },
-  a = { ':Telescope coc code_actions<Cr>', 'Code actions' },
-  d = { ':Telescope coc diagnostics<Cr>', 'File diagnostics' },
+  -- c = { ':Telescope commands<Cr>', 'Commands' },
+  a = { ':Telescope lsp_code_actions<Cr>', 'Code actions' },
+  d = { ':Telescope lsp_document_diagnostics<Cr>', 'File diagnostics' },
+  f = { ':lua vim.lsp.buf.formatting()<Cr>', 'Format' }
 }
 
 local hop = {

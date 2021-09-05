@@ -2,6 +2,7 @@ local builtin = require'telescope.builtin'
 local make_entry = require'telescope.make_entry'
 local finders = require'telescope.finders'
 local actions = require'telescope.actions'
+local action_utils = require'telescope.actions.utils'
 
 return function(opts)
   local new_finder = function(opts)
@@ -58,23 +59,7 @@ return function(opts)
     show_all_buffers = true,
     sort_lastused = true,
     attach_mappings = function(_, map)
-      map('i', '<C-x>', function(prompt_bufnr)
-        local picker = actions.get_current_picker(prompt_bufnr)
-        local multi_selection = picker:get_multi_selection()
-        if (next(multi_selection) ~= nil) then
-          for _, selected in ipairs(multi_selection) do
-            vim.api.nvim_buf_delete(selected.bufnr, { force = true })
-          end
-
-          picker:refresh(new_finder(opts), { reset_prompt = true })
-          return
-        end
-
-        local selected = actions.get_selected_entry()
-        vim.api.nvim_buf_delete(selected.bufnr, { force = true })
-        picker:refresh(new_finder(opts), { reset_prompt = true })
-      end)
-
+      map('i', '<C-x>', actions.delete_buffer)
       return true
     end
   })

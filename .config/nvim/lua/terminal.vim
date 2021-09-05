@@ -33,7 +33,7 @@ function! MonkeyTerminalOpen()
 
     execute "tnoremap <buffer> <C-\\> <C-\\><C-n>"
     execute "tnoremap <buffer> <C-h> <C-\\><C-n><C-w><C-h>"
-    execute "tnoremap <buffer> <C-t> <C-\\><C-n> :call MonkeyTerminalToggle()<CR>"
+    execute "tnoremap <buffer> <C-t> <C-\\><C-n> :call MonkeyTerminalClose()<CR>"
 
     startinsert!
   else
@@ -57,9 +57,7 @@ function! MonkeyTerminalToggle()
 endfunction
 
 function! MonkeyTerminalQuit()
-  echom 'exec'
   if s:monkey_terminal_buffer != -1
-    echom 'delete'
     execute "bd! ".s:monkey_terminal_buffer
     let s:monkey_terminal_buffer = -1
   endif

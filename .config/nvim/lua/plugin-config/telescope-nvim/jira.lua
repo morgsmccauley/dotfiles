@@ -42,17 +42,22 @@ return function(opts)
 
         local tmp_table = vim.split(line, ":");
         local ticket = tmp_table[1]
-        local title = string.gsub(tmp_table[2], "^%s*(.-)%s*$", "%1")
+        local priority = tmp_table[2]
+        local status = tmp_table[3]
+        local description = tmp_table[4]
 
         return {
           value = ticket,
           ordinal = line,
-          display = line,
+          display = ticket .. ' ' .. description .. ' (' .. status ..  '/' .. priority .. ')',
           ticket = ticket,
-          title = title,
+          description = description,
+          priority = priority,
+          status = status,
         }
       end
     }),
+    sorter = conf.file_sorter(opts),
     previewer = issue_previewer(opts),
     attach_mappings = function(_, map)
       map('i', '<c-y>', function (prompt_bufnr)

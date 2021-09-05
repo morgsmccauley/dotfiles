@@ -26,6 +26,7 @@ telescope.setup {
         ["<C-k>"] = actions.move_selection_previous,
         ["<C-f>"] = actions.send_selected_to_qflist + actions.open_qflist,
         ["<C-e>"] = actions.cycle_previewers_next,
+        ["<C-a>"] = actions.toggle_all,
       },
     },
     set_env = {['COLORTERM'] = 'truecolor'},
