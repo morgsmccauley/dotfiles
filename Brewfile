@@ -15,6 +15,7 @@ brew 'awscli'
 brew 'ninja' # for lua lsp
 brew 'lazygit'
 brew 'lazydocker'
+brew 'cormacrelf/tap/dark-notify'
 
 cask 'iterm2'
 cask 'nightowl'

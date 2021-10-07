@@ -46,20 +46,27 @@ local light_colors = {
   yellow = "#e0af68",
 }
 
--- local colors = vim.o.background == 'light' and light_colors or dark_colors
-local colors = dark_colors
+function getThemedColor(color) 
+  return function ()
+    if vim.o.background ~= nil and vim.o.background == "light" then
+        return light_colors[color]
+    elseif vim.o.background ~= nil and vim.o.background == "dark" then
+        return dark_colors[color]
+    end
+  end
+end
 
 local custom_icons = require('galaxyline.provider_fileinfo').define_file_icon()
 custom_icons['term'] = {
-  colors.darkblue,
+  getThemedColor('darkblue')(),
   '',
 }
 custom_icons['NvimTree'] = {
-  colors.darkblue,
+  getThemedColor('darkblue')(),
   'פּ',
 }
 custom_icons['Jenkinsfile'] = {
-  colors.red,
+  getThemedColor('red')(),
   '',
 }
 
@@ -105,14 +112,14 @@ section.left = {
     Space = {
       provider = function() return ' ' end,
       separator = ' ',
-      separator_highlight = {colors.line_bg, colors.line_bg},
+      separator_highlight = {getThemedColor('line_bg'), getThemedColor('line_bg')},
     },
   },
   {
     FileIcon = {
         provider = 'FileIcon',
         condition = condition.buffer_not_empty,
-        highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color, colors.line_bg}
+        highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color, getThemedColor(line_bg)}
     }
   },
   {
@@ -144,13 +151,13 @@ section.left = {
 
         return ' ' .. fname .. ' '
       end,
-      highlight = {colors.fg, colors.line_bg}
+      highlight = {getThemedColor('fg'), getThemedColor('line_bg')}
     }
   },
   {
     PerCent = {
       provider = 'LinePercent',
-      highlight = {colors.fg, colors.line_bg},
+      highlight = {getThemedColor('fg'), getThemedColor('line_bg')},
       condition = function()
         return filetype_not_disabled() and condition.buffer_not_empty()
       end,
@@ -161,8 +168,8 @@ section.left = {
       provider = diagnostic.get_diagnostic_error,
       icon = ' ',
       separator = ' ',
-      separator_highlight = {colors.lightbg, colors.line_bg},
-      highlight = {colors.red, colors.line_bg}
+      separator_highlight = {getThemedColor('lightbg'), getThemedColor('line_bg')},
+      highlight = {getThemedColor('red'), getThemedColor('line_bg')}
     }
   },
   {
@@ -170,8 +177,8 @@ section.left = {
       provider = diagnostic.get_diagnostic_warn,
       icon = ' ',
       separator = ' ',
-      separator_highlight = {colors.lightbg, colors.line_bg},
-      highlight = {colors.yellow, colors.line_bg}
+      separator_highlight = {getThemedColor('lightbg'), getThemedColor('line_bg')},
+      highlight = {getThemedColor('yellow'), getThemedColor('line_bg')}
     }
   },
   {
@@ -179,8 +186,8 @@ section.left = {
       provider = diagnostic.get_diagnostic_info,
       icon = ' ',
       separator = ' ',
-      separator_highlight = {colors.lightbg, colors.line_bg},
-      highlight = {colors.darkblue, colors.line_bg}
+      separator_highlight = {getThemedColor('lightbg'), getThemedColor('line_bg')},
+      highlight = {getThemedColor('darkblue'), getThemedColor('line_bg')}
     }
   },
   {
@@ -188,8 +195,8 @@ section.left = {
       provider = diagnostic.get_diagnostic_hint,
       icon = ' ',
       separator = ' ',
-      separator_highlight = {colors.lightbg, colors.line_bg},
-      highlight = {colors.green, colors.line_bg}
+      separator_highlight = {getThemedColor('lightbg'), getThemedColor('line_bg')},
+      highlight = {getThemedColor('green'), getThemedColor('line_bg')}
     }
   },
 }
@@ -200,7 +207,7 @@ section.right = {
       provider = lsp.get_lsp_client,
       icon = '  ',
       condition = condition.hide_in_width,
-      highlight = {colors.darkblue, colors.line_bg}
+      highlight = {getThemedColor('darkblue'), getThemedColor('line_bg')}
     }
   },
   {
@@ -211,8 +218,8 @@ section.right = {
       condition = function()
         return condition.check_git_workspace() and condition.hide_in_width()
       end,
-      separator_highlight = {colors.lightbg, colors.line_bg},
-      highlight = {colors.green, colors.line_bg}
+      separator_highlight = {getThemedColor('lightbg'), getThemedColor('line_bg')},
+      highlight = {getThemedColor('green'), getThemedColor('line_bg')}
     }
   },
   {

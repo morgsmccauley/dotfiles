@@ -13,6 +13,7 @@ require'plugin-config/neogit'
 require'plugin-config/nvim-lspconfig'
 require'plugin-config/nvim-cmp'
 
+require'dark_notify'.run()
 require'colorizer'.setup()
 
 -- too lazy to migrate to lua yet
