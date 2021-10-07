@@ -5,7 +5,7 @@ local eslint = {
   lintStdin = true,
   lintFormats = {"%f:%l:%c: %m"},
   lintIgnoreExitCode = true,
-  formatCommand = "eslint_d --fix-to-stdout --stdin --stdin-filename=${INPUT}",
+  formatCommand = "eslint_d --fix-to-stdout --stdin --stdin-filename ${INPUT}",
   formatStdin = true
 }
 
@@ -48,3 +48,5 @@ lspconfig.rust_analyzer.setup {
     debounce_text_changes = 150,
   }
 }
+
+-- lspconfig.graphql.setup{}

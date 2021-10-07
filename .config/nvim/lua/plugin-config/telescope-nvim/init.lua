@@ -27,6 +27,7 @@ telescope.setup {
         ["<C-f>"] = actions.send_selected_to_qflist + actions.open_qflist,
         ["<C-e>"] = actions.cycle_previewers_next,
         ["<C-a>"] = actions.toggle_all,
+        ["<C-\\>n"] = { "<esc>", type = "command" },
       },
     },
     set_env = {['COLORTERM'] = 'truecolor'},
@@ -53,7 +54,16 @@ telescope.load_extension('coc')
 
 return {
   jira = require('plugin-config.telescope-nvim.jira'),
-  buffers = require('plugin-config.telescope-nvim.buffers'),
+  buffers = function ()
+    builtin.buffers({
+      show_all_buffers = true,
+      sort_lastused = true,
+      attach_mappings = function(_, map)
+        map('i', '<C-x>', actions.delete_buffer)
+        return true
+      end
+    })
+  end,
   commits = require('plugin-config.telescope-nvim.commits'),
   bcommits = function()
     builtin.git_bcommits({

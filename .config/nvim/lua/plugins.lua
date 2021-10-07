@@ -30,10 +30,13 @@ return require("packer").startup(
         use 'pantharshit00/vim-prisma'
         use 'pwntester/octo.nvim'
         use 'neovim/nvim-lspconfig'
+        use 'cormacrelf/dark-notify'
         use {
           'hrsh7th/nvim-cmp',
           requires = {
-            {'hrsh7th/cmp-nvim-lsp'}
+            {'hrsh7th/cmp-nvim-lsp'},
+            {'hrsh7th/cmp-path'},
+            {'hrsh7th/cmp-buffer'}
           }
         }
         use {
@@ -55,6 +58,10 @@ return require("packer").startup(
           run = ':TSUpdate'
         }
         use {
+          'morgsmccauley/neovim-session-manager',
+          branch = 'stable'
+        }
+        use {
           'nvim-telescope/telescope.nvim',
           requires = {
             {'nvim-lua/popup.nvim'},
@@ -62,7 +69,6 @@ return require("packer").startup(
             {'nvim-telescope/telescope-media-files.nvim'},
             {'nvim-telescope/telescope-github.nvim'},
             {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
-            {'Shatur95/neovim-session-manager'},
             {'fannheyward/telescope-coc.nvim'}
           }
         }
