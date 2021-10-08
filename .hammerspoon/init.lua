@@ -25,8 +25,23 @@ function dismissNotification()
   hs.notify.withdrawAll()
 end
 
+function chromeToggleSearchBar()
+  local currentApplication = hs.application.frontmostApplication()
+  if currentApplication:name() == 'Google Chrome' then
+    local focussedElement = hs.uielement.focusedElement():role()
+    if focussedElement == 'AXTextField' then
+      hs.eventtap.keyStroke('cmd', 'a')
+      hs.eventtap.keyStrokes('javascript:()')
+      hs.eventtap.keyStroke({}, "return")
+    else
+      hs.eventtap.keyStroke('cmd', 'l', 200000, currentApplication)
+    end
+  end
+end
+
 hs.hotkey.bind('cmd', '`', switchDisplay)
 hs.hotkey.bind('cmd', 'q', dismissNotification)
+hs.hotkey.bind('cmd', 'l', chromeToggleSearchBar)
 
 vim
   :disableForApp('Code')
