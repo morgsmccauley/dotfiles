@@ -28,9 +28,10 @@ return require("packer").startup(
         use 'folke/which-key.nvim'
         use 'sindrets/diffview.nvim'
         use 'pantharshit00/vim-prisma'
-        use 'pwntester/octo.nvim'
+        --use 'pwntester/octo.nvim'
         use 'neovim/nvim-lspconfig'
         use 'cormacrelf/dark-notify'
+        use 'tpope/vim-fugitive'
         use {
           'hrsh7th/nvim-cmp',
           requires = {
@@ -39,10 +40,10 @@ return require("packer").startup(
             {'hrsh7th/cmp-buffer'}
           }
         }
-        use {
-          'TimUntersberger/neogit',
-          requires = 'nvim-lua/plenary.nvim'
-        }
+        -- use {
+          -- 'TimUntersberger/neogit',
+          -- requires = 'nvim-lua/plenary.nvim'
+        -- }
         --[[ use {
           'neoclide/coc.nvim',
           -- make sure yarn is installed

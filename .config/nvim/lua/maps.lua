@@ -19,7 +19,7 @@ vmap('<C-j>', '5j', { noremap = true })
 vmap('<C-k>', '5k', { noremap = true })
 
 nmap('<C-t>', ':call MonkeyTerminalToggle()<Cr>', { silent = true, noremap = true })
-nmap('<C-n>', ':NvimTreeToggle<Cr>', { silent = true, noremap = true })
+nmap('<C-n>', ':NvimTreeFindFileToggle<Cr>', { silent = true, noremap = true })
 nmap('<C-l>', '<C-w>l', { noremap = true })
 nmap('<C-h>', '<C-w>h', { noremap = true })
 nmap('<C-j>', '5j', { noremap = true })

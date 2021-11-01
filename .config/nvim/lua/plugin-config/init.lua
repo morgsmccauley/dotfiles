@@ -9,7 +9,7 @@ require'plugin-config/tokyonight'
 require'plugin-config/which-key-nvim'
 require'plugin-config/coc-nvim'
 require'plugin-config/galaxyline'
-require'plugin-config/neogit'
+--require'plugin-config/neogit'
 require'plugin-config/nvim-lspconfig'
 require'plugin-config/nvim-cmp'
 
