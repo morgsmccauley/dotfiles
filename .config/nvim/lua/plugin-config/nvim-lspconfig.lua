@@ -34,7 +34,6 @@ lspconfig.efm.setup {
 lspconfig.tsserver.setup {
   init_options = {
     preferences = {
-      -- why doesn't this work
       disableSuggestions = true,
     },
   },
