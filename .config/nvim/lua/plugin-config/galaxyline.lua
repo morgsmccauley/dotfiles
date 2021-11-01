@@ -206,7 +206,9 @@ section.right = {
     LspClient = {
       provider = lsp.get_lsp_client,
       icon = '  ',
-      condition = condition.hide_in_width,
+      condition = function()
+        return lsp.get_lsp_client() ~= 'No Active Lsp' and condition.hide_in_width()
+      end,
       highlight = {getThemedColor('darkblue'), getThemedColor('line_bg')}
     }
   },
