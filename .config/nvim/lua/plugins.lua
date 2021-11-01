@@ -27,6 +27,7 @@ return require("packer").startup(
         use 'folke/which-key.nvim'
         use 'sindrets/diffview.nvim'
         use 'pantharshit00/vim-prisma'
+        use 'lukas-reineke/indent-blankline.nvim'
         --use 'pwntester/octo.nvim'
         use 'neovim/nvim-lspconfig'
         use 'cormacrelf/dark-notify'
@@ -36,7 +37,8 @@ return require("packer").startup(
           requires = {
             {'hrsh7th/cmp-nvim-lsp'},
             {'hrsh7th/cmp-path'},
-            {'hrsh7th/cmp-buffer'}
+            {'hrsh7th/cmp-buffer'},
+            -- {'onsails/lspkind-nvim'}
           }
         }
         -- use {
