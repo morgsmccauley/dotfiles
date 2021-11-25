@@ -1,5 +1,7 @@
 local lspconfig = require('lspconfig')
 
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 local eslint = {
   lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
   lintStdin = true,
@@ -10,6 +12,7 @@ local eslint = {
 }
 
 lspconfig.efm.setup {
+  capabilities = capabilities,
   init_options = {
     documentFormatting = true
   },
@@ -32,6 +35,7 @@ lspconfig.efm.setup {
 }
 
 lspconfig.tsserver.setup {
+  capabilities = capabilities,
   init_options = {
     preferences = {
       disableSuggestions = true,
@@ -51,14 +55,41 @@ lspconfig.rust_analyzer.setup {
   }
 }
 
--- lspconfig.graphql.setup{}
+local runtime_path = vim.split(package.path, ';')
+table.insert(runtime_path, "lua/?.lua")
+table.insert(runtime_path, "lua/?/init.lua")
 
---[[ local pid = vim.fn.getpid()
--- On linux/darwin if using a release build, otherwise under scripts/OmniSharp(.Core)(.cmd)
-local omnisharp_bin = '/Users/morganmccauley/workspace/omnisharp-osx/run'
--- on Windows
--- local omnisharp_bin = "/path/to/omnisharp/OmniSharp.exe"
-require'lspconfig'.omnisharp.setup{
-    cmd = { omnisharp_bin, '--languageserver' , '--hostPID', tostring(pid) };
-    ...
-} ]]
+lspconfig.sumneko_lua.setup {
+  capabilities = capabilities,
+  cmd = {
+    vim.fn.getenv('HOME') .. '/lua-language-server/bin/macOS/lua-language-server',
+    '-E',
+    vim.fn.getenv('HOME') ..'/lua-language-server/main.lua'
+  };
+  settings = {
+    Lua = {
+      runtime = {
+        version = 'LuaJIT',
+        path = runtime_path,
+      },
+      diagnostics = {
+        globals = {'vim'},
+      },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+      telemetry = {
+        enable = false,
+      },
+    },
+  },
+}
+
+require'lspconfig'.omnisharp.setup {
+  cmd = {
+   '/Users/morganmccauley/workspace/omnisharp-osx/run',
+    '--languageserver',
+    '--hostPID',
+    tostring(vim.fn.getpid())
+  }
+}
