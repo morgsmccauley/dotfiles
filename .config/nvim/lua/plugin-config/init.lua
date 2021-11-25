@@ -16,6 +16,7 @@ require'plugin-config/indent-blankline'
 
 require'dark_notify'.run()
 require'colorizer'.setup()
+require'hop'.setup()
 
 -- too lazy to migrate to lua yet
 vim.api.nvim_command 'source ~/.config/nvim/lua/plugin-config/fzf.vim'
