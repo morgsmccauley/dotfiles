@@ -32,6 +32,8 @@ return require("packer").startup(
         use 'neovim/nvim-lspconfig'
         use 'cormacrelf/dark-notify'
         use 'tpope/vim-fugitive'
+        use 'szw/vim-maximizer'
+        -- use 'github/copilot.vim'
         use {
           'hrsh7th/nvim-cmp',
           requires = {

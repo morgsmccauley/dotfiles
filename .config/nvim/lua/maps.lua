@@ -47,3 +47,5 @@ imap('<S-Tab>', 'pumvisible() ? \"\\<C-p>\" : \"\\<S-Tab>\"', { expr = true, nor
 
 nmap("<C-_>", "<Plug>kommentary_line_default")
 vmap("<C-_>", "<Plug>kommentary_visual_default")
+
+nmap("<C-m>", ":MaximizerToggle!<Cr>")

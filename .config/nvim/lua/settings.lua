@@ -1,7 +1,7 @@
 vim.o.hidden = false
 vim.o.splitright = true
 vim.o.ignorecase = true
-vim.o.splitbelow = true
+-- vim.o.splitbelow = true
 vim.o.termguicolors = true
 vim.o.number = true
 vim.o.numberwidth = 2

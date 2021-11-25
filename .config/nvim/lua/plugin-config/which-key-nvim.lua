@@ -91,7 +91,8 @@ local marks = {
 
 local buffer = {
   name = '+buffer',
-  e = { ':edit<Cr>', 'Edit buffer' }
+  e = { ':edit<Cr>', 'Edit buffer' },
+  y = { ':let @* = expand("%")<Cr>', 'Yank filename' }
 }
 
 local code = {
