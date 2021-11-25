@@ -3,6 +3,28 @@ local builtin = require'telescope.builtin'
 local utils = require'telescope.utils'
 local actions = require'telescope.actions'
 local previewers = require('telescope.previewers')
+local Job = require "plenary.job"
+
+function GetOsCommandOutput(cmd, cwd, env)
+  if type(cmd) ~= "table" then
+    print "Telescope: [GetOsCommandOutput]: cmd has to be a table"
+    return {}
+  end
+  local command = table.remove(cmd, 1)
+  local stderr = {}
+  local stdout, ret = Job
+    :new({
+      command = command,
+      args = cmd,
+      cwd = cwd,
+      env = env,
+      on_stderr = function(_, data)
+        table.insert(stderr, data)
+      end,
+    })
+    :sync()
+  return stdout, ret, stderr
+end
 
 return function()
   builtin.git_commits({
@@ -18,47 +40,13 @@ return function()
 
         actions.close(prompt_bufnr)
 
-        local _, ret, stderr = utils.get_os_command_output({
-          'git',
-          'commit',
-          '--fixup',
-          commit,
-        }, cwd)
+        vim.api.nvim_command('silent !git commit --fixup '..commit)
 
-        if ret == 0 then
-          print("Created fixup commit for: " .. commit)
-        else
-          print(string.format(
-            'Error when fixing up commit: %s. Git returned: "%s"',
-            commit,
-            table.concat(stderr, '  ')
-          ))
-          return
-        end
+        print('Created fixup commit')
 
-        local _, ret, stderr = utils.get_os_command_output(
-          {
-            'git',
-            'rebase',
-            '-i',
-            '--autosquash',
-            '--autostash',
-            commit..'~1'
-          },
-          cwd,
-          { GIT_SEQUENCE_EDITOR = ':' }
-        )
+        vim.api.nvim_command('silent !GIT_SEQUENCE_EDITOR=: git rebase -i --autostash --autosquash '..commit..'~1')
 
-        if ret == 0 then
-          print('Squashed commit: ' .. commit)
-        else
-          print(string.format(
-            'Error when squashing commit: %s. Git returned: "%s"',
-            commit,
-            table.concat(stderr, '  ')
-          ))
-          return
-        end
+        print('Squashed commit: ' .. commit)
       end
 
       local soft_reset = function(prompt_bufnr)
@@ -71,7 +59,7 @@ return function()
 
         actions.close(prompt_bufnr)
 
-        local _, ret, stderr = utils.get_os_command_output({
+        local _, ret, stderr = GetOsCommandOutput({
           'git',
           'reset',
           '--soft',
