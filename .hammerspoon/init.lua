@@ -30,7 +30,7 @@ function chromeToggleSearchBar()
   if currentApplication:name() == 'Google Chrome' then
     local focussedElement = hs.uielement.focusedElement():role()
     if focussedElement == 'AXTextField' then
-      hs.eventtap.keyStroke('cmd', 'a')
+      -- hs.eventtap.keyStroke('cmd', 'a')
       hs.eventtap.keyStrokes('javascript:()')
       hs.eventtap.keyStroke({}, "return")
     else
