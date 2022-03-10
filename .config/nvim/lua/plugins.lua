@@ -33,6 +33,7 @@ return require("packer").startup(
         use 'cormacrelf/dark-notify'
         use 'tpope/vim-fugitive'
         use 'hrsh7th/vim-vsnip'
+        use 'ruanyl/vim-gh-line'
         use 'szw/vim-maximizer'
         -- use 'github/copilot.vim'
         use {

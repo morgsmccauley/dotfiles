@@ -13,6 +13,7 @@ require'plugin-config/galaxyline'
 require'plugin-config/nvim-lspconfig'
 require'plugin-config/nvim-cmp'
 require'plugin-config/indent-blankline'
+require'plugin-config/vim-gh-line'
 
 require'dark_notify'.run()
 require'colorizer'.setup()

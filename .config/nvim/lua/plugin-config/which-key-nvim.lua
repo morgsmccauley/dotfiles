@@ -41,7 +41,7 @@ local git_remote = {
   u = { '!gpsup<Cr>', 'Push creating upstream' },
   l = { ':Neogit pull<Cr>', 'Pull' },
   f = { ':echo "Fetching remote..." | Git fetch<Cr>', 'Fetch' },
-  y = { ':CocCommand git.copyUrl<Cr>', 'Copy GitHub URL of current line' },
+  y = { '<Plug>(gh-line)', 'Copy GitHub URL of current line' },
 }
 
 local git_rebase = {
