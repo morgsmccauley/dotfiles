@@ -57,7 +57,8 @@ return {
   buffers = function ()
     builtin.buffers({
       show_all_buffers = true,
-      sort_lastused = true,
+      sort_mru = true,
+      ignore_current_buffer = true,
       attach_mappings = function(_, map)
         map('i', '<C-x>', actions.delete_buffer)
         return true
