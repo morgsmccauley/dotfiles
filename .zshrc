@@ -107,6 +107,12 @@ export COLORTERM="truecolor"
 
 export BAT_THEME="OneHalfLight"
 
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+--color=fg:#c0caf5,bg:#1a1b26,hl:#bb9af7
+--color=fg+:#c0caf5,bg+:#1a1b26,hl+:#7dcfff
+--color=info:#7aa2f7,prompt:#7dcfff,pointer:#7dcfff
+--color=marker:#9ece6a,spinner:#9ece6a,header:#9ece6a'
+
 alias ld='lazydocker'
 alias lg='lazygit'
 alias v='nvim'
@@ -139,27 +145,7 @@ alias d='docker'
 alias de='docker exec'
 
 alias ave='aws-vault exec'
-
-lazynvm() {
-  unset -f nvm node npm
-  export NVM_DIR=~/.nvm
-  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-}
-
-nvm() {
-  lazynvm 
-  nvm $@
-}
-
-node() {
-  lazynvm
-  node $@
-}
-
-npm() {
-  lazynvm
-  npm $@
-}
+alias node12='/opt/homebrew/opt/node@12/bin/node'
 
 if [ $ITERM_SESSION_ID ]; then
   export PROMPT_COMMAND='echo -ne "\033];${PWD##*/}\007"; ':"$PROMPT_COMMAND";
@@ -183,3 +169,4 @@ fi
 export PATH="$PATH:$HOME/.rvm/bin"
 
 export PATH="$PATH:$HOME/go/bin"
+export PATH="/opt/homebrew/opt/node@16/bin:$PATH"
