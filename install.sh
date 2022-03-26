@@ -22,5 +22,8 @@ nvm install 12.16.1
 pip3 install neovim
 npm install -g neovim
 
+echo "Installing Rosetta"
+softwareupdate --install-rosetta
+
 echo "Opening iTerm"
 open ~/Applications/iTerm.app
