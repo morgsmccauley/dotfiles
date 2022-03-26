@@ -50,12 +50,13 @@ lspconfig.tsserver.setup {
 }
 
 lspconfig.rust_analyzer.setup {
+  capabilities = capabilities,
   flags = {
     debounce_text_changes = 150,
   }
 }
 
-local runtime_path = vim.split(package.path, ';')
+--[[ local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
@@ -83,13 +84,4 @@ lspconfig.sumneko_lua.setup {
       },
     },
   },
-}
-
-require'lspconfig'.omnisharp.setup {
-  cmd = {
-   '/Users/morganmccauley/workspace/omnisharp-osx/run',
-    '--languageserver',
-    '--hostPID',
-    tostring(vim.fn.getpid())
-  }
-}
+} ]]
