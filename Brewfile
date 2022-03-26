@@ -1,26 +1,22 @@
 tap 'homebrew/cask'
+tap 'homebrew/cask-fonts'
+
 cask_args appdir: "~/Applications", require_sha: true
 
 brew 'git'
 brew 'neovim', args: ['HEAD']
 brew 'node'
-brew 'python3'
 brew 'zsh'
 brew 'ripgrep'
 brew 'nvm'
-brew 'bat'
 brew 'gh'
 brew 'lua'
-brew 'awscli'
-brew 'ninja' # for lua lsp
-brew 'lazygit'
-brew 'lazydocker'
+brew 'fzf'
 brew 'cormacrelf/tap/dark-notify'
+brew 'efm-langserver'
 
 cask 'iterm2'
-cask 'nightowl'
-cask 'aws-vault'
-cask 'karibiner-elements'
+cask 'karabiner-elements'
 cask 'docker'
-cask 'font-hack-nerd-font'
 cask 'hammerspoon'
+cask 'font-hack-nerd-font'
