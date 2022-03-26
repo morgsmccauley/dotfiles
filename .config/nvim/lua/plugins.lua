@@ -19,41 +19,39 @@ return require("packer").startup(
         use 'norcalli/nvim-colorizer.lua'
         use 'jiangmiao/auto-pairs'
         use 'alvan/vim-closetag'
-        use 'tweekmonster/startuptime.vim'
         use 'tpope/vim-surround'
         use 'tpope/vim-repeat'
         use 'phaazon/hop.nvim'
         use 'b3nj5m1n/kommentary'
         use 'folke/which-key.nvim'
         use 'sindrets/diffview.nvim'
-        use 'pantharshit00/vim-prisma'
         use 'lukas-reineke/indent-blankline.nvim'
-        --use 'pwntester/octo.nvim'
         use 'neovim/nvim-lspconfig'
         use 'cormacrelf/dark-notify'
         use 'tpope/vim-fugitive'
-        use 'hrsh7th/vim-vsnip'
         use 'ruanyl/vim-gh-line'
+        use {
+          'L3MON4D3/LuaSnip',
+          requires = {
+            {'rafamadriz/friendly-snippets'}
+          }
+        }
         use 'szw/vim-maximizer'
-        -- use 'github/copilot.vim'
         use {
           'hrsh7th/nvim-cmp',
           requires = {
             {'hrsh7th/cmp-nvim-lsp'},
             {'hrsh7th/cmp-path'},
             {'hrsh7th/cmp-buffer'},
-            -- {'onsails/lspkind-nvim'}
+            {'saadparwaiz1/cmp_luasnip'}
           }
         }
-        -- use {
-          -- 'TimUntersberger/neogit',
-          -- requires = 'nvim-lua/plenary.nvim'
-        -- }
-        --[[ use {
-          'neoclide/coc.nvim',
-          -- make sure yarn is installed
-          run = 'yarn install --frozen-lockfile'
-        } ]]
+        use {
+          'TimUntersberger/neogit',
+          requires = {
+            {'nvim-lua/plenary.nvim'}
+          }
+        }
         use {
           'nvim-treesitter/nvim-treesitter',
           requires = {
@@ -77,11 +75,6 @@ return require("packer").startup(
             {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
             {'fannheyward/telescope-coc.nvim'}
           }
-        }
-        use {
-          'junegunn/fzf.vim',
-          requires = {{'junegunn/fzf'}},
-          run = 'call fzf#install'
         }
     end
 )
