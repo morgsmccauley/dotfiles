@@ -14,9 +14,13 @@ brew 'lua'
 brew 'fzf'
 brew 'cormacrelf/tap/dark-notify'
 brew 'efm-langserver'
+brew 'koekeishiya/formulae/yabai', args: ['HEAD']
+brew 'koekeishiya/formulae/skhd'
 
 cask 'iterm2'
 cask 'karabiner-elements'
 cask 'docker'
 cask 'hammerspoon'
 cask 'font-hack-nerd-font'
+cask 'monitorcontrol'
+cask 'bettertouchtool'
