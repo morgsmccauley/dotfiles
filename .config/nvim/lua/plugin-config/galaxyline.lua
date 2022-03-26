@@ -17,9 +17,11 @@ section.short_line_left = {
   }
 }
 
+section.short_line_right = {}
+
 local dark_colors = {
-  bg = "#24283b",
-  line_bg = "#24283b",
+  bg = "#1a1b26",
+  line_bg = "#1a1b26",
   fg = "#c0caf5",
   army = '#A3BE8C',
   darkblue = '#61afef',
