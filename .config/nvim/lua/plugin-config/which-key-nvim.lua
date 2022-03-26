@@ -61,17 +61,25 @@ local git_hunk = {
   p = { ':lua require\'gitsigns\'.prev_hunk()<Cr>', 'Prev' },
 }
 
+local diffview = {
+  name = '+diffview',
+  o = { ':DiffviewOpen<Cr>', 'Open' },
+  c = { ':DiffviewClose<Cr>', 'Close' },
+  b = { ':DiffviewOpen origin/master<Cr>', 'Open (branch)' },
+}
+
 local git = {
   name = '+git',
   l = { ':lua require\'plugin-config/telescope-nvim\'.commits()<Cr>', 'Log' },
   p = { ':Telescope gh pull_request<Cr>', 'Pull requests' },
+  i = { ':Telescope gh issues<Cr>', 'Issues' },
   b = { ':lua require\'plugin-config/telescope-nvim\'.branches()<Cr>', 'Branches' },
   s = { ':lua require\'plugin-config/telescope-nvim\'.stash()<Cr>', 'Stash' },
   c = { ':Neogit commit<Cr>', 'Commit' },
   L = { ':lua require\'plugin-config/telescope-nvim\'.bcommits()<Cr>', 'Buffer log' },
-  B = { ':Gitsigns blame_line<Cr>', 'Blame annotations' },
+  B = { ':Git blame<Cr>', 'Blame annotations' },
   -- B = { ':Gitsigns toggle_current_line_blame<Cr>', 'Blame annotations' },
-  g = { ':Git<Cr>', 'Git' },
+  g = { ':Neogit<Cr>', 'Git' },
   h = git_hunk,
   r = git_remote,
   R = git_rebase,
@@ -99,7 +107,7 @@ local code = {
   name = '+code',
   -- c = { ':Telescope commands<Cr>', 'Commands' },
   a = { ':Telescope lsp_code_actions<Cr>', 'Code actions' },
-  d = { ':Telescope lsp_document_diagnostics<Cr>', 'File diagnostics' },
+  d = { ':Telescope diagnostics bufnr=0<Cr>', 'File diagnostics' },
   f = { ':lua vim.lsp.buf.formatting()<Cr>', 'Format' }
 }
 
@@ -126,6 +134,7 @@ local mappings = {
   c = code,
   h = hop,
   j = jira,
+  d = diffview,
   ['*'] = { ':Telescope grep_string<Cr>', 'Search for symbol globally' },
   ['/'] ={ ':Telescope live_grep<Cr>', 'Search globally' },
   [','] ={ ':lua require\'plugin-config/telescope-nvim\'.buffers()<Cr>', 'Switch buffer' },
