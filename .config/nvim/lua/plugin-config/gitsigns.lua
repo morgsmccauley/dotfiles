@@ -7,7 +7,7 @@ require('gitsigns').setup {
         changedelete = {hl = 'DiffChange', text = '~', numhl = 'GitSignsChangeNr'}
     },
     numhl = false,
-    watch_index = {
+    watch_gitdir = {
         interval = 100
     },
     sign_priority = 5,
