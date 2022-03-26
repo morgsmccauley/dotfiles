@@ -15,9 +15,6 @@ local function vmap(lhs, rhs, opts)
   vim.api.nvim_set_keymap('v', lhs, rhs, opts)
 end
 
-vmap('<C-j>', '5j', { noremap = true })
-vmap('<C-k>', '5k', { noremap = true })
-
 nmap('<C-t>', ':call MonkeyTerminalToggle()<Cr>', { silent = true, noremap = true })
 nmap('<C-n>', ':NvimTreeFindFileToggle<Cr>', { silent = true, noremap = true })
 nmap('<C-l>', '<C-w>l', { noremap = true })
@@ -25,10 +22,14 @@ nmap('<C-h>', '<C-w>h', { noremap = true })
 nmap('<C-j>', '<C-w>j', { noremap = true })
 nmap('<C-k>', '<C-w>k', { noremap = true })
 
+nmap('<C-6>', ':e #<Cr>', { noremap = true })
+nmap('<C-x>', ':q<Cr>', { noremap = true })
+nmap('<C-s>', ':w<Cr>', { noremap = true })
+
 nmap('<Esc>', ':noh | echo ""<Cr><Esc>', { silent = true, noremap = true })
 nmap('QQ', ':qall<CR>', { noremap = true })
 
-nmap('\\', '<cmd>HopWord<Cr>', { noremap = true, silent = true })
+nmap('\\', '<cmd>HopWordMW<Cr>', { noremap = true, silent = true })
 nmap('<C-\\>', '<cmd>HopLine<Cr>', { noremap = true, silent = true })
 vmap('\\', '<cmd>HopWord<Cr>', { noremap = true, silent = true })
 vmap('<C-\\>', '<cmd>HopLine<Cr>', { noremap = true, silent = true })
@@ -53,11 +54,17 @@ vmap("<C-_>", "<Plug>kommentary_visual_default")
 
 nmap("<C-m>", ":MaximizerToggle!<Cr>")
 
-nmap('dl', 'd:HopLine<Cr>', { noremap = true, silent = true })
-nmap('yl', 'y:HopLine<Cr>', { noremap = true, silent = true })
-nmap('cl', 'c:HopLine<Cr>', { noremap = true, silent = true })
+-- https://github.com/phaazon/hop.nvim/issues/82
+nmap('dl', 'dV:HopLine<Cr>', { noremap = true, silent = true })
+nmap('yl', 'yV:HopLine<Cr>', { noremap = true, silent = true })
+nmap('cl', 'cV:HopLine<Cr>', { noremap = true, silent = true })
 
-nmap('t', ':HopChar1CurrentLine<Cr>', { noremap = true, silent = true })
-nmap('dt', 'd:HopChar1CurrentLine<Cr>', { noremap = true, silent = true })
-nmap('yt', 'y:HopChar1CurrentLine<Cr>', { noremap = true, silent = true })
-nmap('ct', 'c:HopChar1CurrentLine<Cr>', { noremap = true, silent = true })
+-- nmap('t', ':HopChar1CurrentLineAC<Cr>', { noremap = true, silent = true })
+nmap('dt', 'd:HopChar1CurrentLineAC<Cr>', { noremap = true, silent = true })
+nmap('yt', 'y:HopChar1CurrentLineAC<Cr>', { noremap = true, silent = true })
+nmap('ct', 'c:HopChar1CurrentLineAC<Cr>', { noremap = true, silent = true })
+
+nmap('f', ':HopChar1CurrentLineAC<Cr>', { noremap = true, silent = true })
+nmap('df', 'd:lua require"hop".hint_char1({ direction = require"hop.hint".HintDirection.AFTER_CURSOR, inclusive_jump=true, current_line_only=true })<Cr>', { noremap = true, silent = true })
+nmap('yf', 'y:lua require"hop".hint_char1({ direction = require"hop.hint".HintDirection.AFTER_CURSOR, inclusive_jump=true, current_line_only=true })<Cr>', { noremap = true, silent = true })
+nmap('cf', 'c:lua require"hop".hint_char1({ direction = require"hop.hint".HintDirection.AFTER_CURSOR, inclusive_jump=true, current_line_only=true })<Cr>', { noremap = true, silent = true })
