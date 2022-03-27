@@ -28,6 +28,10 @@ vim.cmd 'hi TelescopePromptBorder   guifg=#3e4451'
 vim.cmd 'hi TelescopeResultsBorder  guifg=#3e4451'
 vim.cmd 'hi TelescopePreviewBorder  guifg=#525865'
 
+vim.cmd 'hi FocusedSymbol cterm=italic ctermfg=4 ctermbg=11 gui=bold,italic guifg=darkblue'
+
+vim.cmd 'hi HopNextKey2 guifg=#0db9d7'
+
 vim.fn.sign_define("DiagnosticSignError", { texthl = "DiagnosticSignError", text = "" })
 vim.fn.sign_define("DiagnosticSignHint", { texthl = "DiagnosticSignHint", text = "" })
 vim.fn.sign_define("DiagnosticSignWarning", { texthl = "DiagnosticSignWarning", text = "" })
@@ -38,4 +42,3 @@ vim.fn.sign_define("NvimTreeSignHint", { texthl = "NvimTreeSignError", text = "�
 vim.fn.sign_define("NvimTreeSignWarning", { texthl = "NvimTreeSignError", text = "" })
 vim.fn.sign_define("NvimTreeSignInformation", { texthl = "NvimTreeSignError", text = "" })
 
-vim.api.nvim_command('highlight HopNextKey2 guifg=#00dfff')

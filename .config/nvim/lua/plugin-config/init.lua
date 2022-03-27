@@ -14,11 +14,13 @@ require'plugin-config/nvim-lspconfig'
 require'plugin-config/nvim-cmp'
 require'plugin-config/indent-blankline'
 require'plugin-config/vim-gh-line'
+require'plugin-config/symbols-outline'
+require'plugin-config/vim-test'
+require'plugin-config/hop'
 -- require'plugin-config/toggleterm'
 
-require'dark_notify'.run()
+-- require'dark_notify'.run()
 require'colorizer'.setup()
-require'hop'.setup()
 
 -- too lazy to migrate to lua yet
 vim.api.nvim_command 'source ~/.config/nvim/lua/plugin-config/fzf.vim'
