@@ -4,7 +4,9 @@
 
 .config/configstore/**/*
 
-.config/karabiner/automatic_backups/**/*
+.config/karabiner/assets/**
+
+.config/karabiner/automatic_backups/**
 
 .config/gatsby
 
