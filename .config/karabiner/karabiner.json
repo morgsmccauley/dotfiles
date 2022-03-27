@@ -29,12 +29,12 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "left_control"
+                                        "key_code": "left_control",
+                                        "lazy": true
                                     }
                                 ],
                                 "to_if_alone": [
                                     {
-                                        "hold_down_milliseconds": 250,
                                         "key_code": "escape"
                                     }
                                 ],
@@ -56,12 +56,12 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "right_command"
+                                        "key_code": "right_command",
+                                        "lazy": true
                                     }
                                 ],
                                 "to_if_alone": [
                                     {
-                                        "hold_down_milliseconds": 250,
                                         "key_code": "return_or_enter"
                                     }
                                 ],
@@ -154,6 +154,8 @@
                         "description": "Change tab to hyper if pressed with other keys and tab if pressed alone.",
                         "manipulators": [
                             {
+
+                                "type": "basic",
                                 "from": {
                                     "key_code": "tab",
                                     "modifiers": {
@@ -162,6 +164,11 @@
                                         ]
                                     }
                                 },
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "tab"
+                                    }
+                                ],
                                 "to": [
                                     {
                                         "key_code": "right_shift",
@@ -169,15 +176,10 @@
                                             "right_command",
                                             "right_control",
                                             "right_option"
-                                        ]
+                                        ],
+                                        "lazy": true
                                     }
-                                ],
-                                "to_if_alone": [
-                                    {
-                                        "key_code": "tab"
-                                    }
-                                ],
-                                "type": "basic"
+                                ]
                             }
                         ]
                     },
