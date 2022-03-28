@@ -154,7 +154,9 @@
                         "description": "Change tab to hyper if pressed with other keys and tab if pressed alone.",
                         "manipulators": [
                             {
-
+                                "parameters": {
+                                    "basic.to_if_held_down_threshold_milliseconds": 500
+                                },
                                 "type": "basic",
                                 "from": {
                                     "key_code": "tab",
@@ -165,6 +167,11 @@
                                     }
                                 },
                                 "to_if_alone": [
+                                    {
+                                        "key_code": "tab"
+                                    }
+                                ],
+                                "to_if_held_down": [
                                     {
                                         "key_code": "tab"
                                     }
