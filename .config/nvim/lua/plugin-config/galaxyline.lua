@@ -203,14 +203,60 @@ section.left = {
   },
 }
 
+function lsp_progress(_)
+  local Lsp = vim.lsp.util.get_progress_messages()[1]
+
+  if Lsp then
+    local msg = Lsp.message or ""
+    local percentage = Lsp.percentage or 0
+    local title = Lsp.title or ""
+
+    local spinners = { "", "", "" }
+    local success_icon = { "", "", "" }
+
+    local ms = vim.loop.hrtime() / 1000000
+    local frame = math.floor(ms / 120) % #spinners
+
+    if percentage >= 70 then
+      return string.format(" %s %s %s (%s%%) ", success_icon[frame + 1], title, msg, percentage)
+    end
+
+    return string.format(" %s %s %s (%s%%) ", spinners[frame + 1], title, msg, percentage)
+  end
+
+  return ""
+end
+
+function lsp_name(msg)
+  msg = msg or "Inactive"
+  local buf_clients = vim.lsp.buf_get_clients()
+  if next(buf_clients) == nil then
+    if type(msg) == "boolean" or #msg == 0 then
+      return "Inactive"
+    end
+    return msg
+  end
+
+  local buf_client_names = {}
+
+  for _, client in pairs(buf_clients) do
+    table.insert(buf_client_names, client.name)
+  end
+
+  return table.concat(buf_client_names, ", ")
+end
+
 section.right = {
   {
+    LspProgress = {
+      provider = lsp_progress,
+      highlight = {getThemedColor('darkblue'), getThemedColor('line_bg')}
+    }
+  },
+  {
     LspClient = {
-      provider = lsp.get_lsp_client,
+      provider = lsp_name,
       icon = '  ',
-      condition = function()
-        return lsp.get_lsp_client() ~= 'No Active Lsp' and condition.hide_in_width()
-      end,
       highlight = {getThemedColor('darkblue'), getThemedColor('line_bg')}
     }
   },

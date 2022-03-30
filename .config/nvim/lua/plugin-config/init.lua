@@ -17,6 +17,7 @@ require'plugin-config/vim-gh-line'
 require'plugin-config/symbols-outline'
 require'plugin-config/vim-test'
 require'plugin-config/hop'
+require'plugin-config/nvim-lsp-installer'
 -- require'plugin-config/toggleterm'
 
 -- require'dark_notify'.run()
