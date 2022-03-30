@@ -24,7 +24,7 @@ nmap('<C-k>', '<C-w>k', { noremap = true })
 
 nmap('<C-6>', ':e #<Cr>', { noremap = true })
 nmap('<C-x>', ':q<Cr>', { noremap = true })
-nmap('<C-s>', ':w<Cr>', { noremap = true })
+nmap('<C-s>', ':SymbolsOutline<Cr>', { noremap = true })
 
 nmap('<Esc>', ':noh | echo ""<Cr><Esc>', { silent = true, noremap = true })
 nmap('QQ', ':qall<CR>', { noremap = true })
