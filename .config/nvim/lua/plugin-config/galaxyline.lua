@@ -1,7 +1,6 @@
 local galaxyline = require('galaxyline')
 local condition = require('galaxyline.condition')
 local diagnostic = require('galaxyline.provider_diagnostic')
-local fileinfo = require('galaxyline.provider_fileinfo')
 local lsp = require('galaxyline.provider_lsp')
 
 local section = galaxyline.section
@@ -21,7 +20,7 @@ section.short_line_right = {}
 
 local dark_colors = {
   bg = "#1a1b26",
-  line_bg = "#1a1b26",
+  line_bg = "#202334",
   fg = "#c0caf5",
   army = '#A3BE8C',
   darkblue = '#61afef',
@@ -121,7 +120,31 @@ section.left = {
     FileIcon = {
         provider = 'FileIcon',
         condition = condition.buffer_not_empty,
-        highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color, getThemedColor(line_bg)}
+        highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color, getThemedColor('line_bg')}
+    }
+  },
+  {
+    WorkingDirectory = {
+      provider = function()
+        if not condition.buffer_not_empty() then
+          return ''
+        end
+
+        return ' ' .. vim.fn.fnamemodify(vim.fn.getcwd(), ':t') .. '/'
+      end,
+      highlight = {getThemedColor('darkblue'), getThemedColor('line_bg')}
+    }
+  },
+  {
+    FilePath = {
+      provider = function()
+        if not condition.buffer_not_empty() then
+          return ''
+        end
+
+        return vim.fn.fnamemodify(vim.fn.expand '%:h', ':~:.') .. '/'
+      end,
+      highlight = {getThemedColor('nord'), getThemedColor('line_bg')}
     }
   },
   {
@@ -131,13 +154,7 @@ section.left = {
           return ''
         end
 
-        local fname
-
-        if not condition.hide_in_width() or vim.fn.expand('%'):len() > 50 then
-          fname = vim.fn.expand '%:t' -- filename only
-        else
-          fname = vim.fn.fnamemodify(vim.fn.expand '%', ':~:.') -- full path
-        end
+        local fname = vim.fn.expand '%:t'
 
         if #fname == 0 then
           return ''
@@ -266,7 +283,7 @@ section.right = {
       icon =  ' ',
       separator = '  ',
       condition = function()
-        return condition.check_git_workspace() and condition.hide_in_width()
+        return condition.check_git_workspace()
       end,
       separator_highlight = {getThemedColor('lightbg'), getThemedColor('line_bg')},
       highlight = {getThemedColor('green'), getThemedColor('line_bg')}
@@ -275,7 +292,8 @@ section.right = {
   {
     Space = {
       provider = function() return ' ' end,
-      separator = ''
+      separator = ' ',
+      separator_highlight = {getThemedColor('line_bg'), getThemedColor('line_bg')},
     },
   },
 }

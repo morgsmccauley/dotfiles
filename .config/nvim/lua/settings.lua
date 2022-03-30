@@ -21,6 +21,8 @@ vim.o.clipboard = 'unnamedplus'
 
 vim.o.timeoutlen = 250
 
+vim.o.laststatus = 3
+
 vim.o.expandtab = true
 vim.o.shiftwidth = 2
 
