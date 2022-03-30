@@ -14,7 +14,7 @@ local window = {
   name = '+window',
   q = { ':q<Cr>', 'Quit' },
   Q = { ':wq<Cr>', 'Save and quit' },
-  w = { ':w<Cr>', 'Save' },
+  w = { ':silent w<Cr>', 'Save' },
   r = { '<C-w>r', 'Rotate' },
   A = { '1<C-w><C-w>:q<Cr><C-w><C-p>', 'Close first window' },
   a = { '1<C-w><C-w>', 'Go to first window' },
@@ -65,7 +65,8 @@ local diffview = {
   name = '+diffview',
   o = { ':DiffviewOpen<Cr>', 'Open' },
   c = { ':DiffviewClose<Cr>', 'Close' },
-  b = { ':DiffviewOpen origin/master<Cr>', 'Open (branch)' },
+  b = { ':DiffviewOpen origin/master..HEAD<Cr>', 'Open (branch)' },
+  f = { ':DiffviewToggleFiles', 'Toggle files' },
 }
 
 local git = {
@@ -125,6 +126,14 @@ local jira = {
   l = { ':lua require\'plugin-config.telescope-nvim\'.jira()<Cr>', 'List Issues' }
 }
 
+local test = {
+  name = '+test',
+  f = { ':TestFile<Cr>', 'Test file' },
+  l = { ':TestLast<Cr>', 'Test last' },
+  t = { ':TestNearest<Cr>', 'Test under cursor' },
+  s = { ':TestSuite<Cr>', 'Test suite' }
+}
+
 local mappings = {
   w = window,
   g = git,
@@ -135,6 +144,7 @@ local mappings = {
   h = hop,
   j = jira,
   d = diffview,
+  t = test,
   ['*'] = { ':Telescope grep_string<Cr>', 'Search for symbol globally' },
   ['/'] ={ ':Telescope live_grep<Cr>', 'Search globally' },
   [','] ={ ':lua require\'plugin-config/telescope-nvim\'.buffers()<Cr>', 'Switch buffer' },
