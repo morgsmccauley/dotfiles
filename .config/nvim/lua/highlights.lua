@@ -30,7 +30,7 @@ vim.cmd 'hi TelescopePreviewBorder  guifg=#525865'
 
 vim.cmd 'hi FocusedSymbol cterm=italic ctermfg=4 ctermbg=11 gui=bold,italic guifg=darkblue'
 
-vim.cmd 'hi HopNextKey2 guifg=#0db9d7'
+vim.cmd 'hi HopNextKey2 guifg=#00dfff'
 
 vim.fn.sign_define("DiagnosticSignError", { texthl = "DiagnosticSignError", text = "" })
 vim.fn.sign_define("DiagnosticSignHint", { texthl = "DiagnosticSignHint", text = "" })

@@ -71,13 +71,13 @@ local diffview = {
 
 local git = {
   name = '+git',
-  l = { ':lua require\'plugin-config/telescope-nvim\'.commits()<Cr>', 'Log' },
+  l = { ':lua require\'plugins/config/telescope-nvim\'.commits()<Cr>', 'Log' },
   p = { ':Telescope gh pull_request<Cr>', 'Pull requests' },
   i = { ':Telescope gh issues<Cr>', 'Issues' },
-  b = { ':lua require\'plugin-config/telescope-nvim\'.branches()<Cr>', 'Branches' },
-  s = { ':lua require\'plugin-config/telescope-nvim\'.stash()<Cr>', 'Stash' },
+  b = { ':lua require\'plugins/config/telescope-nvim\'.branches()<Cr>', 'Branches' },
+  s = { ':lua require\'plugins/config/telescope-nvim\'.stash()<Cr>', 'Stash' },
   c = { ':Neogit commit<Cr>', 'Commit' },
-  L = { ':lua require\'plugin-config/telescope-nvim\'.bcommits()<Cr>', 'Buffer log' },
+  L = { ':lua require\'plugins/config/telescope-nvim\'.bcommits()<Cr>', 'Buffer log' },
   B = { ':Git blame<Cr>', 'Blame annotations' },
   -- B = { ':Gitsigns toggle_current_line_blame<Cr>', 'Blame annotations' },
   g = { ':Neogit<Cr>', 'Git' },
@@ -123,7 +123,7 @@ local hop = {
 
 local jira = {
   name = '+jira',
-  l = { ':lua require\'plugin-config.telescope-nvim\'.jira()<Cr>', 'List Issues' }
+  l = { ':lua require\'plugins/config/telescope-nvim\'.jira()<Cr>', 'List Issues' }
 }
 
 local test = {
@@ -147,7 +147,7 @@ local mappings = {
   t = test,
   ['*'] = { ':Telescope grep_string<Cr>', 'Search for symbol globally' },
   ['/'] ={ ':Telescope live_grep<Cr>', 'Search globally' },
-  [','] ={ ':lua require\'plugin-config/telescope-nvim\'.buffers()<Cr>', 'Switch buffer' },
+  [','] ={ ':lua require\'plugins/config/telescope-nvim\'.buffers()<Cr>', 'Switch buffer' },
   ['.'] = { ':Telescope git_files<Cr>', 'Find file' },
   ['\\'] = { ':luafile ~/.config/nvim/init.lua<Cr>', 'Reload config' },
 }

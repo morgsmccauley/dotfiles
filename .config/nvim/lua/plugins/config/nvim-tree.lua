@@ -45,6 +45,8 @@ require'nvim-tree'.setup{
         mappings = {
             list = {
               { key = "<C-e>", action = "" },
+              { key = "<C-j>", action = "" },
+              { key = "<C-k>", action = "" },
             }
         }
     },

@@ -1,7 +1,6 @@
 local builtin = require'telescope.builtin'
 local telescope = require'telescope'
 local actions = require'telescope.actions'
-local previewers = require('telescope.previewers')
 
 telescope.setup {
   defaults = {
@@ -50,10 +49,9 @@ telescope.setup {
 telescope.load_extension('fzf')
 telescope.load_extension('gh')
 telescope.load_extension('session_manager')
-telescope.load_extension('coc')
 
 return {
-  jira = require('plugin-config.telescope-nvim.jira'),
+  jira = require('plugins/config/telescope-nvim/jira'),
   buffers = function ()
     builtin.buffers({
       show_all_buffers = true,
@@ -65,12 +63,12 @@ return {
       end
     })
   end,
-  commits = require('plugin-config.telescope-nvim.commits'),
+  commits = require('plugins/config/telescope-nvim/commits'),
   bcommits = function()
     builtin.git_bcommits({
       -- previewer = previewers.git_commit_diff_as_was.new({})
     })
   end,
-  branches = require('plugin-config.telescope-nvim.branches'),
-  stash = require('plugin-config.telescope-nvim.stash'),
+  branches = require('plugins/config/telescope-nvim/branches'),
+  stash = require('plugins/config/telescope-nvim/stash'),
 }
