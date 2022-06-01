@@ -1,10 +1,14 @@
 local builtin = require'telescope.builtin'
+local pickers = require'telescope.pickers'
+local finders = require'telescope.finders'
 local telescope = require'telescope'
 local actions = require'telescope.actions'
+local conf = require("telescope.config").values
 
 telescope.setup {
   defaults = {
     -- scroll_strategy = 'limit',
+    layout_strategy = 'flex',
     history = {
       limit = 500
     },
@@ -26,6 +30,7 @@ telescope.setup {
         ["<C-f>"] = actions.send_selected_to_qflist + actions.open_qflist,
         ["<C-e>"] = actions.cycle_previewers_next,
         ["<C-a>"] = actions.toggle_all,
+        ["<C-/>"] = actions.which_key,
         ["<C-\\>n"] = { "<esc>", type = "command" },
       },
     },
