@@ -109,6 +109,7 @@ local code = {
   -- c = { ':Telescope commands<Cr>', 'Commands' },
   a = { ':Telescope lsp_code_actions<Cr>', 'Code actions' },
   d = { ':Telescope diagnostics bufnr=0<Cr>', 'File diagnostics' },
+  l = { ':lua vim.diagnostic.open_float()<Cr>', 'Show diagnostics for current line' },
   f = { ':lua vim.lsp.buf.formatting()<Cr>', 'Format' }
 }
 
