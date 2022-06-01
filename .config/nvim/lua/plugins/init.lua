@@ -32,9 +32,9 @@ return require("packer").startup(
         end
       }
       use {
-        'glepnir/galaxyline.nvim',
+        'nvim-lualine/lualine.nvim',
         config = function()
-          require'plugins/config/galaxyline'
+          require'plugins/config/lualine'
         end
       }
       use {
