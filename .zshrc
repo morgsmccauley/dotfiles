@@ -78,22 +78,36 @@ export GIT_EDITOR='nvim'
 
 export COLORTERM="truecolor"
 
-export BAT_THEME="OneHalfLight"
-
+# let g:fzf_colors = {
+#   \ 'fg':      ['fg', 'Normal'],
+#   \ 'bg':      ['bg', 'Normal'],
+#   \ 'hl':      ['fg', 'Comment'],
+#   \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+#   \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+#   \ 'hl+':     ['fg', 'Statement'],
+#   \ 'info':    ['fg', 'PreProc'],
+#   \ 'border':  ['fg', 'Ignore'],
+#   \ 'prompt':  ['fg', 'Conditional'],
+#   \ 'pointer': ['fg', 'Exception'],
+#   \ 'marker':  ['fg', 'Keyword'],
+#   \ 'spinner': ['fg', 'Label'],
+#   \ 'header':  ['fg', 'Comment']
+#   \ }
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
---color=fg:#c0caf5,bg:#1a1b26,hl:#bb9af7
---color=fg+:#c0caf5,bg+:#1a1b26,hl+:#7dcfff
---color=info:#7aa2f7,prompt:#7dcfff,pointer:#7dcfff
---color=marker:#9ece6a,spinner:#9ece6a,header:#9ece6a'
+--color=fg:#c0caf5,bg:#24283b,hl:#565f89
+--color=fg+:#c0caf5,bg+:#24283b,hl+:#bb9af7
+--color=info:#7dcfff,prompt:#7dcfff,pointer:#7dcfff
+--color=marker:#7dcfff,spinner:#7dcfff,header:#565f89
+--layout=reverse --bind ctrl-u:preview-page-up,ctrl-d:preview-page-down
+'
 
-alias ld='lazydocker'
-alias lg='lazygit'
 alias v='nvim'
-alias config='v ~/.config/nvim/'
-alias cht='cht.sh'
-alias R='ramda-repl'
 alias c='cargo'
+alias dc='docker compose'
+alias d='docker'
+
 alias ag='alias | grep '
+
 alias gai='git add -i'
 alias gcn='git commit -v --no-verify'
 alias gcan='git commit -a -v --no-verify'
@@ -112,12 +126,9 @@ alias gpch='gh pr checkout'
 alias rn='node_modules/.bin/react-native'
 alias rnri='rn run-ios'
 alias rnra='rn run-android'
-alias nvip='nvm use && npm install && npm prune'
-alias dc='docker compose'
-alias d='docker'
-alias de='docker exec'
 
 alias ave='aws-vault exec'
+
 alias node12='/opt/homebrew/opt/node@12/bin/node'
 
 if [ $ITERM_SESSION_ID ]; then
@@ -130,6 +141,6 @@ fi
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
-
 export PATH="$PATH:$HOME/go/bin"
 export PATH="/opt/homebrew/opt/node@16/bin:$PATH"
+export PATH="/Users/morganmccauley/Library/Python/3.8/bin:$PATH"
