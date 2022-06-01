@@ -20,6 +20,9 @@ local function smap(lhs, rhs, opts)
   vim.api.nvim_set_keymap('s', lhs, rhs, opts)
 end
 
+nmap('j', 'gj', { silent = true, noremap = true })
+nmap('k', 'gk', { silent = true, noremap = true })
+
 nmap('<C-t>', ':call MonkeyTerminalToggle()<Cr>', { silent = true, noremap = true })
 nmap('<C-n>', ':NvimTreeFindFileToggle<Cr>', { silent = true, noremap = true })
 nmap('<C-l>', '<C-w>l', { noremap = true })
@@ -35,7 +38,6 @@ smap('<Backspace>', 'luasnip#jumpable(-1) ? "<Plug>luasnip-jump-prev" : "<Backsp
 imap('<C-a>', '<C-o>^', { noremap = true, silent = true })
 imap('<C-e>', '<C-o>$', { noremap = true, silent = true })
 
-nmap('<C-6>', ':e #<Cr>', { noremap = true })
 nmap('<C-x>', ':q<Cr>', { noremap = true })
 nmap('<C-s>', ':SymbolsOutline<Cr>', { noremap = true, silent = true })
 
