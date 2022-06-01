@@ -37,12 +37,13 @@ return require("packer").startup(
           require'plugins/config/lualine'
         end
       }
-      use {
-        'folke/tokyonight.nvim',
-        config = function()
-          require'plugins/config/tokyonight'
+      use({
+        "catppuccin/nvim",
+        as = "catppuccin",
+        config = function ()
+          require'plugins/config/catppuccin'
         end
-      }
+      })
       use {
         'norcalli/nvim-colorizer.lua',
         config = function()
