@@ -13,11 +13,6 @@ vim.cmd 'hi DiagnosticSignWarning guifg=#EBCB8B'
 vim.cmd 'hi DiagnosticSignInformation guifg=#81A1C1'
 vim.cmd 'hi DiagnosticSignHint guifg=#A3BE8C'
 
-vim.cmd 'hi CocErrorSign guifg=#DF8890'
-vim.cmd 'hi CocWarningSign guifg=#EBCB8B'
-vim.cmd 'hi CocInfoSign guifg=#81A1C1'
-vim.cmd 'hi CocHintSign guifg=#A3BE8C'
-
 vim.cmd 'hi NvimTreeOpenedFile gui=bold guifg=white'
 vim.cmd 'hi NvimTreeFolderIcon guifg=#61afef'
 vim.cmd 'hi NvimTreeFolderName guifg=#61afef'
@@ -41,4 +36,3 @@ vim.fn.sign_define("NvimTreeSignError", { texthl = "NvimTreeSignError", text = "
 vim.fn.sign_define("NvimTreeSignHint", { texthl = "NvimTreeSignError", text = "" })
 vim.fn.sign_define("NvimTreeSignWarning", { texthl = "NvimTreeSignError", text = "" })
 vim.fn.sign_define("NvimTreeSignInformation", { texthl = "NvimTreeSignError", text = "" })
-
