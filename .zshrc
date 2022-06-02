@@ -78,26 +78,10 @@ export GIT_EDITOR='nvim'
 
 export COLORTERM="truecolor"
 
-# let g:fzf_colors = {
-#   \ 'fg':      ['fg', 'Normal'],
-#   \ 'bg':      ['bg', 'Normal'],
-#   \ 'hl':      ['fg', 'Comment'],
-#   \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-#   \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-#   \ 'hl+':     ['fg', 'Statement'],
-#   \ 'info':    ['fg', 'PreProc'],
-#   \ 'border':  ['fg', 'Ignore'],
-#   \ 'prompt':  ['fg', 'Conditional'],
-#   \ 'pointer': ['fg', 'Exception'],
-#   \ 'marker':  ['fg', 'Keyword'],
-#   \ 'spinner': ['fg', 'Label'],
-#   \ 'header':  ['fg', 'Comment']
-#   \ }
-export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
---color=fg:#c0caf5,bg:#24283b,hl:#565f89
---color=fg+:#c0caf5,bg+:#24283b,hl+:#bb9af7
---color=info:#7dcfff,prompt:#7dcfff,pointer:#7dcfff
---color=marker:#7dcfff,spinner:#7dcfff,header:#565f89
+export FZF_DEFAULT_OPTS='
+--color=bg+:#303446,bg:#303446,spinner:#ef9f76,hl:#e78284
+--color=fg:#c6d0f5,header:#e78284,info:#ca9ee6,pointer:#ef9f76
+--color=marker:#ef9f76,fg+:#f2d5cf,prompt:#ca9ee6,hl+:#e78284
 --layout=reverse --bind ctrl-u:preview-page-up,ctrl-d:preview-page-down
 '
 
