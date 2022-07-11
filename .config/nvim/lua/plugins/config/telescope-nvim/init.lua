@@ -35,7 +35,8 @@ telescope.setup {
       },
     },
     set_env = {['COLORTERM'] = 'truecolor'},
-    file_ignore_patterns = { '.git/*' }
+    -- removes all files with *git* in them
+    -- file_ignore_patterns = { '.git/*' }
   },
   extensions = {
     fzf = {
