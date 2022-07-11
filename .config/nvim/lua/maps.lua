@@ -31,10 +31,11 @@ nmap('<C-h>', '<C-w>h', { noremap = true })
 nmap('<C-j>', '<C-w>j', { noremap = true })
 nmap('<C-k>', '<C-w>k', { noremap = true })
 
+-- imap('<C-l>', 'copilot#Accept("<CR>")', { silent = true, script = true, expr = true })
 imap('<C-l>', '<Plug>luasnip-expand-or-jump', { noremap = true, silent = true })
 smap('<C-l>', '<Plug>luasnip-jump-next', { noremap = true, silent = true })
---[[ imap('<Backspace>', 'luasnip#jumpable(-1) ? "<Plug>luasnip-jump-prev" : "<Backspace>"', { noremap = true, silent = true, expr = true })
-smap('<Backspace>', 'luasnip#jumpable(-1) ? "<Plug>luasnip-jump-prev" : "<Backspace>"', { noremap = true, silent = true, expr = true }) ]]
+imap('<Backspace>', 'luasnip#jumpable(-1) ? "<Plug>luasnip-jump-prev" : "<Backspace>"', { noremap = true, silent = true, expr = true })
+smap('<Backspace>', 'luasnip#jumpable(-1) ? "<Plug>luasnip-jump-prev" : "<Backspace>"', { noremap = true, silent = true, expr = true })
 
 imap('<C-a>', '<C-o>^', { noremap = true, silent = true })
 imap('<C-e>', '<C-o>$', { noremap = true, silent = true })
@@ -63,7 +64,7 @@ nmap('cS', 'c:lua require"hop".hint_char1({ direction = require"hop.hint".HintDi
 nmap('K', ':lua vim.lsp.buf.hover()<Cr>', { silent = true })
 
 nmap('gd', ':Telescope lsp_definitions<Cr>', { silent = true })
-nmap('gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', { silent = true })
+nmap('gD', '<cmd>lua vim.lsp.buf.type_definition()<CR>', { silent = true })
 nmap('gi', ':Telescope lsp_implementations<Cr>', { silent = true })
 nmap('gr', ':Telescope lsp_references<Cr>', { silent = true })
 

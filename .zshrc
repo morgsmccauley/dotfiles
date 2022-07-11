@@ -79,9 +79,9 @@ export GIT_EDITOR='nvim'
 export COLORTERM="truecolor"
 
 export FZF_DEFAULT_OPTS='
---color=bg+:#303446,bg:#303446,spinner:#ef9f76,hl:#e78284
---color=fg:#c6d0f5,header:#e78284,info:#ca9ee6,pointer:#ef9f76
---color=marker:#ef9f76,fg+:#f2d5cf,prompt:#ca9ee6,hl+:#e78284
+--color=bg+:#24273a,bg:#24273a,spinner:#f5a97f,hl:#ee99a0
+--color=fg:#c6d0f5,header:#ee99a0,info:#c6a0f6,pointer:#f5a97f
+--color=marker:#f5a97f,fg+:#f0c6c6,prompt:#c6a0f6,hl+:#ee99a0
 --layout=reverse --bind ctrl-u:preview-page-up,ctrl-d:preview-page-down
 '
 

@@ -43,6 +43,10 @@ local function lsp_name(msg)
   return table.concat(buf_client_names, ", ")
 end
 
+local function hide_in_width()
+  return  vim.fn.winwidth(0) > 120
+end
+
 lualine.setup({
   options = {
     theme = 'catppuccin',
@@ -55,7 +59,8 @@ lualine.setup({
       {
         function()
           return vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
-        end
+        end,
+        cond = hide_in_width
       },
     },
     lualine_c = {
@@ -63,22 +68,39 @@ lualine.setup({
         'filename',
         file_status = true,
         path = 1,
+        shorting_target = 0
       },
       'location',
       'diagnostics'
     },
     lualine_x = {
       {
-        lsp_progress
+        lsp_progress,
+        -- cond = hide_in_width
       },
       {
-        lsp_name
+        lsp_name,
+        -- cond = hide_in_width
       },
-      'encoding',
-      'fileformat',
-      'filetype'
+      {
+        'encoding',
+        -- cond = hide_in_width
+      },
+      {
+        'fileformat',
+        -- cond = hide_in_width
+      },
+      {
+        'filetype',
+        -- cond = hide_in_width
+      },
     },
     lualine_y = {},
-    lualine_z = {'branch'}
+    lualine_z = {
+      {
+        'branch',
+        -- cond = hide_in_width
+      }
+    }
   },
 })
