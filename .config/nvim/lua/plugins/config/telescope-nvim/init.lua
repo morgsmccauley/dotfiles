@@ -53,7 +53,7 @@ telescope.setup {
 --telescope.load_extension('media_files')
 telescope.load_extension('fzf')
 telescope.load_extension('gh')
-telescope.load_extension('session_manager')
+telescope.load_extension('ui-select')
 
 return {
   jira = require('plugins/config/telescope-nvim/jira'),

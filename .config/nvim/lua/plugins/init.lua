@@ -174,8 +174,13 @@ return require("packer").startup(
         end
       }
       use {
-        'morgsmccauley/neovim-session-manager',
-        branch = 'stable'
+        'Shatur/neovim-session-manager',
+        config = function ()
+          require'plugins.config.neovim-session-manager'
+        end
+      }
+      use {
+        'nvim-telescope/telescope-ui-select.nvim'
       }
       use {
         'nvim-telescope/telescope.nvim',
@@ -190,5 +195,18 @@ return require("packer").startup(
           require'plugins/config/telescope-nvim'
         end
       }
+      use {
+        'akinsho/toggleterm.nvim',
+        tag = 'v2.*',
+        config = function()
+          require'plugins/config/toggleterm'
+        end
+      }
+      --[[ use {
+        'github/copilot.vim',
+        config = function()
+          vim.g.copilot_no_tab_map = true
+        end
+      } ]]
   end
 )

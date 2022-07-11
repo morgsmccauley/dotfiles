@@ -1,4 +1,4 @@
-vim.o.hidden = false
+vim.o.hidden = true
 vim.o.splitright = true
 vim.o.ignorecase = true
 -- vim.o.splitbelow = true

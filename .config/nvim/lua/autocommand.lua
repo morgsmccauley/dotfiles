@@ -24,6 +24,11 @@ vim.api.nvim_create_autocmd({'WinLeave'}, {
 })
 
 vim.api.nvim_create_autocmd({'BufWritePre'}, {
-    pattern = {'*.tsx, *.ts, *.jsx, *.js'},
+    pattern = {'*.tsx', '*.ts', '*.jsx', '*.js'},
     command = 'EslintFixAll'
+})
+
+vim.api.nvim_create_autocmd({'WinEnter'}, {
+  pattern = {'term://*'},
+  command = 'startinsert!'
 })

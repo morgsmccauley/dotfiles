@@ -10,7 +10,7 @@ require'nvim-tree'.setup{
     },
     renderer = {
         special_files = {},
-        highlight_opened_files = 'name',
+        -- highlight_opened_files = 'name',
         indent_markers = {
             enable = true
         },
@@ -32,7 +32,6 @@ require'nvim-tree'.setup{
     view = {
         hide_root_folder = true,
         width = 50,
-        auto_resize = true,
         mappings = {
             list = {
               { key = "<C-e>", action = "" },

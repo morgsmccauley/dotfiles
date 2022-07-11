@@ -88,8 +88,9 @@ local git = {
 
 local session = {
   name = '+session',
-  l = { ':Telescope session_manager load<Cr>', 'List sessions' },
+  l = { ':SessionManager load_session<Cr>', 'List sessions' },
   w = { ':SaveSession<Cr>', 'Write session' },
+  d = { ':SessionManager delete_session<Cr>', 'Delete session(s)' },
 }
 
 local marks = {

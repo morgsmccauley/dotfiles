@@ -23,7 +23,8 @@ end
 nmap('j', 'gj', { silent = true, noremap = true })
 nmap('k', 'gk', { silent = true, noremap = true })
 
-nmap('<C-t>', ':call MonkeyTerminalToggle()<Cr>', { silent = true, noremap = true })
+nmap('<C-S-t>', ':ToggleTermToggleAll<Cr>', { silent = true, noremap = true })
+-- nmap('<C-t>', '<Cmd>exe v:count1 . "ToggleTerm"<Cr>', { silent = true, noremap = true })
 nmap('<C-n>', ':NvimTreeFindFileToggle<Cr>', { silent = true, noremap = true })
 nmap('<C-l>', '<C-w>l', { noremap = true })
 nmap('<C-h>', '<C-w>h', { noremap = true })
