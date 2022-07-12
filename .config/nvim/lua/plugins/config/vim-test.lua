@@ -1,6 +1,6 @@
 vim.g['test#custom_strategies'] = {
-  monkey = function(cmd)
-    vim.fn.MonkeyTerminalExec(cmd)
+  toggleterm = function(cmd)
+    vim.fn.nvim_command('TermExec cmd="'..cmd..'"')
   end
 }
-vim.g['test#strategy'] = 'monkey';
+vim.g['test#strategy'] = 'toggleterm';

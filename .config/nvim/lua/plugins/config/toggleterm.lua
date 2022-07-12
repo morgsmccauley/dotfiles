@@ -8,7 +8,6 @@ require'toggleterm'.setup {
     return vim.o.columns * 0.5
   end,
   on_open = function(t)
-    -- vim.bo.filetype = 'toggleterm'
     vim.wo.winfixwidth = false
 
     vim.api.nvim_buf_set_keymap(t.bufnr, 't', '<C-h>', [[<C-\><C-n><C-W><C-h>]], { noremap = true })
