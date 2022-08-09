@@ -96,9 +96,6 @@ return require("packer").startup(
         end
       }
       use {
-        'cormacrelf/dark-notify'
-      }
-      use {
         'tpope/vim-fugitive'
       }
       use {
@@ -126,7 +123,10 @@ return require("packer").startup(
         'williamboman/nvim-lsp-installer',
         config = function()
           require 'plugins/config/nvim-lsp-installer'
-        end
+        end,
+        requires = {
+          {'neovim/nvim-lspconfig'}
+        }
       }
       use {
         'L3MON4D3/LuaSnip',
@@ -180,15 +180,13 @@ return require("packer").startup(
         end
       }
       use {
-        'nvim-telescope/telescope-ui-select.nvim'
-      }
-      use {
         'nvim-telescope/telescope.nvim',
         requires = {
           {'nvim-lua/popup.nvim'},
           {'nvim-lua/plenary.nvim'},
           {'nvim-telescope/telescope-media-files.nvim'},
           {'nvim-telescope/telescope-github.nvim'},
+          {'nvim-telescope/telescope-ui-select.nvim'},
           {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
         },
         config = function()
@@ -197,7 +195,6 @@ return require("packer").startup(
       }
       use {
         'akinsho/toggleterm.nvim',
-        tag = 'v2.*',
         config = function()
           require'plugins/config/toggleterm'
         end
