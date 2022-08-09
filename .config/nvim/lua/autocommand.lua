@@ -28,7 +28,7 @@ vim.api.nvim_create_autocmd({'BufWritePre'}, {
     command = 'EslintFixAll'
 })
 
-vim.api.nvim_create_autocmd({'WinEnter'}, {
-  pattern = {'term://*'},
-  command = 'startinsert!'
+vim.api.nvim_create_autocmd({'VimResized'}, {
+    pattern = {'*'},
+    command = 'wincmd ='
 })
