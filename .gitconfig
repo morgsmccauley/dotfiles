@@ -22,3 +22,5 @@
 	email = morgan@mccauley.co.nz
 [github]
 	user = morgsmccauley
+[init]
+	defaultBranch = main
