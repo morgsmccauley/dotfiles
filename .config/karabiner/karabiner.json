@@ -191,11 +191,11 @@
                         ]
                     },
                     {
-                        "description": "hyper-i switches to left space",
+                        "description": "hyper-, switches to left space",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "i",
+                                    "key_code": "comma",
                                     "modifiers": {
                                         "mandatory": [
                                             "right_command",
@@ -218,11 +218,11 @@
                         ]
                     },
                     {
-                        "description": "hyper-o switches to right space",
+                        "description": "hyper-. switches to right space",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "o",
+                                    "key_code": "period",
                                     "modifiers": {
                                         "mandatory": [
                                             "right_command",
