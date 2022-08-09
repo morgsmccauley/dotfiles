@@ -15,5 +15,7 @@ require'toggleterm'.setup {
     vim.api.nvim_buf_set_keymap(t.bufnr, 't', '<C-j>', [[<C-\><C-n><C-W><C-j>]], { noremap = true })
     vim.api.nvim_buf_set_keymap(t.bufnr, 't', '<C-k>', [[<C-\><C-n><C-W><C-k>]], { noremap = true })
     vim.api.nvim_buf_set_keymap(t.bufnr, 't', '<C-x>', [[<C-\><C-n>:q!<Cr>]], { noremap = true })
+
+    vim.api.nvim_buf_set_keymap(t.bufnr, 't', '<C-n>', [[<C-\><C-n>:NvimTreeToggle<Cr>]], { noremap = true })
   end,
 }
