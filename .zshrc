@@ -78,12 +78,20 @@ export GIT_EDITOR='nvim'
 
 export COLORTERM="truecolor"
 
-export FZF_DEFAULT_OPTS='
---color=bg+:#24273a,bg:#24273a,spinner:#f5a97f,hl:#ee99a0
---color=fg:#c6d0f5,header:#ee99a0,info:#c6a0f6,pointer:#f5a97f
---color=marker:#f5a97f,fg+:#f0c6c6,prompt:#c6a0f6,hl+:#ee99a0
---layout=reverse --bind ctrl-u:preview-page-up,ctrl-d:preview-page-down
-'
+# Latte
+# export FZF_DEFAULT_OPTS=" \
+# --color=bg+:#ccd0da,bg:#eff1f5,spinner:#dc8a78,hl:#d20f39 \
+# --color=fg:#4c4f69,header:#d20f39,info:#8839ef,pointer:#dc8a78 \
+# --color=marker:#dc8a78,fg+:#4c4f69,prompt:#8839ef,hl+:#d20f39"
+
+# Macchiato
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#24273a,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
+--color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
+--color=marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796"
+
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
+--layout=reverse --bind ctrl-u:preview-page-up,ctrl-d:preview-page-down"
 
 alias v='nvim'
 alias c='cargo'
@@ -128,3 +136,8 @@ export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$PATH:$HOME/go/bin"
 export PATH="/opt/homebrew/opt/node@16/bin:$PATH"
 export PATH="/Users/morganmccauley/Library/Python/3.8/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/Users/morganmccauley/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
