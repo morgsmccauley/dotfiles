@@ -34,3 +34,5 @@ lspconfig.sumneko_lua.setup {
     }
   }
 }
+
+lspconfig.eslint.setup {}
