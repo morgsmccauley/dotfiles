@@ -31,6 +31,8 @@ nmap('<C-h>', '<C-w>h', { noremap = true })
 nmap('<C-j>', '<C-w>j', { noremap = true })
 nmap('<C-k>', '<C-w>k', { noremap = true })
 
+nmap('<C-p>', '@:', { noremap = true })
+
 -- imap('<C-l>', 'copilot#Accept("<CR>")', { silent = true, script = true, expr = true })
 imap('<C-l>', '<Plug>luasnip-expand-or-jump', { noremap = true, silent = true })
 smap('<C-l>', '<Plug>luasnip-jump-next', { noremap = true, silent = true })
