@@ -10,30 +10,14 @@ end
 
 return require("packer").startup(
     function(use)
-      use {
-        'wbthomason/packer.nvim'
-      }
-      use {
-        'jiangmiao/auto-pairs'
-      }
-      use {
-        'alvan/vim-closetag'
-      }
-      use {
-        'tpope/vim-surround'
-      }
-      use {
-        'tpope/vim-repeat'
-      }
-      use {
-        'nathom/filetype.nvim'
-      }
-      use {
-       'mfussenegger/nvim-dap'
-      }
-      use {
-        'szw/vim-maximizer'
-      }
+      use 'wbthomason/packer.nvim'
+      use 'jiangmiao/auto-pairs'
+      use 'alvan/vim-closetag'
+      use 'tpope/vim-surround'
+      use 'tpope/vim-repeat'
+      use 'nathom/filetype.nvim'
+      use 'mfussenegger/nvim-dap'
+      use 'szw/vim-maximizer'
       use {
         'kyazdani42/nvim-web-devicons',
         config = function()
