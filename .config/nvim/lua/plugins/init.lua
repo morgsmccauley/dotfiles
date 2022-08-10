@@ -14,6 +14,27 @@ return require("packer").startup(
         'wbthomason/packer.nvim'
       }
       use {
+        'jiangmiao/auto-pairs'
+      }
+      use {
+        'alvan/vim-closetag'
+      }
+      use {
+        'tpope/vim-surround'
+      }
+      use {
+        'tpope/vim-repeat'
+      }
+      use {
+        'nathom/filetype.nvim'
+      }
+      use {
+       'mfussenegger/nvim-dap'
+      }
+      use {
+        'szw/vim-maximizer'
+      }
+      use {
         'kyazdani42/nvim-web-devicons',
         config = function()
           require'plugins/config/nvim-web-devicons'
@@ -49,18 +70,6 @@ return require("packer").startup(
         config = function()
           require'colorizer'.setup()
         end
-      }
-      use {
-        'jiangmiao/auto-pairs'
-      }
-      use {
-        'alvan/vim-closetag'
-      }
-      use {
-        'tpope/vim-surround'
-      }
-      use {
-        'tpope/vim-repeat'
       }
       use {
         'phaazon/hop.nvim',
@@ -117,9 +126,6 @@ return require("packer").startup(
         end
       }
       use {
-        'nathom/filetype.nvim'
-      }
-      use {
         'williamboman/nvim-lsp-installer',
         config = function()
           require 'plugins/config/nvim-lsp-installer'
@@ -136,9 +142,6 @@ return require("packer").startup(
         config = function()
           require 'luasnip'.filetype_extend("typescript", {"javascript"})
         end
-      }
-      use {
-        'szw/vim-maximizer'
       }
       use {
         'hrsh7th/nvim-cmp',
@@ -199,11 +202,5 @@ return require("packer").startup(
           require'plugins/config/toggleterm'
         end
       }
-      --[[ use {
-        'github/copilot.vim',
-        config = function()
-          vim.g.copilot_no_tab_map = true
-        end
-      } ]]
   end
 )
