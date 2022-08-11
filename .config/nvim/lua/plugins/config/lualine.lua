@@ -14,11 +14,13 @@ local function lsp_progress(_)
     local ms = vim.loop.hrtime() / 1000000
     local frame = math.floor(ms / 120) % #spinners
 
-    if percentage >= 70 then
-      return string.format(" %s %s %s (%s%%)) ", success_icon[frame + 1], title, msg, percentage)
-    end
-
-    return string.format(" %s %s %s (%s%%)) ", spinners[frame + 1], title, msg, percentage)
+    return string.format(
+      " %s %s %s (%s) ",
+      percentage >= 70 and success_icon[frame + 1] or spinners[frame + 1],
+      title,
+      msg,
+      percentage
+    )
   end
 
   return ""
