@@ -78,30 +78,24 @@ lualine.setup({
     lualine_x = {
       {
         lsp_progress,
-        -- cond = hide_in_width
       },
       {
         lsp_name,
-        -- cond = hide_in_width
       },
       {
         'encoding',
-        -- cond = hide_in_width
       },
       {
         'fileformat',
-        -- cond = hide_in_width
       },
       {
         'filetype',
-        -- cond = hide_in_width
       },
     },
     lualine_y = {},
     lualine_z = {
       {
         'branch',
-        -- cond = hide_in_width
       }
     }
   },
