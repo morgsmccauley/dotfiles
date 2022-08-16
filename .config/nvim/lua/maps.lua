@@ -39,6 +39,8 @@ smap('<C-l>', '<Plug>luasnip-jump-next', { noremap = true, silent = true })
 imap('<Backspace>', 'luasnip#jumpable(-1) ? "<Plug>luasnip-jump-prev" : "<Backspace>"', { noremap = true, silent = true, expr = true })
 smap('<Backspace>', 'luasnip#jumpable(-1) ? "<Plug>luasnip-jump-prev" : "<Backspace>"', { noremap = true, silent = true, expr = true })
 
+nmap('<C-g>', ':Neogit<Cr>', { noremap = true, silent = true })
+
 imap('<C-a>', '<C-o>^', { noremap = true, silent = true })
 imap('<C-e>', '<C-o>$', { noremap = true, silent = true })
 
