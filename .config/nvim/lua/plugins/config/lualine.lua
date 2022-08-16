@@ -3,27 +3,27 @@ local lualine = require('lualine')
 local function lsp_progress(_)
   local Lsp = vim.lsp.util.get_progress_messages()[1]
 
-  if Lsp then
-    local msg = Lsp.message or ""
-    local percentage = Lsp.percentage or 0
-    local title = Lsp.title or ""
-
-    local spinners = { "", "", "" }
-    local success_icon = { "", "", "" }
-
-    local ms = vim.loop.hrtime() / 1000000
-    local frame = math.floor(ms / 120) % #spinners
-
-    return string.format(
-      " %s %s %s (%s) ",
-      percentage >= 70 and success_icon[frame + 1] or spinners[frame + 1],
-      title,
-      msg,
-      percentage
-    )
+  if not Lsp then
+    return ""
   end
 
-  return ""
+  local msg = Lsp.message or ""
+  local percentage = Lsp.percentage or 0
+  local title = Lsp.title or ""
+
+  local spinners = { "", "", "" }
+  local success_icon = { "", "", "" }
+
+  local ms = vim.loop.hrtime() / 1000000
+  local frame = math.floor(ms / 120) % #spinners
+
+  return string.format(
+    " %s %s %s (%s) ",
+    percentage >= 70 and success_icon[frame + 1] or spinners[frame + 1],
+    title,
+    msg,
+    percentage
+  )
 end
 
 local function lsp_name(msg)
