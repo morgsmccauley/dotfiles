@@ -19,6 +19,16 @@ return require("packer").startup(
       use 'mfussenegger/nvim-dap'
       use 'szw/vim-maximizer'
       use {
+        'mfussenegger/nvim-dap',
+        requires = {
+          'rcarriga/nvim-dap-ui'
+        },
+        config = function()
+          require("dapui").setup()
+          require'plugins/config/nvim-dap'
+        end
+      }
+      use {
         'kyazdani42/nvim-web-devicons',
         config = function()
           require'plugins/config/nvim-web-devicons'

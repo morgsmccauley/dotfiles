@@ -61,12 +61,17 @@ local git_hunk = {
   p = { ':lua require\'gitsigns\'.prev_hunk()<Cr>', 'Prev' },
 }
 
-local diffview = {
-  name = '+diffview',
-  o = { ':DiffviewOpen<Cr>', 'Open' },
-  c = { ':DiffviewClose<Cr>', 'Close' },
-  b = { ':DiffviewOpen origin/master..HEAD<Cr>', 'Open (branch)' },
-  f = { ':DiffviewToggleFiles', 'Toggle files' },
+local debug = {
+  name = '+debug',
+  n = { ':lua require"dap".step_over()<Cr>', 'Step over' },
+  i = { ':lua require"dap".step_into()<Cr>', 'Step into' },
+  o = { ':lua require"dap".step_out()<Cr>', 'Step out' },
+  c = { ':lua require"dap".continue()<Cr>', 'Continue' },
+  s = { ':lua require"dap".close()<Cr>', 'Stop' },
+  b = { ':lua require"dap".toggle_breakpoint()<Cr>', 'Toggle breakpoint' },
+  B = { ':lua require"dap".set_breakpoint(vim.fn.input("Breakpoint condition: "))<Cr>', 'Set breakpoint with condition' },
+  r = { ':lua require"dap".repl.toggle()<Cr>', 'Toggle repl' },
+  u = { ':lua require"dapui".toggle()<Cr>', 'Toggle ui' }
 }
 
 local git = {
@@ -145,7 +150,7 @@ local mappings = {
   c = code,
   h = hop,
   j = jira,
-  d = diffview,
+  d = debug,
   t = test,
   ['*'] = { ':Telescope grep_string<Cr>', 'Search for symbol globally' },
   ['/'] ={ ':Telescope live_grep<Cr>', 'Search globally' },

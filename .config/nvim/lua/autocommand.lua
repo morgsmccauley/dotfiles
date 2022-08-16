@@ -32,3 +32,18 @@ vim.api.nvim_create_autocmd({'VimResized'}, {
     pattern = {'*'},
     command = 'wincmd ='
 })
+
+vim.api.nvim_create_autocmd({'FileType'}, {
+    pattern = {'dap-repl'},
+    command = 'startinsert!'
+})
+
+vim.api.nvim_create_autocmd({'FileType'}, {
+    pattern = {'dap-repl'},
+    callback = function(t)
+        vim.api.nvim_buf_set_keymap(t.buf, 't', '<C-h>', [[<C-\><C-n><C-W><C-h>]], { noremap = true })
+        vim.api.nvim_buf_set_keymap(t.buf, 't', '<C-\\>', [[<C-\><C-n>]], { noremap = true })
+        vim.api.nvim_buf_set_keymap(t.buf, 't', '<C-j>', [[<C-\><C-n><C-W><C-j>]], { noremap = true })
+        vim.api.nvim_buf_set_keymap(t.buf, 't', '<C-k>', [[<C-\><C-n><C-W><C-k>]], { noremap = true })
+    end
+})
