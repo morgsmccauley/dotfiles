@@ -47,3 +47,8 @@ vim.api.nvim_create_autocmd({'FileType'}, {
         vim.api.nvim_buf_set_keymap(t.buf, 't', '<C-k>', [[<C-\><C-n><C-W><C-k>]], { noremap = true })
     end
 })
+
+vim.api.nvim_create_autocmd({'BufWritePost'}, {
+    pattern = {'.config/nvim/lua/plugins/init.lua'},
+    command = 'source <afile> | PackerCompile'
+})
