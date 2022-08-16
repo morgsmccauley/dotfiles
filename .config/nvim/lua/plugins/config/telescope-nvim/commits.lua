@@ -49,35 +49,6 @@ return function()
         print('Squashed commit: ' .. commit)
       end
 
-      local soft_reset = function(prompt_bufnr)
-        local cwd = action_state.get_current_picker(prompt_bufnr).cwd
-        local commit = action_state.get_selected_entry().value
-
-        local confirmation = vim.fn.input('Soft reset to this commit: ' .. commit .. '? [Y/n] ')
-        if string.lower(confirmation) ~= 'y' then return end
-        print' '
-
-        actions.close(prompt_bufnr)
-
-        local _, ret, stderr = GetOsCommandOutput({
-          'git',
-          'reset',
-          '--soft',
-          commit..'~1'
-        }, cwd)
-
-        if ret == 0 then
-          print("Soft reset to commit: " .. commit)
-        else
-          print(string.format(
-            'Error soft reseting commit: %s. Git returned: "%s"',
-            commit,
-            table.concat(stderr, '  ')
-          ))
-          return
-        end
-      end
-
       local interactive_rebase = function(prompt_bufnr)
         -- local cwd = action_state.get_current_picker(prompt_bufnr).cwd
         local commit = action_state.get_selected_entry().value
@@ -92,7 +63,6 @@ return function()
       end
 
       map('i', '<C-f>', fixup)
-      map('i', '<C-s>', soft_reset)
       map('i', '<C-r>', interactive_rebase)
 
       return true
