@@ -16,8 +16,13 @@ return require("packer").startup(
       use 'tpope/vim-surround'
       use 'tpope/vim-repeat'
       use 'nathom/filetype.nvim'
-      use 'mfussenegger/nvim-dap'
       use 'szw/vim-maximizer'
+      use {
+        'f-person/auto-dark-mode.nvim',
+        config = function()
+          require'plugins/config/auto-dark-mode'
+        end
+      }
       use {
         'mfussenegger/nvim-dap',
         requires = {
@@ -179,11 +184,11 @@ return require("packer").startup(
       use {
         'nvim-telescope/telescope.nvim',
         requires = {
-          {'nvim-lua/popup.nvim'},
-          {'nvim-lua/plenary.nvim'},
-          {'nvim-telescope/telescope-media-files.nvim'},
-          {'nvim-telescope/telescope-github.nvim'},
-          {'nvim-telescope/telescope-ui-select.nvim'},
+          'nvim-lua/popup.nvim',
+          'nvim-lua/plenary.nvim',
+          'nvim-telescope/telescope-media-files.nvim',
+          'nvim-telescope/telescope-github.nvim',
+          'nvim-telescope/telescope-ui-select.nvim',
           {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
         },
         config = function()

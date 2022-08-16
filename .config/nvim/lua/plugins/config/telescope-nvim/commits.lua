@@ -1,8 +1,6 @@
 local action_state = require'telescope.actions.state'
 local builtin = require'telescope.builtin'
-local utils = require'telescope.utils'
 local actions = require'telescope.actions'
-local previewers = require('telescope.previewers')
 local Job = require "plenary.job"
 
 function GetOsCommandOutput(cmd, cwd, env)
@@ -28,10 +26,8 @@ end
 
 return function()
   builtin.git_commits({
-    -- previewer = previewers.git_commit_diff_as_was.new({}),
     attach_mappings = function(_, map)
       local fixup = function(prompt_bufnr)
-        local cwd = action_state.get_current_picker(prompt_bufnr).cwd
         local commit = action_state.get_selected_entry().value
 
         local confirmation = vim.fn.input('Fix up commit: ' .. commit .. '? [Y/n] ')
@@ -50,7 +46,6 @@ return function()
       end
 
       local interactive_rebase = function(prompt_bufnr)
-        -- local cwd = action_state.get_current_picker(prompt_bufnr).cwd
         local commit = action_state.get_selected_entry().value
 
         local confirmation = vim.fn.input('Interactive rebase from commit: ' .. commit .. '? [Y/n] ')
