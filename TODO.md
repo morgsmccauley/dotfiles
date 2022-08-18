@@ -1,0 +1,3 @@
+- Make neogit full width
+- Remove fugitive
+- Use nvim splits when attempting to open nvim in embedded terminal (ex. neogit)
