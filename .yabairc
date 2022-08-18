@@ -13,17 +13,18 @@ yabai -m config active_window_opacity 1.0
 yabai -m config normal_window_opacity 0.90
 
 # reverse these rules?
-yabai -m rule --add app="^System Preferences$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Finder$" sticky=on layer=above manage=off
-yabai -m rule --add app="^System Information$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Activity Monitor$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Messages$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Karabiner-Elements$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Karabiner-EventViewer$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Preview$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Keychain Access$" sticky=on layer=above manage=off
-yabai -m rule --add app="^BetterTouchTool$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Contexts$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Music$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Home$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Docker Desktop$" sticky=on layer=above manage=off
+yabai -m rule --add app="^System Preferences$" sticky=on manage=off
+yabai -m rule --add app="^Finder$" sticky=on manage=off
+yabai -m rule --add app="^System Information$" sticky=on manage=off
+yabai -m rule --add app="^Activity Monitor$" sticky=on manage=off
+yabai -m rule --add app="^Messages$" sticky=on manage=off
+yabai -m rule --add app="^Karabiner-Elements$" sticky=on manage=off
+yabai -m rule --add app="^Karabiner-EventViewer$" sticky=on manage=off
+yabai -m rule --add app="^Preview$" sticky=on manage=off
+yabai -m rule --add app="^Keychain Access$" sticky=on manage=off
+yabai -m rule --add app="^BetterTouchTool$" sticky=on manage=off
+yabai -m rule --add app="^Contexts$" sticky=on manage=off
+yabai -m rule --add app="^Music$" sticky=on manage=off
+yabai -m rule --add app="^Home$" sticky=on manage=off
+yabai -m rule --add app="^Docker Desktop$" sticky=on manage=off
+yabai -m rule --add app="^Reminders$" sticky=on manage=off
