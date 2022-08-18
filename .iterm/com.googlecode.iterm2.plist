@@ -3784,6 +3784,8 @@
 	<true/>
 	<key>EnableProxyIcon</key>
 	<true/>
+	<key>EnterCopyModeAutomatically</key>
+	<false/>
 	<key>FocusFollowsMouse</key>
 	<false/>
 	<key>GlobalKeyMap</key>
