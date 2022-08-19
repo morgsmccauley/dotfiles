@@ -34,7 +34,7 @@ require'toggleterm'.setup {
     GIT_SEQUENCE_EDITOR = nvim_cmd
   },
   size = function()
-    return vim.o.columns * 0.5
+    return vim.o.columns / vim.fn.tabpagewinnr(vim.fn.tabpagenr(), '$')
   end,
   on_open = function(t)
     vim.wo.winfixwidth = false

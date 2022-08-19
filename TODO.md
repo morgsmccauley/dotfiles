@@ -1,3 +1,3 @@
 - Make neogit full width
 - Remove fugitive
-- make toggleterm balance window splits rather than static 50%
+- unlink <Cr> and <C-m>
