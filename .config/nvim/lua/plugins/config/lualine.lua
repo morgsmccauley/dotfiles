@@ -73,7 +73,15 @@ lualine.setup({
         shorting_target = 0
       },
       'location',
-      'diagnostics'
+      {
+        'diagnostics',
+        symbols = {
+          error = ' ',
+          warn = ' ',
+          info = ' ',
+          hint = ' ',
+        }
+      }
     },
     lualine_x = {
       {
