@@ -9,8 +9,8 @@ vim.cmd 'hi EndOfBuffer guifg=#282c34'
 vim.cmd 'hi PmenuSel  guibg=#98c379'
 
 vim.cmd 'hi DiagnosticSignError guifg=#DF8890'
-vim.cmd 'hi DiagnosticSignWarning guifg=#EBCB8B'
-vim.cmd 'hi DiagnosticSignInformation guifg=#81A1C1'
+vim.cmd 'hi DiagnosticSignWarn guifg=#EBCB8B'
+vim.cmd 'hi DiagnosticSignInfo guifg=#81A1C1'
 vim.cmd 'hi DiagnosticSignHint guifg=#A3BE8C'
 
 vim.cmd 'hi NvimTreeOpenedFile gui=bold guifg=white'
@@ -29,8 +29,8 @@ vim.cmd 'hi HopNextKey2 guifg=#00dfff'
 
 vim.fn.sign_define("DiagnosticSignError", { texthl = "DiagnosticSignError", text = "" })
 vim.fn.sign_define("DiagnosticSignHint", { texthl = "DiagnosticSignHint", text = "" })
-vim.fn.sign_define("DiagnosticSignWarning", { texthl = "DiagnosticSignWarning", text = "" })
-vim.fn.sign_define("DiagnosticSignInformation", { texthl = "DiagnosticSignInformation", text = "" })
+vim.fn.sign_define("DiagnosticSignWarn", { texthl = "DiagnosticSignWarn", text = "" })
+vim.fn.sign_define("DiagnosticSignInfo", { texthl = "DiagnosticSignInfo", text = "" })
 
 vim.fn.sign_define("NvimTreeSignError", { texthl = "NvimTreeSignError", text = "" })
 vim.fn.sign_define("NvimTreeSignHint", { texthl = "NvimTreeSignError", text = "" })
