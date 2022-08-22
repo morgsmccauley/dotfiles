@@ -1,3 +1,4 @@
 - Make neogit full width
 - Remove fugitive
 - unlink <Cr> and <C-m>
+- catppuccin compile
