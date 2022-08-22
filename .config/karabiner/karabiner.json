@@ -207,10 +207,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "left_arrow",
-                                        "modifiers": [
-                                            "right_control"
-                                        ]
+                                        "shell_command": "/opt/homebrew/bin/yabai -m space --focus prev | osascript -e 'tell application \"System Events\" to key code 123 using control down'"
                                     }
                                 ],
                                 "type": "basic"
@@ -234,10 +231,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "right_arrow",
-                                        "modifiers": [
-                                            "right_control"
-                                        ]
+                                        "shell_command": "/opt/homebrew/bin/yabai -m space --focus next | osascript -e 'tell application \"System Events\" to key code 124 using control down'"
                                     }
                                 ],
                                 "type": "basic"
