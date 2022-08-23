@@ -25,7 +25,7 @@ vim.api.nvim_create_autocmd({'WinLeave'}, {
 
 vim.api.nvim_create_autocmd({'BufWritePre'}, {
     pattern = {'*.tsx', '*.ts', '*.jsx', '*.js'},
-    command = 'EslintFixAll'
+    command = 'if exists(":EslintFixAll") | execute "EslintFixAll" | endif'
 })
 
 vim.api.nvim_create_autocmd({'VimResized'}, {
