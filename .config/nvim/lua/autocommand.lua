@@ -28,6 +28,11 @@ vim.api.nvim_create_autocmd({'BufWritePre'}, {
     command = 'if exists(":EslintFixAll") | execute "EslintFixAll" | endif'
 })
 
+vim.api.nvim_create_autocmd({'Bufread'}, {
+    pattern = {'*.http'},
+    command = 'set ft=http'
+})
+
 vim.api.nvim_create_autocmd({'InsertLeave', 'TextChanged'}, {
     pattern = {'*'},
     command = 'silent! w'
