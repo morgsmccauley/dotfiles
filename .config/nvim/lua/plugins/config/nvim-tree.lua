@@ -1,9 +1,8 @@
 vim.o.termguicolors = true
 
 require'nvim-tree'.setup{
-    disable_netrw = false,
-    hijack_netrw = false,
-    update_cwd = true,
+    hijack_netrw = true,
+    sync_root_with_cwd = true,
     hijack_cursor = true,
     update_focused_file = {
         enable = true,
