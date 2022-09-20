@@ -1,28 +1,27 @@
-local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({
-    'git',
-    'clone',
-    '--depth',
-    '1',
-    'https://github.com/wbthomason/packer.nvim',
-    install_path
-  })
-  vim.cmd [[packadd packer.nvim]]
+local ensure_packer = function()
+  local fn = vim.fn
+  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    vim.cmd [[packadd packer.nvim]]
+    return true
+  end
+  return false
 end
+
+local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(
   function(use)
+    use 'nvim-lua/plenary.nvim'
     use 'wbthomason/packer.nvim'
     use 'jiangmiao/auto-pairs'
     use 'alvan/vim-closetag'
     use 'tpope/vim-surround'
     use 'tpope/vim-repeat'
     use 'nathom/filetype.nvim'
+    use 'lewis6991/impatient.nvim'
     use 'szw/vim-maximizer'
-    use 'rhysd/clever-f.vim'
-    use 'tpope/vim-fugitive'
     use {
       'f-person/auto-dark-mode.nvim',
       config = function()
@@ -32,10 +31,9 @@ return require('packer').startup(
     use {
       'mfussenegger/nvim-dap',
       requires = {
-        'rcarriga/nvim-dap-ui'
+        'nvim-telescope/telescope-dap.nvim'
       },
       config = function()
-        require("dapui").setup()
         require'plugins/config/nvim-dap'
       end
     }
@@ -47,6 +45,7 @@ return require('packer').startup(
     }
     use {
       'kyazdani42/nvim-tree.lua',
+      cmd = {'NvimTreeFindFileToggle'},
       config = function()
         require'plugins/config/nvim-tree'
       end
@@ -72,6 +71,7 @@ return require('packer').startup(
     })
     use {
       'norcalli/nvim-colorizer.lua',
+      opt = true,
       config = function()
         require'colorizer'.setup()
       end
@@ -90,12 +90,16 @@ return require('packer').startup(
     }
     use {
       'folke/which-key.nvim',
+      keys = { '<leader>', '"', '\'', '`' },
       config = function()
         require'plugins/config/which-key-nvim'
       end
     }
     use {
-      'sindrets/diffview.nvim'
+      'sindrets/diffview.nvim',
+      opt = true,
+      cmd = 'DiffviewOpen',
+      module = 'neogit/integrations/diffview'
     }
     use {
       'lukas-reineke/indent-blankline.nvim',
@@ -116,52 +120,47 @@ return require('packer').startup(
       end
     }
     use {
-      'simrat39/symbols-outline.nvim',
-      config = function()
-        require'plugins/config/symbols-outline'
-      end
-    }
-    use {
       'vim-test/vim-test',
       config = function()
         require'plugins/config/vim-test'
       end
     }
     use {
-      'williamboman/nvim-lsp-installer',
+      'williamboman/mason.nvim',
       config = function()
-        require 'plugins/config/nvim-lsp-installer'
+        require 'plugins/config/mason'
       end,
       requires = {
+        {'williamboman/mason-lspconfig.nvim'},
         {'neovim/nvim-lspconfig'}
       }
     }
     use {
+      'rafamadriz/friendly-snippets',
+      event = 'InsertEnter',
+    }
+    use {
       'L3MON4D3/LuaSnip',
-      requires = {
-        {'rafamadriz/friendly-snippets'}
-      },
+      event = 'InsertEnter',
       config = function()
         require 'luasnip'.filetype_extend("typescript", {"javascript"})
       end
     }
     use {
       'hrsh7th/nvim-cmp',
-      requires = {
-        {'hrsh7th/cmp-nvim-lsp'},
-        {'hrsh7th/cmp-path'},
-        {'hrsh7th/cmp-buffer'},
-        {'saadparwaiz1/cmp_luasnip'}
-      },
+      event = 'InsertEnter',
       config = function()
         require'plugins/config/nvim-cmp'
       end
     }
+    use {'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' }
+    use {'hrsh7th/cmp-path', after = 'nvim-cmp' }
+    use {'hrsh7th/cmp-buffer', after = 'nvim-cmp' }
+    use {'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' }
+
     use {
       'TimUntersberger/neogit',
-      requires = {
-        {'nvim-lua/plenary.nvim'}
-      },
+      cmd = {'Neogit'},
       config = function()
         require'plugins/config/neogit'
       end
@@ -182,24 +181,28 @@ return require('packer').startup(
       'Shatur/neovim-session-manager',
       config = function ()
         require'plugins.config.neovim-session-manager'
-      end
+      end,
     }
     use {
       'nvim-telescope/telescope.nvim',
       requires = {
         'nvim-lua/popup.nvim',
-        'nvim-lua/plenary.nvim',
         'nvim-telescope/telescope-media-files.nvim',
         'nvim-telescope/telescope-github.nvim',
         'nvim-telescope/telescope-ui-select.nvim',
+        'nvim-telescope/telescope-project.nvim',
         {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
       },
+      cmd = 'Telescope',
+      fn = 'vim.ui.select',
+      module = 'plugins/config/telescope-nvim',
       config = function()
         require'plugins/config/telescope-nvim'
       end
     }
     use {
       'akinsho/toggleterm.nvim',
+      cmd = 'ToggleTerm',
       config = function()
         require'plugins/config/toggleterm'
       end
