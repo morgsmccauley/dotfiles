@@ -194,7 +194,7 @@ return require('packer').startup(
         {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
       },
       cmd = 'Telescope',
-      fn = 'vim.ui.select',
+      keys = {'<leader>sl'}, -- need a better way of lazy loading before vim.ui.select
       module = 'plugins/config/telescope-nvim',
       config = function()
         require'plugins/config/telescope-nvim'

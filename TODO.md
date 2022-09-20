@@ -1,8 +1,4 @@
-- Make neogit full width
-- Remove fugitive
 - unlink <Cr> and <C-m>
-- catppuccin compile
 - make vim-test work in (lerna) monorepos https://github.com/vim-test/vim-test/issues/272
 - use karabiner instead of skhd?
 - https://github.com/nvim-neotest/neotest - dap support
-- https://github.com/williamboman/mason.nvim
