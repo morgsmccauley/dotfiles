@@ -1,9 +1,6 @@
 local builtin = require'telescope.builtin'
-local pickers = require'telescope.pickers'
-local finders = require'telescope.finders'
 local telescope = require'telescope'
 local actions = require'telescope.actions'
-local conf = require("telescope.config").values
 
 telescope.setup {
   defaults = {
