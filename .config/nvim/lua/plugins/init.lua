@@ -65,6 +65,7 @@ return require('packer').startup(
     use({
       "catppuccin/nvim",
       as = "catppuccin",
+      run = ":CatppuccinCompile",
       config = function ()
         require'plugins/config/catppuccin'
       end
