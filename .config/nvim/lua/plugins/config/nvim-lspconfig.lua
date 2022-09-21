@@ -33,6 +33,12 @@ lspconfig.sumneko_lua.setup {
       }
     }
   }
+  on_attach = function(_, bufnr)
+    vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+      buffer = bufnr,
+      callback = vim.lsp.buf.formatting_sync,
+    })
+  end
 }
 
 lspconfig.eslint.setup {}
