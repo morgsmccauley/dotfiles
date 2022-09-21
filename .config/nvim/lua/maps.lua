@@ -24,14 +24,12 @@ nmap('j', 'gj', { silent = true, noremap = true })
 nmap('k', 'gk', { silent = true, noremap = true })
 
 nmap('<C-S-t>', ':ToggleTermToggleAll<Cr>', { silent = true, noremap = true })
--- nmap('<C-t>', '<Cmd>exe v:count1 . "ToggleTerm"<Cr>', { silent = true, noremap = true })
+nmap('<C-t>', '<Cmd>exe v:count1 . "ToggleTerm"<Cr>', { silent = true, noremap = true })
 nmap('<C-n>', ':NvimTreeFindFileToggle<Cr>', { silent = true, noremap = true })
 nmap('<C-l>', '<C-w>l', { noremap = true })
 nmap('<C-h>', '<C-w>h', { noremap = true })
 nmap('<C-j>', '<C-w>j', { noremap = true })
 nmap('<C-k>', '<C-w>k', { noremap = true })
-
-nmap('<C-t>', ':ToggleTerm<Cr>', { noremap = true, silent = true })
 
 nmap('<C-p>', '@:', { noremap = true })
 
@@ -47,7 +45,7 @@ imap('<C-a>', '<C-o>^', { noremap = true, silent = true })
 imap('<C-e>', '<C-o>$', { noremap = true, silent = true })
 
 nmap('<C-x>', ':q<Cr>', { noremap = true })
-nmap('<C-s>', ':SymbolsOutline<Cr>', { noremap = true, silent = true })
+nmap('<C-s>', ':w<Cr>', { noremap = true, silent = true })
 
 nmap('<Esc>', ':noh | echo ""<Cr><Esc>', { silent = true, noremap = true })
 nmap('QQ', ':qall<CR>', { noremap = true })
