@@ -188,7 +188,6 @@ return require('packer').startup(
       'nvim-telescope/telescope.nvim',
       requires = {
         'nvim-lua/popup.nvim',
-        'nvim-telescope/telescope-media-files.nvim',
         'nvim-telescope/telescope-github.nvim',
         'nvim-telescope/telescope-ui-select.nvim',
         {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
