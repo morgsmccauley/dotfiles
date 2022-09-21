@@ -1,11 +1,11 @@
-local action_state = require'telescope.actions.state'
-local builtin = require'telescope.builtin'
-local utils = require'telescope.utils'
-local actions = require'telescope.actions'
+local action_state = require 'telescope.actions.state'
+local builtin = require 'telescope.builtin'
+local utils = require 'telescope.utils'
+local actions = require 'telescope.actions'
 
 return function()
   builtin.git_stash({
-    attach_mappings = function (_, map)
+    attach_mappings = function(_, map)
       local pop = function(prompt_bufnr)
         local selection = action_state.get_selected_entry()
         local _, ret, stderr = utils.get_os_command_output({ 'git', 'stash', 'pop', '--index', selection.value })

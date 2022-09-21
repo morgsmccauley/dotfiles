@@ -1,4 +1,4 @@
-local action_state = require'telescope.actions.state'
+local action_state = require 'telescope.actions.state'
 local previewers = require('telescope.previewers')
 local utils = require('telescope.utils')
 local defaulter = utils.make_default_callable
@@ -10,7 +10,7 @@ local pickers = require('telescope.pickers')
 local conf = require('telescope.config').values
 local make_entry = require('telescope.make_entry')
 local utils = require('telescope.utils')
-local popup=require('popup')
+local popup = require('popup')
 
 local issue_previewer = function(opts)
   return previewers.new_buffer_previewer {
@@ -21,7 +21,7 @@ local issue_previewer = function(opts)
     define_preview = function(self, entry, status)
       local filetype = 'yaml'
 
-      putils.job_maker({'jira', 'view', entry.ticket}, self.state.bufnr, {
+      putils.job_maker({ 'jira', 'view', entry.ticket }, self.state.bufnr, {
         value = entry.value .. filetype,
         bufname = self.state.bufname,
         cwd = opts.cwd
@@ -36,8 +36,8 @@ return function(opts)
   opts = opts or {}
   pickers.new {
     results_title = 'Jira Issues',
-    finder = finders.new_oneshot_job({'jira', 'list', '--assignee=morgan.mccauley'}, {
-      entry_maker = function (line)
+    finder = finders.new_oneshot_job({ 'jira', 'list', '--assignee=morgan.mccauley' }, {
+      entry_maker = function(line)
         if line == "" then return {} end
 
         local tmp_table = vim.split(line, ":");
@@ -49,7 +49,7 @@ return function(opts)
         return {
           value = ticket,
           ordinal = line,
-          display = ticket .. ' ' .. description .. ' (' .. status ..  '/' .. priority .. ')',
+          display = ticket .. ' ' .. description .. ' (' .. status .. '/' .. priority .. ')',
           ticket = ticket,
           description = description,
           priority = priority,
@@ -60,19 +60,19 @@ return function(opts)
     sorter = conf.file_sorter(opts),
     previewer = issue_previewer(opts),
     attach_mappings = function(_, map)
-      map('i', '<c-y>', function (prompt_bufnr)
+      map('i', '<c-y>', function(prompt_bufnr)
         local entry = action_state.get_selected_entry()
         vim.fn.setreg('*', entry.ticket)
         actions.close(prompt_bufnr)
       end)
 
-      map('i', '<c-t>', function (prompt_bufnr)
+      map('i', '<c-t>', function(prompt_bufnr)
         local entry = action_state.get_selected_entry()
         os.execute('jira browse ' .. entry.ticket)
         actions.close(prompt_bufnr)
       end)
 
-      actions.select_default:replace(function (prompt_bufnr)
+      actions.select_default:replace(function(prompt_bufnr)
         local entry = action_state.get_selected_entry()
         vim.api.nvim_command(':call MonkeyTerminalExec(' .. '"jira edit ' .. entry.ticket .. '")')
         actions.close(prompt_bufnr)

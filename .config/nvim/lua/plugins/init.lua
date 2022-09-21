@@ -1,8 +1,8 @@
 local ensure_packer = function()
   local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
   if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
     vim.cmd [[packadd packer.nvim]]
     return true
   end
@@ -22,10 +22,17 @@ return require('packer').startup(
     use 'nathom/filetype.nvim'
     use 'lewis6991/impatient.nvim'
     use 'szw/vim-maximizer'
+    use '~/Developer/Repositories/http-client.nvim'
+    --[[ use {
+      "Pocco81/auto-save.nvim",
+      config = function()
+         require("auto-save").setup {}
+      end,
+    } ]]
     use {
       'f-person/auto-dark-mode.nvim',
       config = function()
-        require'plugins/config/auto-dark-mode'
+        require 'plugins/config/auto-dark-mode'
       end
     }
     use {
@@ -34,66 +41,66 @@ return require('packer').startup(
         'nvim-telescope/telescope-dap.nvim'
       },
       config = function()
-        require'plugins/config/nvim-dap'
+        require 'plugins/config/nvim-dap'
       end
     }
     use {
       'kyazdani42/nvim-web-devicons',
       config = function()
-        require'plugins/config/nvim-web-devicons'
+        require 'plugins/config/nvim-web-devicons'
       end
     }
     use {
       'kyazdani42/nvim-tree.lua',
-      cmd = {'NvimTreeFindFileToggle'},
+      cmd = { 'NvimTreeFindFileToggle' },
       config = function()
-        require'plugins/config/nvim-tree'
+        require 'plugins/config/nvim-tree'
       end
     }
     use {
       'lewis6991/gitsigns.nvim',
       config = function()
-        require'plugins/config/gitsigns'
+        require 'plugins/config/gitsigns'
       end
     }
     use {
       'nvim-lualine/lualine.nvim',
       config = function()
-        require'plugins/config/lualine'
+        require 'plugins/config/lualine'
       end
     }
     use({
       "catppuccin/nvim",
       as = "catppuccin",
       run = ":CatppuccinCompile",
-      config = function ()
-        require'plugins/config/catppuccin'
+      config = function()
+        require 'plugins/config/catppuccin'
       end
     })
     use {
       'norcalli/nvim-colorizer.lua',
       opt = true,
       config = function()
-        require'colorizer'.setup()
+        require 'colorizer'.setup()
       end
     }
     use {
       'phaazon/hop.nvim',
       config = function()
-        require'plugins/config/hop'
+        require 'plugins/config/hop'
       end
     }
     use {
       'b3nj5m1n/kommentary',
       config = function()
-        require'plugins/config/kommentary'
+        require 'plugins/config/kommentary'
       end
     }
     use {
       'folke/which-key.nvim',
       keys = { '<leader>', '"', '\'', '`' },
       config = function()
-        require'plugins/config/which-key-nvim'
+        require 'plugins/config/which-key-nvim'
       end
     }
     use {
@@ -105,25 +112,25 @@ return require('packer').startup(
     use {
       'lukas-reineke/indent-blankline.nvim',
       config = function()
-        require'plugins/config/indent-blankline'
+        require 'plugins/config/indent-blankline'
       end
     }
     use {
       'neovim/nvim-lspconfig',
       config = function()
-        require'plugins/config/nvim-lspconfig'
+        require 'plugins/config/nvim-lspconfig'
       end
     }
     use {
       'ruanyl/vim-gh-line',
       config = function()
-        require'plugins/config/vim-gh-line'
+        require 'plugins/config/vim-gh-line'
       end
     }
     use {
       'vim-test/vim-test',
       config = function()
-        require'plugins/config/vim-test'
+        require 'plugins/config/vim-test'
       end
     }
     use {
@@ -132,8 +139,8 @@ return require('packer').startup(
         require 'plugins/config/mason'
       end,
       requires = {
-        {'williamboman/mason-lspconfig.nvim'},
-        {'neovim/nvim-lspconfig'}
+        { 'williamboman/mason-lspconfig.nvim' },
+        { 'neovim/nvim-lspconfig' }
       }
     }
     use {
@@ -144,44 +151,44 @@ return require('packer').startup(
       'L3MON4D3/LuaSnip',
       event = 'InsertEnter',
       config = function()
-        require 'luasnip'.filetype_extend("typescript", {"javascript"})
+        require 'luasnip'.filetype_extend("typescript", { "javascript" })
       end
     }
     use {
       'hrsh7th/nvim-cmp',
       event = 'InsertEnter',
       config = function()
-        require'plugins/config/nvim-cmp'
+        require 'plugins/config/nvim-cmp'
       end
     }
-    use {'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' }
-    use {'hrsh7th/cmp-path', after = 'nvim-cmp' }
-    use {'hrsh7th/cmp-buffer', after = 'nvim-cmp' }
-    use {'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' }
+    use { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' }
+    use { 'hrsh7th/cmp-path', after = 'nvim-cmp' }
+    use { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' }
+    use { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' }
 
     use {
       'TimUntersberger/neogit',
-      cmd = {'Neogit'},
+      cmd = { 'Neogit' },
       config = function()
-        require'plugins/config/neogit'
+        require 'plugins/config/neogit'
       end
     }
     use {
       'nvim-treesitter/nvim-treesitter',
       requires = {
-        {'sheerun/vim-polyglot'},
+        { 'sheerun/vim-polyglot' },
         -- doesnt work with which key https://github.com/romgrk/nvim-treesitter-context/issues/40
         -- {'romgrk/nvim-treesitter-context'}
       },
       run = ':TSUpdate',
       config = function()
-        require'plugins/config/nvim-treesitter'
+        require 'plugins/config/nvim-treesitter'
       end
     }
     use {
       'Shatur/neovim-session-manager',
-      config = function ()
-        require'plugins.config.neovim-session-manager'
+      config = function()
+        require 'plugins.config.neovim-session-manager'
       end,
     }
     use {
@@ -190,20 +197,20 @@ return require('packer').startup(
         'nvim-lua/popup.nvim',
         'nvim-telescope/telescope-github.nvim',
         'nvim-telescope/telescope-ui-select.nvim',
-        {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+        { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
       },
-      cmd = 'Telescope',
+      --[[ cmd = 'Telescope',
       keys = {'<leader>sl'}, -- need a better way of lazy loading before vim.ui.select
-      module = 'plugins/config/telescope-nvim',
+      module = 'plugins/config/telescope-nvim', ]]
       config = function()
-        require'plugins/config/telescope-nvim'
+        require 'plugins/config/telescope-nvim'
       end
     }
     use {
       'akinsho/toggleterm.nvim',
       cmd = 'ToggleTerm',
       config = function()
-        require'plugins/config/toggleterm'
+        require 'plugins/config/toggleterm'
       end
     }
 

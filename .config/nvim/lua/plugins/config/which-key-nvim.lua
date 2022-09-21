@@ -121,8 +121,8 @@ local code = {
 
 local hop = {
   name = '+hop',
-  w = { ':HopWord<Cr>',  'Word' },
-  l = { ':HopLine<Cr>',  'Line' },
+  w = { ':HopWord<Cr>', 'Word' },
+  l = { ':HopLine<Cr>', 'Line' },
   p = { ':HopPattern<Cr>', 'Pattern' },
   s = { ':HopChar1<Cr>', 'Single char' },
   d = { ':HopChar2<Cr>', 'Double char' },
@@ -153,8 +153,8 @@ local mappings = {
   d = debug,
   t = test,
   ['*'] = { ':Telescope grep_string<Cr>', 'Search for symbol globally' },
-  ['/'] ={ ':Telescope live_grep<Cr>', 'Search globally' },
-  [','] ={ ':lua require\'plugins/config/telescope-nvim\'.buffers()<Cr>', 'Switch buffer' },
+  ['/'] = { ':Telescope live_grep<Cr>', 'Search globally' },
+  [','] = { ':lua require\'plugins/config/telescope-nvim\'.buffers()<Cr>', 'Switch buffer' },
   ['.'] = { ':Telescope git_files<Cr>', 'Find file' },
   ['\\'] = { ':luafile ~/.config/nvim/init.lua<Cr>', 'Reload config' },
 }

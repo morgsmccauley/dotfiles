@@ -1,6 +1,6 @@
-local builtin = require'telescope.builtin'
-local telescope = require'telescope'
-local actions = require'telescope.actions'
+local builtin = require 'telescope.builtin'
+local telescope = require 'telescope'
+local actions = require 'telescope.actions'
 
 telescope.setup {
   defaults = {
@@ -31,7 +31,7 @@ telescope.setup {
         ["<C-\\>n"] = { "<esc>", type = "command" },
       },
     },
-    set_env = {['COLORTERM'] = 'truecolor'},
+    set_env = { ['COLORTERM'] = 'truecolor' },
     file_ignore_patterns = { '^.git/*' }
   },
   extensions = {
@@ -41,7 +41,7 @@ telescope.setup {
       case_mode = "smart_case",
     },
     media_files = {
-      filetypes = {'png', 'webp', 'jpg', 'jpeg'},
+      filetypes = { 'png', 'webp', 'jpg', 'jpeg' },
       find_cmd = 'rg'
     }
   }
@@ -54,7 +54,7 @@ telescope.load_extension('ui-select')
 
 return {
   jira = require('plugins/config/telescope-nvim/jira'),
-  buffers = function ()
+  buffers = function()
     builtin.buffers({
       show_all_buffers = true,
       sort_mru = true,

@@ -36,8 +36,10 @@ nmap('<C-p>', '@:', { noremap = true })
 -- imap('<C-l>', 'copilot#Accept("<CR>")', { silent = true, script = true, expr = true })
 imap('<C-l>', '<Plug>luasnip-expand-or-jump', { noremap = true, silent = true })
 smap('<C-l>', '<Plug>luasnip-jump-next', { noremap = true, silent = true })
-imap('<Backspace>', 'luasnip#jumpable(-1) ? "<Plug>luasnip-jump-prev" : "<Backspace>"', { noremap = true, silent = true, expr = true })
-smap('<Backspace>', 'luasnip#jumpable(-1) ? "<Plug>luasnip-jump-prev" : "<Backspace>"', { noremap = true, silent = true, expr = true })
+imap('<Backspace>', 'luasnip#jumpable(-1) ? "<Plug>luasnip-jump-prev" : "<Backspace>"',
+  { noremap = true, silent = true, expr = true })
+smap('<Backspace>', 'luasnip#jumpable(-1) ? "<Plug>luasnip-jump-prev" : "<Backspace>"',
+  { noremap = true, silent = true, expr = true })
 
 nmap('<C-g>', ':Neogit<Cr>', { noremap = true, silent = true })
 
@@ -61,9 +63,15 @@ nmap('ys', 'y:HopChar1CurrentLineAC<Cr>', { noremap = true, silent = true })
 nmap('cs', 'c:HopChar1CurrentLineAC<Cr>', { noremap = true, silent = true })
 
 nmap('S', ':HopChar1CurrentLine<Cr>', { noremap = true, silent = true })
-nmap('dS', 'd:lua require"hop".hint_char1({ direction = require"hop.hint".HintDirection.AFTER_CURSOR, inclusive_jump=true, current_line_only=true })<Cr>', { noremap = true, silent = true })
-nmap('yS', 'y:lua require"hop".hint_char1({ direction = require"hop.hint".HintDirection.AFTER_CURSOR, inclusive_jump=true, current_line_only=true })<Cr>', { noremap = true, silent = true })
-nmap('cS', 'c:lua require"hop".hint_char1({ direction = require"hop.hint".HintDirection.AFTER_CURSOR, inclusive_jump=true, current_line_only=true })<Cr>', { noremap = true, silent = true })
+nmap('dS',
+  'd:lua require"hop".hint_char1({ direction = require"hop.hint".HintDirection.AFTER_CURSOR, inclusive_jump=true, current_line_only=true })<Cr>'
+  , { noremap = true, silent = true })
+nmap('yS',
+  'y:lua require"hop".hint_char1({ direction = require"hop.hint".HintDirection.AFTER_CURSOR, inclusive_jump=true, current_line_only=true })<Cr>'
+  , { noremap = true, silent = true })
+nmap('cS',
+  'c:lua require"hop".hint_char1({ direction = require"hop.hint".HintDirection.AFTER_CURSOR, inclusive_jump=true, current_line_only=true })<Cr>'
+  , { noremap = true, silent = true })
 
 nmap('K', ':lua vim.lsp.buf.hover()<Cr>', { silent = true })
 

@@ -2,7 +2,7 @@ local git = require 'lib.git'
 
 local git_editor = git.get_editor()
 
-require'toggleterm'.setup {
+require 'toggleterm'.setup {
   shade_terminals = false,
   direction = 'vertical',
   open_mapping = [[<C-t>]],

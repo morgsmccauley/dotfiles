@@ -1,6 +1,6 @@
 vim.o.termguicolors = true
 
-require'nvim-tree'.setup{
+require 'nvim-tree'.setup {
     hijack_netrw = true,
     sync_root_with_cwd = true,
     hijack_cursor = true,
@@ -33,10 +33,10 @@ require'nvim-tree'.setup{
         width = 50,
         mappings = {
             list = {
-              { key = "<C-e>", action = "" },
-              { key = "<C-j>", action = "" },
-              { key = "<C-k>", action = "" },
-              { key = "<C-t>", action = "" },
+                { key = "<C-e>", action = "" },
+                { key = "<C-j>", action = "" },
+                { key = "<C-k>", action = "" },
+                { key = "<C-t>", action = "" },
             }
         }
     },

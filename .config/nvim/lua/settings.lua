@@ -6,8 +6,8 @@ vim.o.termguicolors = true
 vim.o.number = true
 vim.o.numberwidth = 2
 vim.o.wrap = false
-vim.cmd[[set noshowmode]]
-vim.cmd[[set cursorline]]
+vim.cmd [[set noshowmode]]
+vim.cmd [[set cursorline]]
 
 vim.o.rnu = true
 
@@ -27,11 +27,11 @@ vim.o.expandtab = true
 vim.o.shiftwidth = 2
 
 vim.o.completeopt = 'menuone,noselect,noinsert'
-vim.cmd[[set shortmess+=c]]
+vim.cmd [[set shortmess+=c]]
 vim.o.encoding = 'UTF-8'
 
 vim.o.undofile = true
-vim.cmd[[set undodir=~/.vim/undo]]
+vim.cmd [[set undodir=~/.vim/undo]]
 
 
 vim.cmd 'syntax enable'

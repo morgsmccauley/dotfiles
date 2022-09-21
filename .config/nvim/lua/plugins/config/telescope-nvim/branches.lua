@@ -1,7 +1,7 @@
-local action_state = require'telescope.actions.state'
-local builtin = require'telescope.builtin'
-local utils = require'telescope.utils'
-local actions = require'telescope.actions'
+local action_state = require 'telescope.actions.state'
+local builtin = require 'telescope.builtin'
+local utils = require 'telescope.utils'
+local actions = require 'telescope.actions'
 
 return function()
   builtin.git_branches({
@@ -17,7 +17,7 @@ return function()
         local ret
         local stderr
         if is_remote then
-          _, ret, stderr = utils.get_os_command_output({ 'git', 'checkout',  '-t', branch }, cwd)
+          _, ret, stderr = utils.get_os_command_output({ 'git', 'checkout', '-t', branch }, cwd)
         else
           _, ret, stderr = utils.get_os_command_output({ 'git', 'checkout', branch }, cwd)
         end

@@ -1,6 +1,6 @@
 vim.g['test#custom_strategies'] = {
   toggleterm = function(cmd)
-    vim.api.nvim_command('TermExec cmd=\''..cmd..'\'')
+    vim.api.nvim_command('TermExec cmd=\'' .. cmd .. '\'')
   end
 }
 

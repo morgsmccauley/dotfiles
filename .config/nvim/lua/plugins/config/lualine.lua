@@ -46,7 +46,7 @@ local function lsp_name(msg)
 end
 
 local function hide_in_width()
-  return  vim.fn.winwidth(0) > 120
+  return vim.fn.winwidth(0) > 120
 end
 
 lualine.setup({
@@ -56,7 +56,7 @@ lualine.setup({
     component_separators = { left = '', right = '' },
   },
   sections = {
-    lualine_a = {'mode'},
+    lualine_a = { 'mode' },
     lualine_b = {
       {
         function()
