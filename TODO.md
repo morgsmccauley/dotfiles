@@ -2,3 +2,4 @@
 - make vim-test work in (lerna) monorepos https://github.com/vim-test/vim-test/issues/272
 - use karabiner instead of skhd?
 - https://github.com/nvim-neotest/neotest - dap support
+- autosave doesnt work with vim-repeat
