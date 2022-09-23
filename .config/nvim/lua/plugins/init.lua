@@ -149,9 +149,9 @@ return require('packer').startup(
     }
     use {
       'L3MON4D3/LuaSnip',
-      event = 'InsertEnter',
+      after = 'friendly-snippets',
       config = function()
-        require 'luasnip'.filetype_extend("typescript", { "javascript" })
+        require 'luasnip'.filetype_extend('typescript', { 'javascript' })
       end
     }
     use {
