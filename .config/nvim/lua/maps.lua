@@ -46,7 +46,7 @@ nmap('<C-g>', ':Neogit<Cr>', { noremap = true, silent = true })
 imap('<C-a>', '<C-o>^', { noremap = true, silent = true })
 imap('<C-e>', '<C-o>$', { noremap = true, silent = true })
 
-nmap('<C-x>', ':q<Cr>', { noremap = true })
+nmap('<C-q>', ':q<Cr>', { noremap = true })
 nmap('<C-s>', ':w<Cr>', { noremap = true, silent = true })
 
 nmap('<Esc>', ':noh | echo ""<Cr><Esc>', { silent = true, noremap = true })
@@ -86,10 +86,10 @@ nmap('<C-y>', '5<C-y>', { noremap = true, silent = true })
 imap('<Tab>', 'pumvisible() ? \"\\<C-n>\" : \"\\<Tab>\"', { expr = true, noremap = true })
 imap('<S-Tab>', 'pumvisible() ? \"\\<C-p>\" : \"\\<S-Tab>\"', { expr = true, noremap = true })
 
-nmap("<C-/>", "<Plug>kommentary_line_default")
-vmap("<C-/>", "<Plug>kommentary_visual_default")
+nmap('<C-/>', '<Plug>(comment_toggle_linewise_current)')
+vmap('<C-/>', '<Plug>(comment_toggle_linewise_visual)')
 
-nmap("<C-m>", ":MaximizerToggle!<Cr>", { noremap = true, silent = true })
+nmap('<C-m>', ':MaximizerToggle!<Cr>', { noremap = true, silent = true })
 
 -- https://github.com/phaazon/hop.nvim/issues/82
 nmap('dl', 'dV:HopLine<Cr>', { noremap = true, silent = true })

@@ -91,9 +91,9 @@ return require('packer').startup(
       end
     }
     use {
-      'b3nj5m1n/kommentary',
+      'numToStr/Comment.nvim',
       config = function()
-        require 'plugins/config/kommentary'
+        require 'plugins/config/comment'
       end
     }
     use {
