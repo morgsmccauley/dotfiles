@@ -1,5 +1,6 @@
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
+local lspkind = require 'lspkind'
 
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -51,6 +52,11 @@ cmp.setup {
     { name = 'buffer', max_item_count = 10 },
     { name = 'luasnip' },
   },
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = 'symbol_text'
+    })
+  }
   --[[ experimental = {
     ghost_text = true,
   } ]]

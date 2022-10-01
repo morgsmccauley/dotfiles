@@ -13,14 +13,14 @@ local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(
   function(use)
-    use 'nvim-lua/plenary.nvim'
+    use "nvim-lua/plenary.nvim"
     use 'wbthomason/packer.nvim'
     use 'jiangmiao/auto-pairs'
     use 'alvan/vim-closetag'
     use 'tpope/vim-surround'
     use 'tpope/vim-repeat'
     use 'nathom/filetype.nvim'
-    use 'lewis6991/impatient.nvim'
+    use "lewis6991/impatient.nvim"
     use 'szw/vim-maximizer'
     use '~/Developer/Repositories/http-client.nvim'
     --[[ use {
@@ -70,9 +70,9 @@ return require('packer').startup(
       end
     }
     use({
-      "catppuccin/nvim",
-      as = "catppuccin",
-      run = ":CatppuccinCompile",
+      'catppuccin/nvim',
+      as = 'catppuccin',
+      run = ':CatppuccinCompile',
       config = function()
         require 'plugins/config/catppuccin'
       end
@@ -155,16 +155,20 @@ return require('packer').startup(
       end
     }
     use {
-      'hrsh7th/nvim-cmp',
+      'onsails/lspkind.nvim',
       event = 'InsertEnter',
+    }
+    use {
+      'hrsh7th/nvim-cmp',
+      after = 'lspkind.nvim',
       config = function()
         require 'plugins/config/nvim-cmp'
       end
     }
-    use { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' }
     use { 'hrsh7th/cmp-path', after = 'nvim-cmp' }
     use { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' }
     use { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' }
+    use { 'hrsh7th/cmp-nvim-lsp' }
 
     use {
       'TimUntersberger/neogit',
