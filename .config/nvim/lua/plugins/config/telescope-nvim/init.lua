@@ -4,7 +4,6 @@ local actions = require 'telescope.actions'
 
 telescope.setup {
   defaults = {
-    -- scroll_strategy = 'limit',
     layout_strategy = 'flex',
     history = {
       limit = 500
@@ -18,6 +17,8 @@ telescope.setup {
       '--column',
       '--smart-case',
       '--hidden',
+      '-g',
+      '!.git',
     },
     mappings = {
       i = {
@@ -32,7 +33,6 @@ telescope.setup {
       },
     },
     set_env = { ['COLORTERM'] = 'truecolor' },
-    file_ignore_patterns = { '^.git/*' }
   },
   extensions = {
     fzf = {
@@ -47,7 +47,6 @@ telescope.setup {
   }
 }
 
---telescope.load_extension('media_files')
 telescope.load_extension('fzf')
 telescope.load_extension('gh')
 telescope.load_extension('ui-select')
