@@ -1,6 +1,6 @@
-vim.g.mapleader = " "
+vim.g.mapleader = ' '
 
-local wk = require("which-key")
+local wk = require('which-key')
 
 wk.setup {
   window = {
@@ -74,6 +74,14 @@ local debug = {
   u = { ':lua require"dapui".toggle()<Cr>', 'Toggle ui' }
 }
 
+local git_diff = {
+  name = '+diff',
+  o = { ':DiffviewOpen<Cr>', 'Open' },
+  b = { ':DiffviewOpen master...HEAD<Cr>', 'Open (branch)' },
+  c = { ':DiffviewClose<Cr>', 'Close' },
+  f = { ':DiffviewToggleFiles<Cr>', 'Toggle files pane' }
+}
+
 local git = {
   name = '+git',
   l = { ':lua require\'plugins/config/telescope-nvim\'.commits()<Cr>', 'Log' },
@@ -87,6 +95,7 @@ local git = {
   -- B = { ':Gitsigns toggle_current_line_blame<Cr>', 'Blame annotations' },
   g = { ':Neogit<Cr>', 'Git' },
   h = git_hunk,
+  d = git_diff,
   r = git_remote,
   R = git_rebase,
 }
@@ -156,7 +165,7 @@ local mappings = {
   ['/'] = { ':Telescope live_grep<Cr>', 'Search globally' },
   [','] = { ':lua require\'plugins/config/telescope-nvim\'.buffers()<Cr>', 'Switch buffer' },
   ['.'] = { ':Telescope git_files<Cr>', 'Find file' },
-  ['\\'] = { ':luafile ~/.config/nvim/init.lua<Cr>', 'Reload config' },
+  ['\\'] = { ':source $MYVIMRC<Cr>', 'Reload config' },
 }
 
 local opts = {
