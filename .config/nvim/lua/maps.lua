@@ -1,4 +1,4 @@
-vim.g.mapleader = " "
+vim.g.mapleader = ' '
 
 local function nmap(lhs, rhs, opts)
   opts = opts or {}
@@ -30,6 +30,8 @@ nmap('<C-l>', '<C-w>l', { noremap = true })
 nmap('<C-h>', '<C-w>h', { noremap = true })
 nmap('<C-j>', '<C-w>j', { noremap = true })
 nmap('<C-k>', '<C-w>k', { noremap = true })
+
+nmap('<C-w>gf', '<C-w>vgf', { noremap = true })
 
 nmap('<C-p>', '@:', { noremap = true })
 
