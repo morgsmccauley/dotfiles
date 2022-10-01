@@ -203,16 +203,15 @@ return require('packer').startup(
         'nvim-telescope/telescope-ui-select.nvim',
         { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
       },
-      --[[ cmd = 'Telescope',
-      keys = {'<leader>sl'}, -- need a better way of lazy loading before vim.ui.select
-      module = 'plugins/config/telescope-nvim', ]]
+      -- cmd = { 'Telescope', 'SessionManager' },
+      -- module = 'plugins/config/telescope-nvim',
       config = function()
         require 'plugins/config/telescope-nvim'
       end
     }
     use {
       'akinsho/toggleterm.nvim',
-      cmd = 'ToggleTerm',
+      cmd = { 'ToggleTerm', 'TermExec' },
       config = function()
         require 'plugins/config/toggleterm'
       end
