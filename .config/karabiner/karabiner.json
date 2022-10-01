@@ -2,7 +2,8 @@
     "global": {
         "check_for_updates_on_startup": true,
         "show_in_menu_bar": true,
-        "show_profile_name_in_menu_bar": false
+        "show_profile_name_in_menu_bar": false,
+        "unsafe_ui": false
     },
     "profiles": [
         {
@@ -154,10 +155,6 @@
                         "description": "Change tab to hyper if pressed with other keys and tab if pressed alone.",
                         "manipulators": [
                             {
-                                "parameters": {
-                                    "basic.to_if_held_down_threshold_milliseconds": 500
-                                },
-                                "type": "basic",
                                 "from": {
                                     "key_code": "tab",
                                     "modifiers": {
@@ -166,6 +163,20 @@
                                         ]
                                     }
                                 },
+                                "parameters": {
+                                    "basic.to_if_held_down_threshold_milliseconds": 500
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "right_shift",
+                                        "lazy": true,
+                                        "modifiers": [
+                                            "right_command",
+                                            "right_control",
+                                            "right_option"
+                                        ]
+                                    }
+                                ],
                                 "to_if_alone": [
                                     {
                                         "key_code": "tab"
@@ -176,17 +187,7 @@
                                         "key_code": "tab"
                                     }
                                 ],
-                                "to": [
-                                    {
-                                        "key_code": "right_shift",
-                                        "modifiers": [
-                                            "right_command",
-                                            "right_control",
-                                            "right_option"
-                                        ],
-                                        "lazy": true
-                                    }
-                                ]
+                                "type": "basic"
                             }
                         ]
                     },
