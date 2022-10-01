@@ -9,7 +9,7 @@ vim.o.wrap = false
 vim.cmd [[set noshowmode]]
 vim.cmd [[set cursorline]]
 
-vim.o.rnu = true
+-- vim.o.rnu = true
 
 vim.o.mouse = 'a'
 
