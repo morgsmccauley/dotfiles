@@ -1,5 +1,4 @@
 local lspconfig = require('lspconfig')
-
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 lspconfig.tsserver.setup {
@@ -42,3 +41,7 @@ lspconfig.sumneko_lua.setup {
 }
 
 lspconfig.eslint.setup {}
+
+lspconfig.jsonls.setup {
+  capabilities = capabilities
+}
