@@ -30,6 +30,13 @@ return require('packer').startup(
       end,
     } ]]
     use {
+      'pwntester/octo.nvim',
+      cmd = 'Octo',
+      config = function()
+        require 'octo'.setup()
+      end
+    }
+    use {
       'f-person/auto-dark-mode.nvim',
       config = function()
         require 'plugins/config/auto-dark-mode'
