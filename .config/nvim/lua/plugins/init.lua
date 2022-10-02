@@ -114,7 +114,12 @@ return require('packer').startup(
       'sindrets/diffview.nvim',
       opt = true,
       cmd = 'DiffviewOpen',
-      module = 'neogit/integrations/diffview'
+      module = 'neogit/integrations/diffview',
+      config = function()
+        require 'diffview'.setup {
+          enhanced_diff_hl = true
+        }
+      end
     }
     use {
       'lukas-reineke/indent-blankline.nvim',
@@ -194,6 +199,22 @@ return require('packer').startup(
       run = ':TSUpdate',
       config = function()
         require 'plugins/config/nvim-treesitter'
+      end
+    }
+    use {
+      'nvim-treesitter/nvim-treesitter-refactor',
+      config = function()
+        require 'nvim-treesitter.configs'.setup {
+          refactor = {
+            highlight_definitions = {
+              enable = true,
+              clear_on_cursor_move = true,
+            },
+            highlight_current_scope = {
+              enable = false
+            },
+          },
+        }
       end
     }
     use {
