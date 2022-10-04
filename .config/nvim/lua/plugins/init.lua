@@ -13,14 +13,14 @@ local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(
   function(use)
-    use "nvim-lua/plenary.nvim"
+    use 'nvim-lua/plenary.nvim'
     use 'wbthomason/packer.nvim'
     use 'jiangmiao/auto-pairs'
     use 'alvan/vim-closetag'
     use 'tpope/vim-surround'
     use 'tpope/vim-repeat'
     use 'nathom/filetype.nvim'
-    use "lewis6991/impatient.nvim"
+    use 'lewis6991/impatient.nvim'
     use 'szw/vim-maximizer'
     use '~/Developer/Repositories/http-client.nvim'
     --[[ use {
@@ -29,6 +29,12 @@ return require('packer').startup(
          require("auto-save").setup {}
       end,
     } ]]
+    use {
+      'simrat39/rust-tools.nvim',
+      config = function()
+        require 'plugins/config/rust-tools'
+      end
+    }
     use {
       'pwntester/octo.nvim',
       cmd = 'Octo',

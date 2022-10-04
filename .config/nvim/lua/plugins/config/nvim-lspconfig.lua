@@ -16,19 +16,12 @@ lspconfig.tsserver.setup {
   }
 }
 
-lspconfig.rust_analyzer.setup {
-  capabilities = capabilities,
-  flags = {
-    debounce_text_changes = 150,
-  }
-}
-
 lspconfig.sumneko_lua.setup {
   capabilities = capabilities,
   settings = {
     Lua = {
       diagnostics = {
-        globals = {'vim'}
+        globals = { 'vim' }
       }
     }
   },

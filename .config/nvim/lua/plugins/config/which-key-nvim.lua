@@ -125,7 +125,7 @@ local code = {
   a = { ':lua vim.lsp.buf.code_action()<Cr>', 'Code actions' },
   d = { ':Telescope diagnostics bufnr=0<Cr>', 'File diagnostics' },
   l = { ':lua vim.diagnostic.open_float()<Cr>', 'Show diagnostics for current line' },
-  f = { ':lua vim.lsp.buf.formatting()<Cr>', 'Format' }
+  f = { ':lua vim.lsp.buf.format()<Cr>', 'Format' }
 }
 
 local hop = {
