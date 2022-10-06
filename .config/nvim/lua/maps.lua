@@ -54,7 +54,7 @@ nmap('<C-s>', ':w<Cr>', { noremap = true, silent = true })
 nmap('<Esc>', ':noh | echo ""<Cr><Esc>', { silent = true, noremap = true })
 nmap('QQ', ':qall<CR>', { noremap = true })
 
-nmap('\\', '<cmd>HopWordMW<Cr>', { noremap = true, silent = true })
+nmap('\\', '<cmd>HopWord<Cr>', { noremap = true, silent = true })
 nmap('<C-\\>', '<cmd>HopLine<Cr>', { noremap = true, silent = true })
 vmap('\\', '<cmd>HopWord<Cr>', { noremap = true, silent = true })
 vmap('<C-\\>', '<cmd>HopLine<Cr>', { noremap = true, silent = true })
