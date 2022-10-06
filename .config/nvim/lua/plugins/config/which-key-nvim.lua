@@ -67,10 +67,17 @@ local debug = {
   i = { ':lua require"dap".step_into()<Cr>', 'Step into' },
   o = { ':lua require"dap".step_out()<Cr>', 'Step out' },
   c = { ':lua require"dap".continue()<Cr>', 'Continue' },
-  s = { ':lua require"dap".close()<Cr>', 'Stop' },
+  s = { ':lua require"dap".terminate()<Cr>', 'Stop' },
   b = { ':lua require"dap".toggle_breakpoint()<Cr>', 'Toggle breakpoint' },
   B = { ':lua require"dap".set_breakpoint(vim.fn.input("Breakpoint condition: "))<Cr>', 'Set breakpoint with condition' },
-  r = { ':lua require"dap".repl.toggle()<Cr>', 'Toggle repl' },
+  r = {
+    function()
+      require('dap').repl.toggle()
+      -- wasn't able to make this work in lua - win_findbuf[0] returned nil
+      vim.api.nvim_command "call win_gotoid(win_findbuf(bufnr('dap-repl'))[0])"
+    end,
+    'Toggle repl'
+  },
   u = { ':lua require"dapui".toggle()<Cr>', 'Toggle ui' }
 }
 
