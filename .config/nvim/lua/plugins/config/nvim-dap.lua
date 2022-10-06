@@ -56,6 +56,47 @@ dap.configurations.javascript = {
   },
 }
 
+local keymap_restore = {}
+
+dap.listeners.after['event_initialized']['me'] = function()
+  for _, buf in pairs(vim.api.nvim_list_bufs()) do
+    local keymaps = vim.api.nvim_buf_get_keymap(buf, 'n')
+    for _, keymap in pairs(keymaps) do
+      if keymap.lhs == 'K' then
+        table.insert(keymap_restore, keymap)
+        vim.api.nvim_buf_del_keymap(buf, 'n', 'K')
+      end
+    end
+  end
+
+  vim.api.nvim_set_keymap('n', 'K', '<Cmd>lua require("dap.ui.widgets").hover()<CR>', { silent = true })
+end
+
+dap.listeners.after['event_terminated']['me'] = function()
+  vim.api.nvim_del_keymap('n', 'K')
+
+  for _, keymap in pairs(keymap_restore) do
+    vim.keymap.set(
+      keymap.mode,
+      keymap.lhs,
+      keymap.rhs or keymap.callback,
+      {
+        silent = keymap.silent == 1,
+        buffer = keymap.buffer,
+      }
+    )
+  end
+  keymap_restore = {}
+end
+
+vim.api.nvim_create_autocmd({ 'FileType' }, {
+  pattern = { 'dap-float' },
+  callback = function(t)
+    vim.api.nvim_buf_set_keymap(t.buf, 'n', 'q', ':q<Cr>', { silent = true })
+    vim.api.nvim_buf_set_keymap(t.buf, 'n', '<Esc>', ':q<Cr>', { silent = true })
+  end
+})
+
 vim.fn.sign_define('DapBreakpoint', { text = '●', texthl = 'DiagnosticSignError', linehl = '', numhl = '' })
 vim.fn.sign_define('DapBreakpointCondition', { text = '●', texthl = 'DiagnosticSignWarning', linehl = '', numhl = '' })
 vim.fn.sign_define('DapStopped', { text = '⮕', texthl = 'white', linehl = '', numhl = '' })
