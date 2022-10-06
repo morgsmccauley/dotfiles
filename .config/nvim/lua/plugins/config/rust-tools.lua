@@ -10,10 +10,8 @@ rt.setup({
 				local cmd = utils.make_command_from_args(command, args)
 				vim.api.nvim_command('TermExec cmd=\'' .. cmd .. '\'' .. 'dir=\'' .. cwd .. '\'')
 			end
-		}
-	},
-	hover_actions = {
-		auto_focus = true,
+		},
+		inlay_hints = nil,
 	},
 	server = {
 		capabilities = capabilities,
