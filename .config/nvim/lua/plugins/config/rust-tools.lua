@@ -1,5 +1,6 @@
 local rt = require('rust-tools')
 local utils = require('rust-tools.utils.utils')
+local dap = require('rust-tools.dap')
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 rt.setup({
@@ -26,10 +27,9 @@ rt.setup({
 		end
 	},
 	dap = {
-		adapter = {
-			type = 'executable',
-			command = '/opt/homebrew/opt/llvm/bin/lldb-vscode',
-			name = 'rt_lldb'
-		}
+		adapter = dap.get_codelldb_adapter(
+			'/Users/morganmccauley/.local/share/nvim/mason/packages/codelldb/extension/adapter/codelldb',
+			'/Users/morganmccauley/.local/share/nvim/mason/packages/codelldb/extension/lldb/lib/liblldb.dylib'
+		)
 	}
 })

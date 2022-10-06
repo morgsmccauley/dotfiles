@@ -6,22 +6,27 @@ dap.adapters.node = {
   args = { os.getenv('HOME') .. '/.local/share/nvim/adapters/vscode-node-debug2/out/src/nodeDebug.js' },
 }
 
-dap.adapters.firefox = {
-  type = 'executable',
-  command = 'node',
-  args = { os.getenv('HOME') .. '/.local/share/nvim/adapters/vscode-firefox-debug/dist/adapter.bundle.js' },
+dap.adapters.codelldb = {
+  type = 'server',
+  port = '${port}',
+  host = '127.0.0.1',
+  executable = {
+    command = '/Users/morganmccauley/.local/share/nvim/mason/packages/codelldb/extension/adapter/codelldb',
+    args = {
+      '--liblldb',
+      '/Users/morganmccauley/.local/share/nvim/mason/packages/codelldb/extension/lldb/lib/liblldb.dylib',
+      '--port',
+      '${port}'
+    },
+  },
 }
 
-dap.adapters.lldb = {
-  type = 'executable',
-  command = '/opt/homebrew/opt/llvm/bin/lldb-vscode',
-  name = 'lldb',
-}
-
+-- TODO dont open term
+-- TODO list cargo binaries https://github.com/vadimcn/vscode-lldb/blob/master/MANUAL.md#cargo-support
 dap.configurations.rust = {
   {
-    name = 'Launch',
-    type = 'lldb',
+    name = 'Launch file',
+    type = 'codelldb',
     request = 'launch',
     program = function()
       return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
@@ -42,15 +47,6 @@ dap.configurations.javascript = {
     sourceMaps = true,
     protocol = 'inspector',
     console = 'integratedTerminal',
-  },
-  {
-    name = 'Debug with Firefox',
-    type = 'firefox',
-    request = 'launch',
-    reAttach = true,
-    url = 'http://localhost:9999',
-    webRoot = '${workspaceFolder}',
-    firefoxExecutable = '/Applications/Firefox.app/Contents/MacOS/firefox-bin'
   },
   {
     name = 'Attach to node process',
