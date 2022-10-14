@@ -25,8 +25,6 @@ vim.cmd 'hi TelescopePreviewBorder  guifg=#525865'
 
 vim.cmd 'hi FocusedSymbol cterm=italic ctermfg=4 ctermbg=11 gui=bold,italic guifg=darkblue'
 
-vim.cmd 'hi HopNextKey2 guifg=#00dfff'
-
 vim.cmd 'hi link OctoBubble Normal'
 
 vim.fn.sign_define('DiagnosticSignError', { texthl = 'DiagnosticSignError', text = '' })

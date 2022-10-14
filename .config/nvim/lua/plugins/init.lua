@@ -98,9 +98,9 @@ return require('packer').startup(
       end
     }
     use {
-      'phaazon/hop.nvim',
+      'ggandor/leap.nvim',
       config = function()
-        require 'plugins/config/hop'
+        require 'plugins/config/leap'
       end
     }
     use {

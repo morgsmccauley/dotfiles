@@ -135,15 +135,6 @@ local code = {
   f = { ':lua vim.lsp.buf.format()<Cr>', 'Format' }
 }
 
-local hop = {
-  name = '+hop',
-  w = { ':HopWord<Cr>', 'Word' },
-  l = { ':HopLine<Cr>', 'Line' },
-  p = { ':HopPattern<Cr>', 'Pattern' },
-  s = { ':HopChar1<Cr>', 'Single char' },
-  d = { ':HopChar2<Cr>', 'Double char' },
-}
-
 local jira = {
   name = '+jira',
   l = { ':lua require\'plugins/config/telescope-nvim\'.jira()<Cr>', 'List Issues' }
@@ -164,7 +155,6 @@ local mappings = {
   m = marks,
   b = buffer,
   c = code,
-  h = hop,
   j = jira,
   d = debug,
   t = test,
@@ -172,7 +162,7 @@ local mappings = {
   ['/'] = { ':Telescope live_grep<Cr>', 'Search globally' },
   [','] = { ':lua require\'plugins/config/telescope-nvim\'.buffers()<Cr>', 'Switch buffer' },
   ['.'] = { ':Telescope git_files<Cr>', 'Find file' },
-  ['\\'] = { ':source $MYVIMRC<Cr>', 'Reload config' },
+  ['\\'] = { ':Telescope current_buffer_fuzzy_find<Cr>', 'Fuzzy find current buffer' },
 }
 
 local opts = {

@@ -35,7 +35,6 @@ nmap('<C-w>gf', '<C-w>vgf', { noremap = true })
 
 nmap('<C-p>', '@:', { noremap = true })
 
--- imap('<C-l>', 'copilot#Accept("<CR>")', { silent = true, script = true, expr = true })
 imap('<C-l>', '<Plug>luasnip-expand-or-jump', { noremap = true, silent = true })
 smap('<C-l>', '<Plug>luasnip-jump-next', { noremap = true, silent = true })
 imap('<Backspace>', 'luasnip#jumpable(-1) ? "<Plug>luasnip-jump-prev" : "<Backspace>"',
@@ -53,27 +52,6 @@ nmap('<C-s>', ':w<Cr>', { noremap = true, silent = true })
 
 nmap('<Esc>', ':noh | echo ""<Cr><Esc>', { silent = true, noremap = true })
 nmap('QQ', ':qall<CR>', { noremap = true })
-
-nmap('\\', '<cmd>HopWord<Cr>', { noremap = true, silent = true })
-nmap('<C-\\>', '<cmd>HopLine<Cr>', { noremap = true, silent = true })
-vmap('\\', '<cmd>HopWord<Cr>', { noremap = true, silent = true })
-vmap('<C-\\>', '<cmd>HopLine<Cr>', { noremap = true, silent = true })
-
-nmap('s', ':HopChar1CurrentLine<Cr>', { noremap = true, silent = true })
-nmap('ds', 'd:HopChar1CurrentLineAC<Cr>', { noremap = true, silent = true })
-nmap('ys', 'y:HopChar1CurrentLineAC<Cr>', { noremap = true, silent = true })
-nmap('cs', 'c:HopChar1CurrentLineAC<Cr>', { noremap = true, silent = true })
-
-nmap('S', ':HopChar1CurrentLine<Cr>', { noremap = true, silent = true })
-nmap('dS',
-  'd:lua require"hop".hint_char1({ direction = require"hop.hint".HintDirection.AFTER_CURSOR, inclusive_jump=true, current_line_only=true })<Cr>'
-  , { noremap = true, silent = true })
-nmap('yS',
-  'y:lua require"hop".hint_char1({ direction = require"hop.hint".HintDirection.AFTER_CURSOR, inclusive_jump=true, current_line_only=true })<Cr>'
-  , { noremap = true, silent = true })
-nmap('cS',
-  'c:lua require"hop".hint_char1({ direction = require"hop.hint".HintDirection.AFTER_CURSOR, inclusive_jump=true, current_line_only=true })<Cr>'
-  , { noremap = true, silent = true })
 
 nmap('K', ':lua vim.lsp.buf.hover()<Cr>', { silent = true })
 
@@ -93,17 +71,6 @@ vmap('<C-/>', '<Plug>(comment_toggle_linewise_visual)')
 
 nmap('<C-m>', ':MaximizerToggle!<Cr>', { noremap = true, silent = true })
 
--- https://github.com/phaazon/hop.nvim/issues/82
-nmap('dl', 'dV:HopLine<Cr>', { noremap = true, silent = true })
-nmap('yl', 'yV:HopLine<Cr>', { noremap = true, silent = true })
-nmap('cl', 'cV:HopLine<Cr>', { noremap = true, silent = true })
-
---[[ nmap('t', ':HopChar1CurrentLineAC<Cr>', { noremap = true, silent = true })
-nmap('dt', 'd:HopChar1CurrentLineAC<Cr>', { noremap = true, silent = true })
-nmap('yt', 'y:HopChar1CurrentLineAC<Cr>', { noremap = true, silent = true })
-nmap('ct', 'c:HopChar1CurrentLineAC<Cr>', { noremap = true, silent = true })
-
-nmap('f', ':HopChar1CurrentLineAC<Cr>', { noremap = true, silent = true })
-nmap('df', 'd:lua require"hop".hint_char1({ direction = require"hop.hint".HintDirection.AFTER_CURSOR, inclusive_jump=true, current_line_only=true })<Cr>', { noremap = true, silent = true })
-nmap('yf', 'y:lua require"hop".hint_char1({ direction = require"hop.hint".HintDirection.AFTER_CURSOR, inclusive_jump=true, current_line_only=true })<Cr>', { noremap = true, silent = true })
-nmap('cf', 'c:lua require"hop".hint_char1({ direction = require"hop.hint".HintDirection.AFTER_CURSOR, inclusive_jump=true, current_line_only=true })<Cr>', { noremap = true, silent = true }) ]]
+nmap('dl', 'dV:lua require(\'plugins/config/leap.lua\').leap_to_line()<Cr>', { noremap = true, silent = true })
+nmap('yl', 'yV:lua require(\'plugins/config/leap.lua\').leap_to_line()<Cr>', { noremap = true, silent = true })
+nmap('cl', 'cV:lua require(\'plugins/config/leap.lua\').leap_to_line()<Cr>', { noremap = true, silent = true })
