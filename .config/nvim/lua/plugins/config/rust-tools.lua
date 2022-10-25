@@ -19,13 +19,13 @@ rt.setup({
 	},
 	server = {
 		capabilities = capabilities,
-		settings = {
+		--[[ settings = {
 			['rust-analyzer'] = {
 				checkOnSave = {
 					command = 'clippy'
 				}
 			}
-		},
+		}, ]]
 		on_attach = function(_, bufnr)
 			vim.keymap.set('n', 'K', rt.hover_actions.hover_actions, { buffer = bufnr })
 
