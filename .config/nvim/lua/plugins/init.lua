@@ -30,6 +30,12 @@ return require('packer').startup(
       end,
     } ]]
     use {
+      'echasnovski/mini.nvim',
+      config = function()
+        require('mini.cursorword').setup()
+      end
+    }
+    use {
       'simrat39/rust-tools.nvim',
       config = function()
         require 'plugins/config/rust-tools'
@@ -206,22 +212,6 @@ return require('packer').startup(
       run = ':TSUpdate',
       config = function()
         require 'plugins/config/nvim-treesitter'
-      end
-    }
-    use {
-      'nvim-treesitter/nvim-treesitter-refactor',
-      config = function()
-        require 'nvim-treesitter.configs'.setup {
-          refactor = {
-            highlight_definitions = {
-              enable = true,
-              clear_on_cursor_move = true,
-            },
-            highlight_current_scope = {
-              enable = false
-            },
-          },
-        }
       end
     }
     use {
