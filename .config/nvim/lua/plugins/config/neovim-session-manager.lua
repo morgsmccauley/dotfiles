@@ -3,3 +3,8 @@ require('session_manager').setup {
     'toggleterm'
   }
 }
+
+vim.api.nvim_create_autocmd({ 'User' }, {
+  pattern = 'SessionSavePost',
+  command = 'clearjumps'
+})
