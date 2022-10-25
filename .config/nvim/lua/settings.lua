@@ -1,20 +1,20 @@
 vim.o.hidden = true
 vim.o.splitright = true
 vim.o.ignorecase = true
--- vim.o.splitbelow = true
+-- vim.o.splitright = true
 vim.o.termguicolors = true
 vim.o.number = true
 vim.o.numberwidth = 2
 vim.o.wrap = false
-vim.cmd [[set noshowmode]]
-vim.cmd [[set cursorline]]
+vim.o.showmode = false
+vim.o.cursorline = true
 
 -- vim.o.rnu = true
 
 vim.o.mouse = 'a'
 
 vim.o.signcolumn = 'yes'
-vim.o.cmdheight = 1
+-- vim.o.cmdheight = 0
 
 vim.o.updatetime = 250
 vim.o.clipboard = 'unnamedplus'
