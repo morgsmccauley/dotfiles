@@ -27,10 +27,11 @@ vim.cmd 'hi FocusedSymbol cterm=italic ctermfg=4 ctermbg=11 gui=bold,italic guif
 
 vim.cmd 'hi link OctoBubble Normal'
 
-vim.fn.sign_define('DiagnosticSignError', { texthl = 'DiagnosticSignError', text = '' })
-vim.fn.sign_define('DiagnosticSignHint', { texthl = 'DiagnosticSignHint', text = '' })
-vim.fn.sign_define('DiagnosticSignWarn', { texthl = 'DiagnosticSignWarn', text = '' })
-vim.fn.sign_define('DiagnosticSignInfo', { texthl = 'DiagnosticSignInfo', text = '' })
+vim.fn.sign_define('DiagnosticSignError', { numhl = 'DiagnosticSignError', texthl = 'DiagnosticSignError', text = '' })
+vim.fn.sign_define('DiagnosticSignHint',
+    { italic = false, numhl = 'DiagnosticSignHint', texthl = 'DiagnosticSignHint', text = '' })
+vim.fn.sign_define('DiagnosticSignWarn', { numhl = 'DiagnosticSignWarn', texthl = 'DiagnosticSignWarn', text = '' })
+vim.fn.sign_define('DiagnosticSignInfo', { numhl = 'DiagnosticSignInfo', texthl = 'DiagnosticSignInfo', text = '' })
 
 vim.fn.sign_define('NvimTreeSignError', { texthl = 'NvimTreeSignError', text = '' })
 vim.fn.sign_define('NvimTreeSignHint', { texthl = 'NvimTreeSignError', text = '' })
