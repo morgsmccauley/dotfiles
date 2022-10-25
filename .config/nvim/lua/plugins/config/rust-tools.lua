@@ -13,7 +13,9 @@ rt.setup({
 				vim.api.nvim_command('TermExec cmd=\'' .. cmd .. '\'' .. 'dir=\'' .. cwd .. '\'')
 			end
 		},
-		inlay_hints = nil,
+		inlay_hints = {
+			auto = false
+		},
 	},
 	server = {
 		capabilities = capabilities,
