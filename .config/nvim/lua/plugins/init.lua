@@ -190,7 +190,7 @@ return require('packer').startup(
 
     use {
       'TimUntersberger/neogit',
-      cmd = { 'Neogit' },
+      module = 'neogit',
       config = function()
         require 'plugins/config/neogit'
       end
