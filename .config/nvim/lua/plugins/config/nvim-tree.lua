@@ -7,19 +7,23 @@ require 'nvim-tree'.setup {
     update_focused_file = {
         enable = true,
     },
+    git = {
+        enable = true,
+        ignore = false
+    },
     renderer = {
         special_files = {},
+        -- doesnt work well with hidden=true
         -- highlight_opened_files = 'name',
         indent_markers = {
             enable = true
         },
+        highlight_git = true,
         icons = {
             show = {
                 git = false
             },
             glyphs = {
-                --[[ default = ' ',
-                symlink = ' ', ]]
                 folder = {
                     default = '',
                     open = '',
@@ -29,14 +33,13 @@ require 'nvim-tree'.setup {
         }
     },
     view = {
-        hide_root_folder = true,
         width = 50,
         mappings = {
             list = {
-                { key = "<C-e>", action = "" },
-                { key = "<C-j>", action = "" },
-                { key = "<C-k>", action = "" },
-                { key = "<C-t>", action = "" },
+                { key = '<C-e>', action = '' },
+                { key = '<C-j>', action = '' },
+                { key = '<C-k>', action = '' },
+                { key = '<C-t>', action = '' },
             }
         }
     },
