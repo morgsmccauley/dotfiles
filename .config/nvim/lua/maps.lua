@@ -47,7 +47,7 @@ imap('<Backspace>', 'luasnip#jumpable(-1) ? "<Plug>luasnip-jump-prev" : "<Backsp
 smap('<Backspace>', 'luasnip#jumpable(-1) ? "<Plug>luasnip-jump-prev" : "<Backspace>"',
   { noremap = true, silent = true, expr = true })
 
-nmap('<C-g>', '<Cmd>Neogit<Cr>', { noremap = true, silent = true })
+nmap('<C-g>', '<Cmd>lua require("neogit").open()<Cr>', { noremap = true, silent = true })
 
 imap('<C-a>', '<C-o>^', { noremap = true, silent = true })
 imap('<C-e>', '<C-o>$', { noremap = true, silent = true })
