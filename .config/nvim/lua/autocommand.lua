@@ -33,11 +33,6 @@ vim.api.nvim_create_autocmd({ 'Bufread' }, {
     command = 'set ft=http'
 })
 
---[[ vim.api.nvim_create_autocmd({'InsertLeave', 'TextChanged'}, {
-    pattern = {'*'},
-    command = 'w'
-}) ]]
-
 vim.api.nvim_create_autocmd({ 'VimResized' }, {
     pattern = { '*' },
     command = 'wincmd ='
@@ -66,5 +61,11 @@ vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
 vim.api.nvim_create_autocmd({ 'FileType' }, {
     pattern = { 'help' },
     command = 'wincmd K',
+    once = false
+})
+
+vim.api.nvim_create_autocmd({ 'FileType' }, {
+    pattern = { 'qf' },
+    command = 'wincmd J',
     once = false
 })
