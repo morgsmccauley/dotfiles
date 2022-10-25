@@ -25,21 +25,30 @@ dap.adapters.codelldb = {
 -- TODO list cargo binaries https://github.com/vadimcn/vscode-lldb/blob/master/MANUAL.md#cargo-support
 dap.configurations.rust = {
   {
-    name = 'Launch file',
+    name = 'codelldb',
     type = 'codelldb',
     request = 'launch',
+    cwd = '${workspaceFolder}',
+    stopOnEntry = false,
+    terminal = 'console',
+    args = function()
+      local arguments = {}
+
+      for arg in vim.fn.input('Arguments: '):gmatch('%S+') do
+        table.insert(arguments, arg)
+      end
+
+      return arguments
+    end,
     program = function()
       return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
     end,
-    cwd = '${workspaceFolder}',
-    stopOnEntry = false,
-    args = {},
-  }
+  },
 }
 
 dap.configurations.javascript = {
   {
-    name = 'Launch node',
+    name = 'node',
     type = 'node',
     request = 'launch',
     program = '${file}',
@@ -73,6 +82,8 @@ dap.listeners.after['event_initialized']['me'] = function()
 end
 
 dap.listeners.after['event_terminated']['me'] = function()
+  dap.repl.close()
+
   vim.api.nvim_del_keymap('n', 'K')
 
   for _, keymap in pairs(keymap_restore) do
@@ -97,6 +108,6 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
   end
 })
 
-vim.fn.sign_define('DapBreakpoint', { text = '●', texthl = 'DiagnosticSignError', linehl = '', numhl = '' })
-vim.fn.sign_define('DapBreakpointCondition', { text = '●', texthl = 'DiagnosticSignWarning', linehl = '', numhl = '' })
-vim.fn.sign_define('DapStopped', { text = '⮕', texthl = 'white', linehl = '', numhl = '' })
+vim.fn.sign_define('DapBreakpoint', { text = '', texthl = 'DiagnosticSignError', linehl = '', numhl = '' })
+vim.fn.sign_define('DapBreakpointCondition', { text = '', texthl = 'DiagnosticSignWarning', linehl = '', numhl = '' })
+vim.fn.sign_define('DapStopped', { text = '', texthl = 'white', linehl = '', numhl = '' })
