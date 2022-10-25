@@ -22,14 +22,14 @@ telescope.setup {
     },
     mappings = {
       i = {
-        ["<esc>"] = actions.close,
-        ["<C-j>"] = actions.move_selection_next,
-        ["<C-k>"] = actions.move_selection_previous,
-        ["<C-f>"] = actions.send_selected_to_qflist + actions.open_qflist,
-        ["<C-e>"] = actions.cycle_previewers_next,
-        ["<C-a>"] = actions.toggle_all,
-        ["<C-/>"] = actions.which_key,
-        ["<C-\\>n"] = { "<esc>", type = "command" },
+        ['<esc>'] = actions.close,
+        ['<C-j>'] = actions.move_selection_next,
+        ['<C-k>'] = actions.move_selection_previous,
+        ['<C-f>'] = actions.send_selected_to_qflist + actions.open_qflist,
+        ['<C-e>'] = actions.cycle_previewers_next,
+        ['<C-a>'] = actions.toggle_all,
+        ['<C-/>'] = actions.which_key,
+        ['<C-\\>n'] = { '<esc>', type = 'command' },
       },
     },
     set_env = { ['COLORTERM'] = 'truecolor' },
@@ -38,7 +38,7 @@ telescope.setup {
     fzf = {
       override_generic_sorter = true,
       override_file_sorter = true,
-      case_mode = "smart_case",
+      case_mode = 'smart_case',
     },
     media_files = {
       filetypes = { 'png', 'webp', 'jpg', 'jpeg' },
@@ -52,7 +52,6 @@ telescope.load_extension('gh')
 telescope.load_extension('ui-select')
 
 return {
-  jira = require('plugins/config/telescope-nvim/jira'),
   buffers = function()
     builtin.buffers({
       show_all_buffers = true,
