@@ -1,7 +1,9 @@
 local rt = require('rust-tools')
 local utils = require('rust-tools.utils.utils')
 local dap = require('rust-tools.dap')
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local cmp_lsp = require('cmp_nvim_lsp')
+
+local capabilities = cmp_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 rt.setup({
 	tools = {
