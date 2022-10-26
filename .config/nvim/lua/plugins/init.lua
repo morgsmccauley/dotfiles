@@ -205,9 +205,9 @@ return require('packer').startup(
       'nvim-treesitter/nvim-treesitter',
       requires = {
         { 'sheerun/vim-polyglot' },
-        { 'nvim-treesitter/nvim-treesitter-textobjects' }
+        { 'nvim-treesitter/nvim-treesitter-textobjects' },
         -- doesnt work with which key https://github.com/romgrk/nvim-treesitter-context/issues/40
-        -- {'romgrk/nvim-treesitter-context'}
+        { 'romgrk/nvim-treesitter-context' }
       },
       run = ':TSUpdate',
       config = function()
