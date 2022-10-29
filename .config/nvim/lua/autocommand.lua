@@ -69,3 +69,8 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
     command = 'wincmd J',
     once = false
 })
+
+vim.api.nvim_create_autocmd({ 'FileType' }, {
+    pattern = { 'gitcommit', 'gitrebase', 'gitconfig' },
+    command = 'set bufhidden=delete'
+})

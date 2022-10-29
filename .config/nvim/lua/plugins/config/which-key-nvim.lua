@@ -67,6 +67,7 @@ local debug = {
   i = { ':lua require"dap".step_into()<Cr>', 'Step into' },
   o = { ':lua require"dap".step_out()<Cr>', 'Step out' },
   c = { ':lua require"dap".continue()<Cr>', 'Continue' },
+  C = { ':lua require"dap".clear_breakpoints()<Cr>', 'Clear breakpoints' },
   s = { ':lua require"dap".terminate()<Cr>', 'Stop' },
   b = { ':lua require"dap".toggle_breakpoint()<Cr>', 'Toggle breakpoint' },
   B = { ':lua require"dap".set_breakpoint(vim.fn.input("Breakpoint condition: "))<Cr>', 'Set breakpoint with condition' },
@@ -163,6 +164,7 @@ local mappings = {
   [','] = { ':lua require\'plugins/config/telescope-nvim\'.buffers()<Cr>', 'Switch buffer' },
   ['.'] = { ':Telescope git_files<Cr>', 'Find file' },
   ['\\'] = { ':Telescope current_buffer_fuzzy_find<Cr>', 'Fuzzy find current buffer' },
+  ['\''] = { ':Telescope marks<Cr>', 'List marks' },
 }
 
 local opts = {

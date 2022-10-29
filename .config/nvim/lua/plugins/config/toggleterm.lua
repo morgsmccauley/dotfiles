@@ -1,17 +1,9 @@
--- local git = require 'lib.git'
-
--- local git_editor = git.get_editor()
-
 require 'toggleterm'.setup {
   shade_terminals = false,
   direction = 'vertical',
   open_mapping = [[<C-t>]],
   start_in_insert = true,
   persist_size = false,
-  -- env = {
-  --   GIT_EDITOR = git_editor,
-  --   GIT_SEQUENCE_EDITOR = git_editor
-  -- },
   on_open = function(t)
     vim.wo.winfixwidth = false
 

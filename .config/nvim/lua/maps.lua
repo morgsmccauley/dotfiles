@@ -37,6 +37,7 @@ nmap('<C-j>', '<C-w>j', { noremap = true })
 nmap('<C-k>', '<C-w>k', { noremap = true })
 
 nmap('<C-w>gf', '<C-w>vgf', { noremap = true })
+nmap('<C-w>gd', '<C-w>vgd', { noremap = true })
 
 nmap('<C-p>', '@:', { noremap = true })
 
@@ -53,6 +54,7 @@ imap('<C-a>', '<C-o>^', { noremap = true, silent = true })
 imap('<C-e>', '<C-o>$', { noremap = true, silent = true })
 
 nmap('<C-q>', '<Cmd>silent q<Cr>', { noremap = true, silent = true })
+nmap('<C-S-q>', '<Cmd>silent bw<Cr>', { noremap = true, silent = true })
 nmap('<C-s>', '<Cmd>w<Cr>', { noremap = true, silent = true })
 
 nmap('<Esc>', '<Cmd>noh | echo ""<Cr>', { silent = true, noremap = true })
