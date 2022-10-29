@@ -3,8 +3,5 @@
 - use karabiner instead of skhd?
 - https://github.com/nvim-neotest/neotest - dap support
 - autosave doesnt work with vim-repeat
-- sumneko lua formatter doesnt respect config files
-- lua formatting moves cursor to beginning of line
-- move plugin specific config to single file (highlights maps etc)
 - cmp delayed results affecting auto completion
 - save global marks to session

@@ -33,9 +33,8 @@ vim.o.encoding = 'UTF-8'
 vim.o.undofile = true
 vim.cmd [[set undodir=~/.vim/undo]]
 
-
 vim.cmd 'syntax enable'
 vim.cmd 'syntax on'
 
-vim.env['GIT_EDITOR'] = 'nvr -cc split --remote-wait'
-vim.env['GIT_SEQUENCE_EDITOR'] = 'nvr -cc split --remote-wait'
+vim.env['GIT_EDITOR'] = 'nvr -cc "botright split" --remote-wait'
+vim.env['GIT_SEQUENCE_EDITOR'] = 'nvr -cc "botright split" --remote-wait'

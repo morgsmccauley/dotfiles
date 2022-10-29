@@ -1,11 +1,11 @@
 local action_state = require 'telescope.actions.state'
 local builtin = require 'telescope.builtin'
 local actions = require 'telescope.actions'
-local Job = require "plenary.job"
+local Job = require 'plenary.job'
 
 function GetOsCommandOutput(cmd, cwd, env)
-  if type(cmd) ~= "table" then
-    print "Telescope: [GetOsCommandOutput]: cmd has to be a table"
+  if type(cmd) ~= 'table' then
+    print 'Telescope: [GetOsCommandOutput]: cmd has to be a table'
     return {}
   end
   local command = table.remove(cmd, 1)
@@ -54,7 +54,7 @@ return function()
 
         actions.close(prompt_bufnr)
 
-        vim.api.nvim_command('silent Git rebase -i --autostash --autosquash ' .. commit .. '~1')
+        vim.api.nvim_command('TermExec open=0 cmd="git rebase -i --autostash --autosquash ' .. commit .. '~1"')
       end
 
       map('i', '<C-f>', fixup)
