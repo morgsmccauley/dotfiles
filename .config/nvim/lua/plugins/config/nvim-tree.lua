@@ -16,12 +16,16 @@ require 'nvim-tree'.setup {
         -- doesnt work well with hidden=true
         -- highlight_opened_files = 'name',
         indent_markers = {
-            enable = true
+            enable = true,
+            icons = {
+                corner = '│'
+            },
         },
         highlight_git = true,
         icons = {
             show = {
-                git = false
+                git = false,
+                folder_arrow = false
             },
             glyphs = {
                 folder = {
@@ -51,3 +55,15 @@ require 'nvim-tree'.setup {
         }
     }
 }
+
+--[[ vim.cmd 'hi NvimTreeGitDirty NONE'
+vim.cmd 'hi NvimTreeGitStaged NONE'
+vim.cmd 'hi NvimTreeGitMerge NONE'
+vim.cmd 'hi NvimTreeGitRenamed NONE'
+vim.cmd 'hi NvimTreeGitNew NONE'
+vim.cmd 'hi NvimTreeGitDeleted NONE' ]]
+
+vim.fn.sign_define('NvimTreeSignError', { texthl = 'NvimTreeSignError', text = '' })
+vim.fn.sign_define('NvimTreeSignHint', { texthl = 'NvimTreeSignError', text = '' })
+vim.fn.sign_define('NvimTreeSignWarning', { texthl = 'NvimTreeSignError', text = '' })
+vim.fn.sign_define('NvimTreeSignInformation', { texthl = 'NvimTreeSignError', text = '' })
