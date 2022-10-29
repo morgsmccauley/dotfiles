@@ -23,16 +23,10 @@ return require('packer').startup(
     use 'lewis6991/impatient.nvim'
     use 'szw/vim-maximizer'
     use '~/Developer/Repositories/http-client.nvim'
-    --[[ use {
-      "Pocco81/auto-save.nvim",
-      config = function()
-         require("auto-save").setup {}
-      end,
-    } ]]
     use {
-      'echasnovski/mini.nvim',
+      'RRethy/vim-illuminate',
       config = function()
-        require('mini.cursorword').setup()
+        require('plugins/config/vim-illuminate')
       end
     }
     use {
@@ -97,16 +91,19 @@ return require('packer').startup(
       end
     })
     use {
-      'norcalli/nvim-colorizer.lua',
-      opt = true,
-      config = function()
-        require 'colorizer'.setup()
-      end
-    }
-    use {
       'ggandor/leap.nvim',
       config = function()
         require 'plugins/config/leap'
+      end
+    }
+    use {
+      'ggandor/flit.nvim',
+      config = function()
+        require 'flit'.setup({
+          keys = { f = 'f', F = 'F', t = 't', T = 'T' },
+          labeled_modes = 'nv',
+          multiline = false,
+        })
       end
     }
     use {
@@ -206,7 +203,6 @@ return require('packer').startup(
       requires = {
         { 'sheerun/vim-polyglot' },
         { 'nvim-treesitter/nvim-treesitter-textobjects' },
-        -- doesnt work with which key https://github.com/romgrk/nvim-treesitter-context/issues/40
         { 'romgrk/nvim-treesitter-context' }
       },
       run = ':TSUpdate',
