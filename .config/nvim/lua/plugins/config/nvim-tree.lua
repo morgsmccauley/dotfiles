@@ -1,5 +1,3 @@
-vim.o.termguicolors = true
-
 require 'nvim-tree'.setup {
     hijack_netrw = true,
     sync_root_with_cwd = true,

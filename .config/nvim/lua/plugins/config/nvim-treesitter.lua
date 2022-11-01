@@ -3,7 +3,8 @@ require('nvim-treesitter.configs').setup({
   ignore_install = { 'phpdoc' },
   highlight = {
     enable = true,
-    use_languagetree = true
+    use_languagetree = true,
+    additional_vim_regex_highlighting = false
   },
   textobjects = {
     select = {
@@ -36,3 +37,10 @@ require('nvim-treesitter.configs').setup({
 
 local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
 parser_config.markdown.filetype_to_parsername = 'octo'
+
+require('treesitter-context').setup {
+  enable = true
+}
+
+-- catppuccin wipes these?
+-- vim.api.nvim_command [[hi link TreesitterContext Visual]]

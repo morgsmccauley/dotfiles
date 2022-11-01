@@ -5,15 +5,21 @@ require('catppuccin').setup({
     path = vim.fn.stdpath 'cache' .. '/catppuccin'
   },
   integrations = {
-    neogit = true,
-    which_key = true,
     leap = true,
     nvimtree = {
       transparent_panel = true,
     },
   },
+  flavour = 'macchiato', -- latte, frappe, macchiato, mocha
+  custom_highlights = function()
+    return {
+      IlluminatedWordText = { underline = true },
+      IlluminatedWordRead = { underline = true },
+      IlluminatedWordWrite = { underline = true },
+
+      TreesitterContext = { link = 'Visual' }
+    }
+  end
 })
 
-vim.g.catppuccin_flavour = 'macchiato' -- latte, frappe, macchiato, mocha
-
-vim.cmd [[colorscheme catppuccin]]
+vim.api.nvim_command [[colorscheme catppuccin]]
