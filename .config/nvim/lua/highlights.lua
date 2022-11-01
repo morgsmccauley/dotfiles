@@ -18,14 +18,11 @@ vim.cmd 'hi NvimTreeFolderIcon guifg=#61afef'
 vim.cmd 'hi NvimTreeFolderName guifg=#61afef'
 vim.cmd 'hi NvimTreeIndentMarker guifg=#545862'
 
-vim.cmd 'hi TelescopeBorder   guifg=#3e4451'
-vim.cmd 'hi TelescopePromptBorder   guifg=#3e4451'
-vim.cmd 'hi TelescopeResultsBorder  guifg=#3e4451'
-vim.cmd 'hi TelescopePreviewBorder  guifg=#525865'
-
 vim.cmd 'hi FocusedSymbol cterm=italic ctermfg=4 ctermbg=11 gui=bold,italic guifg=darkblue'
 
 vim.cmd 'hi link OctoBubble Normal'
+
+-- vim.api.nvim_set_hl(0, 'IlluminatedWordRead', { underline = true })
 
 vim.fn.sign_define('DiagnosticSignError', { numhl = 'DiagnosticSignError', texthl = 'DiagnosticSignError', text = '' })
 vim.fn.sign_define('DiagnosticSignHint',
