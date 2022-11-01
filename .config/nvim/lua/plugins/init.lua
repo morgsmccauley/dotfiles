@@ -93,12 +93,14 @@ return require('packer').startup(
     })
     use {
       'ggandor/leap.nvim',
+      keys = { 's', 'S', 'f', 'F', 't', 'T' },
       config = function()
         require 'plugins/config/leap'
       end
     }
     use {
       'ggandor/flit.nvim',
+      after = 'leap.nvim',
       config = function()
         require 'flit'.setup({
           keys = { f = 'f', F = 'F', t = 't', T = 'T' },
