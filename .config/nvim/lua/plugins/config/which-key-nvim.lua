@@ -97,11 +97,10 @@ local git = {
   i = { ':Telescope gh issues<Cr>', 'Issues' },
   b = { ':lua require\'plugins/config/telescope-nvim\'.branches()<Cr>', 'Branches' },
   s = { ':lua require\'plugins/config/telescope-nvim\'.stash()<Cr>', 'Stash' },
-  c = { ':Neogit commit<Cr>', 'Commit' },
+  c = { ':Git commit<Cr>', 'Commit' },
   L = { ':lua require\'plugins/config/telescope-nvim\'.bcommits()<Cr>', 'Buffer log' },
   B = { ':Git blame<Cr>', 'Blame annotations' },
-  -- B = { ':Gitsigns toggle_current_line_blame<Cr>', 'Blame annotations' },
-  g = { ':Neogit<Cr>', 'Git' },
+  g = { ':Git<Cr>', 'Git' },
   h = git_hunk,
   d = git_diff,
   r = git_remote,
@@ -132,6 +131,7 @@ local code = {
   -- c = { ':Telescope commands<Cr>', 'Commands' },
   a = { ':lua vim.lsp.buf.code_action()<Cr>', 'Code actions' },
   d = { ':Telescope diagnostics bufnr=0<Cr>', 'File diagnostics' },
+  D = { ':Telescope diagnostics<Cr>', 'Workspace diagnostics' },
   l = { ':lua vim.diagnostic.open_float()<Cr>', 'Show diagnostics for current line' },
   f = { ':lua vim.lsp.buf.format()<Cr>', 'Format' }
 }

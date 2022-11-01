@@ -123,7 +123,7 @@ return require('packer').startup(
       'sindrets/diffview.nvim',
       opt = true,
       cmd = 'DiffviewOpen',
-      module = 'neogit/integrations/diffview',
+      -- module = 'neogit/integrations/diffview',
       config = function()
         require 'diffview'.setup {
           enhanced_diff_hl = true
@@ -191,12 +191,16 @@ return require('packer').startup(
     use { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' }
     use { 'hrsh7th/cmp-nvim-lsp' }
 
-    use {
+    --[[ use {
       'TimUntersberger/neogit',
       module = 'neogit',
       config = function()
         require 'plugins/config/neogit'
       end
+    } ]]
+    use {
+      'tpope/vim-fugitive',
+      cmd = 'Git',
     }
     use {
       'nvim-treesitter/nvim-treesitter',

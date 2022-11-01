@@ -48,7 +48,7 @@ imap('<Backspace>', 'luasnip#jumpable(-1) ? "<Plug>luasnip-jump-prev" : "<Backsp
 smap('<Backspace>', 'luasnip#jumpable(-1) ? "<Plug>luasnip-jump-prev" : "<Backspace>"',
   { noremap = true, silent = true, expr = true })
 
-nmap('<C-g>', '<Cmd>lua require("neogit").open()<Cr>', { noremap = true, silent = true })
+nmap('<C-g>', '<Cmd>tab Git<Cr>', { noremap = true, silent = true })
 
 imap('<C-a>', '<C-o>^', { noremap = true, silent = true })
 imap('<C-e>', '<C-o>$', { noremap = true, silent = true })
@@ -70,8 +70,8 @@ nmap('gr', '<Cmd>Telescope lsp_references<Cr>', { silent = true })
 nmap('<C-e>', '5<C-e>', { noremap = true, silent = true })
 nmap('<C-y>', '5<C-y>', { noremap = true, silent = true })
 
-imap('<Tab>', 'pumvisible() ? \"\\<C-n>\" : \"\\<Tab>\"', { expr = true, noremap = true })
-imap('<S-Tab>', 'pumvisible() ? \"\\<C-p>\" : \"\\<S-Tab>\"', { expr = true, noremap = true })
+--[[ imap('<Tab>', 'pumvisible() ? \"\\<C-n>\" : \"\\<Tab>\"', { expr = true, noremap = true })
+imap('<S-Tab>', 'pumvisible() ? \"\\<C-p>\" : \"\\<S-Tab>\"', { expr = true, noremap = true }) ]]
 
 nmap('<C-/>', '<Plug>(comment_toggle_linewise_current)')
 vmap('<C-/>', '<Plug>(comment_toggle_blockwise_visual)')

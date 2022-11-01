@@ -11,6 +11,16 @@ require 'nvim-tree'.setup {
         enable = true,
         ignore = false
     },
+    diagnostics = {
+        enable = true,
+        show_on_dirs = true,
+        icons = {
+            hint = '',
+            info = '',
+            warning = '',
+            error = '',
+        }
+    },
     renderer = {
         special_files = {},
         -- doesnt work well with hidden=true
@@ -63,7 +73,7 @@ vim.cmd 'hi NvimTreeGitRenamed NONE'
 vim.cmd 'hi NvimTreeGitNew NONE'
 vim.cmd 'hi NvimTreeGitDeleted NONE' ]]
 
-vim.fn.sign_define('NvimTreeSignError', { texthl = 'NvimTreeSignError', text = '' })
+--[[ vim.fn.sign_define('NvimTreeSignError', { texthl = 'NvimTreeSignError', text = '' })
 vim.fn.sign_define('NvimTreeSignHint', { texthl = 'NvimTreeSignError', text = '' })
 vim.fn.sign_define('NvimTreeSignWarning', { texthl = 'NvimTreeSignError', text = '' })
-vim.fn.sign_define('NvimTreeSignInformation', { texthl = 'NvimTreeSignError', text = '' })
+vim.fn.sign_define('NvimTreeSignInformation', { texthl = 'NvimTreeSignError', text = '' }) ]]
