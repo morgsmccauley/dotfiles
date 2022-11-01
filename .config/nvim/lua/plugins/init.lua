@@ -31,6 +31,7 @@ return require('packer').startup(
     }
     use {
       'simrat39/rust-tools.nvim',
+      ft = 'rust',
       config = function()
         require 'plugins/config/rust-tools'
       end
@@ -123,7 +124,6 @@ return require('packer').startup(
       'sindrets/diffview.nvim',
       opt = true,
       cmd = 'DiffviewOpen',
-      -- module = 'neogit/integrations/diffview',
       config = function()
         require 'diffview'.setup {
           enhanced_diff_hl = true
@@ -190,14 +190,6 @@ return require('packer').startup(
     use { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' }
     use { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' }
     use { 'hrsh7th/cmp-nvim-lsp' }
-
-    --[[ use {
-      'TimUntersberger/neogit',
-      module = 'neogit',
-      config = function()
-        require 'plugins/config/neogit'
-      end
-    } ]]
     use {
       'tpope/vim-fugitive',
       cmd = 'Git',
