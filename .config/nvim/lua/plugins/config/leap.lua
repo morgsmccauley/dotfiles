@@ -60,4 +60,22 @@ function M.leap_to_window()
 	}
 end
 
+function M.close_window()
+	local target_windows = require('leap.util').get_enterable_windows()
+	local targets = {}
+	for _, win in ipairs(target_windows) do
+		local wininfo = vim.fn.getwininfo(win)[1]
+		local pos = { wininfo.topline, 1 } -- top/left corner
+		table.insert(targets, { pos = pos, wininfo = wininfo })
+	end
+
+	require('leap').leap {
+		target_windows = target_windows,
+		targets = targets,
+		action = function(target)
+			vim.cmd(':silent bd ' .. target.wininfo.bufnr)
+		end
+	}
+end
+
 return M
