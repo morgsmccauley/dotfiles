@@ -10,16 +10,26 @@ require('nvim-treesitter.configs').setup({
       enable = true,
       lookahead = true,
       keymaps = {
-        ['af'] = '@function.outer',
-        ['if'] = '@function.inner',
-        ['ac'] = '@call.outer',
-        ['ic'] = '@call.inner',
-        ['aC'] = '@class.outer',
-        ['iC'] = '@class.inner',
-        ['a/'] = '@comment.outer',
-        ['il'] = '@loop.inner',
-        ['al'] = '@loop.outer',
+        ['af'] = { query = '@function.outer', desc = 'Outer function' },
+        ['if'] = { query = '@function.inner', desc = 'Inner function' },
+
+        ['ac'] = { query = '@call.outer', desc = 'Outer call' },
+        ['ic'] = { query = '@call.inner', desc = 'Inner call' },
+
+        ['aC'] = { query = '@class.outer', desc = 'Outer class' },
+        ['iC'] = { query = '@class.inner', desc = 'Inner class' },
+
+        ['a/'] = { query = '@comment.outer', desc = 'Outer comment' },
+
+        ['al'] = { query = '@loop.outer', desc = 'Outer loop' },
+        ['il'] = { query = '@loop.inner', desc = 'Inner loop' },
+
+        ['am'] = { query = '@parameter.outer', desc = 'Outer parameter' },
+        ['im'] = { query = '@parameter.inner', desc = 'Inner parameter' },
       },
+      include_surrounding_whitespace = function(args)
+        return args.query_string:gmatch('.outer$') ~= nil and args.selection_mode == 'V'
+      end
     },
   },
 })
