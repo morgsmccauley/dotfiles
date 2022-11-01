@@ -15,5 +15,9 @@ require 'toggleterm'.setup {
     vim.api.nvim_buf_set_keymap(t.bufnr, 't', '<C-j>', [[<C-\><C-n><C-W><C-j>]], { noremap = true })
     vim.api.nvim_buf_set_keymap(t.bufnr, 't', '<C-k>', [[<C-\><C-n><C-W><C-k>]], { noremap = true })
     vim.api.nvim_buf_set_keymap(t.bufnr, 't', '<C-q>', [[<C-\><C-n>:q!<Cr>]], { noremap = true })
+
+    -- perform relevant action rather than sending keycodes
+    vim.api.nvim_buf_set_keymap(t.bufnr, 't', '<S-space>', ' ', { noremap = true })
+    vim.api.nvim_buf_set_keymap(t.bufnr, 't', '<S-BS>', '<C-_>', { noremap = true })
   end,
 }
