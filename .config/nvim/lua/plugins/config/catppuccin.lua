@@ -13,11 +13,11 @@ require('catppuccin').setup({
   flavour = 'macchiato', -- latte, frappe, macchiato, mocha
   custom_highlights = function()
     return {
-      IlluminatedWordText = { underline = true },
-      IlluminatedWordRead = { underline = true },
-      IlluminatedWordWrite = { underline = true },
+      IlluminatedWordText = { link = 'Visual' },
+      IlluminatedWordRead = { link = 'Visual' },
+      IlluminatedWordWrite = { link = 'Visual' },
 
-      TreesitterContext = { link = 'Visual' }
+      TreesitterContext = { link = 'CursorLine' }
     }
   end
 })

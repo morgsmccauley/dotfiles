@@ -43,10 +43,8 @@ nmap('<C-p>', '@:', { noremap = true })
 
 imap('<C-l>', '<Plug>luasnip-expand-or-jump', { noremap = true, silent = true })
 smap('<C-l>', '<Plug>luasnip-jump-next', { noremap = true, silent = true })
-imap('<Backspace>', 'luasnip#jumpable(-1) ? "<Plug>luasnip-jump-prev" : "<Backspace>"',
-  { noremap = true, silent = true, expr = true })
-smap('<Backspace>', 'luasnip#jumpable(-1) ? "<Plug>luasnip-jump-prev" : "<Backspace>"',
-  { noremap = true, silent = true, expr = true })
+imap('<C-h>', '<Plug>luasnip-jump-prev', { noremap = true, silent = true })
+smap('<C-h>', '<Plug>luasnip-jump-prev', { noremap = true, silent = true })
 
 nmap('<C-g>', '<Cmd>tab Git<Cr>', { noremap = true, silent = true })
 
