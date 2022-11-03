@@ -99,9 +99,10 @@ local git = {
 
 local session = {
   name = '+session',
-  l = { ':SessionManager load_session<Cr>', 'List sessions' },
+  -- require telescope since it's lazy loaded
+  l = { ':lua require("telescope") require("session_manager").load_session()<Cr>', 'List sessions' },
   w = { ':SaveSession<Cr>', 'Write session' },
-  d = { ':SessionManager delete_session<Cr>', 'Delete session(s)' },
+  d = { ':lua requrie("telescope") require("session_manager").delete_session()<Cr>', 'Delete session(s)' },
 }
 
 local marks = {
