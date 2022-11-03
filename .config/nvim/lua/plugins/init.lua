@@ -24,6 +24,16 @@ return require('packer').startup(
     use 'szw/vim-maximizer'
     use '~/Developer/Repositories/http-client.nvim'
     use {
+      'ray-x/lsp_signature.nvim',
+      event = 'InsertEnter',
+      config = function()
+        require('lsp_signature').setup({
+          bind = true,
+          hint_enable = false,
+        })
+      end
+    }
+    use {
       'RRethy/vim-illuminate',
       config = function()
         require('plugins/config/vim-illuminate')
