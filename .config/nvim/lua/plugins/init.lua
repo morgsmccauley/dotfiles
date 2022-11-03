@@ -13,7 +13,6 @@ local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(
   function(use)
-    use 'nvim-lua/plenary.nvim'
     use 'wbthomason/packer.nvim'
     use 'jiangmiao/auto-pairs'
     use 'alvan/vim-closetag'
@@ -21,8 +20,18 @@ return require('packer').startup(
     use 'tpope/vim-repeat'
     use 'nathom/filetype.nvim'
     use 'lewis6991/impatient.nvim'
-    use 'szw/vim-maximizer'
     use '~/Developer/Repositories/http-client.nvim'
+    use 'nvim-lua/plenary.nvim'
+    use {
+      'folke/neodev.nvim',
+      config = function()
+        require('neodev').setup()
+      end
+    }
+    use {
+      'szw/vim-maximizer',
+      cmd = 'MaximizerToggle'
+    }
     use {
       'ray-x/lsp_signature.nvim',
       event = 'InsertEnter',
@@ -61,6 +70,7 @@ return require('packer').startup(
     }
     use {
       'mfussenegger/nvim-dap',
+      module = 'dap',
       requires = {
         'nvim-telescope/telescope-dap.nvim'
       },
@@ -70,6 +80,7 @@ return require('packer').startup(
     }
     use {
       'kyazdani42/nvim-web-devicons',
+      module = 'nvim-web-devicons',
       config = function()
         require 'plugins/config/nvim-web-devicons'
       end
@@ -162,12 +173,14 @@ return require('packer').startup(
     }
     use {
       'vim-test/vim-test',
+      cmd = { 'TestFile', 'TestLast', 'TestNearest', 'TestSuite' },
       config = function()
         require 'plugins/config/vim-test'
       end
     }
     use {
       'williamboman/mason.nvim',
+      after = 'neodev.nvim',
       config = function()
         require 'plugins/config/mason'
       end,
@@ -225,15 +238,26 @@ return require('packer').startup(
       end,
     }
     use {
+      'nvim-telescope/telescope-ui-select.nvim',
+      module = { 'telescope', 'plugins/config/telescope-nvim' },
+      cmd = 'Telescope',
+    }
+    use {
+      'nvim-telescope/telescope-github.nvim',
+      after = 'telescope-ui-select.nvim'
+    }
+    use {
+
+      'nvim-telescope/telescope-fzf-native.nvim',
+      run = 'make',
+      after = 'telescope-ui-select.nvim'
+    }
+    use {
       'nvim-telescope/telescope.nvim',
+      after = 'telescope-ui-select.nvim',
       requires = {
         'nvim-lua/popup.nvim',
-        'nvim-telescope/telescope-github.nvim',
-        'nvim-telescope/telescope-ui-select.nvim',
-        { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
       },
-      -- cmd = { 'Telescope', 'SessionManager' },
-      -- module = 'plugins/config/telescope-nvim',
       config = function()
         require 'plugins/config/telescope-nvim'
       end
