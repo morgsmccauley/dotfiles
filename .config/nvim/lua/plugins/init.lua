@@ -221,6 +221,7 @@ return require('packer').startup(
     }
     use {
       'nvim-treesitter/nvim-treesitter',
+      branch = 'v0.8.0',
       requires = {
         { 'sheerun/vim-polyglot' },
         { 'nvim-treesitter/nvim-treesitter-textobjects' },
