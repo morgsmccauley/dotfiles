@@ -9,8 +9,6 @@ vim.o.wrap = false
 vim.o.showmode = false
 vim.o.cursorline = true
 
--- vim.o.rnu = true
-
 vim.o.mouse = 'a'
 
 vim.o.signcolumn = 'yes'
