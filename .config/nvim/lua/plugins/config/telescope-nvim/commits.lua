@@ -26,6 +26,13 @@ end
 
 return function()
   builtin.git_commits({
+    git_command = {
+      'git',
+      'log',
+      '--pretty=%h %s %d',
+      '--',
+      '.'
+    },
     attach_mappings = function(_, map)
       local fixup = function(prompt_bufnr)
         local commit = action_state.get_selected_entry().value
@@ -57,8 +64,24 @@ return function()
         vim.api.nvim_command('TermExec open=0 cmd="git rebase -i --autostash --autosquash ' .. commit .. '~1"')
       end
 
+      local yank_commit = function(prompt_bufnr)
+        local commit = action_state.get_selected_entry().value
+        vim.fn.setreg('*', commit)
+
+        actions.close(prompt_bufnr)
+      end
+
+      local diff_view = function(prompt_bufnr)
+        local commit = action_state.get_selected_entry().value
+        vim.api.nvim_command('DiffviewOpen ' .. commit .. '...HEAD')
+
+        actions.close(prompt_bufnr)
+      end
+
       map('i', '<C-f>', fixup)
       map('i', '<C-r>', interactive_rebase)
+      map('i', '<C-y>', yank_commit)
+      map('i', '<C-v>', diff_view)
 
       return true
     end
