@@ -10,7 +10,7 @@ require('catppuccin').setup({
       transparent_panel = true,
     },
   },
-  flavour = 'macchiato', -- latte, frappe, macchiato, mocha
+  flavour = 'mocha', -- latte, frappe, macchiato, mocha
   custom_highlights = function()
     return {
       IlluminatedWordText = { link = 'Visual' },
