@@ -9,27 +9,18 @@ local function lsp_progress(_)
   end
 
   local msg = Lsp.message or ''
-  local percentage = Lsp.percentage or 0
   local title = Lsp.title or ''
 
-  local spinners = { '', '', '' }
-  local success_icon = { '', '', '' }
-
-  local ms = vim.loop.hrtime() / 1000000
-  local frame = math.floor(ms / 120) % #spinners
-
   return string.format(
-    ' %s %s %s (%s) ',
-    percentage >= 70 and success_icon[frame + 1] or spinners[frame + 1],
+    '%s %s',
     title,
-    msg,
-    percentage
+    msg
   )
 end
 
 local function lsp_name(msg)
   msg = msg or ''
-  local buf_clients = vim.lsp.buf_get_clients()
+  local buf_clients = vim.lsp.get_active_clients()
   if next(buf_clients) == nil then
     if type(msg) == 'boolean' or #msg == 0 then
       return ''
@@ -63,42 +54,44 @@ lualine.setup({
   sections = {
     lualine_a = {
       {
-        'mode'
+        function()
+          return ' '
+        end,
+        padding = { left = 0, right = 0 }
       },
     },
     lualine_b = {
-      {
-        function()
-          return vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
-        end,
-      }
     },
     lualine_c = {
       {
+        'filetype',
+        colored = true,
+        icon_only = true,
+        padding = { right = 0, left = 1 }
+      },
+      {
         function()
-          local head = vim.fn.expand('%:h'):gsub(vim.fn.getcwd(), '');
-          return ' ' .. head .. (head ~= '' and '/' or '')
+          return vim.fn.fnamemodify(vim.fn.getcwd(), ':t') .. '/'
         end,
-        color = { fg = theme.normal.a.bg },
-        padding = { left = 0, right = 0 },
+        color = theme.inactive.a,
+        padding = { left = 1, right = 0 },
+      },
+      {
+        function()
+          local rel_path = vim.fn.expand('%:~:.:h')
+          return rel_path == '.' and '' or rel_path .. '/'
+        end,
+        color = theme.inactive.c,
+        padding = { left = 0, right = 0 }
       },
       {
         'filename',
         file_status = true,
         path = 0,
-        padding = { left = 0 },
         shorting_target = 0,
+        padding = { left = 0, right = 1 }
       },
       'progress',
-      {
-        'diagnostics',
-        symbols = {
-          error = ' ',
-          warn = ' ',
-          info = ' ',
-          hint = ' ',
-        }
-      }
     },
     lualine_x = {
       {
@@ -108,23 +101,24 @@ lualine.setup({
         icon = { '', color = { fg = '#ed8796' } }
       },
       {
+        'diagnostics',
+        symbols = {
+          error = ' ',
+          warn = ' ',
+          info = ' ',
+          hint = ' ',
+        }
+      },
+      {
         lsp_progress,
       },
       {
         lsp_name,
-        icon = { '', color = { fg = theme.normal.a.bg } },
-      },
-      {
-        'encoding',
-      },
-      {
-        'fileformat',
-      },
-      {
-        'filetype',
+        icon = { '' },
       },
       {
         'branch',
+        icon = ''
       }
     },
     lualine_y = {},
