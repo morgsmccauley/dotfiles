@@ -74,7 +74,7 @@ imap('<S-Tab>', 'pumvisible() ? \"\\<C-p>\" : \"\\<S-Tab>\"', { expr = true, nor
 nmap('<C-/>', '<Plug>(comment_toggle_linewise_current)')
 vmap('<C-/>', '<Plug>(comment_toggle_blockwise_visual)')
 
-nmap('<C-m>', '<Cmd>MaximizerToggle!<Cr>', { noremap = true, silent = true })
+-- nmap('<C-m>', '<Cmd>MaximizerToggle!<Cr>', { noremap = true, silent = true })
 
 nmap('dl', 'dV:lua require(\'plugins/config/leap\').leap_to_line()<Cr>', { noremap = true, silent = true })
 nmap('yl', 'yV:lua require(\'plugins/config/leap\').leap_to_line()<Cr>', { noremap = true, silent = true })

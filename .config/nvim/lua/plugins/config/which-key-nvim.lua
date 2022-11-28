@@ -157,6 +157,7 @@ local mappings = {
   ['.'] = { '<Cmd>Telescope git_files<Cr>', 'Find file' },
   ['\\'] = { '<Cmd>Telescope current_buffer_fuzzy_find<Cr>', 'Fuzzy find current buffer' },
   ['\''] = { '<Cmd>Telescope marks<Cr>', 'List marks' },
+  [':'] = { '<Cmd>Telescope commands<Cr>', 'List commands' }
 }
 
 local opts = {
