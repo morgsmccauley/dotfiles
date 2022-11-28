@@ -1,7 +1,24 @@
 local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
+local border = {
+  { '╭', 'FloatBorder' },
+  { '─', 'FloatBorder' },
+  { '╮', 'FloatBorder' },
+  { '│', 'FloatBorder' },
+  { '╯', 'FloatBorder' },
+  { '─', 'FloatBorder' },
+  { '╰', 'FloatBorder' },
+  { '│', 'FloatBorder' },
+}
+
+local handlers = {
+  ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
+  ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
+}
+
 lspconfig.tsserver.setup {
+  handlers = handlers,
   capabilities = capabilities,
   init_options = {
     preferences = {
@@ -17,6 +34,7 @@ lspconfig.tsserver.setup {
 }
 
 lspconfig.sumneko_lua.setup {
+  handlers = handlers,
   capabilities = capabilities,
   settings = {
     Lua = {
@@ -36,5 +54,6 @@ lspconfig.sumneko_lua.setup {
 lspconfig.eslint.setup {}
 
 lspconfig.jsonls.setup {
-  capabilities = capabilities
+  handlers = handlers,
+  capabilities = capabilities,
 }
