@@ -6,6 +6,7 @@ require 'nvim-tree'.setup {
         enable = true,
     },
     git = {
+        show_on_dirs = true,
         enable = true,
         ignore = false
     },
@@ -22,7 +23,7 @@ require 'nvim-tree'.setup {
     renderer = {
         special_files = {},
         -- doesnt work well with hidden=true
-        -- highlight_opened_files = 'name',
+        highlight_opened_files = 'name',
         indent_markers = {
             enable = true,
             icons = {
@@ -63,6 +64,8 @@ require 'nvim-tree'.setup {
         }
     }
 }
+
+vim.api.nvim_set_hl(0, 'NvimTreeOpenedFile', { underline = true })
 
 --[[ vim.cmd 'hi NvimTreeGitDirty NONE'
 vim.cmd 'hi NvimTreeGitStaged NONE'

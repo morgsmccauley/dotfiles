@@ -1,4 +1,4 @@
-vim.o.hidden = true
+vim.o.hidden = false
 vim.o.splitright = true
 vim.o.ignorecase = true
 -- vim.o.splitright = true
@@ -36,3 +36,9 @@ vim.cmd 'syntax on'
 
 vim.env['GIT_EDITOR'] = 'nvr -cc "botright split" --remote-wait'
 vim.env['GIT_SEQUENCE_EDITOR'] = 'nvr -cc "botright split" --remote-wait'
+
+vim.diagnostic.config({
+    float = {
+        border = 'single'
+    }
+})
