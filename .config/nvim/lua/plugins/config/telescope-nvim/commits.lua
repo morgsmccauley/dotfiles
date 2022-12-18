@@ -61,7 +61,7 @@ return function()
 
         actions.close(prompt_bufnr)
 
-        vim.api.nvim_command('TermExec open=0 cmd="git rebase -i --autostash --autosquash ' .. commit .. '~1"')
+        vim.api.nvim_command('silent botright Git rebase -i --autostash --autosquash ' .. commit .. '~1')
       end
 
       local yank_commit = function(prompt_bufnr)
