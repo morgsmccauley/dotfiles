@@ -1,5 +1,5 @@
 require 'nvim-tree'.setup {
-    hijack_netrw = true,
+    hijack_netrw = false,
     sync_root_with_cwd = true,
     hijack_cursor = true,
     update_focused_file = {
@@ -24,6 +24,7 @@ require 'nvim-tree'.setup {
         special_files = {},
         -- doesnt work well with hidden=true
         highlight_opened_files = 'name',
+        root_folder_modifier = ':t',
         indent_markers = {
             enable = true,
             icons = {
