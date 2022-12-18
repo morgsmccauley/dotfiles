@@ -23,14 +23,14 @@ vim.api.nvim_create_autocmd({ 'WinLeave' }, {
     command = 'set nocursorline'
 })
 
-vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
-    pattern = { '*.tsx', '*.ts', '*.jsx', '*.js' },
-    command = 'if exists(":EslintFixAll") | execute "EslintFixAll" | endif'
-})
-
 vim.api.nvim_create_autocmd({ 'Bufread' }, {
     pattern = { '*.http' },
     command = 'set ft=http'
+})
+
+vim.api.nvim_create_autocmd({ 'Bufread' }, {
+    pattern = { '*.sh.tmpl' },
+    command = 'set ft=sh'
 })
 
 vim.api.nvim_create_autocmd({ 'VimResized' }, {
