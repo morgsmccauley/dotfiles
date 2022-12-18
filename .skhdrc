@@ -88,7 +88,7 @@ hyper - r : sh ~/.dotfiles/scripts/cycle_clockwise.sh
 
 hyper - s : yabai -m window --swap mouse
 
-hyper - x : yabai -m window --close ; yabai -m window --focus last
+hyper - q : yabai -m window --close ; yabai -m window --focus last
 
 hyper - 6 : yabai -m window --focus recent
 
@@ -111,7 +111,7 @@ hyper - 0x18 : yabai -m window --resize left:-50:0 ; yabai -m window --resize ri
 # decrease window size - hyper - -
 hyper - 0x1B : yabai -m window --resize right:50:0 ; yabai -m window --resize left:50:0
 
-hyper - n : yabai -m window --minimize ; yabai -m window --focus last
+# hyper - n : yabai -m window --minimize ; yabai -m window --focus last
 
 # hyper - 1
 hyper - 0x12 : yabai -m window --ratio abs:0.3333
@@ -121,6 +121,7 @@ hyper - 0x13 : yabai -m window --ratio abs:0.6666
 hyper - u : yabai -m query --windows | jq '.[] | select(.app == "Brave Browser") | .id' | xargs yabai -m window --focus
 hyper - i : yabai -m query --windows | jq '.[] | select(.app == "iTerm2") | .id' | xargs yabai -m window --focus
 hyper - o : yabai -m query --windows | jq '.[] | select(.app == "Slack") | .id' | xargs yabai -m window --focus
+hyper - n : open -a Notes
 
 # make floating window fill screen
 # shift + alt - up     : yabai -m window --grid 1:1:0:0:1:1
