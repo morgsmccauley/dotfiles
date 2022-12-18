@@ -43,14 +43,12 @@ lualine.setup({
     section_separators = { left = '', right = '' },
     component_separators = { left = '', right = '' },
   },
-  -- inactive_winbar = {
-  --   lualine_a = {},
-  --   lualine_b = {},
-  --   lualine_c = { 'filename' },
-  --   lualine_x = {},
-  --   lualine_y = {},
-  --   lualine_z = {}
-  -- },
+  --[[ winbar = {
+    lualine_x = { 'filename' }
+  },
+  inactive_winbar = {
+    lualine_x = { 'filename' }
+  }, ]]
   sections = {
     lualine_a = {
       {
@@ -67,21 +65,24 @@ lualine.setup({
         'filetype',
         colored = true,
         icon_only = true,
-        padding = { right = 0, left = 1 }
+        padding = { right = 1, left = 2 }
       },
       {
         function()
           return vim.fn.fnamemodify(vim.fn.getcwd(), ':t') .. '/'
         end,
-        color = theme.inactive.a,
-        padding = { left = 1, right = 0 },
+        cond = function()
+          return vim.fn.expand('%:p'):find(vim.fn.fnamemodify(vim.fn.getcwd(), ':h')) ~= nil
+        end,
+        color = { fg = theme.inactive.a.fg },
+        padding = { left = 0, right = 0 }
       },
       {
         function()
           local rel_path = vim.fn.expand('%:~:.:h')
           return rel_path == '.' and '' or rel_path .. '/'
         end,
-        color = theme.inactive.c,
+        color = { fg = theme.inactive.c.fg },
         padding = { left = 0, right = 0 }
       },
       {
@@ -111,10 +112,11 @@ lualine.setup({
       },
       {
         lsp_progress,
+        color = { fg = theme.inactive.c.fg },
       },
       {
         lsp_name,
-        icon = { '' },
+        icon = { ' ' },
       },
       {
         'branch',
