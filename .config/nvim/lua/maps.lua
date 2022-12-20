@@ -36,6 +36,9 @@ nmap('<C-h>', '<C-w>h', { noremap = true })
 nmap('<C-j>', '<C-w>j', { noremap = true })
 nmap('<C-k>', '<C-w>k', { noremap = true })
 
+nmap('<C-d>', '<C-d>zz', { noremap = true })
+nmap('<C-u>', '<C-u>zz', { noremap = true })
+
 nmap('<C-w>gf', '<C-w>vgf', { noremap = true })
 nmap('<C-w>gd', '<C-w>vgd', { noremap = true })
 
@@ -76,8 +79,13 @@ vmap('<C-/>', '<Plug>(comment_toggle_blockwise_visual)')
 
 -- nmap('<C-m>', '<Cmd>MaximizerToggle!<Cr>', { noremap = true, silent = true })
 
-nmap('dl', 'dV:lua require(\'plugins/config/leap\').leap_to_line()<Cr>', { noremap = true, silent = true })
-nmap('yl', 'yV:lua require(\'plugins/config/leap\').leap_to_line()<Cr>', { noremap = true, silent = true })
-nmap('cl', 'cV:lua require(\'plugins/config/leap\').leap_to_line()<Cr>', { noremap = true, silent = true })
+nmap('dl', 'dV:LeapLine<Cr>', { noremap = true, silent = true })
+nmap('yl', 'yV:LeapLine<Cr>', { noremap = true, silent = true })
+nmap('cl', 'cV:LeapLine<Cr>', { noremap = true, silent = true })
 
 cmap('<C-a>', '<C-b>', { noremap = true })
+
+vmap('J', ':m \'>+1<Cr>gv=gv', { noremap = true })
+vmap('K', ':m \'<-2<Cr>gv=gv', { noremap = true })
+
+vim.keymap.set('x', 'p', '\"_dP')

@@ -6,6 +6,10 @@ return {
     { 'neovim/nvim-lspconfig' }
   },
   config = function()
-    require('plugins.lsp.mason.mason')
+    require('mason').setup()
+
+    require('mason-lspconfig').setup {
+      automatic_installation = true
+    }
   end,
 }

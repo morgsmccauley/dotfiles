@@ -42,3 +42,5 @@ vim.diagnostic.config({
         border = 'single'
     }
 })
+
+vim.opt.scrolloff = 8

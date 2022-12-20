@@ -4,3 +4,4 @@
 - autosave doesnt work with vim-repeat
 - cmp delayed results affecting auto completion
 - save global marks to session
+- refactoring.nvim
