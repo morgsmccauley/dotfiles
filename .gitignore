@@ -14,7 +14,7 @@
 
 .config/gcloud
 
-.config/nvim/plugin/**/*
+.config/nvim/plugin
 
 .config/raycast/
 

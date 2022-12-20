@@ -53,11 +53,6 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
     end
 })
 
-vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
-    pattern = { '.config/nvim/lua/plugins/init.lua' },
-    command = 'source <afile> | PackerCompile'
-})
-
 vim.api.nvim_create_autocmd({ 'FileType' }, {
     pattern = { 'help' },
     command = 'wincmd K',
