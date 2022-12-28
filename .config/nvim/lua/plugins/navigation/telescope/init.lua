@@ -5,7 +5,7 @@ return {
     {
       'nvim-telescope/telescope-ui-select.nvim',
       module = { 'telescope', 'plugins/navigation/telescope' },
-      cmd = 'Telescope',
+      cmd = { 'Telescope', 'TelescopeCommits', 'TelescopeBranches', 'TelescopeStash', 'TelescopeBuffers' },
     },
     {
       'nvim-telescope/telescope-github.nvim',
