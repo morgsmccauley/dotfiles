@@ -1,7 +1,7 @@
 require('impatient')
 
 require('plugins')
-require('settings')
+require('options')
 require('maps')
 require('highlights')
 require('autocommand')
