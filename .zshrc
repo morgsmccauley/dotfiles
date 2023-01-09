@@ -42,6 +42,7 @@ plugins=(
   git
   gitfast
   zoxide
+  colored-man-pages
 )
 
 source $ZSH/oh-my-zsh.sh

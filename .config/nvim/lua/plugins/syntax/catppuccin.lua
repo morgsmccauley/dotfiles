@@ -16,15 +16,6 @@ return {
         },
       },
       flavour = 'macchiato', -- latte, frappe, macchiato, mocha
-      custom_highlights = function()
-        return {
-          IlluminatedWordText = { link = 'Visual' },
-          IlluminatedWordRead = { link = 'Visual' },
-          IlluminatedWordWrite = { link = 'Visual' },
-
-          TreesitterContext = { link = 'CursorLine' }
-        }
-      end
     })
 
     -- vim.api.nvim_command [[colorscheme catppuccin]]
