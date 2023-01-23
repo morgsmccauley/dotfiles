@@ -1,6 +1,6 @@
 return {
   'folke/which-key.nvim',
-  keys = { '<leader>', '"', '\'', '`' },
+  -- keys = { '<leader>', '"', '\'', '`' },
   config = function()
     vim.g.mapleader = ' '
 

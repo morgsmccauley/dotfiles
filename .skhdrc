@@ -84,7 +84,7 @@ hyper - k : yabai -m window --focus north
 
 hyper - m : yabai -m window --toggle zoom-fullscreen
 
-hyper - r : sh ~/.dotfiles/scripts/cycle_clockwise.sh
+# hyper - R : sh ~/.dotfiles/scripts/cycle_clockwise.sh
 
 hyper - s : yabai -m window --swap mouse
 
@@ -122,6 +122,7 @@ hyper - u : yabai -m query --windows | jq '.[] | select(.app == "Brave Browser")
 hyper - i : yabai -m query --windows | jq '.[] | select(.app == "iTerm2") | .id' | xargs yabai -m window --focus
 hyper - o : yabai -m query --windows | jq '.[] | select(.app == "Slack") | .id' | xargs yabai -m window --focus
 hyper - n : open -a Notes
+hyper - r : open -a Reminders
 
 # make floating window fill screen
 # shift + alt - up     : yabai -m window --grid 1:1:0:0:1:1

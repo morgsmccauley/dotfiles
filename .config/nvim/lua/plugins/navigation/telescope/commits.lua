@@ -26,13 +26,6 @@ end
 
 return function()
   builtin.git_commits({
-    git_command = {
-      'git',
-      'log',
-      '--pretty=%h %s %d',
-      '--',
-      '.'
-    },
     attach_mappings = function(_, map)
       local fixup = function(prompt_bufnr)
         local commit = action_state.get_selected_entry().value

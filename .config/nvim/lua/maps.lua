@@ -36,11 +36,10 @@ nmap('<C-h>', '<C-w>h', { noremap = true })
 nmap('<C-j>', '<C-w>j', { noremap = true })
 nmap('<C-k>', '<C-w>k', { noremap = true })
 
-nmap('<C-d>', '<C-d>zz', { noremap = true })
-nmap('<C-u>', '<C-u>zz', { noremap = true })
-
-nmap('<C-w>gf', '<C-w>vgf', { noremap = true })
-nmap('<C-w>gd', '<C-w>vgd', { noremap = true })
+vim.keymap.set('n', '<C-w>gd', '<C-w>vgf',
+  { desc = 'Go to file in new split' })
+vim.keymap.set('n', '<C-w>gd', '<Cmd>silent vsp | Telescope lsp_definitions<Cr>',
+  { desc = 'Go to definition in new split' })
 
 nmap('<C-p>', '@:', { noremap = true })
 
@@ -49,7 +48,13 @@ smap('<C-l>', '<Plug>luasnip-jump-next', { noremap = true, silent = true })
 imap('<C-h>', '<Plug>luasnip-jump-prev', { noremap = true, silent = true })
 smap('<C-h>', '<Plug>luasnip-jump-prev', { noremap = true, silent = true })
 
-nmap('<C-g>', '<Cmd>tab Git<Cr>', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-g>', function()
+  if vim.bo.filetype == 'fugitive' then
+    vim.api.nvim_command('q')
+  else
+    vim.api.nvim_command('tab Git')
+  end
+end, { desc = 'Toggle fugitive status' })
 
 imap('<C-a>', '<C-o>^', { noremap = true, silent = true })
 imap('<C-e>', '<C-o>$', { noremap = true, silent = true })
@@ -88,4 +93,4 @@ cmap('<C-a>', '<C-b>', { noremap = true })
 vmap('J', ':m \'>+1<Cr>gv=gv', { noremap = true })
 vmap('K', ':m \'<-2<Cr>gv=gv', { noremap = true })
 
-vim.keymap.set('x', 'p', '\"_dP')
+vim.keymap.set('x', 'p', '\"_dP', { desc = 'Paste without replacing register contents' })
