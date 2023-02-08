@@ -15,10 +15,13 @@ return {
         -- hack
         vim.api.nvim_command [[wincmd =]]
 
-        vim.api.nvim_buf_set_keymap(t.bufnr, 't', '<C-h>', [[<C-\><C-n><C-W><C-h>]], { noremap = true })
         vim.api.nvim_buf_set_keymap(t.bufnr, 't', '<Esc>', [[<C-\><C-n>]], { noremap = true })
+
+        vim.api.nvim_buf_set_keymap(t.bufnr, 't', '<C-h>', [[<C-\><C-n><C-W><C-h>]], { noremap = true })
         vim.api.nvim_buf_set_keymap(t.bufnr, 't', '<C-j>', [[<C-\><C-n><C-W><C-j>]], { noremap = true })
         vim.api.nvim_buf_set_keymap(t.bufnr, 't', '<C-k>', [[<C-\><C-n><C-W><C-k>]], { noremap = true })
+        -- vim.api.nvim_buf_set_keymap(t.bufnr, 't', '<C-l>', [[<C-\><C-n><C-W><C-l>]], { noremap = true })
+
         vim.api.nvim_buf_set_keymap(t.bufnr, 't', '<C-q>', [[<C-\><C-n><Cmd>q!<Cr>]], { noremap = true })
         vim.api.nvim_buf_set_keymap(t.bufnr, 't', '<C-t>', [[<C-\><C-n><Cmd>hide<Cr>]], { noremap = true })
 

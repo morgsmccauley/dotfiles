@@ -132,12 +132,12 @@ return {
       f = { '<Cmd>lua vim.lsp.buf.format()<Cr>', 'Format' }
     }
 
-    local test = {
-      name = '+test',
-      f = { '<Cmd>TestFile<Cr>', 'Test file' },
-      l = { '<Cmd>TestLast<Cr>', 'Test last' },
-      t = { '<Cmd>TestNearest<Cr>', 'Test under cursor' },
-      s = { '<Cmd>TestSuite<Cr>', 'Test suite' }
+    local terminal = {
+      name = '+terminal',
+      t = { '<Cmd>exe v:count1."ToggleTerm direction=tab"<Cr>', 'Open term in tab' },
+      v = { '<Cmd>exe v:count1."ToggleTerm direction=vertical"<Cr>', 'Open term in vertical split' },
+      h = { '<Cmd>exe v:count1."ToggleTerm direction=horizontal"<Cr>', 'Open term in horizontal split' },
+      f = { '<Cmd>exe v:count1."ToggleTerm direction=float"<Cr>', 'Open term in float' },
     }
 
     local mappings = {
@@ -148,7 +148,7 @@ return {
       b = buffer,
       c = code,
       d = debug,
-      t = test,
+      t = terminal,
       ['*'] = { '<Cmd>Telescope grep_string<Cr>', 'Search for symbol globally' },
       ['/'] = { '<Cmd>Telescope live_grep<Cr>', 'Search globally' },
       [','] = { '<Cmd>TelescopeBuffers<Cr>', 'Switch buffer' },
