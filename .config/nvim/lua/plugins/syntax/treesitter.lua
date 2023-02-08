@@ -3,8 +3,10 @@ return {
   branch = 'v0.8.0',
   requires = {
     { 'sheerun/vim-polyglot' },
-    { 'nvim-treesitter/nvim-treesitter-textobjects' },
-    { 'romgrk/nvim-treesitter-context' }
+    {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+      commit = 'f456fc83a1024d795cb2a3e61b52ab3d5a213e8c' -- random commit some time in the past since latest doesn't work
+    },
   },
   run = ':TSUpdate',
   config = function()
@@ -47,12 +49,5 @@ return {
 
     local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
     parser_config.markdown.filetype_to_parsername = 'octo'
-
-    require('treesitter-context').setup {
-      enable = false
-    }
-
-    -- catppuccin wipes these?
-    -- vim.api.nvim_command [[hi link TreesitterContext Visual]]
   end
 }
