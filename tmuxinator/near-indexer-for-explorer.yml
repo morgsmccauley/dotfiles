@@ -1,0 +1,7 @@
+name: near-indexer-for-explorer
+root: ~/Developer/Repositories/near-indexer-for-explorer/
+
+windows:
+  - near-indexer-for-explorer:
+      panes:
+        - nvim

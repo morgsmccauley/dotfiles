@@ -1,0 +1,7 @@
+name: near-api-js
+root: ~/Developer/Repositories/near-api-js/
+
+windows:
+  - near-api-js:
+      panes:
+        - nvim

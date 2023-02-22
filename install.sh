@@ -12,10 +12,10 @@ git clone git@github.com:morgsmccauley/dotfiles.git ~/.dotfiles
 
 echo "Symlinking dotfiles..."
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
-ln -s ~/.dotfiles/.config ~/.config
-ln -s ~/.dotfiles/.iterm ~/.iterm
+ln -s ~/.dotfiles/nvim ~/.config/nvim
+ln -s ~/.dotfiles/tmuxinator ~/.config/tmuxinator/
+ln -s ~/.dotfiles/iterm ~/.iterm
 ln -s ~/.dotfiles/.zshrc ~/.zshrc
-ln -s ~/.dotfiles/lazygit-config.yml ~/Library/Application\ Support/lazygit/config.yml
 
 echo "Installing neovim node/python dependencies..."
 nvm install 12.16.1

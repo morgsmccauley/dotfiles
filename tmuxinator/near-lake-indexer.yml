@@ -1,0 +1,7 @@
+name: near-lake-indexer
+root: ~/Developer/Repositories/near-lake-indexer
+
+windows:
+  - near-lake-indexer:
+      panes:
+        - nvim
