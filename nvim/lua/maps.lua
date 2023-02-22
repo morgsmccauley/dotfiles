@@ -32,9 +32,9 @@ nmap('<C-j>', '<C-w>j', { noremap = true })
 nmap('<C-k>', '<C-w>k', { noremap = true })
 
 vim.keymap.set('n', '<C-w>gd', '<C-w>vgf',
-  { desc = 'Go to file in new split' })
+    { desc = 'Go to file in new split' })
 vim.keymap.set('n', '<C-w>gd', '<Cmd>silent vsp | Telescope lsp_definitions<Cr>',
-  { desc = 'Go to definition in new split' })
+    { desc = 'Go to definition in new split' })
 
 nmap('<C-p>', '@:', { noremap = true })
 
@@ -68,9 +68,12 @@ nmap('<C-y>', '5<C-y>', { noremap = true, silent = true })
 
 --[[ imap('<Tab>', 'pumvisible() ? \"\\<C-n>\" : \"\\<Tab>\"', { expr = true, noremap = true })
 imap('<S-Tab>', 'pumvisible() ? \"\\<C-p>\" : \"\\<S-Tab>\"', { expr = true, noremap = true }) ]]
-
-nmap('<C-/>', '<Plug>(comment_toggle_linewise_current)')
-vmap('<C-/>', '<Plug>(comment_toggle_blockwise_visual)')
+vim.keymap.set('n', '<C-/>', function()
+  return '<Plug>(comment_toggle_linewise_current)'
+end, { expr = true })
+vim.keymap.set('v', '<C-/>', function()
+  return '<Plug>(comment_toggle_blockwise_visual)'
+end, { expr = true })
 
 -- nmap('<C-m>', '<Cmd>MaximizerToggle!<Cr>', { noremap = true, silent = true })
 
