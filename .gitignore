@@ -21,3 +21,5 @@
 .config/AWSVPNClient
 
 **/*/.netrwhist
+
+.config/tmuxinator/
