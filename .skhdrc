@@ -84,6 +84,11 @@ hyper - k : yabai -m window --focus north
 
 hyper - m : yabai -m window --toggle zoom-fullscreen
 
+# hyper - ]
+hyper - 0x1E : yabai -m window --swap east
+# hyper - [
+hyper - 0x21 : yabai -m window --swap west
+
 # hyper - R : sh ~/.dotfiles/scripts/cycle_clockwise.sh
 
 hyper - s : yabai -m window --swap mouse

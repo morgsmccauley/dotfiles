@@ -44,3 +44,5 @@ vim.diagnostic.config({
 })
 
 vim.opt.scrolloff = 8
+
+vim.opt.sessionoptions = 'buffers,curdir,folds,help,tabpages,winsize,options'

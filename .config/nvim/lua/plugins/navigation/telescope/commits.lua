@@ -1,28 +1,6 @@
 local action_state = require 'telescope.actions.state'
 local builtin = require 'telescope.builtin'
 local actions = require 'telescope.actions'
-local Job = require 'plenary.job'
-
-function GetOsCommandOutput(cmd, cwd, env)
-  if type(cmd) ~= 'table' then
-    print 'Telescope: [GetOsCommandOutput]: cmd has to be a table'
-    return {}
-  end
-  local command = table.remove(cmd, 1)
-  local stderr = {}
-  local stdout, ret = Job
-      :new({
-        command = command,
-        args = cmd,
-        cwd = cwd,
-        env = env,
-        on_stderr = function(_, data)
-          table.insert(stderr, data)
-        end,
-      })
-      :sync()
-  return stdout, ret, stderr
-end
 
 return function()
   builtin.git_commits({

@@ -23,7 +23,27 @@ return function()
         end
 
         if ret == 0 then
-          print("Checked out: " .. selection.value)
+          print('Checked out: ' .. selection.value)
+        else
+          print(string.format(
+            'Error when checking out: %s. Git returned: "%s"',
+            selection.value,
+            table.concat(stderr, '  ')
+          ))
+        end
+      end
+
+      local fetch = function(prompt_bufnr)
+        print('Fetching...')
+
+        local current_picker = action_state.get_current_picker(prompt_bufnr)
+        local _, ret, stderr = utils.get_os_command_output({ 'git', 'fetch' }, current_picker.cwd)
+        local selection = action_state.get_selected_entry()
+
+        current_picker:refresh()
+
+        if ret == 0 then
+          print('Fetched origin')
         else
           print(string.format(
             'Error when checking out: %s. Git returned: "%s"',
@@ -36,6 +56,7 @@ return function()
       map('i', '<C-d>', actions.preview_scrolling_down)
       map('i', '<C-x>', actions.git_delete_branch)
       map('i', '<C-n>', actions.git_create_branch)
+      map('i', '<C-f>', fetch)
       map('i', '<Cr>', checkout)
 
       return true

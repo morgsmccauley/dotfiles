@@ -20,11 +20,6 @@ local function cmap(lhs, rhs, opts)
   vim.api.nvim_set_keymap('c', lhs, rhs, opts)
 end
 
-local function smap(lhs, rhs, opts)
-  opts = opts or {}
-  vim.api.nvim_set_keymap('s', lhs, rhs, opts)
-end
-
 nmap('j', 'gj', { silent = true, noremap = true })
 nmap('k', 'gk', { silent = true, noremap = true })
 
@@ -42,11 +37,6 @@ vim.keymap.set('n', '<C-w>gd', '<Cmd>silent vsp | Telescope lsp_definitions<Cr>'
   { desc = 'Go to definition in new split' })
 
 nmap('<C-p>', '@:', { noremap = true })
-
-imap('<C-l>', '<Plug>luasnip-expand-or-jump', { noremap = true, silent = true })
-smap('<C-l>', '<Plug>luasnip-jump-next', { noremap = true, silent = true })
-imap('<C-h>', '<Plug>luasnip-jump-prev', { noremap = true, silent = true })
-smap('<C-h>', '<Plug>luasnip-jump-prev', { noremap = true, silent = true })
 
 vim.keymap.set('n', '<C-g>', function()
   if vim.bo.filetype == 'fugitive' then
