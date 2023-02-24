@@ -1,0 +1,7 @@
+name: nearcore
+root: ~/Developer/Repositories/nearcore/
+
+windows:
+  - nearcore:
+      panes:
+        - nvim
