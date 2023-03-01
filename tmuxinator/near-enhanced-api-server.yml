@@ -1,7 +1,0 @@
-name: near-enhanced-api-server
-root: ~/Developer/Repositories/near-enhanced-api-server/
-
-windows:
-  - near-enhanced-api-server:
-      panes:
-        - nvim

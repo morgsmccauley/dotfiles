@@ -1,7 +1,0 @@
-name: near-ops
-root: ~/Developer/Repositories/near-ops/
-
-windows:
-  - near-ops:
-      panes:
-        - nvim

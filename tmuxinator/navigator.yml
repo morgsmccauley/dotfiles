@@ -1,7 +1,0 @@
-name: navigator
-root: ~/Developer/Repositories/navigator/
-
-windows:
-  - navigator:
-      panes:
-        - nvim

@@ -1,7 +1,0 @@
-name: near-lake-framework-js
-root: ~/Developer/Repositories/near-lake-framework-js
-
-windows:
-  - near-lake-framework-js:
-      panes:
-        - nvim

@@ -1,7 +1,0 @@
-name: near-lake-framework-rs
-root: ~/Developer/Repositories/near-lake-framework-rs
-
-windows:
-  - near-lake-framework-rs:
-      panes:
-        - nvim
