@@ -1,21 +1,27 @@
 return {
   'nvim-telescope/telescope.nvim',
-  after = 'telescope-ui-select.nvim',
-  requires = {
+  cmd = { 'Telescope', 'TelescopeCommits', 'TelescopeBranches', 'TelescopeStash', 'TelescopeBuffers' },
+  keys = { '<leader>sl' },
+  dependencies = {
     {
       'nvim-telescope/telescope-ui-select.nvim',
-      module = { 'telescope', 'plugins/navigation/telescope' },
-      cmd = { 'Telescope', 'TelescopeCommits', 'TelescopeBranches', 'TelescopeStash', 'TelescopeBuffers' },
+      config = function()
+        require('telescope').load_extension('ui-select')
+      end
     },
     {
       'nvim-telescope/telescope-github.nvim',
-      after = 'telescope-ui-select.nvim'
+      config = function()
+        require('telescope').load_extension('gh')
+      end
     },
     {
 
       'nvim-telescope/telescope-fzf-native.nvim',
-      run = 'make',
-      after = 'telescope-ui-select.nvim'
+      build = 'make',
+      config = function()
+        require('telescope').load_extension('fzf')
+      end
     },
   },
   config = function()
@@ -68,10 +74,6 @@ return {
       }
     }
 
-    telescope.load_extension('fzf')
-    telescope.load_extension('gh')
-    telescope.load_extension('ui-select')
-
     vim.api.nvim_create_user_command('TelescopeBuffers', function()
       builtin.buffers({
         show_all_buffers = true,
@@ -83,8 +85,8 @@ return {
         end
       })
     end, {})
-    vim.api.nvim_create_user_command('TelescopeCommits', require('plugins/navigation/telescope/commits'), {})
-    vim.api.nvim_create_user_command('TelescopeBranches', require('plugins/navigation/telescope/branches'), {})
-    vim.api.nvim_create_user_command('TelescopeStash', require('plugins/navigation/telescope/stash'), {})
+    vim.api.nvim_create_user_command('TelescopeCommits', require('plugins/telescope/commits'), {})
+    vim.api.nvim_create_user_command('TelescopeBranches', require('plugins/telescope/branches'), {})
+    vim.api.nvim_create_user_command('TelescopeStash', require('plugins/telescope/stash'), {})
   end
 }

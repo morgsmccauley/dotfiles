@@ -1,5 +1,6 @@
 return {
   'f-person/auto-dark-mode.nvim',
+  enabled = false,
   config = function()
     local auto_dark_mode = require('auto-dark-mode')
 

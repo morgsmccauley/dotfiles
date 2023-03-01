@@ -1,6 +1,5 @@
 return {
   'sindrets/diffview.nvim',
-  opt = true,
   cmd = 'DiffviewOpen',
   config = function()
     require 'diffview'.setup {

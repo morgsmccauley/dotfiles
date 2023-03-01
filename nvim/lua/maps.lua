@@ -23,28 +23,17 @@ end
 nmap('j', 'gj', { silent = true, noremap = true })
 nmap('k', 'gk', { silent = true, noremap = true })
 
--- nmap('<C-S-t>', '<Cmd>ToggleTermToggleAll<Cr>', { silent = true, noremap = true })
-nmap('<C-t>', '<Cmd>exe v:count1 . "ToggleTerm"<Cr>', { silent = true, noremap = true })
-nmap('<C-n>', '<Cmd>NvimTreeFindFileToggle<Cr>', { silent = true, noremap = true })
 nmap('<C-l>', '<C-w>l', { noremap = true })
 nmap('<C-h>', '<C-w>h', { noremap = true })
 nmap('<C-j>', '<C-w>j', { noremap = true })
 nmap('<C-k>', '<C-w>k', { noremap = true })
 
-vim.keymap.set('n', '<C-w>gd', '<C-w>vgf',
+vim.keymap.set('n', '<C-w>gf', '<C-w>vgf',
   { desc = 'Go to file in new split' })
 vim.keymap.set('n', '<C-w>gd', '<Cmd>silent vsp | Telescope lsp_definitions<Cr>',
   { desc = 'Go to definition in new split' })
 
 nmap('<C-p>', '@:', { noremap = true })
-
-vim.keymap.set('n', '<C-g>', function()
-  if vim.bo.filetype == 'fugitive' then
-    vim.api.nvim_command('q')
-  else
-    vim.api.nvim_command('tab Git')
-  end
-end, { desc = 'Toggle fugitive status' })
 
 imap('<C-a>', '<C-o>^', { noremap = true, silent = true })
 imap('<C-e>', '<C-o>$', { noremap = true, silent = true })
@@ -68,13 +57,6 @@ nmap('<C-y>', '5<C-y>', { noremap = true, silent = true })
 
 --[[ imap('<Tab>', 'pumvisible() ? \"\\<C-n>\" : \"\\<Tab>\"', { expr = true, noremap = true })
 imap('<S-Tab>', 'pumvisible() ? \"\\<C-p>\" : \"\\<S-Tab>\"', { expr = true, noremap = true }) ]]
-vim.keymap.set('n', '<C-/>', function()
-  return '<Plug>(comment_toggle_linewise_current)'
-end, { expr = true })
-vim.keymap.set('v', '<C-/>', function()
-  return '<Plug>(comment_toggle_blockwise_visual)'
-end, { expr = true })
-
 -- nmap('<C-m>', '<Cmd>MaximizerToggle!<Cr>', { noremap = true, silent = true })
 
 nmap('dl', 'dV:LeapLine<Cr>', { noremap = true, silent = true })

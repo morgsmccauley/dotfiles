@@ -1,7 +1,7 @@
 return {
   'catppuccin/nvim',
-  as = 'catppuccin',
-  run = ':CatppuccinCompile',
+  name = 'catppuccin',
+  build = ':CatppuccinCompile',
   config = function()
     require('catppuccin').setup({
       term_colors = true,
@@ -11,13 +11,26 @@ return {
       },
       integrations = {
         leap = true,
+        telescope = true,
+        mason = true,
+        neotest = true,
         nvimtree = {
           transparent_panel = true,
+        },
+        navic = {
+          enabled = true,
+        },
+        dap = {
+          enabled = true,
+          enable_ui = true
+        },
+        native_lsp = {
+          enabled = true
         },
       },
       flavour = 'macchiato', -- latte, frappe, macchiato, mocha
     })
 
-    -- vim.api.nvim_command [[colorscheme catppuccin]]
+    vim.api.nvim_command [[colorscheme catppuccin]]
   end
 }

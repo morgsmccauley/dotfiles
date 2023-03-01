@@ -1,9 +1,8 @@
 return {
   'mfussenegger/nvim-dap',
-  module = 'dap',
-  requires = {
-    --'nvim-telescope/telescope-dap.nvim',
-    { 'rcarriga/nvim-dap-ui', after = 'nvim-dap' }
+  lazy = true,
+  dependencies = {
+    'rcarriga/nvim-dap-ui'
   },
   config = function()
     require('dapui').setup()
@@ -118,9 +117,10 @@ return {
       end
     })
 
-    vim.fn.sign_define('DapBreakpoint', { text = '', texthl = 'DiagnosticSignError', linehl = '', numhl = '' })
+    vim.fn.sign_define('DapBreakpoint', { text = '', texthl = 'DapBreakpoint', linehl = '', numhl = '' })
+    vim.fn.sign_define('DapLogPoint', { text = '', texthl = 'DapLogPoint', linehl = '', numhl = '' })
     vim.fn.sign_define('DapBreakpointCondition',
-      { text = '', texthl = 'DiagnosticSignWarning', linehl = '', numhl = '' })
+      { text = '', texthl = 'DapBreakpointCondition', linehl = '', numhl = '' })
     vim.fn.sign_define('DapStopped', { text = '', texthl = 'white', linehl = '', numhl = '' })
   end
 }

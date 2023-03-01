@@ -1,6 +1,5 @@
 return {
   'kyazdani42/nvim-web-devicons',
-  module = 'nvim-web-devicons',
   config = function()
     require 'nvim-web-devicons'.setup {
       override = {
@@ -76,6 +75,5 @@ return {
         }
       }
     }
-
   end
 }

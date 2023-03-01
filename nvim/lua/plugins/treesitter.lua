@@ -1,12 +1,10 @@
 return {
     'nvim-treesitter/nvim-treesitter',
-    requires = {
-        { 'sheerun/vim-polyglot' },
-        {
-            'nvim-treesitter/nvim-treesitter-textobjects',
-        },
+    dependencies = {
+        'sheerun/vim-polyglot',
+        'nvim-treesitter/nvim-treesitter-textobjects',
     },
-    run = ':TSUpdate',
+    build = ':TSUpdate',
     config = function()
         require('nvim-treesitter.configs').setup({
             ensure_installed = 'all',

@@ -6,6 +6,7 @@ return {
     local utils = require('rust-tools.utils.utils')
     local dap = require('rust-tools.dap')
     local cmp_lsp = require('cmp_nvim_lsp')
+    local navic = require('nvim-navic')
 
     local capabilities = cmp_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
@@ -31,13 +32,15 @@ return {
             }
           }
         },
-        on_attach = function(_, bufnr)
+        on_attach = function(client, bufnr)
           vim.keymap.set('n', 'K', rt.hover_actions.hover_actions, { buffer = bufnr })
 
           vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
             buffer = bufnr,
             callback = function() vim.lsp.buf.format({ async = false }) end,
           })
+
+          navic.attach(client, bufnr)
         end
       },
       dap = {

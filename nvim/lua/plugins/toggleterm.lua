@@ -1,6 +1,13 @@
 return {
   'akinsho/toggleterm.nvim',
-  cmd = { 'ToggleTerm', 'TermExec' },
+  keys = {
+    {
+      '<C-t>',
+      '<Cmd>exe v:count1 . "ToggleTerm"<Cr>',
+      { silent = true, noremap = true }
+    }
+  },
+  cmd = { 'TermExec' },
   config = function()
     require 'toggleterm'.setup {
       shade_terminals = false,

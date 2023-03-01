@@ -1,7 +1,6 @@
 return {
   'williamboman/mason.nvim',
-  after = 'neodev.nvim',
-  requires = {
+  dependencies = {
     { 'williamboman/mason-lspconfig.nvim' },
     { 'neovim/nvim-lspconfig' }
   },

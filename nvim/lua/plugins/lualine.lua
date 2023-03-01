@@ -3,6 +3,7 @@ return {
   config = function()
     local lualine = require('lualine')
     local theme = require('lualine/themes/catppuccin')
+    local navic = require('nvim-navic')
 
     local function lsp_progress(_)
       local Lsp = vim.lsp.util.get_progress_messages()[1]
@@ -84,20 +85,25 @@ return {
             file_status = true,
             path = 0,
             shorting_target = 0,
-            padding = { left = 0, right = 1 }
+            padding = { left = 0, right = 0 }
           },
-          'progress',
+          {
+            navic.get_location,
+            cond = navic.is_available,
+            color = { bg = theme.normal.a.bg }
+          },
         },
         lualine_x = {
-          {
+          --[[ {
             function()
               return require('dap').status()
             end,
             icon = { '', color = { fg = '#ed8796' } },
             cond = function()
-              return packer_plugins['nvim-dap'].loaded
+              return package.loaded.dap ~= nil
             end
-          },
+          }, ]]
+          'progress',
           {
             'diagnostics',
             symbols = {

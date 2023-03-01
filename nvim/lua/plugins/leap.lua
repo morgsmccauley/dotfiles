@@ -1,6 +1,17 @@
 return {
   'ggandor/leap.nvim',
   keys = { 's', 'S', 'f', 'F', 't', 'T' },
+  dependencies = {
+    'ggandor/flit.nvim',
+    config = function()
+      require 'flit'.setup({
+        keys = { f = 'f', F = 'F', t = 't', T = 'T' },
+        labeled_modes = 'nv',
+        multiline = false,
+        opts = {}
+      })
+    end
+  },
   config = function()
     local leap = require('leap')
 

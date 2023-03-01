@@ -1,7 +1,13 @@
 return {
     'kyazdani42/nvim-tree.lua',
-    cmd = { 'NvimTreeFindFileToggle' },
-    setup = function()
+    keys = {
+        {
+            '<C-n>',
+            '<Cmd>NvimTreeFindFileToggle<Cr>',
+            { silent = true, noremap = true }
+        }
+    },
+    init = function()
         vim.api.nvim_set_hl(0, 'NvimTreeIndentMarker', { fg = '#545862' })
         vim.api.nvim_set_hl(0, 'NvimTreeOpenedFile', { underline = true })
 
