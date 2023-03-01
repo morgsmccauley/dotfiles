@@ -5,11 +5,13 @@ return {
     require 'toggleterm'.setup {
       shade_terminals = false,
       direction = 'vertical',
-      -- open_mapping = [[<C-t>]],
+      open_mapping = [[<C-t>]],
       start_in_insert = true,
       persist_size = false,
       on_open = function(t)
-        -- vim.o.bufhidden = 'hide'
+        -- vim.pretty_print(t)
+
+        vim.o.bufhidden = 'hide'
         vim.wo.winfixwidth = false
 
         -- hack
@@ -23,7 +25,7 @@ return {
         -- vim.api.nvim_buf_set_keymap(t.bufnr, 't', '<C-l>', [[<C-\><C-n><C-W><C-l>]], { noremap = true })
 
         vim.api.nvim_buf_set_keymap(t.bufnr, 't', '<C-q>', [[<C-\><C-n><Cmd>q!<Cr>]], { noremap = true })
-        vim.api.nvim_buf_set_keymap(t.bufnr, 't', '<C-t>', [[<C-\><C-n><Cmd>hide<Cr>]], { noremap = true })
+        -- vim.api.nvim_buf_set_keymap(t.bufnr, 't', '<C-t>', [[<C-\><C-n><Cmd>hide<Cr>]], { noremap = true })
 
         -- perform relevant action rather than sending keycodes
         vim.api.nvim_buf_set_keymap(t.bufnr, 't', '<S-space>', ' ', { noremap = true })
