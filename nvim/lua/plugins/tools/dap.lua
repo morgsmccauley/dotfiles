@@ -2,9 +2,12 @@ return {
   'mfussenegger/nvim-dap',
   module = 'dap',
   requires = {
-    'nvim-telescope/telescope-dap.nvim'
+    --'nvim-telescope/telescope-dap.nvim',
+    { 'rcarriga/nvim-dap-ui', after = 'nvim-dap' }
   },
   config = function()
+    require('dapui').setup()
+
     local dap = require('dap')
 
     dap.adapters.node = {
