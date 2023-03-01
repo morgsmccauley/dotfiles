@@ -1,7 +1,6 @@
 return {
     '~/Developer/Repositories/navigator',
     config = function()
-        print('navigator')
-        require('navigator').setup()
+        -- require('navigator').setup()
     end
 }
