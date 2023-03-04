@@ -1,9 +1,9 @@
 - unlink <Cr> and <C-m>
 - use karabiner instead of skhd?
-- https://github.com/nvim-neotest/neotest - dap support
 - autosave doesnt work with vim-repeat
 - cmp delayed results affecting auto completion
 - save global marks to session
 - refactoring.nvim
 - Nix
 - remove oh-my-zsh
+- maximize terminal window

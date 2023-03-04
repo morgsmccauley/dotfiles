@@ -14,11 +14,9 @@ return {
         telescope = true,
         mason = true,
         neotest = true,
+        symbols_outline = true,
         nvimtree = {
           transparent_panel = true,
-        },
-        navic = {
-          enabled = true,
         },
         dap = {
           enabled = true,

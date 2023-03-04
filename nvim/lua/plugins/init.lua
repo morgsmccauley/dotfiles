@@ -7,26 +7,26 @@ return {
   'nvim-lua/plenary.nvim',
   'nvim-lua/popup.nvim',
   {
-    'jiangmiao/auto-pairs',
-    --event = 'InsertEnter'
+    'simrat39/symbols-outline.nvim',
+    config = true,
   },
   {
-    'szw/vim-maximizer',
-    cmd = 'MaximizerToggle'
+    'declancm/maximize.nvim',
+    keys = {
+      {
+        '<leader>wm',
+        function()
+          require('maximize').toggle()
+        end,
+      }
+    },
+    config = function()
+      require('maximize').setup({
+        default_keymaps = false
+      })
+    end
   },
   {
     'folke/lazy.nvim'
   },
-  {
-    'b0o/incline.nvim',
-    config = function()
-      require('incline').setup({
-        window = {
-          margin = {
-            horizontal = 0
-          }
-        }
-      })
-    end
-  }
 }

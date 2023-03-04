@@ -3,7 +3,6 @@ return {
   config = function()
     local lualine = require('lualine')
     local theme = require('lualine/themes/catppuccin')
-    local navic = require('nvim-navic')
 
     local function lsp_progress(_)
       local Lsp = vim.lsp.util.get_progress_messages()[1]
@@ -86,11 +85,6 @@ return {
             path = 0,
             shorting_target = 0,
             padding = { left = 0, right = 0 }
-          },
-          {
-            navic.get_location,
-            cond = navic.is_available,
-            color = { bg = theme.normal.a.bg }
           },
         },
         lualine_x = {

@@ -16,8 +16,6 @@ return {
       start_in_insert = true,
       persist_size = false,
       on_open = function(t)
-        -- vim.pretty_print(t)
-
         vim.o.bufhidden = 'hide'
         vim.wo.winfixwidth = false
 

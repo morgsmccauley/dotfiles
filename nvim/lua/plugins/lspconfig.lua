@@ -1,19 +1,7 @@
 return {
   'neovim/nvim-lspconfig',
-  dependencies = {
-    {
-      'SmiteshP/nvim-navic',
-      config = function()
-        require('nvim-navic').setup({
-          highlight = true,
-          custom_bg = 'NONE'
-        })
-      end
-    }
-  },
   config = function()
     local lspconfig = require('lspconfig')
-    local navic = require('nvim-navic')
     local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
     local border = {
@@ -40,9 +28,8 @@ return {
           disableSuggestions = true,
         },
       },
-      on_attach = function(client, bufnr)
+      on_attach = function(client)
         client.server_capabilities.document_formatting = false
-        navic.attach(client, bufnr)
       end,
       flags = {
         debounce_text_changes = 150,
@@ -59,12 +46,11 @@ return {
           }
         }
       },
-      on_attach = function(client, bufnr)
+      on_attach = function(_, bufnr)
         vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
           buffer = bufnr,
           callback = function() vim.lsp.buf.format({ async = false }) end,
         })
-        navic.attach(client, bufnr)
       end
     }
 
@@ -80,9 +66,6 @@ return {
     lspconfig.jsonls.setup {
       handlers = handlers,
       capabilities = capabilities,
-      on_attach = function(client, bufnr)
-        navic.attach(client, bufnr)
-      end
     }
   end
 }
