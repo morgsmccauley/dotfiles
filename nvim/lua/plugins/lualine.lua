@@ -72,6 +72,13 @@ return {
           },
           {
             function()
+              return vim.fn.fnamemodify(vim.fn.getcwd(), ':t') .. '/'
+            end,
+            color = { fg = theme.normal.a.bg },
+            padding = { left = 0, right = 0 }
+          },
+          {
+            function()
               local rel_path = vim.fn.expand('%:~:.:h')
               return rel_path == '.' and '' or rel_path .. '/'
             end,
