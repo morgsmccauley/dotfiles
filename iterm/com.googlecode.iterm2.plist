@@ -14,6 +14,8 @@
 	<false/>
 	<key>CheckTestRelease</key>
 	<true/>
+	<key>Control</key>
+	<integer>1</integer>
 	<key>CopyLastNewline</key>
 	<false/>
 	<key>Custom Color Presets</key>
