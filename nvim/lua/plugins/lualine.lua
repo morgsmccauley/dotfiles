@@ -95,7 +95,7 @@ return {
           },
         },
         lualine_x = {
-          --[[ {
+          {
             function()
               return require('dap').status()
             end,
@@ -103,7 +103,7 @@ return {
             cond = function()
               return package.loaded.dap ~= nil
             end
-          }, ]]
+          },
           'progress',
           {
             'diagnostics',

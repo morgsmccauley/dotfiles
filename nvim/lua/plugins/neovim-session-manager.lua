@@ -8,6 +8,7 @@ return {
         'Outline',
         'toggleterm'
       },
+      autosave_only_in_session = true
     })
   end
 }
