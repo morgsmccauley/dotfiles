@@ -51,8 +51,6 @@ return {
       u = { '<Cmd>lua require\'gitsigns\'.undo_stage_hunk()<Cr>', 'Undo stage' },
       i = { '<Cmd>lua require\'gitsigns\'.preview_hunk()<Cr>', 'Preview' },
       r = { '<Cmd>lua require\'gitsigns\'.reset_hunk()<Cr>', 'Reset' },
-      n = { '<Cmd>lua require\'gitsigns\'.next_hunk()<Cr>', 'Next' },
-      p = { '<Cmd>lua require\'gitsigns\'.prev_hunk()<Cr>', 'Prev' },
     }
 
     local debug = {

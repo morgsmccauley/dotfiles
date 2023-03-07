@@ -12,5 +12,22 @@ return {
       },
     }
 
+    vim.keymap.set(
+      'n',
+      '[h',
+      function()
+        require('gitsigns').prev_hunk()
+      end,
+      { noremap = true }
+    )
+
+    vim.keymap.set(
+      'n',
+      ']h',
+      function()
+        require('gitsigns').next_hunk()
+      end,
+      { noremap = true }
+    )
   end
 }

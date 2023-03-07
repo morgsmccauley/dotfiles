@@ -5,5 +5,5 @@
 - save global marks to session
 - refactoring.nvim
 - Nix
-- remove oh-my-zsh
 - maximize terminal window
+- C-j/k in embedded terminal running fzf
