@@ -14,8 +14,7 @@ return {
                     require('nvim-tree.api').tree.close()
                     is_open = false
                 end
-            end
-            ,
+            end,
             { silent = true, noremap = true }
         }
     },
@@ -87,7 +86,7 @@ return {
                 }
             },
             view = {
-                hide_root_folder = true,
+                -- hide_root_folder = true,
                 width = 50,
                 mappings = {
                     list = {
@@ -103,6 +102,9 @@ return {
                     window_picker = {
                         enable = false
                     }
+                },
+                change_dir = {
+                    global = true,
                 }
             }
         }
