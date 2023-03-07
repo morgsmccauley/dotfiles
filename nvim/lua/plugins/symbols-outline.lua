@@ -21,7 +21,10 @@ return {
   },
   config = function()
     require('symbols-outline').setup({
-      position = 'left'
+      relative_width = false,
+      width = 50,
+      position = 'left',
+      autofold_depth = 2,
     })
 
     vim.api.nvim_create_autocmd({ 'User' }, {
