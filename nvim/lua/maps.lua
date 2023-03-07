@@ -73,3 +73,5 @@ vim.keymap.set('x', 'p', '\"_dP', { desc = 'Paste without replacing register con
 vim.keymap.set('c', '<C-r>', function()
   return '<Plug>(TelescopeFuzzyCommandSearch)'
 end, { expr = true, remap = true })
+
+vim.keymap.set('n', ';', ':', { noremap = true })

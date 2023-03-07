@@ -163,7 +163,7 @@ return {
       ['.'] = { '<Cmd>Telescope git_files use_git_root=false<Cr>', 'Find file' },
       ['\\'] = { '<Cmd>Telescope current_buffer_fuzzy_find<Cr>', 'Fuzzy find current buffer' },
       ['\''] = { '<Cmd>Telescope marks<Cr>', 'List marks' },
-      [':'] = { '<Cmd>Telescope commands<Cr>', 'List commands' },
+      [';'] = { '<Cmd>Telescope commands<Cr>', 'List commands' },
       ['?'] = { '<Cmd>Telescope help_tags<Cr>', 'List commands' },
     }
 
