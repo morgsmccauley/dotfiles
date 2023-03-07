@@ -26,7 +26,7 @@ return {
           enabled = true
         },
       },
-      flavour = 'macchiato', -- latte, frappe, macchiato, mocha
+      flavour = vim.fn.system('defaults read -g AppleInterfaceStyle') == 'Dark\n' and 'macchiato' or 'latte'
     })
 
     vim.api.nvim_command [[colorscheme catppuccin]]
