@@ -142,7 +142,8 @@ return {
 
     local session = {
       name = '+session',
-      l = { function() require('session_manager').load_session(false) end, 'List sessions' }
+      l = { function() require('session_manager').load_session(false) end, 'List sessions' },
+      s = { function() require('session_manager').save_current_session(false) end, 'Save sessions' }
     }
 
     local mappings = {
