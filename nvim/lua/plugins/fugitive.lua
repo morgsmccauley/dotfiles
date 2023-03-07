@@ -12,5 +12,8 @@ return {
       end,
     }
   },
-  cmd = 'Git'
+  dependencies = {
+    'https://github.com/tpope/vim-rhubarb'
+  },
+  cmd = { 'Git', 'G', 'GBrowse' }
 }

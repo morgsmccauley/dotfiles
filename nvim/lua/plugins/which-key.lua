@@ -35,7 +35,8 @@ return {
       u = { '<Cmd>Git push --set-upstream origin', 'Push creating upstream' },
       l = { '<Cmd>Git pull<Cr>', 'Pull' },
       f = { '<Cmd>echo "Fetching remote..." | Git fetch<Cr>', 'Fetch' },
-      y = { '<Plug>(gh-line)', 'Copy GitHub URL of current line' },
+      y = { 'V:GBrowse!<Cr>', 'Copy GitHub URL of current line' },
+      b = { '<Cmd>GBrowse<Cr>', 'View current file in Github' },
     }
 
     local git_rebase = {
