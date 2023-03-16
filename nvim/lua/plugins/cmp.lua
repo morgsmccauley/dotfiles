@@ -10,6 +10,43 @@ return {
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-buffer',
       'saadparwaiz1/cmp_luasnip',
+      {
+        'hrsh7th/cmp-cmdline',
+        keys = {
+          { ';', ':', { noremap = true, silent = true } }
+        },
+        config = function()
+          local cmp = require 'cmp'
+          cmp.setup.cmdline(':', {
+            -- TODO reverse order
+            mapping = cmp.mapping.preset.cmdline({
+              ['<CR>'] = {
+                -- TODO auto CR after selecting
+                c = cmp.mapping.confirm({ select = true })
+              },
+              ['<C-j>'] = {
+                c = cmp.mapping.select_next_item()
+              },
+              ['<C-k>'] = {
+                c = cmp.mapping.select_prev_item()
+              }
+            }),
+            sources = cmp.config.sources(
+              {
+                { name = 'path' }
+              },
+              {
+                {
+                  name = 'cmdline',
+                  option = {
+                    ignore_cmds = { 'Man', '!' }
+                  }
+                }
+              }
+            )
+          })
+        end
+      }
     },
     config = function()
       local cmp = require 'cmp'
@@ -25,8 +62,8 @@ return {
 
       cmp.setup {
         --[[ completion = {
-        autocomplete = true,
-      }, ]]
+          autocomplete = true,
+        }, ]]
         snippet = {
           expand = function(args)
             luasnip.lsp_expand(args.body)
