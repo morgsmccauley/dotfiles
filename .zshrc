@@ -81,17 +81,19 @@ export CLICOLOR=1
 
 export COLORTERM="truecolor"
 
-# Latte
-# export FZF_DEFAULT_OPTS=" \
-# --color=bg+:#ccd0da,bg:#eff1f5,spinner:#dc8a78,hl:#d20f39 \
-# --color=fg:#4c4f69,header:#d20f39,info:#8839ef,pointer:#dc8a78 \
-# --color=marker:#dc8a78,fg+:#4c4f69,prompt:#8839ef,hl+:#d20f39"
-
-# Macchiato
-export FZF_DEFAULT_OPTS=" \
---color=bg+:#24273a,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
---color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
---color=marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796"
+if [ $(defaults read -g AppleInterfaceStyle) = "Dark" &> /dev/null ]; then
+  # Macchiato
+  export FZF_DEFAULT_OPTS=" \
+  --color=bg+:#24273a,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
+  --color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
+  --color=marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796"
+else
+  # Latte
+  export FZF_DEFAULT_OPTS=" \
+  --color=bg+:#eff1f5,bg:#eff1f5,spinner:#dc8a78,hl:#d20f39 \
+  --color=fg:#4c4f69,header:#d20f39,info:#8839ef,pointer:#dc8a78 \
+  --color=marker:#dc8a78,fg+:#4c4f69,prompt:#8839ef,hl+:#d20f39"
+fi
 
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
 --layout=reverse --bind ctrl-u:preview-page-up,ctrl-d:preview-page-down"

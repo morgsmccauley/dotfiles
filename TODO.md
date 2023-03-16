@@ -1,9 +1,12 @@
 - unlink <Cr> and <C-m>
 - use karabiner instead of skhd?
-- autosave doesnt work with vim-repeat
 - cmp delayed results affecting auto completion
 - save global marks to session
 - refactoring.nvim
 - Nix
 - maximize terminal window
 - C-j/k in embedded terminal running fzf
+- Use diagnostics for neotest
+- syntax highlight colours change on save
+- neotest toggleterm strategy
+- short names in neovim-session-manager
