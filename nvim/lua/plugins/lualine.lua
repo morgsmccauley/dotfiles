@@ -86,13 +86,13 @@ return {
             padding = { left = 0, right = 0 }
           },
           {
-
             'filename',
             file_status = true,
             path = 0,
             shorting_target = 0,
             padding = { left = 0, right = 0 }
           },
+          'progress',
         },
         lualine_x = {
           {
@@ -104,7 +104,6 @@ return {
               return package.loaded.dap ~= nil
             end
           },
-          'progress',
           {
             'diagnostics',
             symbols = {
