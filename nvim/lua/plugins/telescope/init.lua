@@ -62,15 +62,14 @@ return {
         set_env = { ['COLORTERM'] = 'truecolor' },
       },
       extensions = {
+        ['ui-select'] = {
+          require('telescope.themes').get_dropdown()
+        },
         fzf = {
           override_generic_sorter = true,
           override_file_sorter = true,
           case_mode = 'smart_case',
         },
-        media_files = {
-          filetypes = { 'png', 'webp', 'jpg', 'jpeg' },
-          find_cmd = 'rg'
-        }
       }
     }
 
