@@ -6,6 +6,12 @@ return {
       function()
         require('maximize').toggle()
       end,
+    },
+    {
+      '<C-z>',
+      function()
+        require('maximize').toggle()
+      end,
     }
   },
   config = function()

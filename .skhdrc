@@ -82,7 +82,7 @@ hyper - l : yabai -m window --focus east
 hyper - j : yabai -m window --focus south
 hyper - k : yabai -m window --focus north
 
-hyper - m : yabai -m window --toggle zoom-fullscreen
+hyper - z : yabai -m window --toggle zoom-fullscreen
 
 # hyper - ]
 hyper - 0x1E : yabai -m window --swap east
