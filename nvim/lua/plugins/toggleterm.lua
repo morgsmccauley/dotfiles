@@ -10,6 +10,7 @@ return {
   cmd = { 'TermExec' },
   config = function()
     require 'toggleterm'.setup {
+      persist_mode = false, -- always insert on enter
       shade_terminals = false,
       direction = 'vertical',
       open_mapping = [[<C-t>]],
