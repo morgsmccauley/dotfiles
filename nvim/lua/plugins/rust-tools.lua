@@ -8,6 +8,9 @@ return {
     local cmp_lsp = require('cmp_nvim_lsp')
 
     local capabilities = cmp_lsp.default_capabilities(vim.lsp.protocol.make_client_capabilities())
+    -- Disable showing full completion item in completion menu
+    -- note: setting to false via overrides doesn't seem to work
+    capabilities.textDocument.completion.completionItem.labelDetailsSupport = nil
 
     rt.setup({
       tools = {
