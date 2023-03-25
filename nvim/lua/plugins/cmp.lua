@@ -73,15 +73,25 @@ return {
           end,
         },
         mapping = {
-          ['<C-p>'] = cmp.mapping.select_prev_item(),
-          ['<C-n>'] = cmp.mapping.select_next_item(),
+          --[[ ['<C-p>'] = cmp.mapping.select_prev_item(),
+          ['<C-n>'] = cmp.mapping.select_next_item(), ]]
           ['<C-k>'] = cmp.mapping.select_prev_item(),
           ['<C-j>'] = cmp.mapping.select_next_item(),
-          ['<C-e>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-y>'] = cmp.mapping.scroll_docs(4),
-          ['<CR>'] = cmp.mapping.confirm({ select = true }),
+          -- currently this is used to go to end of line
+          ['<C-e>'] = cmp.mapping.close(),
+          ['<C-y>'] = cmp.mapping.confirm({
+            behaviour = cmp.ConfirmBehavior.Replace,
+            select = true
+          }),
+          ['<C-d>'] = cmp.mapping.scroll_docs(4),
+          ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+          ['<CR>'] = cmp.mapping.confirm({
+            behaviour = cmp.ConfirmBehavior.Insert,
+            select = true
+          }),
           ['<C-Space>'] = cmp.mapping.complete(),
-          ['<Tab>'] = cmp.mapping(function(fallback)
+          ['<Tab>'] = cmp.mapping.disable
+          --[[ ['<Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_next_item()
             elseif has_words_before() then
@@ -96,14 +106,14 @@ return {
             else
               fallback()
             end
-          end, { 'i', 's' }),
+          end, { 'i', 's' }), ]]
         },
         sources = {
           { name = 'copilot' },
-          { name = 'nvim_lsp', max_item_count = 30 },
-          { name = 'path',     max_item_count = 10 },
-          { name = 'buffer',   max_item_count = 10 },
+          { name = 'nvim_lsp' },
           { name = 'luasnip' },
+          { name = 'path',    max_item_count = 10 },
+          { name = 'buffer',  max_item_count = 10 },
         },
         formatting = {
           format = lspkind.cmp_format({

@@ -36,7 +36,7 @@ vim.keymap.set('n', '<C-w>gd', '<Cmd>silent vsp | Telescope lsp_definitions<Cr>'
 nmap('<C-p>', '@:', { noremap = true })
 
 imap('<C-a>', '<C-o>^', { noremap = true, silent = true })
-imap('<C-e>', '<C-o>$', { noremap = true, silent = true })
+-- imap('<C-e>', '<C-o>$', { noremap = true, silent = true })
 
 nmap('<C-q>', '<Cmd>silent q<Cr>', { noremap = true, silent = true })
 nmap('<C-S-q>', '<Cmd>silent bw<Cr>', { noremap = true, silent = true })
