@@ -1,22 +1,12 @@
 return {
-  'declancm/maximize.nvim',
+  'szw/vim-maximizer',
   keys = {
     {
-      '<leader>wm',
-      function()
-        require('maximize').toggle()
-      end,
-    },
-    {
       '<C-z>',
-      function()
-        require('maximize').toggle()
-      end,
+      '<Cmd>MaximizerToggle<Cr>'
     }
   },
-  config = function()
-    require('maximize').setup({
-      default_keymaps = false
-    })
+  init = function()
+    _G.maximizer_set_default_mapping = 1
   end
 }
