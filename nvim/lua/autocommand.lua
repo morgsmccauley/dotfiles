@@ -74,3 +74,9 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
     pattern = { 'gitcommit' },
     command = 'startinsert'
 })
+
+vim.api.nvim_create_autocmd({ 'TextYankPost' }, {
+    callback = function()
+        vim.highlight.on_yank { timeout = 250 }
+    end
+})
