@@ -143,7 +143,16 @@ return {
 
     local session = {
       name = '+session',
-      l = { function() require('session_manager').load_session(false) end, 'List sessions' },
+      l = { function()
+        -- ensure telescope-ui-select is loaded
+        require('telescope')
+        require('session_manager').load_session(false)
+      end, 'List sessions' },
+      d = { function()
+        -- ensure telescope-ui-select is loaded
+        require('telescope')
+        require('session_manager').delete_session(false)
+      end, 'List sessions' },
       s = { function() require('session_manager').save_current_session(false) end, 'Save sessions' }
     }
 
@@ -163,7 +172,7 @@ return {
       ['.'] = { '<Cmd>Telescope git_files use_git_root=false<Cr>', 'Find file' },
       ['\\'] = { '<Cmd>Telescope current_buffer_fuzzy_find<Cr>', 'Fuzzy find current buffer' },
       ['\''] = { '<Cmd>Telescope marks<Cr>', 'List marks' },
-      [';'] = { '<Cmd>Telescope commands<Cr>', 'List commands' },
+      [';'] = { '<Cmd>Telescope command_history<Cr>', 'List command history' },
       ['?'] = { '<Cmd>Telescope help_tags<Cr>', 'List commands' },
     }
 

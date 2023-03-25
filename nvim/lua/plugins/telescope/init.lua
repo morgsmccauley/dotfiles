@@ -1,7 +1,6 @@
 return {
   'nvim-telescope/telescope.nvim',
   cmd = { 'Telescope', 'TelescopeCommits', 'TelescopeBranches', 'TelescopeStash', 'TelescopeBuffers' },
-  keys = { '<leader>sl' },
   dependencies = {
     {
       'nvim-telescope/telescope-ui-select.nvim',
@@ -16,7 +15,6 @@ return {
       end
     },
     {
-
       'nvim-telescope/telescope-fzf-native.nvim',
       build = 'make',
       config = function()
