@@ -86,6 +86,7 @@ return {
 
     local git = {
       name = '+git',
+      ['<Space>'] = { ':Git ', ':Git' },
       l = { '<Cmd>TelescopeCommits<Cr>', 'Log' },
       p = { '<Cmd>Telescope gh pull_request<Cr>', 'Pull requests' },
       i = { '<Cmd>Telescope gh issues<Cr>', 'Issues' },
@@ -94,7 +95,7 @@ return {
       c = { '<Cmd>Git commit<Cr>', 'Commit' },
       L = { '<Cmd>Telescope git_bcommits<Cr>', 'Buffer log' },
       B = { '<Cmd>Git blame<Cr>', 'Blame annotations' },
-      g = { '<Cmd>Git<Cr>', 'Git' },
+      g = { '<Cmd>Git<Cr>', 'Git status' },
       h = git_hunk,
       d = git_diff,
       r = git_remote,
