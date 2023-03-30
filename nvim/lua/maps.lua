@@ -20,8 +20,8 @@ local function cmap(lhs, rhs, opts)
   vim.api.nvim_set_keymap('c', lhs, rhs, opts)
 end
 
-nmap('j', 'gj', { silent = true, noremap = true })
-nmap('k', 'gk', { silent = true, noremap = true })
+vim.keymap.set({ 'n', 'v' }, 'j', 'gj', { silent = true, noremap = true })
+vim.keymap.set({ 'n', 'v' }, 'k', 'gk', { silent = true, noremap = true })
 
 nmap('<C-l>', '<C-w>l', { noremap = true })
 nmap('<C-h>', '<C-w>h', { noremap = true })
@@ -52,12 +52,8 @@ nmap('gD', '<Cmd>Telescope lsp_type_definitions<CR>', { silent = true })
 nmap('gi', '<Cmd>Telescope lsp_implementations<Cr>', { silent = true })
 nmap('gr', '<Cmd>Telescope lsp_references<Cr>', { silent = true })
 
-nmap('<C-e>', '5<C-e>', { noremap = true, silent = true })
-nmap('<C-y>', '5<C-y>', { noremap = true, silent = true })
-
---[[ imap('<Tab>', 'pumvisible() ? \"\\<C-n>\" : \"\\<Tab>\"', { expr = true, noremap = true })
-imap('<S-Tab>', 'pumvisible() ? \"\\<C-p>\" : \"\\<S-Tab>\"', { expr = true, noremap = true }) ]]
--- nmap('<C-m>', '<Cmd>MaximizerToggle!<Cr>', { noremap = true, silent = true })
+vim.keymap.set({ 'n', 'v' }, '<C-e>', '5<C-e>', { noremap = true, silent = true })
+vim.keymap.set({ 'n', 'v' }, '<C-y>', '5<C-y>', { noremap = true, silent = true })
 
 nmap('dl', 'dV:LeapLine<Cr>', { noremap = true, silent = true })
 nmap('yl', 'yV:LeapLine<Cr>', { noremap = true, silent = true })
