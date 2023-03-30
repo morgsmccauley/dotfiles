@@ -81,6 +81,14 @@ export CLICOLOR=1
 
 export COLORTERM="truecolor"
 
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  autoload -Uz compinit
+  compinit
+fi
+
 if [ $(defaults read -g AppleInterfaceStyle) = "Dark" &> /dev/null ]; then
   # Macchiato
   export FZF_DEFAULT_OPTS=" \
