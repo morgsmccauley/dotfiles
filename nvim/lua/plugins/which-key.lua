@@ -86,7 +86,9 @@ return {
 
     local git = {
       name = '+git',
-      ['<Space>'] = { ':Git ', ':Git' },
+      ['<Space>'] = { function()
+        vim.fn.feedkeys(':Git ')
+      end, ':Git' },
       l = { '<Cmd>TelescopeCommits<Cr>', 'Log' },
       p = { '<Cmd>Telescope gh pull_request<Cr>', 'Pull requests' },
       i = { '<Cmd>Telescope gh issues<Cr>', 'Issues' },
@@ -124,15 +126,7 @@ return {
       f = { '<Cmd>lua vim.lsp.buf.format()<Cr>', 'Format' }
     }
 
-    local terminal = {
-      name = '+terminal',
-      t = { '<Cmd>exe v:count1."ToggleTerm direction=tab"<Cr>', 'Open term in tab' },
-      v = { '<Cmd>exe v:count1."ToggleTerm direction=vertical"<Cr>', 'Open term in vertical split' },
-      h = { '<Cmd>exe v:count1."ToggleTerm direction=horizontal"<Cr>', 'Open term in horizontal split' },
-      f = { '<Cmd>exe v:count1."ToggleTerm direction=float"<Cr>', 'Open term in float' },
-    }
-
-    local neotest = {
+    local test = {
       name = '+neotest',
       t = { function() require('neotest').run.run() end, 'Run nearest' },
       f = { function() require('neotest').run.run(vim.fn.expand('%')) end, 'Run file' },
@@ -164,8 +158,7 @@ return {
       b = buffer,
       c = code,
       d = debug,
-      t = terminal,
-      n = neotest,
+      t = test,
       s = session,
       ['*'] = { '<Cmd>Telescope grep_string<Cr>', 'Search for symbol globally' },
       ['/'] = { '<Cmd>Telescope live_grep<Cr>', 'Search globally' },
