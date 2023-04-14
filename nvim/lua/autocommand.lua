@@ -80,3 +80,8 @@ vim.api.nvim_create_autocmd({ 'TextYankPost' }, {
         vim.highlight.on_yank { timeout = 250 }
     end
 })
+
+vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
+    pattern = { vim.fn.expand('~') .. '/.dotfiles/kitty/kitty.conf' },
+    command = ':silent !kill -SIGUSR1 $(pgrep -a kitty)'
+})
