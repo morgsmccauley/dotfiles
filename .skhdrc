@@ -116,16 +116,14 @@ hyper - 0x18 : yabai -m window --resize left:-50:0 ; yabai -m window --resize ri
 # decrease window size - hyper - -
 hyper - 0x1B : yabai -m window --resize right:50:0 ; yabai -m window --resize left:50:0
 
-# hyper - n : yabai -m window --minimize ; yabai -m window --focus last
+hyper - m : yabai -m window --minimize ; yabai -m window --focus last
 
-# hyper - 1
-hyper - 0x12 : yabai -m window --ratio abs:0.3333
-# hyper - 2
-hyper - 0x13 : yabai -m window --ratio abs:0.6666
+hyper - 1 : yabai -m window --ratio abs:0.3333
+hyper - 2 : yabai -m window --ratio abs:0.6666
 
-hyper - u : yabai -m query --windows | jq '.[] | select(.app == "Brave Browser") | .id' | xargs yabai -m window --focus
-hyper - i : yabai -m query --windows | jq '.[] | select(.app == "iTerm2") | .id' | xargs yabai -m window --focus
-hyper - o : yabai -m query --windows | jq '.[] | select(.app == "Slack") | .id' | xargs yabai -m window --focus
+# hyper - u : yabai -m query --windows | jq '.[] | select(.app == "Brave Browser") | .id' | xargs yabai -m window --focus
+# hyper - i : yabai -m query --windows | jq '.[] | select(.app == "iTerm2") | .id' | xargs yabai -m window --focus
+# hyper - o : yabai -m query --windows | jq '.[] | select(.app == "Slack") | .id' | xargs yabai -m window --focus
 hyper - n : open -a Notes
 hyper - r : open -a Reminders
 
@@ -183,3 +181,8 @@ hyper - t : yabai -m window --toggle float;\
 # hyper - p : yabai -m window --toggle sticky;\
 #           yabai -m window --toggle topmost;\
 #           yabai -m window --toggle pip 
+
+# hyper - ,
+hyper - i :yabai -m window --focus $(yabai -m query --windows | jq --argjson next_space_index "$(($(yabai -m query --spaces --space | jq '.index') - 1))" 'first(.[] | select(.space == $next_space_index)).id') 
+# hyper - .
+hyper - o :yabai -m window --focus $(yabai -m query --windows | jq --argjson next_space_index "$(($(yabai -m query --spaces --space | jq '.index') + 1))" 'first(.[] | select(.space == $next_space_index)).id') 
