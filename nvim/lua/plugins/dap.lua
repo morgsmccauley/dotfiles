@@ -2,18 +2,26 @@ return {
   'mfussenegger/nvim-dap',
   lazy = true,
   dependencies = {
-    'rcarriga/nvim-dap-ui'
+    'rcarriga/nvim-dap-ui',
+    {
+      'mxsdev/nvim-dap-vscode-js',
+      config = function()
+        require('dap-vscode-js').setup({
+          adapters = { 'pwa-node' },
+          debugger_path = os.getenv('HOME') .. '/.local/share/nvim/lazy/vscode-js-debug'
+        })
+      end
+    },
+    {
+      'microsoft/vscode-js-debug',
+      build =
+      'npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out && git checkout package-lock.json',
+    }
   },
   config = function()
     require('dapui').setup()
 
     local dap = require('dap')
-
-    dap.adapters.node = {
-      type = 'executable',
-      command = 'node',
-      args = { os.getenv('HOME') .. '/.local/share/nvim/adapters/vscode-node-debug2/out/src/nodeDebug.js' },
-    }
 
     dap.adapters.codelldb = {
       type = 'server',
@@ -57,10 +65,12 @@ return {
 
     dap.configurations.javascript = {
       {
-        name = 'node',
-        type = 'node',
+        name = 'Launch node process',
+        type = 'pwa-node',
         request = 'launch',
-        program = '${file}',
+        program = function()
+          return vim.fn.input('Path to entry point: ')
+        end,
         cwd = vim.fn.getcwd(),
         sourceMaps = true,
         protocol = 'inspector',
@@ -68,45 +78,35 @@ return {
       },
       {
         name = 'Attach to node process',
-        type = 'node',
+        type = 'pwa-node',
         request = 'attach',
         processId = require 'dap.utils'.pick_process,
+        cwd = '${workspaceFolder}',
       },
+      {
+        name = 'Debug NPM tests',
+        type = 'pwa-node',
+        request = 'launch',
+        runtimeExecutable = 'npm',
+        runtimeArgs = {
+          'test',
+        },
+        rootPath = '${workspaceFolder}',
+        cwd = '${workspaceFolder}',
+        console = 'integratedTerminal',
+        internalConsoleOptions = 'neverOpen',
+      }
     }
 
-    local keymap_restore = {}
+    dap.configurations.typescript = dap.configurations.javascript
 
     dap.listeners.after['event_initialized']['me'] = function()
-      for _, buf in pairs(vim.api.nvim_list_bufs()) do
-        local keymaps = vim.api.nvim_buf_get_keymap(buf, 'n')
-        for _, keymap in pairs(keymaps) do
-          if keymap.lhs == 'K' then
-            table.insert(keymap_restore, keymap)
-            vim.api.nvim_buf_del_keymap(buf, 'n', 'K')
-          end
-        end
-      end
-
-      vim.api.nvim_set_keymap('n', 'K', '<Cmd>lua require("dap.ui.widgets").hover()<CR>', { silent = true })
+      -- require('dapui').toggle()
     end
 
     dap.listeners.after['event_terminated']['me'] = function()
-      dap.repl.close()
-
-      vim.api.nvim_del_keymap('n', 'K')
-
-      for _, keymap in pairs(keymap_restore) do
-        vim.keymap.set(
-          keymap.mode,
-          keymap.lhs,
-          keymap.rhs or keymap.callback,
-          {
-            silent = keymap.silent == 1,
-            buffer = keymap.buffer,
-          }
-        )
-      end
-      keymap_restore = {}
+      -- require('dapui').toggle()
+      -- dap.repl.close()
     end
 
     vim.api.nvim_create_autocmd({ 'FileType' }, {
