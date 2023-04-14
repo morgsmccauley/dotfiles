@@ -20,7 +20,7 @@ return {
           cmp.setup.cmdline(':', {
             -- TODO reverse order
             mapping = cmp.mapping.preset.cmdline({
-              ['<C-y>'] = {
+              ['<Cr>'] = {
                 c = cmp.mapping.confirm({ select = true })
               },
               ['<C-j>'] = {
@@ -43,6 +43,17 @@ return {
                 }
               }
             )
+          })
+        end
+      },
+      {
+        'kristijanhusak/vim-dadbod-completion',
+        config = function()
+          vim.api.nvim_create_autocmd({ 'FileType' }, {
+            pattern = { 'sql', 'mysql', 'pgsql', 'plsql' },
+            callback = function()
+              require('cmp').setup.buffer({ sources = { { name = 'vim-dadbod-completion' } } })
+            end
           })
         end
       }
