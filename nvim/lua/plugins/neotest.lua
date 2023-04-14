@@ -4,6 +4,7 @@ return {
     dependencies = {
         'haydenmeade/neotest-jest',
         'rouge8/neotest-rust',
+        'nvim-neotest/neotest-plenary'
     },
     config = function()
         require('neotest').setup({
@@ -16,8 +17,12 @@ return {
                 }),
                 require('neotest-rust') {
                     args = { '--no-capture' },
-                }
+                },
+                require('neotest-plenary')
             },
+            --[[ diagnostic = {
+                enabled = true,
+            }, ]]
             icons = {
                 passed = '',
                 failed = '',
@@ -25,14 +30,17 @@ return {
                 skipped = '',
                 unknown = ''
             },
+            summary = {
+                open = 'topleft vsplit | vertical resize 50'
+            },
             quickfix = {
                 enabled = false
             },
             --[[ status = {
-            enabled = false,
-            signs = false,
-            virtual_text = true,
-          }, ]]
+                enabled = true,
+                signs = false,
+                virtual_text = true,
+            }, ]]
             output = {
                 enabled = false
             }
