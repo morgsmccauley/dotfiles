@@ -63,6 +63,9 @@ return {
       C = { '<Cmd>lua require"dap".clear_breakpoints()<Cr>', 'Clear breakpoints' },
       s = { '<Cmd>lua require"dap".terminate()<Cr>', 'Stop' },
       b = { '<Cmd>lua require"dap".toggle_breakpoint()<Cr>', 'Toggle breakpoint' },
+      h = { function()
+        require('dap.ui.widgets').hover()
+      end, 'View value for expression under cursor' },
       B = { '<Cmd>lua require"dap".set_breakpoint(vim.fn.input("Breakpoint condition: "))<Cr>',
         'Set breakpoint with condition' },
       r = {
