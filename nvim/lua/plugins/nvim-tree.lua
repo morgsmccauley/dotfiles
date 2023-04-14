@@ -1,6 +1,5 @@
 return {
     'kyazdani42/nvim-tree.lua',
-    branch = '2088-actions-change-dir-enable-false-does-not-update-tree-root',
     keys = {
         {
             '<C-n>',
