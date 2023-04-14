@@ -14,7 +14,18 @@ return {
         telescope = true,
         mason = true,
         neotest = true,
+        neogit = true,
+        gitsigns = true,
         symbols_outline = true,
+        illuminate = true,
+        markdown = true,
+        cmp = true,
+        treesitter = true,
+        octo = true,
+        which_key = true,
+        indent_blankline = {
+          enabled = true
+        },
         nvimtree = {
           transparent_panel = true,
         },
