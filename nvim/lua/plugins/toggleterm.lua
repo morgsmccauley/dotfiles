@@ -1,3 +1,10 @@
+local function isFzf()
+  return vim.fn.system(
+        "ps -o state= -o comm= | grep -iE '^[^TXZ ]+ +(\\S+\\/)?fzf$'") ~= ''
+  --[[ return vim.fn.system(
+        "ps -o state= -o comm= -o tty= | grep $(tty | sed 's/\\/dev\\///') | grep -iE '^[^TXZ ]+ +(\\S+\\/)?fzf'") ~= '' ]]
+end
+
 return {
   'akinsho/toggleterm.nvim',
   keys = {
@@ -27,13 +34,11 @@ return {
 
         vim.api.nvim_buf_set_keymap(t.bufnr, 't', '<C-h>', [[<C-\><C-n><C-W><C-h>]], { noremap = true })
 
-        -- this looks for fzf in every process so will not do as expected if fzf is running in a different terminal
         vim.keymap.set(
           't',
           '<C-j>',
           function()
-            local isFzf = vim.fn.system('ps -o state= -o comm= | grep -iE \'^[^TXZ ]+ +(\\S+\\/)?fzf$\'') ~= ''
-            if isFzf then
+            if isFzf() then
               return [[<C-j>]]
             else
               return [[<C-\><C-n><C-w><C-j>]]
@@ -45,8 +50,7 @@ return {
           't',
           '<C-k>',
           function()
-            local isFzf = vim.fn.system('ps -o state= -o comm= | grep -iE \'^[^TXZ ]+ +(\\S+\\/)?fzf$\'') ~= ''
-            if isFzf then
+            if isFzf() then
               return [[<C-k>]]
             else
               return [[<C-\><C-n><C-w><C-k>]]
