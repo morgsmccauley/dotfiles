@@ -85,5 +85,7 @@ return {
     vim.api.nvim_create_user_command('TelescopeCommits', require('plugins/telescope/commits'), {})
     vim.api.nvim_create_user_command('TelescopeBranches', require('plugins/telescope/branches'), {})
     vim.api.nvim_create_user_command('TelescopeStash', require('plugins/telescope/stash'), {})
+
+    vim.api.nvim_set_hl(0, 'TelescopeNormal', { bg = 'NONE' })
   end
 }

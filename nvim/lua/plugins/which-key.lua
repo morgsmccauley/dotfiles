@@ -178,5 +178,7 @@ return {
     }
 
     wk.register(mappings, opts)
+
+    vim.api.nvim_set_hl(0, 'WhichKeyFloat', { bg = 'NONE' })
   end
 }
