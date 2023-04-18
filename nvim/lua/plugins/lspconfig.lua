@@ -67,5 +67,11 @@ return {
       handlers = handlers,
       capabilities = capabilities,
     }
+
+    lspconfig.graphql.setup {
+      handlers = handlers,
+      capabilities = capabilities,
+      filetypes = { 'graphql', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact' }
+    }
   end
 }
