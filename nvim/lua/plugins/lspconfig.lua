@@ -1,5 +1,8 @@
 return {
   'neovim/nvim-lspconfig',
+  dependencies = {
+    'b0o/SchemaStore.nvim'
+  },
   config = function()
     local lspconfig = require('lspconfig')
     local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -66,6 +69,12 @@ return {
     lspconfig.jsonls.setup {
       handlers = handlers,
       capabilities = capabilities,
+      settings = {
+        json = {
+          schemas = require('schemastore').json.schemas(),
+          validate = { enable = true },
+        },
+      },
     }
 
     lspconfig.graphql.setup {
