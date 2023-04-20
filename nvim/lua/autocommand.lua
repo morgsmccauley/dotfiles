@@ -80,3 +80,16 @@ vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
     pattern = { vim.fn.expand('~') .. '/.dotfiles/kitty/kitty.conf' },
     command = ':silent !kill -SIGUSR1 $(pgrep -a kitty)'
 })
+
+vim.api.nvim_create_autocmd({ 'DirChanged' }, {
+    pattern = 'global',
+    callback = function()
+        local current_winnr = vim.fn.winnr()
+        local current_bufnr = vim.fn.bufnr()
+
+        vim.cmd('windo lcd ' .. vim.fn.expand('<afile>'))
+
+        vim.api.nvim_buf_set_option(current_bufnr, 'buflisted', true)
+        vim.cmd(current_winnr .. 'wincmd w')
+    end
+})
