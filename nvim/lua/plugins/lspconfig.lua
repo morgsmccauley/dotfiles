@@ -18,14 +18,19 @@ return {
       { '│', 'FloatBorder' },
     }
 
-    local handlers = {
-      ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
-      ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
-    }
+    lspconfig.util.default_config = vim.tbl_extend(
+      'force',
+      lspconfig.util.default_config,
+      {
+        handlers = {
+          ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
+          ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
+        },
+        capabilities = capabilites,
+      }
+    )
 
     lspconfig.tsserver.setup {
-      handlers = handlers,
-      capabilities = capabilities,
       init_options = {
         preferences = {
           disableSuggestions = true,
@@ -40,8 +45,6 @@ return {
     }
 
     lspconfig.lua_ls.setup {
-      handlers = handlers,
-      capabilities = capabilities,
       settings = {
         Lua = {
           diagnostics = {
@@ -67,8 +70,6 @@ return {
     }
 
     lspconfig.jsonls.setup {
-      handlers = handlers,
-      capabilities = capabilities,
       settings = {
         json = {
           schemas = require('schemastore').json.schemas(),
@@ -78,8 +79,6 @@ return {
     }
 
     lspconfig.graphql.setup {
-      handlers = handlers,
-      capabilities = capabilities,
       filetypes = { 'graphql', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact' }
     }
   end
