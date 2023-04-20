@@ -79,5 +79,9 @@ return {
     lspconfig.graphql.setup {
       filetypes = { 'graphql', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact' }
     }
+
+    lspconfig.terraform_lsp.setup {}
+
+    lspconfig.terraformls.setup {}
   end
 }
