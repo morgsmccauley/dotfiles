@@ -29,7 +29,7 @@ return {
 
     telescope.setup {
       defaults = {
-        layout_strategy = 'flex',
+        layout_strategy = 'vertical',
         history = {
           limit = 500
         },
