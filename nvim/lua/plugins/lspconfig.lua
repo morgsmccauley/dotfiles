@@ -85,10 +85,14 @@ return {
 
     lspconfig.terraform_lsp.setup {}
 
-    lspconfig.terraformls.setup {}
     lspconfig.terraformls.setup {
       on_attach = function(client, bufnr)
         client.server_capabilities.semanticTokensProvider = false
+
+        vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+          buffer = bufnr,
+          callback = function() vim.lsp.buf.format({ async = false }) end,
+        })
       end
     }
   end
