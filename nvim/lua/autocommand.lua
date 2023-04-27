@@ -70,6 +70,11 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
     command = 'startinsert'
 })
 
+vim.api.nvim_create_autocmd({ 'BufRead' }, {
+    pattern = { '*.cheat' },
+    command = 'set filetype=bash'
+})
+
 vim.api.nvim_create_autocmd({ 'TextYankPost' }, {
     callback = function()
         vim.highlight.on_yank { timeout = 250 }
