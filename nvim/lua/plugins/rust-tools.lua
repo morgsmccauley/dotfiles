@@ -34,7 +34,9 @@ return {
             }
           }
         },
-        on_attach = function(_, bufnr)
+        on_attach = function(client, bufnr)
+          client.server_capabilities.semanticTokensProvider = false
+
           vim.keymap.set('n', 'K', rt.hover_actions.hover_actions, { buffer = bufnr })
 
           vim.api.nvim_create_autocmd({ 'BufWritePre' }, {

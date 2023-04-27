@@ -35,6 +35,7 @@ return {
         },
       },
       on_attach = function(client)
+        client.server_capabilities.semanticTokensProvider = false
         client.server_capabilities.document_formatting = false
       end,
       flags = {
@@ -50,7 +51,9 @@ return {
           }
         }
       },
-      on_attach = function(_, bufnr)
+      on_attach = function(client, bufnr)
+        client.server_capabilities.semanticTokensProvider = false
+
         vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
           buffer = bufnr,
           callback = function() vim.lsp.buf.format({ async = false }) end,
@@ -83,5 +86,10 @@ return {
     lspconfig.terraform_lsp.setup {}
 
     lspconfig.terraformls.setup {}
+    lspconfig.terraformls.setup {
+      on_attach = function(client, bufnr)
+        client.server_capabilities.semanticTokensProvider = false
+      end
+    }
   end
 }
