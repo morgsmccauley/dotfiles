@@ -6,7 +6,21 @@ return {
     'hrsh7th/cmp-path',
     'hrsh7th/cmp-buffer',
     'saadparwaiz1/cmp_luasnip',
-    'hrsh7th/cmp-nvim-lsp',
+    {
+      'hrsh7th/cmp-nvim-lsp',
+      config = function()
+        local capabilities = require('cmp_nvim_lsp').default_capabilities()
+        local lspconfig = require('lspconfig')
+
+        lspconfig.util.default_config = vim.tbl_extend(
+          'force',
+          lspconfig.util.default_config,
+          {
+            capabilities = capabilities,
+          }
+        )
+      end
+    },
     {
       'hrsh7th/cmp-cmdline',
       keys = {
@@ -62,20 +76,8 @@ return {
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'
     local lspkind = require 'lspkind'
-    local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-    local lspconfig = require('lspconfig')
 
     require('luasnip.loaders.from_vscode').lazy_load()
-
-    lspconfig.util.default_config = vim.tbl_extend(
-      'force',
-      lspconfig.util.default_config,
-      {
-        capabilities = capabilities,
-      }
-    )
-
-
 
     cmp.setup {
       --[[ completion = {
