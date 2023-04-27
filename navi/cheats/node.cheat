@@ -1,0 +1,16 @@
+% node, javascript
+
+# Install dependencies
+<package_manager> install
+
+# Run a package script
+<package_manager> run <script>
+
+# Remove node modules
+rm -rf node_modules
+
+# Remove all node modules
+rm -rf **/node_modules
+
+$ package_manager: echo $(if [ -f package-lock.json ]; then echo 'npm'; elif [ -f yarn.lock ]; then echo 'yarn'; elif [ -f pnpm-lock.yaml ]; then echo 'pnpm'; else echo "npm"; fi)
+$ script: node -e "const scripts = require('./package.json').scripts; const maxLength = Math.max(...Object.keys(scripts).map(k => k.length)); console.log(Object.entries(scripts).map(([k, v]) => k.padEnd(maxLength, ' ') + '\t' + v).join('\n'));" --- --column 1

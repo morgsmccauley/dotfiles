@@ -1,0 +1,9 @@
+% terraform
+
+# Plan target
+terraform plan -target=<target>
+
+# Apply target
+terraform apply -target=<target>
+
+$ target: terraform state list

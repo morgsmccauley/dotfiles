@@ -1,0 +1,43 @@
+% docker
+
+# Remove an image
+docker image rm <image_id>
+
+# Delete an image from the local image store
+docker rmi <image_id>
+
+# Force clean none/dangling images
+docker rmi $(docker images --filter "dangling=true" -q --no-trunc) -f
+
+# Kill a container
+docker kill <container_id>
+
+# Stop all containers
+docker stop $(docker ps -aq)
+
+# Delete all running and stopped containers
+docker rm -f $(docker ps -aq)
+
+# Delete all images
+docker image rm -f $(docker iamge ls -q)
+
+# Connect to running container
+docker exec -it <container_id> bash
+
+# Print container's logs
+docker logs --tail 100 <container_id> | less
+
+# Follow container logs
+docker logs --tail 100 <container_id> -f
+
+$ image_id: docker images --- --headers 1 --column 3
+$ container_id: docker ps --- --headers 1 --column 1
+
+
+% docker compose
+
+# Print services logs
+docker compose logs --tail 100 <service_name> | less
+
+# Follow services logs
+docker compose logs -f --tail 100 <service_name>

@@ -1,0 +1,7 @@
+% osx, mac os
+
+# Set minimum keyboard delay until repeat
+defaults write -g InitialKeyRepeat 1
+
+# Set maximum keyboard repeat rate
+defaults write -g KeyRepeat -int 1

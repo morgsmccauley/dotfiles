@@ -16,6 +16,7 @@ ln -s ~/.dotfiles/nvim ~/.config/nvim
 ln -s ~/.dotfiles/tmuxinator ~/.config/tmuxinator/
 ln -s ~/.dotfiles/iterm ~/.iterm
 ln -s ~/.dotfiles/.zshrc ~/.zshrc
+ln -s ~/.dotfiles/navi $HOME/Library/Application\ Support/navi
 
 echo "Installing neovim node/python dependencies..."
 nvm install 12.16.1
