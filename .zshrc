@@ -112,6 +112,7 @@ alias dc='docker compose'
 alias d='docker'
 alias t='tmux'
 alias tn='tmuxinator'
+alias tf='terraform'
 
 alias ag='alias | grep '
 

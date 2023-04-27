@@ -18,9 +18,13 @@ return {
     end,
     config = function()
         require 'nvim-tree'.setup {
-            hijack_netrw = false,
-            sync_root_with_cwd = true,
+            hijack_netrw = true,
             hijack_cursor = true,
+            sync_root_with_cwd = true,
+            hijack_directories = {
+                enable = true,
+                auto_open = true,
+            },
             update_focused_file = {
                 enable = true,
             },
