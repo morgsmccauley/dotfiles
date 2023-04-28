@@ -1,0 +1,6 @@
+% brew
+
+# Restart service
+brew services restart <service>
+
+$ service: brew services list --- --headers 1 --column 1

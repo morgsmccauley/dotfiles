@@ -1,0 +1,19 @@
+% aws
+
+# View cloudwatch logs since time
+aws logs tail --since=<since> <log_group_name>
+
+# Follow cloudwatch logs
+aws logs tail --follow <log_group_name>
+
+$ log_group_name: aws logs describe-log-groups | jq -r '.logGroups | .[].logGroupName'
+
+% aws, aws-vault
+
+# Execute command under aws-vault
+aws-vault exec <vault> -- <command>
+
+# Start a shell under aws-vault
+aws-vault exec <vault>
+
+$ vault: aws-vault ls --- --headers 2 --column 1

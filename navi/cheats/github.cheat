@@ -1,0 +1,6 @@
+% github
+
+# Open PR in browser
+gh pr view --web <pr>
+
+$ pr: gh pr list --state=all --json='number' | jq -r '.[].number'

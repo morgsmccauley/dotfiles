@@ -1,0 +1,10 @@
+% vim
+
+# Delete paragraph
+normal dap
+
+# Replace text across quickfix files
+cfdo s/<search>/<replace>/gc
+
+# Execute command across all quickfix files
+cfdo execute 'normal! <command>'
