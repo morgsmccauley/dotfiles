@@ -3,4 +3,4 @@
 # Open PR in browser
 gh pr view --web <pr>
 
-$ pr: gh pr list --state=all --json='number' | jq -r '.[].number'
+$ pr: gh pr list --state all --json number,title,state --template '{{range .}}{{tablerow .number .title .state}}{{end}}' --- --column 1
