@@ -1,0 +1,6 @@
+% bash
+
+# Search environment variables
+<env>
+
+$ env: env
