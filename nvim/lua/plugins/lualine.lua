@@ -74,6 +74,9 @@ return {
             function()
               return vim.fn.fnamemodify(vim.fn.getcwd(), ':t') .. '/'
             end,
+            cond = function()
+              return vim.fn.expand('%:p'):find(vim.fn.fnamemodify(vim.fn.getcwd(), ':p'), 1, true) ~= nil
+            end,
             color = { fg = theme.normal.a.bg },
             padding = { left = 0, right = 0 }
           },
