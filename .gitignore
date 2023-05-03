@@ -3,3 +3,4 @@ karabiner/automatic_backups
 kitty/current-theme.conf
 kitty/kitty.conf.bak
 .env
+tmuxinator
