@@ -17,7 +17,21 @@ return {
         vim.fn.sign_define('NvimTreeSignInformation', { texthl = 'NvimTreeSignError', text = '' })
     end,
     config = function()
+        local api = require 'nvim-tree.api'
+
         require 'nvim-tree'.setup {
+            on_attach = function(bufnr)
+                api.config.mappings.default_on_attach(bufnr)
+
+                vim.keymap.set('n', '<C-e>', '', { buffer = bufnr })
+                vim.keymap.del('n', '<C-e>', { buffer = bufnr })
+                vim.keymap.set('n', '<C-j>', '', { buffer = bufnr })
+                vim.keymap.del('n', '<C-j>', { buffer = bufnr })
+                vim.keymap.set('n', '<C-k>', '', { buffer = bufnr })
+                vim.keymap.del('n', '<C-k>', { buffer = bufnr })
+                vim.keymap.set('n', '<C-t>', '', { buffer = bufnr })
+                vim.keymap.del('n', '<C-t>', { buffer = bufnr })
+            end,
             hijack_netrw = true,
             hijack_cursor = true,
             sync_root_with_cwd = true,
@@ -69,16 +83,7 @@ return {
                 }
             },
             view = {
-                -- hide_root_folder = true,
                 width = 50,
-                mappings = {
-                    list = {
-                        { key = '<C-e>', action = '' },
-                        { key = '<C-j>', action = '' },
-                        { key = '<C-k>', action = '' },
-                        { key = '<C-t>', action = '' },
-                    }
-                }
             },
             actions = {
                 open_file = {
