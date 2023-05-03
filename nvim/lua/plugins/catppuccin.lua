@@ -4,6 +4,16 @@ return {
   build = ':CatppuccinCompile',
   config = function()
     require('catppuccin').setup({
+      highlight_overrides = {
+        all = function()
+          return {
+            DiagnosticVirtualTextError = { bg = 'NONE' },
+            DiagnosticVirtualTextWarn = { bg = 'NONE' },
+            DiagnosticVirtualTextInfo = { bg = 'NONE' },
+            DiagnosticVirtualTextHint = { bg = 'NONE' },
+          }
+        end
+      },
       term_colors = true,
       compile = {
         enabled = true,
