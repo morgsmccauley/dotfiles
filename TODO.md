@@ -8,3 +8,4 @@
 - syntax highlight colours change on save
 - neotest toggleterm strategy
 - short names in neovim-session-manager
+- https://github.com/jay-babu/mason-nvim-dap.nvim
