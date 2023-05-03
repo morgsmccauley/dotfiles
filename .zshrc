@@ -160,3 +160,5 @@ export PATH="$PNPM_HOME:$PATH"
 # pnpm end
 
 eval "$(navi widget zsh)"
+
+source /Users/morganmccauley/.config/op/plugins.sh
