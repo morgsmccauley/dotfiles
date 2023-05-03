@@ -158,3 +158,5 @@ export EDITOR='nvim'
 export PNPM_HOME="/Users/morganmccauley/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
+
+eval "$(navi widget zsh)"
