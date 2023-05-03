@@ -106,13 +106,14 @@ fi
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
 --layout=reverse --bind ctrl-u:preview-page-up,ctrl-d:preview-page-down"
 
-alias v='nvim'
+alias v='nvim --listen /tmp/nvimsocket'
 alias c='cargo'
 alias dc='docker compose'
 alias d='docker'
 alias t='tmux'
 alias tn='tmuxinator'
 alias tf='terraform'
+alias n='navi'
 
 alias ag='alias | grep '
 
@@ -144,8 +145,6 @@ if [ $ITERM_SESSION_ID ]; then
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-[ -f ~/.work-specific.zsh ] && source ~/.work-specific.zsh
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
