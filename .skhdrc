@@ -89,8 +89,6 @@ hyper - 0x1E : yabai -m window --swap east
 # hyper - [
 hyper - 0x21 : yabai -m window --swap west
 
-# hyper - R : sh ~/.dotfiles/scripts/cycle_clockwise.sh
-
 hyper - s : yabai -m window --swap mouse
 
 hyper - q : yabai -m window --close ; yabai -m window --focus last

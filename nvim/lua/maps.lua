@@ -64,8 +64,6 @@ cmap('<C-a>', '<C-b>', { noremap = true })
 vmap('J', ':m \'>+1<Cr>gv=gv', { noremap = true })
 vmap('K', ':m \'<-2<Cr>gv=gv', { noremap = true })
 
-vim.keymap.set('x', 'p', '\"_dP', { desc = 'Paste without replacing register contents' })
-
 vim.keymap.set('c', '<C-r>', function()
   return '<Plug>(TelescopeFuzzyCommandSearch)'
 end, { expr = true, remap = true })
