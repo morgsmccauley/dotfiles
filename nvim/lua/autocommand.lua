@@ -81,11 +81,6 @@ vim.api.nvim_create_autocmd({ 'TextYankPost' }, {
     end
 })
 
-vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
-    pattern = { vim.fn.expand('~') .. '/.dotfiles/kitty/kitty.conf' },
-    command = ':silent !kill -SIGUSR1 $(pgrep -a kitty)'
-})
-
 vim.api.nvim_create_autocmd({ 'DirChanged' }, {
     pattern = 'global',
     callback = function()
@@ -97,4 +92,33 @@ vim.api.nvim_create_autocmd({ 'DirChanged' }, {
         vim.api.nvim_buf_set_option(current_bufnr, 'buflisted', true)
         vim.cmd(current_winnr .. 'wincmd w')
     end
+})
+
+vim.api.nvim_create_autocmd({ 'TabClosed' }, {
+    command = 'tabprevious'
+})
+
+vim.api.nvim_create_autocmd('BufWritePost', {
+    pattern = { '*tmux.conf' },
+    command = 'silent !tmux source <afile> --silent',
+})
+
+vim.api.nvim_create_autocmd('BufWritePost', {
+    pattern = { '.yabairc' },
+    command = '!brew services restart yabai',
+})
+
+vim.api.nvim_create_autocmd('BufWritePost', {
+    pattern = { '.skhdrc' },
+    command = '!brew services restart skhd',
+})
+
+vim.api.nvim_create_autocmd('BufWritePost', {
+    pattern = { 'config.fish' },
+    command = ':silent !source <afile> --silent',
+})
+
+vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
+    pattern = { vim.fn.expand('~') .. '/.dotfiles/kitty/kitty.conf' },
+    command = ':silent !kill -SIGUSR1 $(pgrep -a kitty)'
 })
