@@ -83,7 +83,7 @@ return {
                 }
             },
             view = {
-                width = 50,
+                width = 40,
             },
             actions = {
                 open_file = {
