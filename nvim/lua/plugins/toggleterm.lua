@@ -11,7 +11,15 @@ return {
     {
       '<C-t>',
       '<Cmd>exe v:count1 . "ToggleTerm"<Cr>',
-      { silent = true, noremap = true }
+      silent = true,
+      noremap = true
+    },
+    {
+      '<C-s-t>',
+      function()
+        local Terminal = require('toggleterm.terminal').Terminal
+        Terminal:new({ hidden = true, direction = 'tab' }):toggle()
+      end,
     }
   },
   cmd = { 'TermExec' },
@@ -57,6 +65,30 @@ return {
             end
           end,
           { buffer = t.bufnr, expr = true }
+        )
+
+        vim.keymap.set(
+          't',
+          '<C-S-t>',
+          function()
+            local Terminal = require('toggleterm.terminal').Terminal
+            Terminal:new({ hidden = true, direction = 'tab' }):toggle()
+          end,
+          { buffer = t.bufnr }
+        )
+
+        vim.keymap.set(
+          't',
+          '<C-.>',
+          '<Cmd>tabnext<Cr>',
+          { buffer = t.bufnr }
+        )
+
+        vim.keymap.set(
+          't',
+          '<C-,>',
+          '<Cmd>tabprev<Cr>',
+          { buffer = t.bufnr }
         )
 
         vim.api.nvim_buf_set_keymap(t.bufnr, 't', '<C-q>', [[<C-\><C-n><Cmd>q!<Cr>]], { noremap = true })
