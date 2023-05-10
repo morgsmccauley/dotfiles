@@ -83,8 +83,10 @@ return {
       filetypes = { 'graphql', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact' }
     }
 
+    -- provides better diagnostics
     lspconfig.terraform_lsp.setup {}
 
+    -- provides go to definition and hover support
     lspconfig.terraformls.setup {
       on_attach = function(client, bufnr)
         client.server_capabilities.semanticTokensProvider = false
