@@ -15,4 +15,8 @@ require('options')
 require('maps')
 require('highlights')
 require('autocommand')
-require('lazy').setup('plugins')
+require('lazy').setup('plugins', {
+  change_detection = {
+    notify = false
+  }
+})
