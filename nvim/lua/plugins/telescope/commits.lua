@@ -4,6 +4,7 @@ local actions = require 'telescope.actions'
 
 return function()
   builtin.git_commits({
+    git_command = { 'git', 'log', '--pretty=oneline', '--abbrev-commit' },
     attach_mappings = function(_, map)
       local fixup = function(prompt_bufnr)
         local commit = action_state.get_selected_entry().value
