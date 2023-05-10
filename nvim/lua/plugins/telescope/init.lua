@@ -20,7 +20,12 @@ return {
 
     telescope.setup {
       defaults = {
+        sorting_strategy = 'ascending',
         layout_strategy = 'vertical',
+        layout_config = {
+          prompt_position = 'top',
+          mirror = true
+        },
         history = {
           limit = 500
         },
