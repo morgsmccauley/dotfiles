@@ -1,0 +1,6 @@
+% kitty
+
+# Focus tab
+kitty @ --to=unix:/tmp/kitty-$KITTY_PID focus-tab --match="id:<tab_id>"
+
+$ tab_id: kitty @ --to=unix:/tmp/kitty-$KITTY_PID ls | jq -r '.[0].tabs | .[] | [.id, .title] | @tsv' --- --headers 1 --column 1
