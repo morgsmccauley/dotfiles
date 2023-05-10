@@ -7,3 +7,6 @@ $ env: env
 
 # Copy last command to clipboard
 fc -ln -1 | pbcopy
+
+# Loop last command
+while true; do echo "Executing..."; !!; sleep <seconds>; done

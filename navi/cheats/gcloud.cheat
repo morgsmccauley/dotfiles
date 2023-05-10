@@ -3,6 +3,9 @@
 # SSH in to GCE instance
 gcloud --project <project> compute ssh <user>@<machine>
 
+# Describe compute instance
+gcloud --project <project> compute instances describe <machine>
+
 $ project: gcloud projects list --- --headers 1 --column 1
 $ machine: gcloud --project <project> compute instances list --- --headers 1 --column 1
 $ user: echo "ubuntu\nmorganmccauley"

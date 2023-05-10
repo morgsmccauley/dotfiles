@@ -10,13 +10,13 @@ near contract call-function as-transaction <validator> deposit_and_stake json-ar
 near contract call-function as-transaction <validator> withdraw_all json-args '{}' prepaid-gas '100.000 TeraGas' attached-deposit '0 NEAR' sign-as <account_id> network-config mainnet
 
 # View staking account
-near contract call-function as-read-only <validator> get_account json-args '{ "account_id": "<account_id>" }' network-config mainnet
+near contract call-function as-read-only <validator> get_account json-args '{ "account_id": "<account_id>" }' network-config mainnet now
 
 # Format near amount
 echo "<near> * (10 ^ 24)" | bc | sed 's/\..*$//'
 
 # Parse near amount
-echo "scale=2; <yocto_near> / (10 ^ 24)" | bc
+echo "scale=2; <yocto> / (10 ^ 24)" | bc
 
 # Unstake amount
 : <amount>; near contract call-function as-transaction <validator> unstake json-args '{ "amount": "<yocto_near>" }' prepaid-gas '100.000 TeraGas' attached-deposit '0 NEAR' sign-as <account_id> network-config mainnet
