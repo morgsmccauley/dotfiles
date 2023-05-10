@@ -1,10 +1,3 @@
-local function isFzf()
-  return vim.fn.system(
-        "ps -o state= -o comm= | grep -iE '^[^TXZ ]+ +(\\S+\\/)?fzf$'") ~= ''
-  --[[ return vim.fn.system(
-        "ps -o state= -o comm= -o tty= | grep $(tty | sed 's/\\/dev\\///') | grep -iE '^[^TXZ ]+ +(\\S+\\/)?fzf'") ~= '' ]]
-end
-
 return {
   'akinsho/toggleterm.nvim',
   keys = {
@@ -24,6 +17,26 @@ return {
   },
   cmd = { 'TermExec' },
   config = function()
+    vim.api.nvim_create_autocmd({ 'DirChanged' }, {
+      pattern = 'global',
+      callback = function()
+        local terms = require('toggleterm.terminal')
+
+        local current_winnr = vim.fn.winnr()
+
+        for _, terminal in ipairs(terms.get_all(true)) do
+          terminal:change_dir(vim.fn.expand('<afile>'), true)
+        end
+
+        vim.cmd(current_winnr .. 'wincmd w')
+      end
+    })
+
+    local function isFzf()
+      return vim.fn.system(
+        "ps -o state= -o comm= | grep -iE '^[^TXZ ]+ +(\\S+\\/)?fzf$'") ~= ''
+    end
+
     require 'toggleterm'.setup {
       persist_mode = false, -- always insert on enter
       shade_terminals = false,
