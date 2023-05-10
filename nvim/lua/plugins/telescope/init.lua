@@ -4,22 +4,13 @@ return {
   dependencies = {
     {
       'nvim-telescope/telescope-ui-select.nvim',
-      config = function()
-        require('telescope').load_extension('ui-select')
-      end
     },
     {
       'nvim-telescope/telescope-github.nvim',
-      config = function()
-        require('telescope').load_extension('gh')
-      end
     },
     {
       'nvim-telescope/telescope-fzf-native.nvim',
       build = 'make',
-      config = function()
-        require('telescope').load_extension('fzf')
-      end
     },
   },
   config = function()
@@ -71,6 +62,9 @@ return {
       }
     }
 
+    require('telescope').load_extension('ui-select')
+    require('telescope').load_extension('fzf')
+    require('telescope').load_extension('gh')
     vim.api.nvim_create_user_command('TelescopeBuffers', function()
       builtin.buffers({
         show_all_buffers = true,
