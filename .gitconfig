@@ -1,4 +1,5 @@
 [alias]
+	w = worktree
 	st = status --short
 	df = diff --name-only
 	chk = checkout .

@@ -154,6 +154,28 @@ export PATH="/Users/morganmccauley/Library/Python/3.8/bin:$PATH"
 
 export EDITOR='nvim'
 
+export REPO_DIR="$HOME/Developer/Repositories"
+
+# git clone --bare
+gclb() {
+  local url="$1"
+  local repo_dir="$REPO_DIR"
+  local repo_name="$(basename -s .git "$url")"
+  echo $repo_name
+
+  if [[ -z "$url" ]]; then
+    echo "Usage: gclb <repository-url>"
+    return 1
+  fi
+
+  if [[ -z "$repo_dir" ]]; then
+    echo "Please set the REPO_DIR environment variable to specify the target directory."
+    return 1
+  fi
+
+  git clone --bare "$url" "${repo_dir}/${repo_name}"
+}
+
 # pnpm
 export PNPM_HOME="/Users/morganmccauley/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
