@@ -50,6 +50,25 @@ return function()
         actions.close(prompt_bufnr)
       end
 
+      local drop_commit = function(prompt_bufnr)
+        local commit = action_state.get_selected_entry().value
+
+        local confirmation = vim.fn.input('Drop commit: ' .. commit .. '? [Y/n] ')
+        if string.lower(confirmation) ~= 'y' then return end
+        print ' '
+
+        actions.close(prompt_bufnr)
+
+        vim.api.nvim_command('silent !GIT_SEQUENCE_EDITOR=: git rebase -i --autostash --onto ' ..
+          commit .. '^ ' .. commit)
+
+        print('Dropped commit: ' .. commit)
+
+        -- local current_picker = action_state.get_current_picker(prompt_bufnr)
+        -- current_picker:refresh()
+      end
+
+      map('i', '<C-x>', drop_commit)
       map('i', '<C-f>', fixup)
       map('i', '<C-r>', interactive_rebase)
       map('i', '<C-y>', yank_commit)
