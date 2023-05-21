@@ -33,6 +33,8 @@ vim.keymap.set('n', '<C-w>gf', '<C-w>vgf',
 vim.keymap.set('n', '<C-w>gd', '<Cmd>silent vsp | Telescope lsp_definitions<Cr>',
   { desc = 'Go to definition in new split' })
 
+vim.keymap.set('n', '<C-space>', '<Cmd>Telescope kitty projects<Cr>', { noremap = true })
+
 nmap('<C-p>', '@:', { noremap = true })
 
 imap('<C-a>', '<C-o>^', { noremap = true, silent = true })
