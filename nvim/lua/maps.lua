@@ -52,7 +52,12 @@ nmap('K', '<Cmd>lua vim.lsp.buf.hover()<Cr>', { silent = true })
 nmap('gd', '<Cmd>silent Telescope lsp_definitions<Cr>', { silent = true })
 nmap('gD', '<Cmd>Telescope lsp_type_definitions<CR>', { silent = true })
 nmap('gi', '<Cmd>Telescope lsp_implementations<Cr>', { silent = true })
-nmap('gr', '<Cmd>Telescope lsp_references<Cr>', { silent = true })
+vim.keymap.set('n', 'gr', function()
+  require('telescope.builtin').lsp_references({
+    show_line = false,
+    include_current_line = true
+  })
+end, { silent = true })
 
 vim.keymap.set({ 'n', 'v' }, '<C-e>', '5<C-e>', { noremap = true, silent = true })
 vim.keymap.set({ 'n', 'v' }, '<C-y>', '5<C-y>', { noremap = true, silent = true })
