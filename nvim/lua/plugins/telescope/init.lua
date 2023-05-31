@@ -71,6 +71,7 @@ return {
     require('telescope').load_extension('ui-select')
     require('telescope').load_extension('fzf')
     require('telescope').load_extension('gh')
+
     vim.api.nvim_create_user_command('TelescopeBuffers', function()
       builtin.buffers({
         show_all_buffers = true,

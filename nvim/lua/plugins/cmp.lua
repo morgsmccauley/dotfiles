@@ -94,7 +94,13 @@ return {
         ['<C-k>'] = cmp.mapping.select_prev_item(),
         ['<C-j>'] = cmp.mapping.select_next_item(),
         -- currently this is used to go to end of line
-        ['<C-e>'] = cmp.mapping.abort(),
+        ['<C-e>'] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.abort()
+          else
+            fallback()
+          end
+        end),
         ['<C-y>'] = cmp.mapping.confirm({
           behaviour = cmp.ConfirmBehavior.Replace,
           select = true
