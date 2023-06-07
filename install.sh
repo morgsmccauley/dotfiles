@@ -13,7 +13,6 @@ git clone git@github.com:morgsmccauley/dotfiles.git ~/.dotfiles
 echo "Symlinking dotfiles..."
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/nvim ~/.config/nvim
-ln -s ~/.dotfiles/tmuxinator ~/.config/tmuxinator/
 ln -s ~/.dotfiles/iterm ~/.iterm
 ln -s ~/.dotfiles/.zshrc ~/.zshrc
 ln -s ~/.dotfiles/navi $HOME/Library/Application\ Support/navi
