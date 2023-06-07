@@ -27,5 +27,5 @@ yabai -m rule --add app="^Contexts$" sticky=on manage=off
 yabai -m rule --add app="^Music$" sticky=on manage=off
 yabai -m rule --add app="^Home$" sticky=on manage=off
 yabai -m rule --add app="^Notes$" sticky=on manage=off
-yabai -m rule --add app="^Docker Desktop$" sticky=on manage=Notes
+yabai -m rule --add app="^Docker Desktop$" sticky=on manage=off
 yabai -m rule --add app="^Reminders$" sticky=on manage=off
