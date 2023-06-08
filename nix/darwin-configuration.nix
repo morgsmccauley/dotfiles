@@ -28,6 +28,27 @@
     package = pkgs.yabai;
   };
 
+  # /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  homebrew = {
+    enable = true;
+    onActivation = {
+      cleanup = "uninstall";
+    };
+    taps = [
+      "homebrew/cask"
+    ];
+    caskArgs = {
+      appdir = "/Applications";
+      require_sha = true;
+    };
+    casks = [
+      # "monitorcontrol"
+      "raycast"
+      "docker"
+      "obsidian"
+    ];
+  };
+
   services.karabiner-elements.enable = true;
 
   # Use a custom configuration.nix location.
