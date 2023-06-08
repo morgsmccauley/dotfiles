@@ -90,4 +90,16 @@
   system.defaults.dock.static-only = true;
   system.defaults.dock.mru-spaces = false;
 
+  system.defaults.finder.ShowPathbar = true;
+  system.defaults.finder.AppleShowAllFiles = true;
+
+  system.defaults.loginwindow.GuestEnabled = false;
+
+  system.defaults.LaunchServices.LSQuarantine = false;
+
+  # system.defaults.CustomUserPreferences = {
+  #   "com.apple.Dock" = {
+  #     "static-others" = ''<array><dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>file:///Users/morganmccauley/Downloads/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-type</key><integer>2</integer><key>showas</key><integer>2</integer><key>displayas</key><integer>1</integer><key>file-label</key><string>Downloads</string><key>url</key><string>file:///Users/morganmccauley/Downloads/</string></dict><key>tile-type</key><string>directory-tile</string></dict><dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>file:///Applications/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-type</key><integer>2</integer><key>showas</key><integer>2</integer><key>displayas</key><integer>1</integer><key>file-label</key><string>Applications</string><key>url</key><string>file:///Applications/</string></dict><key>tile-type</key><string>directory-tile</string></dict><dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>file:///Users/morganmccauley/Documents/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-type</key><integer>2</integer><key>showas</key><integer>2</integer><key>displayas</key><integer>1</integer><key>file-label</key><string>Documents</string><key>url</key><string>file:///Users/morganmccauley/Documents/</string></dict><key>tile-type</key><string>directory-tile</string></dict><dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>file:///Users/morganmccauley/Developer/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-type</key><integer>2</integer><key>showas</key><integer>2</integer><key>displayas</key><integer>1</integer><key>file-label</key><string>Developer</string><key>url</key><string>file:///Users/morganmccauley/Developer/</string></dict><key>tile-type</key><string>directory-tile</string></dict></array>'';
+  #   };
+  # };
 }
