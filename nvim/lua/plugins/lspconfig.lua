@@ -1,10 +1,15 @@
 return {
   'neovim/nvim-lspconfig',
   dependencies = {
-    'b0o/SchemaStore.nvim'
+    'b0o/SchemaStore.nvim',
+    'williamboman/mason-lspconfig.nvim',
   },
   config = function()
     local lspconfig = require('lspconfig')
+
+    require('mason-lspconfig').setup {
+      automatic_installation = true
+    }
 
     local border = {
       { '╭', 'FloatBorder' },
