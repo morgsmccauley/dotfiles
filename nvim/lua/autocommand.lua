@@ -99,23 +99,13 @@ vim.api.nvim_create_autocmd({ 'TabClosed' }, {
 })
 
 vim.api.nvim_create_autocmd('BufWritePost', {
-    pattern = { '*tmux.conf' },
-    command = 'silent !tmux source <afile> --silent',
-})
-
-vim.api.nvim_create_autocmd('BufWritePost', {
     pattern = { '.yabairc' },
-    command = '!brew services restart yabai',
+    command = '!launchctl kickstart -k gui/$UID/org.nixos.yabai',
 })
 
 vim.api.nvim_create_autocmd('BufWritePost', {
     pattern = { '.skhdrc' },
     command = '!brew services restart skhd',
-})
-
-vim.api.nvim_create_autocmd('BufWritePost', {
-    pattern = { 'config.fish' },
-    command = ':silent !source <afile> --silent',
 })
 
 vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
