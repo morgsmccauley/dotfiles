@@ -3,17 +3,25 @@
 {
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
-  environment.systemPackages =
-    [
-      pkgs.vim
-      pkgs.fzf
-      pkgs.jq
-      pkgs.ripgrep
-      pkgs.neovim
-      pkgs.kitty
-      pkgs.navi
-      pkgs.zoxide
-    ];
+  environment.systemPackages = [
+    pkgs.vim
+    pkgs.fzf
+    pkgs.jq
+    pkgs.ripgrep
+    pkgs.neovim
+    pkgs.kitty
+    pkgs.navi
+    pkgs.zoxide
+    pkgs.google-cloud-sdk
+    pkgs.nodejs_18
+    pkgs.rustup
+    pkgs.monitorcontrol
+    pkgs.gh
+    pkgs.starship
+    pkgs.nodePackages.serverless
+    # unfree license
+    # pkgs.raycast
+  ];
 
   services.yabai = {
     enable = true;
