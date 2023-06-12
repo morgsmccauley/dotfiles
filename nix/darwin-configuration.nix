@@ -18,9 +18,9 @@
     pkgs.monitorcontrol
     pkgs.gh
     pkgs.starship
+    pkgs.terraform
+    pkgs.postgresql_14
     pkgs.nodePackages.serverless
-    # unfree license
-    # pkgs.raycast
   ];
 
   services.yabai = {
@@ -47,6 +47,10 @@
       "docker"
       "obsidian"
     ];
+    masApps = {
+      "Shortery" = 1594183810;
+      "Slack" = 803453959;
+    };
   };
 
   services.karabiner-elements.enable = true;
