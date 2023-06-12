@@ -236,7 +236,7 @@
                             {
                                 "type": "basic",
                                 "from": {
-                                    "key_code": "l",
+                                    "key_code": "j",
                                     "modifiers": {
                                         "mandatory": [
                                             "right_command",
@@ -255,7 +255,7 @@
                             {
                                 "type": "basic",
                                 "from": {
-                                    "key_code": "l",
+                                    "key_code": "k",
                                     "modifiers": {
                                         "mandatory": [
                                             "right_command",
@@ -279,7 +279,7 @@
                             {
                                 "type": "basic",
                                 "from": {
-                                    "key_code": "open_bracket",
+                                    "key_code": "left_arrow",
                                     "modifiers": {
                                         "mandatory": [
                                             "right_command",
@@ -298,7 +298,7 @@
                             {
                                 "type": "basic",
                                 "from": {
-                                    "key_code": "close_bracket",
+                                    "key_code": "right_arrow",
                                     "modifiers": {
                                         "mandatory": [
                                             "right_command",
@@ -313,7 +313,46 @@
                                         "shell_command": "/run/current-system/sw/bin/yabai -m window --swap east"
                                     }
                                 ]
+                            },
+                            {
+                                "type": "basic",
+                                "from": {
+                                    "key_code": "up_arrow",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command",
+                                            "right_control",
+                                            "right_option",
+                                            "right_shift"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "/run/current-system/sw/bin/yabai -m window --swap north"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "basic",
+                                "from": {
+                                    "key_code": "down_arrow",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command",
+                                            "right_control",
+                                            "right_option",
+                                            "right_shift"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "/run/current-system/sw/bin/yabai -m window --swap south"
+                                    }
+                                ]
                             }
+
                         ]
                     },
                     {
