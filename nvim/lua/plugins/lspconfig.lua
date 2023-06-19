@@ -110,5 +110,7 @@ return {
         },
       },
     }
+
+    lspconfig.rnix.setup {}
   end
 }
