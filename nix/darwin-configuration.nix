@@ -3,24 +3,28 @@
 {
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
-  environment.systemPackages = [
-    pkgs.vim
-    pkgs.fzf
-    pkgs.jq
-    pkgs.ripgrep
-    pkgs.neovim
-    pkgs.kitty
-    pkgs.navi
-    pkgs.zoxide
-    pkgs.google-cloud-sdk
-    pkgs.nodejs_18
-    pkgs.rustup
-    pkgs.monitorcontrol
-    pkgs.gh
-    pkgs.starship
-    pkgs.terraform
-    pkgs.postgresql_14
-    pkgs.nodePackages.serverless
+  environment.systemPackages = with pkgs; [
+    vim
+    fzf
+    jq
+    yq
+    ripgrep
+    neovim
+    kitty
+    navi
+    zoxide
+    google-cloud-sdk
+    awscli2
+    nodejs_18
+    rustup
+    monitorcontrol
+    gh
+    starship
+    terraform
+    postgresql_14
+    redis
+    httpie
+    nodePackages.serverless
   ];
 
   services.yabai = {
@@ -41,6 +45,12 @@
       appdir = "/Applications";
       require_sha = true;
     };
+    brews = [
+      # Also need to run:
+      # mkdir -p ~/.docker/cli-plugins
+      # ln -sfn $HOMEBREW_PREFIX/opt/docker-compose/bin/docker-compose ~/.docker/cli-plugins/docker-compose
+      "docker-compose"
+    ];
     casks = [
       # "monitorcontrol"
       "raycast"
