@@ -34,7 +34,11 @@ return {
       local buf_client_names = {}
 
       for _, client in pairs(buf_clients) do
-        table.insert(buf_client_names, client.name)
+        for _, lsp_filetype in ipairs(client.config.filetypes or { vim.bo.filetype }) do
+          if (lsp_filetype == vim.bo.filetype) then
+            table.insert(buf_client_names, client.name)
+          end
+        end
       end
 
       return table.concat(buf_client_names, ', ')
