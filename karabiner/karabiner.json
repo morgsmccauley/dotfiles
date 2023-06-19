@@ -373,7 +373,74 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/run/current-system/sw/bin/yabai -m window --toggle zoom-fullscreen"
+                                        "shell_command": "PATH=/run/current-system/sw/bin; yabai -m window --toggle zoom-fullscreen"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "description": "hyper-o/i to cycle prev/next windows",
+                        "manipulators": [
+                            {
+                                "type": "basic",
+                                "from": {
+                                    "key_code": "o",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command",
+                                            "right_control",
+                                            "right_option",
+                                            "right_shift"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "PATH=/run/current-system/sw/bin; yabai -m window --focus prev"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "basic",
+                                "from": {
+                                    "key_code": "i",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command",
+                                            "right_control",
+                                            "right_option",
+                                            "right_shift"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "PATH=/run/current-system/sw/bin; yabai -m window --focus next"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "description": "hyper-v to toggle vertical/horizontal split",
+                        "manipulators": [
+                            {
+                                "type": "basic",
+                                "from": {
+                                    "key_code": "v",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command",
+                                            "right_control",
+                                            "right_option",
+                                            "right_shift"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "PATH=/run/current-system/sw/bin; yabai -m window --toggle split"
                                     }
                                 ]
                             }
