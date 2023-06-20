@@ -151,6 +151,7 @@ export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$PATH:$HOME/go/bin"
 export PATH="/opt/homebrew/opt/node@16/bin:$PATH"
 export PATH="/Users/morganmccauley/Library/Python/3.8/bin:$PATH"
+export PATH="/Users/morganmccauley/.cargo/bin:$PATH"
 
 export EDITOR='nvim'
 
