@@ -112,3 +112,19 @@ vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
     pattern = { vim.fn.expand('~') .. '/.dotfiles/kitty/kitty.conf' },
     command = ':silent !kill -SIGUSR1 $(pgrep -a kitty)'
 })
+
+vim.api.nvim_create_autocmd({ 'BufRead' }, {
+    pattern = { '*' },
+    once = true,
+    callback = function(event)
+        vim.bo[event.buf].buflisted = false
+
+        vim.api.nvim_create_autocmd({ 'InsertEnter', 'BufModifiedSet', 'TextChanged', 'TextChangedI' }, {
+            buffer = 0,
+            once = true,
+            callback = function(ev)
+                vim.bo[ev.buf].buflisted = true
+            end
+        })
+    end
+})
