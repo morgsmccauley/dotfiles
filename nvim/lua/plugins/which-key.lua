@@ -128,6 +128,7 @@ return {
       name = '+code',
       -- c = { ':Telescope commands<Cr>', 'Commands' },
       a = { '<Cmd>lua vim.lsp.buf.code_action()<Cr>', 'Code actions' },
+      r = { '<Cmd>lua vim.lsp.buf.rename()<Cr>', 'Rename' },
       d = { '<Cmd>Telescope diagnostics bufnr=0<Cr>', 'File diagnostics' },
       D = { '<Cmd>Telescope diagnostics<Cr>', 'Workspace diagnostics' },
       l = { '<Cmd>lua vim.diagnostic.open_float()<Cr>', 'Show diagnostics for current line' },
