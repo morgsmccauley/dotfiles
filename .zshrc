@@ -89,7 +89,7 @@ then
   compinit
 fi
 
-if [ $(defaults read -g AppleInterfaceStyle) = "Dark" &> /dev/null ]; then
+if [ "$(defaults read -g AppleInterfaceStyle 2>/dev/null)" = "Dark" ]; then
   # Macchiato
   export FZF_DEFAULT_OPTS=" \
   --color=bg+:#24273a,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
