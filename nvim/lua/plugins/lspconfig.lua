@@ -89,7 +89,7 @@ return {
     }
 
     -- provides better diagnostics
-    lspconfig.terraform_lsp.setup {}
+    -- lspconfig.terraform_lsp.setup {}
 
     -- provides go to definition and hover support
     lspconfig.terraformls.setup {
