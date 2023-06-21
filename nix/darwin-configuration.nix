@@ -24,6 +24,7 @@
     postgresql_14
     redis
     httpie
+    neovim-remote
     nodePackages.serverless
   ];
 
