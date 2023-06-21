@@ -121,7 +121,8 @@ return {
     local buffer = {
       name = '+buffer',
       e = { '<Cmd>edit<Cr>', 'Edit buffer' },
-      y = { '<Cmd>let @* = expand("%")<Cr>', 'Yank filename' }
+      y = { '<Cmd>let @* = expand("%")<Cr>', 'Yank filename' },
+      l = { function() vim.bo[0].buflisted = true end, 'List buffer' }
     }
 
     local code = {
