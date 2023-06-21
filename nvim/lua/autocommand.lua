@@ -110,12 +110,17 @@ vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
 
 vim.api.nvim_create_autocmd({ 'BufRead' }, {
     pattern = { '*' },
-    once = true,
     callback = function(event)
+        if vim.fn.getbufvar(event.buf, 'buflist_setup_done') == 1 then
+            return
+        end
+
+        vim.fn.setbufvar(event.buf, 'buflist_setup_done', 1)
+
         vim.bo[event.buf].buflisted = false
 
         vim.api.nvim_create_autocmd({ 'InsertEnter', 'BufModifiedSet', 'TextChanged', 'TextChangedI' }, {
-            buffer = 0,
+            buffer = event.buf,
             once = true,
             callback = function(ev)
                 vim.bo[ev.buf].buflisted = true
