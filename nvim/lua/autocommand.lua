@@ -103,11 +103,6 @@ vim.api.nvim_create_autocmd('BufWritePost', {
     command = '!launchctl kickstart -k gui/$UID/org.nixos.yabai',
 })
 
-vim.api.nvim_create_autocmd('BufWritePost', {
-    pattern = { '.skhdrc' },
-    command = '!brew services restart skhd',
-})
-
 vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
     pattern = { vim.fn.expand('~') .. '/.dotfiles/kitty/kitty.conf' },
     command = ':silent !kill -SIGUSR1 $(pgrep -a kitty)'
