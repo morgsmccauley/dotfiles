@@ -183,5 +183,8 @@ export PATH="$PNPM_HOME:$PATH"
 # pnpm end
 
 eval "$(navi widget zsh)"
+eval "$(zoxide init zsh)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(starship init zsh)"
 
-source /Users/morganmccauley/.config/op/plugins.sh
+# source /Users/morganmccauley/.config/op/plugins.sh
