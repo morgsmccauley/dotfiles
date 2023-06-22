@@ -18,6 +18,48 @@
     users = {
       morganmccauley = { pkgs, ... }: {
         home.stateVersion = "23.05";
+
+        home.file.yabai = {
+          executable = true;
+          target = ".config/yabai/yabairc";
+          text = ''
+            yabai -m config layout bsp
+
+            yabai -m config top_padding    25
+            yabai -m config bottom_padding 25
+            yabai -m config left_padding   25
+            yabai -m config right_padding  25
+            yabai -m config window_gap     25
+
+            yabai -m config window_border  on
+            yabai -m config window_border_hidpi  on
+            yabai -m config window_border_blur  off
+            yabai -m config active_window_border_color 0xFFE55C9C
+            yabai -m config normal_window_border_color 0xe55c9c
+
+            yabai -m config window_opacity on
+            yabai -m config active_window_opacity 1.0
+            yabai -m config normal_window_opacity 0.90
+
+            # reverse these rules?
+            yabai -m rule --add app="^System Preferences$" sticky=on manage=off
+            yabai -m rule --add app="^Finder$" sticky=on manage=off
+            yabai -m rule --add app="^System Information$" sticky=on manage=off
+            yabai -m rule --add app="^Activity Monitor$" sticky=on manage=off
+            yabai -m rule --add app="^Messages$" sticky=on manage=off
+            yabai -m rule --add app="^Karabiner-Elements$" sticky=on manage=off
+            yabai -m rule --add app="^Karabiner-EventViewer$" sticky=on manage=off
+            yabai -m rule --add app="^Preview$" sticky=on manage=off
+            yabai -m rule --add app="^Keychain Access$" sticky=on manage=off
+            yabai -m rule --add app="^BetterTouchTool$" sticky=on manage=off
+            yabai -m rule --add app="^Contexts$" sticky=on manage=off
+            yabai -m rule --add app="^Music$" sticky=on manage=off
+            yabai -m rule --add app="^Home$" sticky=on manage=off
+            yabai -m rule --add app="^Notes$" sticky=on manage=off
+            yabai -m rule --add app="^Docker Desktop$" sticky=on manage=off
+            yabai -m rule --add app="^Reminders$" sticky=on manage=off
+          '';
+        };
         programs.zsh = {
           enable = true;
 
