@@ -36,6 +36,33 @@
             g = "git";
           };
         };
+        programs.git = {
+          enable = true;
+
+          userName = "Morgan Mccauley";
+          userEmail = "morgan@mccauley.co.nz";
+
+          aliases = {
+            w = "worktree";
+            st = "status --short";
+            l = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
+          };
+
+          extraConfig = {
+            core = {
+              editor = "nvim";
+              pager = "less";
+            };
+            github = {
+              user = "morgsmccauley";
+            };
+            init = {
+              defaultBranch = "main";
+            };
+          };
+          ignores = [];
+        };
+
       };
     };
   };
