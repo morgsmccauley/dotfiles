@@ -18,6 +18,24 @@
     users = {
       morganmccauley = { pkgs, ... }: {
         home.stateVersion = "23.05";
+        programs.zsh = {
+          enable = true;
+
+          autocd = true;
+
+          enableCompletion = true;
+          enableSyntaxHighlighting = true;
+
+          shellAliases = {
+            v = "nvim --listen /tmp/nvimsocket";
+            c = "cargo";
+            dc = "docker compose";
+            d = "docker";
+            n = "navi";
+            tf = "terraform";
+            g = "git";
+          };
+        };
       };
     };
   };
