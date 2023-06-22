@@ -3,6 +3,25 @@
 {
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
+  imports = [ <home-manager/nix-darwin> ];
+
+  users.users = {
+    morganmccauley = {
+      name = "morganmccauley";
+      home = "/Users/morganmccauley";
+    };
+  };
+
+  home-manager = {
+    # useUserPackages = true;
+    useGlobalPkgs = true;
+    users = {
+      morganmccauley = { pkgs, ... }: {
+        home.stateVersion = "23.05";
+      };
+    };
+  };
+
   environment.systemPackages = with pkgs; [
     vim
     fzf
