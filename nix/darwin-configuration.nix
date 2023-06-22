@@ -19,6 +19,29 @@
       morganmccauley = { pkgs, ... }: {
         home.stateVersion = "23.05";
 
+        home.packages = with pkgs; [
+          jq
+          yq
+          ripgrep
+          neovim
+          kitty
+          navi
+          zoxide
+          google-cloud-sdk
+          awscli2
+          nodejs_18
+          rustup
+          monitorcontrol
+          gh
+          starship
+          terraform
+          postgresql_14
+          redis
+          httpie
+          neovim-remote
+          nodePackages.serverless
+        ];
+
         programs.zsh = {
           enable = true;
 
@@ -315,31 +338,6 @@
       };
     };
   };
-
-  environment.systemPackages = with pkgs; [
-    vim
-    fzf
-    jq
-    yq
-    ripgrep
-    neovim
-    kitty
-    navi
-    zoxide
-    google-cloud-sdk
-    awscli2
-    nodejs_18
-    rustup
-    monitorcontrol
-    gh
-    starship
-    terraform
-    postgresql_14
-    redis
-    httpie
-    neovim-remote
-    nodePackages.serverless
-  ];
 
   services.yabai = {
     enable = true;
