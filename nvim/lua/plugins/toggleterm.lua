@@ -32,9 +32,11 @@ return {
       end
     })
 
-    local function isFzf()
+    local function isInteractive()
+      local interative_cli_apps = { 'fzf', 'near' }
       return vim.fn.system(
-        "ps -o state= -o comm= | grep -iE '^[^TXZ ]+ +(\\S+\\/)?fzf$'") ~= ''
+        "ps -o state= -o comm= | grep -iE '^[^TXZ ]+ +(\\S+\\/)?(" .. table.concat(interative_cli_apps, '|') .. ")$'") ~=
+      ''
     end
 
     require 'toggleterm'.setup {
@@ -59,8 +61,8 @@ return {
           't',
           '<C-j>',
           function()
-            if isFzf() then
-              return [[<C-j>]]
+            if isInteractive() then
+              return [[<Down>]]
             else
               return [[<C-\><C-n><C-w><C-j>]]
             end
@@ -71,8 +73,8 @@ return {
           't',
           '<C-k>',
           function()
-            if isFzf() then
-              return [[<C-k>]]
+            if isInteractive() then
+              return [[<Up>]]
             else
               return [[<C-\><C-n><C-w><C-k>]]
             end
