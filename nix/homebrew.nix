@@ -26,4 +26,11 @@
       "Slack" = 803453959;
     };
   };
+
+  system.activationScripts.preUserActivation.text = ''
+    if ! command -v ${config.homebrew.brewPrefix}/brew &> /dev/null; then
+        echo "Installing brew"
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    fi
+  '';
 }
