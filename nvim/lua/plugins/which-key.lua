@@ -122,7 +122,19 @@ return {
       name = '+buffer',
       e = { '<Cmd>edit<Cr>', 'Edit buffer' },
       y = { '<Cmd>let @* = expand("%")<Cr>', 'Yank filename' },
-      l = { function() vim.bo[0].buflisted = true end, 'List buffer' }
+      l = { function() vim.bo[0].buflisted = true end, 'List buffer' },
+      s = {
+        function()
+          vim.cmd.new('[Scratch]')
+
+          vim.bo.buftype = 'nofile'
+          vim.bo.bufhidden = 'hide'
+          vim.bo.swapfile = false
+
+          vim.api.nvim_command('wincmd J')
+        end,
+        'Open scratch buffer'
+      }
     }
 
     local code = {
