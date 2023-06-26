@@ -10,19 +10,19 @@ near contract call-function as-transaction <validator> deposit_and_stake json-ar
 near contract call-function as-transaction <validator> withdraw_all json-args '{}' prepaid-gas '100.000 TeraGas' attached-deposit '0 NEAR' sign-as <account_id> network-config mainnet
 
 # View staking account
-near contract call-function as-read-only <validator> get_account json-args '{ "account_id": "<account_id>" }' network-config mainnet now
+near contract call-function as-read-only <validator> get_account json-args '{ "account_id": "<account_id>" }' network-config mainnet now 2>/dev/null | jq '.staked_balance = (.staked_balance | tonumber / pow(10; 24)) | .unstaked_balance = (.unstaked_balance | tonumber / pow(10; 24))'
 
-# Format near amount
+# Near to Yocto
 echo "<near> * (10 ^ 24)" | bc | sed 's/\..*$//'
 
-# Parse near amount
+# Yocto to Near
 echo "scale=2; <yocto> / (10 ^ 24)" | bc
 
-# Unstake amount
-: <amount>; near contract call-function as-transaction <validator> unstake json-args '{ "amount": "<yocto_near>" }' prepaid-gas '100.000 TeraGas' attached-deposit '0 NEAR' sign-as <account_id> network-config mainnet
+# Unstake near
+<near>; near contract call-function as-transaction <validator> unstake json-args '{ "amount": "<yocto_near>" }' prepaid-gas '100.000 TeraGas' attached-deposit '0 NEAR' sign-as <account_id> network-config mainnet
 
-# Withdraw amount
-: <amount>; near contract call-function as-transaction <validator> withdraw json-args '{ "amount": "<yocto_near>" }' prepaid-gas '100.000 TeraGas' attached-deposit '0 NEAR' sign-as <account_id> network-config mainnet
+# Withdraw near
+<near>; near contract call-function as-transaction <validator> withdraw json-args '{ "amount": "<yocto_near>" }' prepaid-gas '100.000 TeraGas' attached-deposit '0 NEAR' sign-as <account_id> network-config mainnet
 
 $ validator: http post https://rpc.mainnet.near.org jsonrpc=2.0 method=validators params:='[null]' id=dontcare | jq -r '.result.current_validators[].account_id'
 $ yocto_near: echo "<amount> * (10 ^ 24)" | bc | sed 's/\..*$//'
