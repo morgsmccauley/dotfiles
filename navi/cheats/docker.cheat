@@ -36,10 +36,10 @@ $ container_id: docker ps --- --headers 1 --column 1
 
 % docker compose
 
-# Build/Create/Start and attach to service
+# Up and attach
 docker compose up <service_name>
 
-# Build/Create/Start and detach from service
+# Up and detach
 docker compose up -d <service_name>
 
 # Print services logs
