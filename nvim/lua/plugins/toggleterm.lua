@@ -33,10 +33,10 @@ return {
     })
 
     local function isInteractive()
-      local interative_cli_apps = { 'fzf', 'near' }
+      local interative_cli_apps = { 'fzf', 'near', 'gh' }
       return vim.fn.system(
-        "ps -o state= -o comm= | grep -iE '^[^TXZ ]+ +(\\S+\\/)?(" .. table.concat(interative_cli_apps, '|') .. ")$'") ~=
-      ''
+            "ps -o state= -o comm= | grep -iE '^[^TXZ ]+ +(\\S+\\/)?(" .. table.concat(interative_cli_apps, '|') .. ")$'") ~=
+          ''
     end
 
     require 'toggleterm'.setup {
