@@ -130,6 +130,7 @@ return {
           vim.bo.buftype = 'nofile'
           vim.bo.bufhidden = 'hide'
           vim.bo.swapfile = false
+          vim.bo.buflisted = false
 
           vim.api.nvim_command('wincmd J')
         end,
@@ -148,14 +149,32 @@ return {
       f = { '<Cmd>lua vim.lsp.buf.format()<Cr>', 'Format' }
     }
 
-    local test = {
+    local neotest = {
       name = '+neotest',
-      t = { function() require('neotest').run.run() end, 'Run nearest' },
-      f = { function() require('neotest').run.run(vim.fn.expand('%')) end, 'Run file' },
-      d = { function() require('neotest').run.run({ strategy = 'dap' }) end, 'Run with debugger' },
-      l = { function() require('neotest').run.run_last() end, 'Run last' },
-      s = { function() require('neotest').summary.toggle() end, 'Toggle summary' },
-      o = { function() require('neotest').output_panel.toggle() end, 'Toggle output panel' },
+      t = { function()
+        vim.bo.buflisted = true
+        require('neotest').run.run()
+      end, 'Run nearest' },
+      f = { function()
+        vim.bo.buflisted = true
+        require('neotest').run.run(vim.fn.expand('%'))
+      end, 'Run file' },
+      d = { function()
+        vim.bo.buflisted = true
+        require('neotest').run.run({ strategy = 'dap' })
+      end, 'Run with debugger' },
+      l = { function()
+        vim.bo.buflisted = true
+        require('neotest').run.run_last()
+      end, 'Run last' },
+      s = { function()
+        vim.bo.buflisted = true
+        require('neotest').summary.toggle()
+      end, 'Toggle summary' },
+      o = { function()
+        vim.bo.buflisted = true
+        require('neotest').output_panel.toggle()
+      end, 'Toggle output panel' },
     }
 
     local session = {
@@ -180,7 +199,7 @@ return {
       b = buffer,
       c = code,
       d = debug,
-      t = test,
+      n = neotest,
       s = session,
       ['*'] = { '<Cmd>Telescope grep_string<Cr>', 'Search for symbol globally' },
       ['/'] = { '<Cmd>Telescope live_grep<Cr>', 'Search globally' },
