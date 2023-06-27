@@ -5,17 +5,18 @@ return {
   },
   config = function()
     local null_ls = require('null-ls')
-    require('mason-null-ls').setup({
-      automatic_installation = {
-        exclude = { 'jq' }
-      },
-      -- automatic_setup = true,
-    })
     require('null-ls').setup({
       sources = {
         null_ls.builtins.formatting.jq,
         null_ls.builtins.formatting.prettierd,
       }
+    })
+
+    -- needs to be after null-ls setup
+    require('mason-null-ls').setup({
+      automatic_installation = {
+        exclude = { 'jq' }
+      },
     })
   end
 }
