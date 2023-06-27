@@ -1,6 +1,5 @@
 return {
   'mfussenegger/nvim-dap',
-  lazy = true,
   dependencies = {
     'rcarriga/nvim-dap-ui',
     {
@@ -16,6 +15,9 @@ return {
       'microsoft/vscode-js-debug',
       build =
       'npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out && git checkout package-lock.json',
+    },
+    {
+      'jay-babu/mason-nvim-dap.nvim',
     }
   },
   config = function()
@@ -28,10 +30,10 @@ return {
       port = '${port}',
       host = '127.0.0.1',
       executable = {
-        command = '/Users/morganmccauley/.local/share/nvim/mason/packages/codelldb/extension/adapter/codelldb',
+        command = os.getenv('HOME') .. '/.local/share/nvim/mason/packages/codelldb/extension/adapter/codelldb',
         args = {
           '--liblldb',
-          '/Users/morganmccauley/.local/share/nvim/mason/packages/codelldb/extension/lldb/lib/liblldb.dylib',
+          os.getenv('HOME') .. '/.local/share/nvim/mason/packages/codelldb/extension/lldb/lib/liblldb.dylib',
           '--port',
           '${port}'
         },
@@ -122,5 +124,10 @@ return {
     vim.fn.sign_define('DapBreakpointCondition',
       { text = '', texthl = 'DapBreakpointCondition', linehl = '', numhl = '' })
     vim.fn.sign_define('DapStopped', { text = '', texthl = 'white', linehl = '', numhl = '' })
+
+    -- needs to be after nvim-dap setup
+    require("mason-nvim-dap").setup({
+      automatic_installation = true
+    })
   end
 }
