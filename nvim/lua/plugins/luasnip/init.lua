@@ -44,7 +44,8 @@ return {
 
     luasnip.filetype_extend('typescript', { 'javascript' })
 
-    require('luasnip.loaders.from_snipmate').lazy_load({ paths = { '~/.config/nvim/snippets' } })
+    require('luasnip.loaders.from_snipmate').lazy_load({ paths = { './lua/plugins/luasnip/snippets' } })
+    -- require('luasnip.loaders.from_lua').lazy_load({ paths = { vim.fn.stdpath('config') .. '/lua' } })
 
     local function get_variable_name()
       local parser = vim.treesitter.get_parser(0, "javascript")
