@@ -9,7 +9,8 @@ return {
   config = function()
     require('illuminate').configure({
       filetypes_denylist = {
-        'NvimTree'
+        'NvimTree',
+        'NeogitStatus'
       },
       under_cursor = false,
     })
