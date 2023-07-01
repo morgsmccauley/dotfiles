@@ -2,7 +2,13 @@
   "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
   "Lua.diagnostics.globals": [
     "vim",
-    "packer_plugins"
+    "packer_plugins",
+
+    "s",
+    "t",
+    "fmt",
+    "f",
+    "i"
   ],
   "Lua.workspace.checkThirdParty": false
 }
