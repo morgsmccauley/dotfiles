@@ -1,8 +1,8 @@
 return {
-  s('r', t('refactor: ')),
-  s('fi', t('fix: ')),
-  s('c', t('chore: ')),
-  s('b', t('build: ')),
-  s('f', t('feat: ')),
-  s('t', t('test: ')),
+  s({ trig = 'r', dscr = 'refactor' }, t('refactor: ')),
+  s({ trig = 'fi', dscr = 'fix' }, t('fix: ')),
+  s({ trig = 'c', dscr = 'chore' }, t('chore: ')),
+  s({ trig = 'b', dscr = 'build' }, t('build: ')),
+  s({ trig = 'f', dscr = 'feat' }, t('feat: ')),
+  s({ trig = 't', dscr = 'test' }, t('test: ')),
 }

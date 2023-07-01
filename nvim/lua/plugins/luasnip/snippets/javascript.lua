@@ -15,13 +15,21 @@ local function get_variable_name()
 end
 
 return {
-  s('clj',
+  s({
+      trig = 'clj',
+      dscr = 'console.log JSON',
+    },
     fmt(
       [[console.log(JSON.stringify({{ {} }}, null, 2))]],
-      { i(1) }
+      {
+        i(1)
+      }
     )
   ),
-  s('clv',
+  s({
+      trig = 'clv',
+      decr = 'console.log variable'
+    },
     fmt(
       [[console.log({{ {} }})]],
       {

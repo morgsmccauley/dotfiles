@@ -1,6 +1,8 @@
 return {
-  s(
-    "r",
+  s({
+      trig = 'r',
+      dscr = 'require'
+    },
     fmt(
       [[local {} = require('{}')]],
       {
