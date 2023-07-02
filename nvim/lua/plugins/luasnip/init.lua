@@ -26,7 +26,25 @@ return {
       end,
       mode = { 'i', 's' },
       { noremap = true, silent = true }
-    }
+    },
+    {
+      '<C-j>',
+      function()
+        local luasnip = require 'luasnip'
+        luasnip.change_choice(1)
+      end,
+      mode = { 'i', 's' },
+      { noremap = true, silent = true }
+    },
+    {
+      '<C-k>',
+      function()
+        local luasnip = require 'luasnip'
+        luasnip.change_choice(-1)
+      end,
+      mode = { 'i', 's' },
+      { noremap = true, silent = true }
+    },
   },
   config = function()
     local luasnip = require('luasnip')
