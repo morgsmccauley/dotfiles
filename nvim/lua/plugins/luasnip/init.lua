@@ -30,12 +30,6 @@ return {
   },
   config = function()
     local luasnip = require('luasnip')
-    local fmt = require('luasnip.extras.fmt').fmt
-
-    local snippet = luasnip.snippet
-    local text = luasnip.text_node
-    local insert = luasnip.insert_node
-    local fn = luasnip.function_node
 
     luasnip.setup({
       history = true,
