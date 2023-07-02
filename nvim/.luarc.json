@@ -8,7 +8,9 @@
     "t",
     "fmt",
     "f",
-    "i"
+    "i",
+    "c",
+    "sn"
   ],
   "Lua.workspace.checkThirdParty": false
 }

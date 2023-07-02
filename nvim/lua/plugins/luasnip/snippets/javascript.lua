@@ -42,4 +42,23 @@ return {
       }
     )
   ),
+  s({
+      trig = 'con',
+      dscr = 'define const variable'
+    },
+    fmt(
+      [[const {} = {};]],
+      {
+        c(2, {
+          sn(nil, {
+            t('{ '),
+            i(1, 'name'),
+            t(' }'),
+          }),
+          i(nil, 'name')
+        }),
+        i(1),
+      }
+    )
+  ),
 }
