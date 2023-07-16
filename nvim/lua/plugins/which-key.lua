@@ -141,12 +141,13 @@ return {
     local code = {
       name = '+code',
       -- c = { ':Telescope commands<Cr>', 'Commands' },
-      a = { '<Cmd>lua vim.lsp.buf.code_action()<Cr>', 'Code actions' },
-      r = { '<Cmd>lua vim.lsp.buf.rename()<Cr>', 'Rename' },
+      a = { vim.lsp.buf.code_action, 'Code actions' },
+      r = { vim.lsp.buf.rename, 'Rename' },
       d = { '<Cmd>Telescope diagnostics bufnr=0<Cr>', 'File diagnostics' },
       D = { '<Cmd>Telescope diagnostics<Cr>', 'Workspace diagnostics' },
-      l = { '<Cmd>lua vim.diagnostic.open_float()<Cr>', 'Show diagnostics for current line' },
-      f = { '<Cmd>lua vim.lsp.buf.format()<Cr>', 'Format' }
+      l = { vim.diagnostic.open_float, 'Show diagnostics for current line' },
+      f = { vim.lsp.buf.format, 'Format' },
+      h = { vim.lsp.buf.hover, 'Hover' }
     }
 
     local neotest = {
