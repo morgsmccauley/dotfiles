@@ -33,6 +33,11 @@ vim.api.nvim_create_autocmd({ 'Bufread' }, {
     command = 'set ft=sh'
 })
 
+vim.api.nvim_create_autocmd({ 'Bufread' }, {
+    pattern = { '*.js.snap' },
+    command = 'set ft=javascript'
+})
+
 vim.api.nvim_create_autocmd({ 'VimResized' }, {
     pattern = { '*' },
     command = 'wincmd ='
