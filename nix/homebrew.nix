@@ -20,6 +20,8 @@
       "raycast"
       "docker"
       "obsidian"
+      "1password-cli"
+      "telegram"
     ];
     masApps = {
       "Shortery" = 1594183810;

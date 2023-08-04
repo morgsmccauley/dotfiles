@@ -40,7 +40,13 @@
           redis
           httpie
           neovim-remote
-          nodePackages.serverless
+          act
+          hasura-cli
+          # aws-vault
+        ];
+
+        home.sessionPath = [
+          "$HOME/.cargo/bin"
         ];
 
         programs.zsh = {
@@ -50,6 +56,7 @@
 
           enableCompletion = true;
           enableSyntaxHighlighting = true;
+          enableAutosuggestions = true;
 
           shellAliases = {
             v = "nvim --listen /tmp/nvimsocket";
@@ -60,6 +67,14 @@
             tf = "terraform";
             g = "git";
           };
+
+          initExtra = ''
+            export PATH="/Users/morganmccauley/.cargo/bin:$PATH"
+
+            if [ -d "./node_modules/.bin" ]; then
+                export PATH=$(pwd)/node_modules/.bin:$PATH
+            fi
+          '';
         };
 
         programs.zoxide = {
