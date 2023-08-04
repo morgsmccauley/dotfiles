@@ -5,8 +5,8 @@ return {
     -- move all variables to relevant directories?
     vim.cmd('Dotenv ' .. os.getenv('HOME') .. '/.dotfiles/.env')
 
-    vim.api.nvim_create_autocmd({ 'User' }, {
-      pattern = 'SessionLoadPost',
+    vim.api.nvim_create_autocmd({ 'VimEnter' }, {
+      pattern = '*',
       callback = function()
         pcall(
           function()
