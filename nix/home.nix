@@ -42,6 +42,7 @@
           neovim-remote
           act
           hasura-cli
+          zsh-fzf-tab
           # aws-vault
         ];
 
@@ -66,6 +67,20 @@
             n = "navi";
             tf = "terraform";
             g = "git";
+          };
+
+          plugins = [
+            {
+              name = "fzf-tab";
+              src = "${pkgs.zsh-fzf-tab}/share/fzf-tab";
+            }
+          ];
+
+          oh-my-zsh = {
+            enable = true;
+            plugins = [
+              "git"
+            ];
           };
 
           initExtra = ''
