@@ -1,6 +1,7 @@
 return {
   'b0o/incline.nvim',
   event = 'VeryLazy',
+  enabled = false,
   config = function()
     require('incline').setup({
       render = function(props)
