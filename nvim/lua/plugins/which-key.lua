@@ -178,21 +178,6 @@ return {
       end, 'Toggle output panel' },
     }
 
-    local session = {
-      name = '+session',
-      l = { function()
-        -- ensure telescope-ui-select is loaded
-        require('telescope')
-        require('session_manager').load_session(false)
-      end, 'List sessions' },
-      d = { function()
-        -- ensure telescope-ui-select is loaded
-        require('telescope')
-        require('session_manager').delete_session(false)
-      end, 'List sessions' },
-      s = { function() require('session_manager').save_current_session(false) end, 'Save sessions' }
-    }
-
     local mappings = {
       w = window,
       g = git,
@@ -201,7 +186,6 @@ return {
       c = code,
       d = debug,
       n = neotest,
-      s = session,
       ['*'] = { '<Cmd>Telescope grep_string<Cr>', 'Search for symbol globally' },
       ['/'] = { '<Cmd>Telescope live_grep<Cr>', 'Search globally' },
       [','] = { '<Cmd>TelescopeBuffers<Cr>', 'Switch buffer' },
