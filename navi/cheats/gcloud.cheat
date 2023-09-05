@@ -1,23 +1,25 @@
 % gcloud
 
 # SSH in to GCE instance
-gcloud --project <project> compute ssh <user>@<machine>
+gcloud --project <project> compute ssh ubuntu@<machine>
 
 # Describe compute instance
 gcloud --project <project> compute instances describe <machine>
 
 # Copy file from local to remote
-gcloud --project <project> compute scp <file> <user>@<machine>:<file>
-
-$ file: ls
+gcloud --project <project> compute scp <file> ubuntu@<machine>:<file>
 
 # Copy file from remote to local
-gcloud --project <project> compute scp <user>@<machine>:<remote_file> <local_file>
+gcloud --project <project> compute scp ubuntu@<machine>:<remote_file> <local_file>
 
 # Get secret value
 gcloud --project=<project> secrets versions access latest --secret=<secret> | xargs echo
 
+# Stream cloud build logs
+gcloud --project=<project> builds log --stream <build_id>
+
+$ file: ls
 $ project: gcloud projects list --- --headers 1 --column 1
+$ build_id: gcloud --project <project> builds list --- --headers 1 --column 1
 $ secret: gcloud --project <project> secrets list --- --headers 1 --column 1
 $ machine: gcloud --project <project> compute instances list --- --headers 1 --column 1
-$ user: echo "ubuntu\nmorganmccauley"
