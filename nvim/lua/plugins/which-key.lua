@@ -178,6 +178,19 @@ return {
       end, 'Toggle output panel' },
     }
 
+    local terminal = {
+      name = '+terminal',
+      v = { function()
+        require('toggleterm.terminal').Terminal:new({ hidden = true, direction = 'horizontal' }):toggle()
+      end, 'Open in vertical split' },
+      h = { function()
+        require('toggleterm.terminal').Terminal:new({ hidden = true, direction = 'vertical' }):toggle()
+      end, 'Open in horizontal split' },
+      t = { function()
+        require('toggleterm.terminal').Terminal:new({ hidden = true, direction = 'tab' }):toggle()
+      end, 'Open in new tab' },
+    }
+
     local mappings = {
       w = window,
       g = git,
@@ -186,6 +199,7 @@ return {
       c = code,
       d = debug,
       n = neotest,
+      t = terminal,
       ['*'] = { '<Cmd>Telescope grep_string<Cr>', 'Search for symbol globally' },
       ['/'] = { '<Cmd>Telescope live_grep<Cr>', 'Search globally' },
       [','] = { '<Cmd>TelescopeBuffers<Cr>', 'Switch buffer' },
