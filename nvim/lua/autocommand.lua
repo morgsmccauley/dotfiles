@@ -99,9 +99,9 @@ vim.api.nvim_create_autocmd({ 'DirChanged' }, {
     end
 })
 
-vim.api.nvim_create_autocmd({ 'TabClosed' }, {
-    command = 'tabprevious'
-})
+-- vim.api.nvim_create_autocmd({ 'TabClosed' }, {
+--     command = 'tabprevious'
+-- })
 
 vim.api.nvim_create_autocmd('BufWritePost', {
     pattern = { '.yabairc' },
