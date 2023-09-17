@@ -31,6 +31,7 @@
           google-cloud-sdk
           awscli2
           nodejs_18
+          yarn
           rustup
           monitorcontrol
           gh
@@ -42,12 +43,14 @@
           neovim-remote
           act
           hasura-cli
+          bun
           zsh-fzf-tab
           # aws-vault
         ];
 
         home.sessionPath = [
           "$HOME/.cargo/bin"
+          "$HOME/.npm-packages/bin"
         ];
 
         programs.zsh = {
