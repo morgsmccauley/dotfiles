@@ -18,6 +18,9 @@ gcloud --project=<project> secrets versions access latest --secret=<secret> | xa
 # Stream cloud build logs
 gcloud --project=<project> builds log --stream <build_id>
 
+# SSH tunnel through compute instance
+gcloud --project=<project> compute ssh ubuntu@<machine> -- -L <port>:<host>:<port> 
+
 $ file: ls
 $ project: gcloud projects list --- --headers 1 --column 1
 $ build_id: gcloud --project <project> builds list --- --headers 1 --column 1
