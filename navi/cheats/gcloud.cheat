@@ -21,8 +21,13 @@ gcloud --project=<project> builds log --stream <build_id>
 # SSH tunnel through compute instance
 gcloud --project=<project> compute ssh ubuntu@<machine> -- -L <port>:<host>:<port> 
 
+# List Cloud Run service revisions
+gcloud --project=<project> --region=<region> run revisions list --service=<run_service>
+
 $ file: ls
-$ project: gcloud projects list --- --headers 1 --column 1
+# $ project: gcloud projects list --- --headers 1 --column 1
+$ project: echo "pagoda-data-stack-dev\npagoda-data-stack-prod"
+$ run_service: gcloud --project=<project> run services list --- --headers 1 --column 2
 $ build_id: gcloud --project <project> builds list --- --headers 1 --column 1
 $ secret: gcloud --project <project> secrets list --- --headers 1 --column 1
 $ machine: gcloud --project <project> compute instances list --- --headers 1 --column 1
