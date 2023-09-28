@@ -24,8 +24,17 @@ return {
       disable_insert_on_commit = "auto",
       integrations = {
         diffview = true,
-        -- telescope = false
-      }
+        telescope = true
+      },
+      telescope_sorter = function()
+        return require("telescope").extensions.fzf.native_fzf_sorter()
+      end,
+      sections = {
+        recent = {
+          folded = false,
+          hidden = false,
+        },
+      },
     })
   end,
 }
