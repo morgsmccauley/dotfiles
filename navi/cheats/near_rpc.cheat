@@ -1,0 +1,7 @@
+% near RPC
+
+# View account at block height
+noglob http https://beta.rpc.mainnet.near.org jsonrpc=2.0 id=0 method=query params[request_type]=view_account params[block_id]:=<block_height> params[account_id]=<account_id>
+
+# View account now
+noglob http https://beta.rpc.mainnet.near.org jsonrpc=2.0 id=0 method=query params[request_type]=view_account params[finality]=final params[account_id]=<account_id>
