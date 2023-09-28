@@ -5,3 +5,6 @@ noglob http https://beta.rpc.mainnet.near.org jsonrpc=2.0 id=0 method=query para
 
 # View account now
 noglob http https://beta.rpc.mainnet.near.org jsonrpc=2.0 id=0 method=query params[request_type]=view_account params[finality]=final params[account_id]=<account_id>
+
+# View contract state
+noglob http https://archival-rpc.mainnet.near.org jsonrpc=2.0 id=0 method=query params[request_type]=view_state params[finality]=final params[account_id]=<account_id> params[prefix_base64]=
