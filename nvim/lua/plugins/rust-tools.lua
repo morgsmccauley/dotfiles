@@ -37,7 +37,9 @@ return {
         on_attach = function(client, bufnr)
           client.server_capabilities.semanticTokensProvider = false
 
-          vim.keymap.set('n', 'K', rt.hover_actions.hover_actions, { buffer = bufnr })
+          require('which-key').register({
+            ['<leader>ch'] = { rt.hover_actions.hover_actions, 'hover', buffer = bufnr }
+          });
 
           vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
             buffer = bufnr,

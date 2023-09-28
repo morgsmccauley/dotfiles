@@ -97,12 +97,17 @@ return {
       ['<Space>'] = { function()
         vim.fn.feedkeys(':Git ')
       end, ':Git' },
-      l = { '<Cmd>TelescopeCommits<Cr>', 'Log' },
+      l = {
+        function()
+          require('neogit').open({ 'log' })
+        end,
+        'Log'
+      },
       p = { '<Cmd>Telescope gh pull_request<Cr>', 'Pull requests' },
       i = { '<Cmd>Telescope gh issues<Cr>', 'Issues' },
-      b = { '<Cmd>TelescopeBranches<Cr>', 'Branches' },
+      b = { '<Cmd>Neogit branch<Cr>', 'Branches' },
       s = { '<Cmd>TelescopeStash<Cr>', 'Stash' },
-      c = { '<Cmd>Git commit<Cr>', 'Commit' },
+      c = { '<Cmd>Neogit commit<Cr>', 'Commit' },
       L = { '<Cmd>Telescope git_bcommits<Cr>', 'Buffer log' },
       B = { '<Cmd>Git blame<Cr>', 'Blame annotations' },
       g = { '<Cmd>Neogit<Cr>', 'Git status' },
