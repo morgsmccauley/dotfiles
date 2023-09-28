@@ -57,6 +57,6 @@ return {
     luasnip.filetype_extend('typescript', { 'javascript' })
     luasnip.filetype_extend('NeogitCommitMessage', { 'gitcommit' })
 
-    require('luasnip.loaders.from_lua').lazy_load({ paths = { './lua/plugins/luasnip/snippets' } })
+    require('luasnip.loaders.from_lua').lazy_load({ paths = { './lua/plugins/luasnip/snippets/lua' } })
   end,
 }
