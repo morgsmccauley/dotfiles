@@ -9,8 +9,8 @@ docker rmi <image_id>
 # Force clean none/dangling images
 docker rmi $(docker images --filter "dangling=true" -q --no-trunc) -f
 
-# Kill a container
-docker kill <container_id>
+# Stop a container
+docker stop <container_id>
 
 # Stop all containers
 docker stop $(docker ps -aq)
