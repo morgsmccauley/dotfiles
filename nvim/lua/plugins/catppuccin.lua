@@ -11,6 +11,7 @@ return {
             DiagnosticVirtualTextWarn = { bg = 'NONE' },
             DiagnosticVirtualTextInfo = { bg = 'NONE' },
             DiagnosticVirtualTextHint = { bg = 'NONE' },
+            IblScope = { link = 'IblIndent' },
           }
         end
       },
