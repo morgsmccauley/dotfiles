@@ -19,10 +19,10 @@ echo "<near> * (10 ^ 24)" | bc | sed 's/\..*$//'
 echo "scale=2; <yocto> / (10 ^ 24)" | bc
 
 # Unstake near
-<near>; near contract call-function as-transaction <validator> unstake json-args '{ "amount": "<yocto_near>" }' prepaid-gas '100.000 TeraGas' attached-deposit '0 NEAR' sign-as <account_id> network-config mainnet
+near contract call-function as-transaction <validator> unstake json-args '{ "amount": "<yocto_near>" }' prepaid-gas '100.000 TeraGas' attached-deposit '0 NEAR' sign-as <account_id> network-config mainnet
 
 # Withdraw near
-<near>; near contract call-function as-transaction <validator> withdraw json-args '{ "amount": "<yocto_near>" }' prepaid-gas '100.000 TeraGas' attached-deposit '0 NEAR' sign-as <account_id> network-config mainnet
+near contract call-function as-transaction <validator> withdraw json-args '{ "amount": "<yocto_near>" }' prepaid-gas '100.000 TeraGas' attached-deposit '0 NEAR' sign-as <account_id> network-config mainnet
 
 $ validator: http post https://rpc.mainnet.near.org jsonrpc=2.0 method=validators params:='[null]' id=dontcare | jq -r '.result.current_validators[].account_id'
-$ yocto_near: echo "<amount> * (10 ^ 24)" | bc | sed 's/\..*$//'
+$ yocto_near: echo "<near> * (10 ^ 24)" | bc | sed 's/\..*$//'
