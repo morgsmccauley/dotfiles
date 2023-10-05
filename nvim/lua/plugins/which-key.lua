@@ -108,7 +108,7 @@ return {
       b = { '<Cmd>Neogit branch<Cr>', 'Branches' },
       s = { '<Cmd>TelescopeStash<Cr>', 'Stash' },
       c = { '<Cmd>Neogit commit<Cr>', 'Commit' },
-      L = { '<Cmd>Telescope git_bcommits<Cr>', 'Buffer log' },
+      L = { '<Cmd>DiffviewFileHistory %<Cr>', 'Buffer commit history' },
       B = { '<Cmd>Git blame<Cr>', 'Blame annotations' },
       g = { '<Cmd>Neogit<Cr>', 'Git status' },
       h = git_hunk,
