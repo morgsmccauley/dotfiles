@@ -210,7 +210,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/run/current-system/sw/bin/yabai -m window --focus west"
+                                        "shell_command": "/opt/homebrew/bin/yabai -m window --focus west"
                                     }
                                 ]
                             },
@@ -229,7 +229,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/run/current-system/sw/bin/yabai -m window --focus east"
+                                        "shell_command": "/opt/homebrew/bin/yabai -m window --focus east"
                                     }
                                 ]
                             },
@@ -248,7 +248,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/run/current-system/sw/bin/yabai -m window --focus south"
+                                        "shell_command": "/opt/homebrew/bin/yabai -m window --focus south"
                                     }
                                 ]
                             },
@@ -267,7 +267,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/run/current-system/sw/bin/yabai -m window --focus north"
+                                        "shell_command": "/opt/homebrew/bin/yabai -m window --focus north"
                                     }
                                 ]
                             }
@@ -291,7 +291,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/run/current-system/sw/bin/yabai -m window --swap west"
+                                        "shell_command": "/opt/homebrew/bin/yabai -m window --swap west"
                                     }
                                 ]
                             },
@@ -310,7 +310,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/run/current-system/sw/bin/yabai -m window --swap east"
+                                        "shell_command": "/opt/homebrew/bin/yabai -m window --swap east"
                                     }
                                 ]
                             },
@@ -329,7 +329,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/run/current-system/sw/bin/yabai -m window --swap north"
+                                        "shell_command": "/opt/homebrew/bin/yabai -m window --swap north"
                                     }
                                 ]
                             },
@@ -348,7 +348,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/run/current-system/sw/bin/yabai -m window --swap south"
+                                        "shell_command": "/opt/homebrew/bin/yabai -m window --swap south"
                                     }
                                 ]
                             }
@@ -373,7 +373,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "PATH=/run/current-system/sw/bin; yabai -m window --toggle zoom-fullscreen"
+                                        "shell_command": "PATH=/opt/homebrew/bin/; yabai -m window --toggle zoom-fullscreen"
                                     }
                                 ]
                             }
@@ -397,7 +397,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "PATH=/run/current-system/sw/bin; yabai -m window --focus prev"
+                                        "shell_command": "PATH=/opt/homebrew/bin/; yabai -m window --focus prev"
                                     }
                                 ]
                             },
@@ -416,7 +416,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "PATH=/run/current-system/sw/bin; yabai -m window --focus next"
+                                        "shell_command": "PATH=/opt/homebrew/bin/; yabai -m window --focus next"
                                     }
                                 ]
                             }
@@ -440,7 +440,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "PATH=/run/current-system/sw/bin; yabai -m window --toggle split"
+                                        "shell_command": "PATH=/opt/homebrew/bin/; yabai -m window --toggle split"
                                     }
                                 ]
                             }
@@ -464,7 +464,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "export PATH=/run/current-system/sw/bin:$HOME/.nix-profile/bin; yabai -m window --focus $(yabai -m query --windows | jq --argjson next_space_index \"$(($(yabai -m query --spaces --space | jq '.index') - 1))\" 'first(.[] | select(.space == $next_space_index)).id')"
+                                        "shell_command": "export PATH=/opt/homebrew/bin/:$HOME/.nix-profile/bin; yabai -m window --focus $(yabai -m query --windows | jq --argjson next_space_index \"$(($(yabai -m query --spaces --space | jq '.index') - 1))\" 'first(.[] | select(.space == $next_space_index)).id')"
                                     }
                                 ]
                             },
@@ -483,7 +483,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "export PATH=/run/current-system/sw/bin:$HOME/.nix-profile/bin; yabai -m window --focus $(yabai -m query --windows | jq --argjson next_space_index \"$(($(yabai -m query --spaces --space | jq '.index') + 1))\" 'first(.[] | select(.space == $next_space_index)).id')"
+                                        "shell_command": "export PATH=/opt/homebrew/bin/:$HOME/.nix-profile/bin; yabai -m window --focus $(yabai -m query --windows | jq --argjson next_space_index \"$(($(yabai -m query --spaces --space | jq '.index') + 1))\" 'first(.[] | select(.space == $next_space_index)).id')"
                                     }
                                 ]
                             }
@@ -507,7 +507,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/run/current-system/sw/bin/yabai -m space --balance"
+                                        "shell_command": "/opt/homebrew/bin/yabai -m space --balance"
                                     }
                                 ]
                             },
@@ -526,7 +526,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/run/current-system/sw/bin/yabai -m window --ratio abs:0.3333"
+                                        "shell_command": "/opt/homebrew/bin/yabai -m window --ratio abs:0.3333"
                                     }
                                 ]
                             },
@@ -545,7 +545,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/run/current-system/sw/bin/yabai -m window --ratio abs:0.6666"
+                                        "shell_command": "/opt/homebrew/bin/yabai -m window --ratio abs:0.6666"
                                     }
                                 ]
                             }

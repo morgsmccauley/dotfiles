@@ -8,6 +8,8 @@
     };
     taps = [
       "homebrew/cask"
+      "homebrew/services"
+      "koekeishiya/formulae"
     ];
     caskArgs = {
       appdir = "/Applications";
@@ -15,6 +17,7 @@
     };
     brews = [
       "docker-compose"
+      "koekeishiya/formulae/yabai"
     ];
     casks = [
       "raycast"

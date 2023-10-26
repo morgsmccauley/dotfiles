@@ -7,46 +7,46 @@
     ./homebrew.nix
   ];
 
-  services.yabai = {
-    enable = true;
-
-    # where is this placed?
-    config = {
-      layout = "bsp";
-
-      top_padding = 25;
-      bottom_padding = 25;
-      left_padding = 25;
-      right_padding = 25;
-      window_gap = 25;
-
-      window_border = "on";
-      window_border_hidpi = "on";
-      window_border_blur = "off";
-
-      active_window_border_color = "0xFFE55C9C";
-      normal_window_border_color = "0xe55c9c";
-    };
-
-    extraConfig = ''
-      yabai -m rule --add app="^System Preferences$" sticky=on manage=off
-      yabai -m rule --add app="^Finder$" sticky=on manage=off
-      yabai -m rule --add app="^System Information$" sticky=on manage=off
-      yabai -m rule --add app="^Activity Monitor$" sticky=on manage=off
-      yabai -m rule --add app="^Messages$" sticky=on manage=off
-      yabai -m rule --add app="^Karabiner-Elements$" sticky=on manage=off
-      yabai -m rule --add app="^Karabiner-EventViewer$" sticky=on manage=off
-      yabai -m rule --add app="^Preview$" sticky=on manage=off
-      yabai -m rule --add app="^Keychain Access$" sticky=on manage=off
-      yabai -m rule --add app="^BetterTouchTool$" sticky=on manage=off
-      yabai -m rule --add app="^Contexts$" sticky=on manage=off
-      yabai -m rule --add app="^Music$" sticky=on manage=off
-      yabai -m rule --add app="^Home$" sticky=on manage=off
-      yabai -m rule --add app="^Notes$" sticky=on manage=off
-      yabai -m rule --add app="^Docker Desktop$" sticky=on manage=off
-      yabai -m rule --add app="^Reminders$" sticky=on manage=off
-    '';
-  };
+  # services.yabai = {
+  #   enable = false;
+  #
+  #   # where is this placed?
+  #   config = {
+  #     layout = "bsp";
+  #
+  #     top_padding = 25;
+  #     bottom_padding = 25;
+  #     left_padding = 25;
+  #     right_padding = 25;
+  #     window_gap = 25;
+  #
+  #     window_border = "on";
+  #     window_border_hidpi = "on";
+  #     window_border_blur = "off";
+  #
+  #     active_window_border_color = "0xFFE55C9C";
+  #     normal_window_border_color = "0xe55c9c";
+  #   };
+  #
+  #   extraConfig = ''
+  #     yabai -m rule --add app="^System Settings$" sticky=on manage=off
+  #     yabai -m rule --add app="^Finder$" sticky=on manage=off
+  #     yabai -m rule --add app="^System Information$" sticky=on manage=off
+  #     yabai -m rule --add app="^Activity Monitor$" sticky=on manage=off
+  #     yabai -m rule --add app="^Messages$" sticky=on manage=off
+  #     yabai -m rule --add app="^Karabiner-Elements$" sticky=on manage=off
+  #     yabai -m rule --add app="^Karabiner-EventViewer$" sticky=on manage=off
+  #     yabai -m rule --add app="^Preview$" sticky=on manage=off
+  #     yabai -m rule --add app="^Keychain Access$" sticky=on manage=off
+  #     yabai -m rule --add app="^BetterTouchTool$" sticky=on manage=off
+  #     yabai -m rule --add app="^Contexts$" sticky=on manage=off
+  #     yabai -m rule --add app="^Music$" sticky=on manage=off
+  #     yabai -m rule --add app="^Home$" sticky=on manage=off
+  #     yabai -m rule --add app="^Notes$" sticky=on manage=off
+  #     yabai -m rule --add app="^Docker Desktop$" sticky=on manage=off
+  #     yabai -m rule --add app="^Reminders$" sticky=on manage=off
+  #   '';
+  # };
 
   services.karabiner-elements.enable = true;
 
