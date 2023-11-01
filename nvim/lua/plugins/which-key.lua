@@ -104,7 +104,7 @@ return {
         'Log'
       },
       p = { '<Cmd>Telescope gh pull_request<Cr>', 'Pull requests' },
-      i = { '<Cmd>Telescope gh issues<Cr>', 'Issues' },
+      i = { '<Cmd>Telescope gh issues assignee=@me search=-label:Epic<Cr>', 'Issues' },
       b = { '<Cmd>Neogit branch<Cr>', 'Branches' },
       s = { '<Cmd>TelescopeStash<Cr>', 'Stash' },
       c = { '<Cmd>Neogit commit<Cr>', 'Commit' },
