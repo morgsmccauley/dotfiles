@@ -123,6 +123,9 @@
             init = {
               defaultBranch = "main";
             };
+            push = {
+              autoSetupRemote = true;
+            };
           };
           ignores = [];
         };
