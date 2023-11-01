@@ -34,7 +34,6 @@
           yarn
           rustup
           monitorcontrol
-          gh
           starship
           terraform
           postgresql_14

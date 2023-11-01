@@ -10,6 +10,7 @@
       "homebrew/cask"
       "homebrew/services"
       "koekeishiya/formulae"
+      "empeje/bos-cli"
     ];
     caskArgs = {
       appdir = "/Applications";
@@ -18,6 +19,8 @@
     brews = [
       "docker-compose"
       "koekeishiya/formulae/yabai"
+      "bos-loader"
+      "gh"
     ];
     casks = [
       "raycast"
