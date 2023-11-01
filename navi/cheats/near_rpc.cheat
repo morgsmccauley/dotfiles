@@ -8,3 +8,9 @@ noglob http https://beta.rpc.mainnet.near.org jsonrpc=2.0 id=0 method=query para
 
 # View contract state
 noglob http https://archival-rpc.mainnet.near.org jsonrpc=2.0 id=0 method=query params[request_type]=view_state params[finality]=final params[account_id]=<account_id> params[prefix_base64]=
+
+# View chunk
+noglob http https://beta.rpc.mainnet.near.org jsonrpc=2.0 id=0 method=chunk params[block_id]:=<block_height> params[shard_id]:=<shard_id>
+
+# View block
+noglob http https://beta.rpc.mainnet.near.org jsonrpc=2.0 id=0 method=block params[block_id]:=<block_height>
