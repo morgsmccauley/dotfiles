@@ -15,5 +15,14 @@ return {
         )
       end
     })
+
+    -- only new/updated environment variables will be loaded
+    -- `Dotenv` will only load the file as is, and not unload removed variables
+    vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
+      pattern = { '.env' },
+      callback = function()
+        vim.cmd('verbose Dotenv ' .. vim.fn.expand('<afile>'))
+      end
+    })
   end
 }
