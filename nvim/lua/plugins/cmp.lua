@@ -74,10 +74,6 @@ return {
   end,
   config = function()
     local cmp = require 'cmp'
-    local luasnip = require 'luasnip'
-    local lspkind = require 'lspkind'
-
-    require('luasnip.loaders.from_vscode').lazy_load()
 
     cmp.setup {
       --[[ completion = {
@@ -85,7 +81,7 @@ return {
         }, ]]
       snippet = {
         expand = function(args)
-          luasnip.lsp_expand(args.body)
+          require('luasnip').lsp_expand(args.body)
         end,
       },
       mapping = {
@@ -122,7 +118,7 @@ return {
         { name = 'buffer',  max_item_count = 10 },
       },
       formatting = {
-        format = lspkind.cmp_format({
+        format = require('lspkind').cmp_format({
           mode = 'symbol_text',
           symbol_map = { Copilot = '' }
         })

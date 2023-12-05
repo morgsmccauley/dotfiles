@@ -57,6 +57,7 @@ return {
     luasnip.filetype_extend('typescript', { 'javascript' })
     luasnip.filetype_extend('NeogitCommitMessage', { 'gitcommit' })
 
+    require('luasnip.loaders.from_vscode').lazy_load()
     require('luasnip.loaders.from_lua').lazy_load({ paths = { './lua/plugins/luasnip/snippets/lua' } })
     require('luasnip.loaders.from_snipmate').lazy_load({ paths = { './lua/plugins/luasnip/snippets/snipmate' } })
   end,
