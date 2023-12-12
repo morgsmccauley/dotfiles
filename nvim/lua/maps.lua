@@ -55,9 +55,9 @@ nmap('gi', '<Cmd>Telescope lsp_implementations<Cr>', { silent = true })
 vim.keymap.set('n', 'gr', function()
   require('telescope.builtin').lsp_references({
     show_line = false,
-    include_current_line = true
   })
 end, { silent = true })
+vim.keymap.set('n', 'gs', '<Cmd>lua vim.lsp.buf.signature_help()<Cr>', { silent = true })
 
 vim.keymap.set({ 'n', 'v' }, '<C-e>', '5<C-e>', { noremap = true, silent = true })
 vim.keymap.set({ 'n', 'v' }, '<C-y>', '5<C-y>', { noremap = true, silent = true })
