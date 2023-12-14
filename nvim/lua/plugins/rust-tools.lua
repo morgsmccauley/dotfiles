@@ -31,11 +31,16 @@ return {
             checkOnSave = {
               command = 'clippy',
               extraArgs = { '--no-deps' }
+            },
+            cargo = {
+              buildScripts = {
+                enable = true
+              }
             }
           }
         },
         on_attach = function(client, bufnr)
-          client.server_capabilities.semanticTokensProvider = false
+          -- client.server_capabilities.semanticTokensProvider = false
 
           require('which-key').register({
             ['<leader>ch'] = { rt.hover_actions.hover_actions, 'hover', buffer = bufnr }
