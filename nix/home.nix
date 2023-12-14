@@ -91,6 +91,8 @@
             if [ -d "./node_modules/.bin" ]; then
                 export PATH=$(pwd)/node_modules/.bin:$PATH
             fi
+
+            export PATH="/opt/homebrew/bin:$PATH"
           '';
         };
 
