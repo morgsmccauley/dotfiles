@@ -86,10 +86,11 @@ return {
 
     local git_diff = {
       name = '+diff',
-      o = { '<Cmd>DiffviewOpen<Cr>', 'Open' },
-      b = { '<Cmd>DiffviewOpen master...HEAD<Cr>', 'Open (branch)' },
+      i = { '<Cmd>DiffviewOpen<Cr>', 'Index' },
+      b = { '<Cmd>DiffviewOpen main...HEAD<Cr>', 'Branch' },
       c = { '<Cmd>DiffviewClose<Cr>', 'Close' },
-      f = { '<Cmd>DiffviewToggleFiles<Cr>', 'Toggle files pane' }
+      f = { '<Cmd>DiffviewToggleFiles<Cr>', 'Toggle files pane' },
+      h = { '<Cmd>DiffviewFileHistory %<Cr>', 'File history' },
     }
 
     local git = {
@@ -226,7 +227,12 @@ return {
       ['*'] = { '<Cmd>Telescope grep_string<Cr>', 'Search for symbol globally' },
       ['/'] = { '<Cmd>Telescope live_grep<Cr>', 'Search globally' },
       [','] = { '<Cmd>TelescopeBuffers<Cr>', 'Switch buffer' },
-      ['.'] = { '<Cmd>Telescope git_files use_git_root=false<Cr>', 'Find file' },
+      ['.'] = {
+        function()
+          require('telescope.builtin').git_files({ use_git_root = false, show_untracked = true })
+        end,
+        'Find file'
+      },
       ['\\'] = { '<Cmd>Telescope current_buffer_fuzzy_find<Cr>', 'Fuzzy find current buffer' },
       ['\''] = { '<Cmd>Telescope marks<Cr>', 'List marks' },
       [';'] = { '<Cmd>Telescope command_history<Cr>', 'List command history' },
