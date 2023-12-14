@@ -99,13 +99,9 @@ vim.api.nvim_create_autocmd({ 'DirChanged' }, {
     end
 })
 
--- vim.api.nvim_create_autocmd({ 'TabClosed' }, {
---     command = 'tabprevious'
--- })
-
 vim.api.nvim_create_autocmd('BufWritePost', {
     pattern = { '.yabairc' },
-    command = '!launchctl kickstart -k gui/$UID/org.nixos.yabai',
+    command = '!yabai --restart-service',
 })
 
 vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
