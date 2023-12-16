@@ -47,10 +47,11 @@
           # aws-vault
         ];
 
-        home.sessionPath = [
-          "$HOME/.cargo/bin"
-          "$HOME/.npm-packages/bin"
-        ];
+        # FIX Doesn't seem to work
+        # home.sessionPath = [
+        #   "$HOME/.npm-packages/bin"
+        #   "/opt/homebrew/bin"
+        # ];
 
         programs.zsh = {
           enable = true;

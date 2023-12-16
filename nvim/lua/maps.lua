@@ -68,8 +68,10 @@ nmap('cl', 'cV:LeapLine<Cr>', { noremap = true, silent = true })
 
 cmap('<C-a>', '<C-b>', { noremap = true })
 
-vmap('J', ':m \'>+1<Cr>gv=gv', { noremap = true })
-vmap('K', ':m \'<-2<Cr>gv=gv', { noremap = true })
+nmap('J', 'mzJ`z', { noremap = true })
+
+-- vmap('J', ':m \'>+1<Cr>gv=gv', { noremap = true })
+-- vmap('K', ':m \'<-2<Cr>gv=gv', { noremap = true })
 
 vim.keymap.set('c', '<C-r>', function()
   return '<Plug>(TelescopeFuzzyCommandSearch)'
