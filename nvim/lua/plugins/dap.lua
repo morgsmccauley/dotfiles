@@ -1,3 +1,5 @@
+local Job = require('plenary.job')
+
 return {
   'mfussenegger/nvim-dap',
   dependencies = {
@@ -60,19 +62,26 @@ return {
           return arguments
         end,
         program = function()
-          return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+          local executables = Job:new({
+            command = 'find',
+            args = {
+              'target',
+              '-maxdepth', '2',
+              '-type', 'f',
+              '-perm', '+111'
+            },
+          }):sync()
+          return require('dap.ui').pick_one(executables, 'Executables', function(ex) return ex end)
         end,
       },
     }
 
     dap.configurations.javascript = {
       {
-        name = 'Launch node process',
+        name = 'Current file',
         type = 'pwa-node',
         request = 'launch',
-        program = function()
-          return vim.fn.input('Path to entry point: ')
-        end,
+        program = '${file}',
         cwd = vim.fn.getcwd(),
         sourceMaps = true,
         protocol = 'inspector',
