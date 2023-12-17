@@ -106,6 +106,21 @@ return {
           { buffer = t.bufnr }
         )
 
+        vim.keymap.set(
+          'n',
+          '<C-p>',
+          '?^❯<Cr>:noh<Cr>',
+          { buffer = t.bufnr }
+        )
+
+        vim.keymap.set(
+          'n',
+          '<C-n>',
+          '/^❯<Cr>:noh<Cr>',
+          { buffer = t.bufnr }
+        )
+
+
         vim.api.nvim_buf_set_keymap(t.bufnr, 't', '<C-q>', [[<C-\><C-n><Cmd>q!<Cr>]], { noremap = true })
 
         -- perform relevant action rather than sending keycodes
