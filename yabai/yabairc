@@ -8,7 +8,7 @@ yabai -m config left_padding   25
 yabai -m config right_padding  25
 yabai -m config window_gap     25
 
-yabai -m rule --add app="^System Preferences$" sticky=on manage=off
+yabai -m rule --add app="^System Settings$" sticky=on manage=off
 yabai -m rule --add app="^Finder$" sticky=on manage=off
 yabai -m rule --add app="^System Information$" sticky=on manage=off
 yabai -m rule --add app="^Activity Monitor$" sticky=on manage=off
