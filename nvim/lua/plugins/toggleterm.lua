@@ -109,14 +109,14 @@ return {
         vim.keymap.set(
           'n',
           '<C-p>',
-          '?^❯<Cr>:noh<Cr>',
+          '?^❯<Cr>:noh | echo ""<Cr>',
           { buffer = t.bufnr }
         )
 
         vim.keymap.set(
           'n',
           '<C-n>',
-          '/^❯<Cr>:noh<Cr>',
+          '/^❯<Cr>:noh | echo ""<Cr>',
           { buffer = t.bufnr }
         )
 
