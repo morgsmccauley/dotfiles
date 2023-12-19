@@ -23,6 +23,7 @@
       "gh"
       "protobuf"
       "grpcurl"
+      "go"
     ];
     casks = [
       "raycast"
@@ -30,7 +31,6 @@
       "obsidian"
       "1password-cli"
       "telegram"
-      "wireshark"
     ];
     masApps = {
       "Shortery" = 1594183810;
