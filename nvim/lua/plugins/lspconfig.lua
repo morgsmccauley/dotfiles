@@ -116,5 +116,8 @@ return {
     }
 
     lspconfig.rnix.setup {}
+
+
+    lspconfig.bufls.setup {}
   end
 }
