@@ -153,7 +153,8 @@ return {
       D = { '<Cmd>Telescope diagnostics<Cr>', 'Workspace diagnostics' },
       l = { vim.diagnostic.open_float, 'Show diagnostics for current line' },
       f = { vim.lsp.buf.format, 'Format' },
-      h = { vim.lsp.buf.hover, 'Hover' }
+      h = { vim.lsp.buf.hover, 'Hover' },
+      s = { vim.lsp.buf.signature_help, 'Signature help' }
     }
 
     local neotest = {
