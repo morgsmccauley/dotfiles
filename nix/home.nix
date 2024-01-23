@@ -24,7 +24,6 @@
           jq
           yq
           ripgrep
-          neovim
           kitty
           navi
           zoxide

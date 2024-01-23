@@ -7,7 +7,6 @@
       cleanup = "uninstall";
     };
     taps = [
-      "homebrew/cask"
       "homebrew/services"
       "koekeishiya/formulae"
       "empeje/bos-cli"
@@ -24,6 +23,7 @@
       "protobuf"
       "grpcurl"
       "go"
+      "neovim"
     ];
     casks = [
       "raycast"
