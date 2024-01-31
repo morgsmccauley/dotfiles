@@ -6,6 +6,9 @@ gcloud --project <project> compute ssh ubuntu@<machine>
 # Describe compute instance
 gcloud --project <project> compute instances describe <machine>
 
+# Reset compute instance
+gcloud --project <project> compute instances reset <machine>
+
 # Copy file from local to remote
 gcloud --project <project> compute scp <file> ubuntu@<machine>:<file>
 
