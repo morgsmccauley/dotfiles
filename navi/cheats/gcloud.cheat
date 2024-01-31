@@ -28,6 +28,6 @@ $ file: ls
 # $ project: gcloud projects list --- --headers 1 --column 1
 $ project: echo "pagoda-data-stack-dev\npagoda-data-stack-prod"
 $ run_service: gcloud --project=<project> run services list --- --headers 1 --column 2
-$ build_id: gcloud --project <project> builds list --- --headers 1 --column 1
+$ build_id: gcloud --project pagoda-data-stack-dev builds list --ongoing --format="table(id, substitutions.TRIGGER_NAME, status)" --- --headers 1 --column 1
 $ secret: gcloud --project <project> secrets list --- --headers 1 --column 1
 $ machine: gcloud --project <project> compute instances list --- --headers 1 --column 1
