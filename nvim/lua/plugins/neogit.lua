@@ -24,6 +24,7 @@ return {
       disable_insert_on_commit = "auto",
       fetch_after_checkout = true,
       remember_settings = false,
+      console_timeout = 10000,
       auto_show_console = false,
       integrations = {
         diffview = true,
