@@ -38,3 +38,4 @@ $ build_id: gcloud --project=<project> builds list --ongoing --format="table(id,
 $ trigger_id: gcloud --project=<project> builds triggers list --format="table(name, github.owner, github.name, github.push.branch)" --- --headers 1 --column 1
 $ secret: gcloud --project <project> secrets list --- --headers 1 --column 1
 $ machine: gcloud --project <project> compute instances list --- --headers 1 --column 1
+$ branch: git branch | awk '{print $NF}' | sed 's/^\*//'
