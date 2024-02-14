@@ -15,18 +15,28 @@ return {
     vim.keymap.set(
       'n',
       '[h',
-      function()
-        require('gitsigns').prev_hunk()
-      end,
+      require('gitsigns').prev_hunk,
       { noremap = true }
     )
 
     vim.keymap.set(
       'n',
       ']h',
-      function()
-        require('gitsigns').next_hunk()
-      end,
+      require('gitsigns').next_hunk,
+      { noremap = true }
+    )
+
+    vim.keymap.set(
+      'n',
+      'vah',
+      require('gitsigns').select_hunk,
+      { noremap = true }
+    )
+
+    vim.keymap.set(
+      'n',
+      'dah',
+      require('gitsigns').reset_hunk,
       { noremap = true }
     )
   end
