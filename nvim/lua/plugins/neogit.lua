@@ -36,7 +36,12 @@ return {
         finder = {
           ["<c-j>"] = "Next",
           ["<c-k>"] = "Previous"
-        }
+        },
+        rebase_editor = {
+          ["<cr>"] = "OpenCommit",
+          ["<c-c><c-c>"] = "Submit",
+          ["<c-c><c-k>"] = "Abort",
+        },
       },
       sections = {
         recent = {
