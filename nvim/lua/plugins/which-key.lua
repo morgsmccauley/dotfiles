@@ -26,7 +26,7 @@ return {
       l = { '<Cmd>luafile %<Cr>', 'Source selected lua file' },
       v = { '<Cmd>vsp<Cr>', 'Split window vertically' },
       ['='] = { '<C-w>=', 'Balance windows' },
-      ['-'] = { '<C-w>|', 'Maximise window' }
+      m = { '<C-w>|', 'Maximise window' }
     }
 
     local git_remote = {
