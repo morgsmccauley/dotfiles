@@ -180,7 +180,7 @@
             italic_font = "Hack Nerd Font Italic";
             bold_italic_font = "Hack Nerd Font Bold Italic";
 
-            font_size = "13.45";
+            font_size = "14";
 
             disable_ligatures = "always";
 
@@ -198,7 +198,7 @@
 
             shell_integration = "enabled no-cursor";
 
-            macos_thinken_font = "0.15";
+            macos_thinken_font = "0.25";
 
           };
 
