@@ -28,7 +28,10 @@ gcloud --project=<project> builds triggers run <trigger_id> --branch=<branch>
 gcloud --project=<project> compute ssh ubuntu@<machine> -- -L <port>:<host>:<port> 
 
 # List Cloud Run service revisions
-: <run_service>; gcloud --project=<project> run revisions list --service=<run_service_name> --region=<run_service_region>
+: <project>;: <run_service>; gcloud --project=<project> run revisions list --service=<run_service_name> --region=<run_service_region>
+
+# Tail Cloud Run logs
+: <project>;: <run_service>; gcloud --project=<project> beta run services logs tail <run_service_name> --region=<run_service_region>
 
 $ file: ls
 # $ project: gcloud projects list --- --headers 1 --column 1
