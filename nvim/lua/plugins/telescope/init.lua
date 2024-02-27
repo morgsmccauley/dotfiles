@@ -6,7 +6,7 @@ return {
       'nvim-telescope/telescope-ui-select.nvim',
     },
     {
-      'nvim-telescope/telescope-github.nvim',
+      'morgsmccauley/telescope-github.nvim',
     },
     {
       'nvim-telescope/telescope-fzf-native.nvim',
