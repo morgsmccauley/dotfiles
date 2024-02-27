@@ -10,6 +10,7 @@
       "homebrew/services"
       "koekeishiya/formulae"
       "empeje/bos-cli"
+      "hashicorp/tap"
     ];
     caskArgs = {
       appdir = "/Applications";
@@ -18,12 +19,12 @@
     brews = [
       "docker-compose"
       "koekeishiya/formulae/yabai"
-      "bos-loader"
       "gh"
       "protobuf"
       "grpcurl"
       "go"
       "neovim"
+      "hashicorp/tap/terraform"
     ];
     casks = [
       "raycast"

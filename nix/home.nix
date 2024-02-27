@@ -34,7 +34,7 @@
           rustup
           monitorcontrol
           starship
-          terraform
+          # terraform
           postgresql_14
           redis
           httpie
@@ -118,6 +118,9 @@
             core = {
               editor = "nvim";
               pager = "less";
+              # messes with starship
+              # fsmonitor = true;
+              # untrackedcache = true;
             };
             github = {
               user = "morgsmccauley";
