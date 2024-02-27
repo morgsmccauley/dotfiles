@@ -32,6 +32,7 @@
       "obsidian"
       "1password-cli"
       "telegram"
+      "google-cloud-sdk"
     ];
     masApps = {
       "Shortery" = 1594183810;

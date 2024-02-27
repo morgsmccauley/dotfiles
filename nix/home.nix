@@ -27,7 +27,6 @@
           kitty
           navi
           zoxide
-          google-cloud-sdk
           awscli2
           nodejs_18
           yarn
