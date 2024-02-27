@@ -28,12 +28,16 @@ gcloud --project=<project> builds triggers run <trigger_id> --branch=<branch>
 gcloud --project=<project> compute ssh ubuntu@<machine> -- -L <port>:<host>:<port> 
 
 # List Cloud Run service revisions
-gcloud --project=<project> --region=<region> run revisions list --service=<run_service>
+: <run_service>; gcloud --project=<project> run revisions list --service=<run_service_name> --region=<run_service_region>
 
 $ file: ls
 # $ project: gcloud projects list --- --headers 1 --column 1
 $ project: echo "pagoda-data-stack-dev\npagoda-data-stack-prod"
-$ run_service: gcloud --project=<project> run services list --- --headers 1 --column 2
+
+$ run_service: gcloud --project=<project> run services list --- --headers 1
+$ run_service_name: echo $run_service | awk '{$1=$1; print $2}'
+$ run_service_region: echo $run_service | awk '{$1=$1; print $3}'
+
 $ build_id: gcloud --project=<project> builds list --format="table(id, substitutions.TRIGGER_NAME, status)" --- --headers 1 --column 1
 $ trigger_id: gcloud --project=<project> builds triggers list --format="table(name, github.owner, github.name, github.push.branch)" --- --headers 1 --column 1
 $ secret: gcloud --project <project> secrets list --- --headers 1 --column 1
