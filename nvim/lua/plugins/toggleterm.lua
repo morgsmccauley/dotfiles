@@ -59,6 +59,18 @@ return {
 
         vim.keymap.set(
           't',
+          '<Esc>',
+          function()
+            if vim.fn.system("ps -o state= -o comm= | grep -iE '^[^TXZ ]+ +(\\S+\\/)?(tokio-console)$'") ~= '' then
+              return [[<Esc>]]
+            else
+              return [[<C-\><C-n>]]
+            end
+          end,
+          { buffer = t.bufnr, expr = true }
+        )
+        vim.keymap.set(
+          't',
           '<C-j>',
           function()
             if isInteractive() then
