@@ -149,12 +149,13 @@ return {
       -- c = { ':Telescope commands<Cr>', 'Commands' },
       a = { vim.lsp.buf.code_action, 'Code actions' },
       r = { vim.lsp.buf.rename, 'Rename' },
-      d = { '<Cmd>Telescope diagnostics bufnr=0<Cr>', 'File diagnostics' },
-      D = { '<Cmd>Telescope diagnostics<Cr>', 'Workspace diagnostics' },
+      d = { '<Cmd>Trouble diagnostics toggle filter.buf=0<Cr>', 'File diagnostics' },
+      D = { '<Cmd>Trouble diagnostics toggle<Cr>', 'Workspace diagnostics' },
+      s = { '<Cmd>Trouble symbols toggle<Cr>', 'Code symbols' },
       l = { vim.diagnostic.open_float, 'Show diagnostics for current line' },
       f = { vim.lsp.buf.format, 'Format' },
       h = { vim.lsp.buf.hover, 'Hover' },
-      s = { vim.lsp.buf.signature_help, 'Signature help' }
+      g = { vim.lsp.buf.signature_help, 'Signature help' }
     }
 
     local neotest = {
