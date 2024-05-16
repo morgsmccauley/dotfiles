@@ -208,8 +208,9 @@ return {
       d = debug,
       n = neotest,
       t = terminal,
+      ['/'] = { '<Cmd>Telescope current_buffer_fuzzy_find<Cr>', 'Search buffer' },
       ['*'] = { '<Cmd>Telescope grep_string<Cr>', 'Search for symbol globally' },
-      ['/'] = { '<Cmd>Telescope live_grep<Cr>', 'Search globally' },
+      ['?'] = { '<Cmd>Telescope live_grep<Cr>', 'Search globally' },
       [','] = { '<Cmd>TelescopeBuffers<Cr>', 'Switch buffer' },
       ['.'] = {
         function()
@@ -217,10 +218,10 @@ return {
         end,
         'Find file'
       },
-      ['\\'] = { '<Cmd>Telescope current_buffer_fuzzy_find<Cr>', 'Fuzzy find current buffer' },
       ['\''] = { '<Cmd>Telescope marks<Cr>', 'List marks' },
       [';'] = { '<Cmd>Telescope command_history<Cr>', 'List command history' },
-      ['?'] = { '<Cmd>Telescope help_tags<Cr>', 'List commands' },
+      -- ['?'] = { '<Cmd>Telescope help_tags<Cr>', 'List commands' },
+      ['-'] = { '<Cmd>Oil<Cr>', 'File browser' }
     }
 
     local opts = {
