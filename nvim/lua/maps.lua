@@ -81,3 +81,5 @@ vim.keymap.set('n', ';', ':', { noremap = true })
 
 vim.keymap.set('n', '<C-.>', '<Cmd>tabnext<Cr>', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-,>', '<Cmd>tabprev<Cr>', { noremap = true, silent = true })
+
+vim.keymap.set('n', '<C-a>', 'ggVG', { noremap = true, silent = true })
