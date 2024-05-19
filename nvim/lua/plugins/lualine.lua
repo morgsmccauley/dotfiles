@@ -4,23 +4,6 @@ return {
     local lualine = require('lualine')
     local theme = require('lualine/themes/catppuccin')
 
-    local function lsp_progress(_)
-      local Lsp = vim.lsp.util.get_progress_messages()[1]
-
-      if not Lsp then
-        return ''
-      end
-
-      local msg = Lsp.message or ''
-      local title = Lsp.title or ''
-
-      return string.format(
-        '%s %s',
-        title,
-        msg
-      )
-    end
-
     local function lsp_name(msg)
       msg = msg or ''
       local buf_clients = vim.lsp.get_active_clients()
@@ -120,10 +103,10 @@ return {
               hint = ' ',
             }
           },
-          {
-            lsp_progress,
-            color = { fg = theme.inactive.c.fg },
-          },
+          -- {
+          --   -- vim.lsp.status,
+          --   color = { fg = theme.inactive.c.fg },
+          -- },
           {
             lsp_name,
             icon = { ' ' },
