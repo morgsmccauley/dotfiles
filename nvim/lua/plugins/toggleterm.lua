@@ -2,13 +2,19 @@ return {
   'akinsho/toggleterm.nvim',
   keys = {
     {
-      '<C-t>',
+      '<C-t>v',
       '<Cmd>exe v:count1 . "ToggleTerm"<Cr>',
       silent = true,
       noremap = true
     },
     {
-      '<C-s-t>',
+      '<C-t>s',
+      '<Cmd>exe v:count1 . "ToggleTerm direction=horizontal"<Cr>',
+      silent = true,
+      noremap = true
+    },
+    {
+      '<C-t>t',
       function()
         local Terminal = require('toggleterm.terminal').Terminal
         Terminal:new({ hidden = true, direction = 'tab' }):toggle()
@@ -106,14 +112,14 @@ return {
 
         vim.keymap.set(
           't',
-          '<C-.>',
+          '<C-w><C-l>',
           '<Cmd>tabnext<Cr>',
           { buffer = t.bufnr }
         )
 
         vim.keymap.set(
           't',
-          '<C-,>',
+          '<C-w><C-h>',
           '<Cmd>tabprev<Cr>',
           { buffer = t.bufnr }
         )
