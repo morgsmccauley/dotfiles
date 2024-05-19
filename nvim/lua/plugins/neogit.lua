@@ -39,8 +39,16 @@ return {
         },
         rebase_editor = {
           ["<cr>"] = "OpenCommit",
-          ["<c-c><c-c>"] = "Submit",
-          ["<c-c><c-k>"] = "Abort",
+          -- seems to break all maps
+          -- ["p"] = false,
+          -- ["r"] = false,
+          -- ["e"] = false,
+          -- ["s"] = false,
+          -- ["f"] = false,
+          -- ["x"] = false,
+          -- ["d"] = false,
+          -- ["b"] = false,
+          -- ["q"] = false,
         },
       },
       sections = {
@@ -48,6 +56,12 @@ return {
           folded = false,
           hidden = false,
         },
+      },
+      commit_editor = {
+        staged_diff_split_kind = "auto"
+      },
+      popup = {
+        kind = "split",
       },
     })
   end,
