@@ -129,6 +129,7 @@ return {
       e = { '<Cmd>edit<Cr>', 'Edit buffer' },
       y = { '<Cmd>let @* = expand("%")<Cr>', 'Yank filename' },
       l = { function() vim.bo[0].buflisted = true end, 'List buffer' },
+      x = { ':source %<Cr>', 'Source buffer' },
       s = {
         function()
           vim.cmd.new('[Scratch]')
@@ -188,15 +189,46 @@ return {
 
     local terminal = {
       name = '+terminal',
-      v = { function()
-        require('toggleterm.terminal').Terminal:new({ hidden = true, direction = 'horizontal' }):toggle()
-      end, 'Open in vertical split' },
-      h = { function()
-        require('toggleterm.terminal').Terminal:new({ hidden = true, direction = 'vertical' }):toggle()
-      end, 'Open in horizontal split' },
-      t = { function()
-        require('toggleterm.terminal').Terminal:new({ hidden = true, direction = 'tab' }):toggle()
-      end, 'Open in new tab' },
+      o = {
+        function()
+          require('termbuf.api').open_terminal()
+        end,
+        'Open terminal in current window'
+      },
+      t = {
+        function()
+          vim.cmd.tabnew()
+          require('termbuf.api').open_terminal()
+        end,
+        'Open terminal in new tab'
+      },
+      v = {
+        function()
+          vim.cmd.vsplit()
+          require('termbuf.api').open_terminal()
+        end,
+        'Open terminal in vertical split'
+      },
+    }
+
+    local file = {
+      name = '+file',
+      o = {
+        function()
+          local files = require('mini.files')
+
+          files.open()
+        end,
+        'Open file explorer'
+      },
+      p = {
+        function()
+          local files = require('mini.files')
+
+          files.open(vim.api.nvim_buf_get_name(0))
+        end,
+        'Open file explorer from parent'
+      },
     }
 
     local mappings = {
@@ -208,6 +240,7 @@ return {
       d = debug,
       n = neotest,
       t = terminal,
+      f = file,
       ['/'] = { '<Cmd>Telescope current_buffer_fuzzy_find<Cr>', 'Search buffer' },
       ['*'] = { '<Cmd>Telescope grep_string<Cr>', 'Search for symbol globally' },
       ['?'] = { '<Cmd>Telescope live_grep<Cr>', 'Search globally' },

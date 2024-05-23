@@ -47,8 +47,6 @@ nmap('<C-s>', '<Cmd>w<Cr>', { noremap = true, silent = true })
 nmap('<Esc>', '<Cmd>noh | echo ""<Cr>', { silent = true, noremap = true })
 nmap('QQ', '<Cmd>qall<CR>', { noremap = true })
 
--- nmap('K', '<Cmd>lua vim.lsp.buf.hover()<Cr>', { silent = true })
-
 nmap('gd', '<Cmd>silent Telescope lsp_definitions<Cr>', { silent = true })
 nmap('gD', '<Cmd>Telescope lsp_type_definitions<CR>', { silent = true })
 nmap('gi', '<Cmd>Telescope lsp_implementations<Cr>', { silent = true })
