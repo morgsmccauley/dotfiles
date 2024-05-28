@@ -129,3 +129,15 @@ vim.api.nvim_create_autocmd({ 'BufRead' }, {
         })
     end
 })
+
+vim.api.nvim_create_autocmd("ModeChanged", {
+    pattern = { "[vV\x16]*:*", "*:[vV\x16]*" },
+    callback = function()
+        local mode = vim.api.nvim_get_mode().mode
+        if mode:match("^[vV\x16]") then
+            vim.opt_local.relativenumber = true
+        else
+            vim.opt_local.relativenumber = false
+        end
+    end
+})
