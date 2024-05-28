@@ -37,6 +37,28 @@ return {
       }
     )
 
+    lspconfig.efm.setup {
+      init_options = { documentFormatting = true },
+      filetypes = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact' },
+      settings = {
+        rootMarkers = { '.git/' },
+        languages = {
+          javascript = {
+            { formatCommand = 'prettierd ${INPUT}', formatStdin = true },
+          },
+          typescript = {
+            { formatCommand = 'prettierd ${INPUT}', formatStdin = true },
+          },
+          javascriptreact = {
+            { formatCommand = 'prettierd ${INPUT}', formatStdin = true },
+          },
+          typescriptreact = {
+            { formatCommand = 'prettierd ${INPUT}', formatStdin = true },
+          },
+        },
+      },
+    }
+
     lspconfig.tsserver.setup {
       init_options = {
         preferences = {
