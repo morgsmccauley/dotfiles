@@ -209,6 +209,13 @@ return {
         end,
         'Open terminal in vertical split'
       },
+      s = {
+        function()
+          vim.cmd('belowright split')
+          require('termbuf.api').open_terminal()
+        end,
+        'Open terminal in horizontal split'
+      },
     }
 
     local file = {
