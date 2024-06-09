@@ -3,7 +3,6 @@ return {
     lazy = true,
     dependencies = {
         'haydenmeade/neotest-jest',
-        'rouge8/neotest-rust',
         'nvim-neotest/neotest-plenary'
     },
     config = function()
@@ -15,14 +14,9 @@ return {
                         return vim.fn.getcwd()
                     end,
                 }),
-                require('neotest-rust') {
-                    args = { '--no-capture' },
-                },
-                require('neotest-plenary')
+                require('neotest-plenary'),
+                require('rustaceanvim.neotest')
             },
-            --[[ diagnostic = {
-                enabled = true,
-            }, ]]
             icons = {
                 passed = '',
                 failed = '',
