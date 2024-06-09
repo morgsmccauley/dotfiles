@@ -49,7 +49,7 @@ return {
       persist_mode = false, -- always insert on enter
       shade_terminals = false,
       direction = 'vertical',
-      open_mapping = [[<C-t>]],
+      -- open_mapping = [[<C-t>]],
       start_in_insert = true,
       persist_size = false,
       on_open = function(t)
