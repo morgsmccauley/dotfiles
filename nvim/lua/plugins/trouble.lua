@@ -1,6 +1,5 @@
 return {
   "folke/trouble.nvim",
-  branch = "dev",
   -- keys = {
   --   {
   --     "<leader>xx",
@@ -39,5 +38,5 @@ return {
         win = { position = "left" }
       }
     }
-  }, -- for default options, refer to the configuration section for custom setup.
+  },
 }
