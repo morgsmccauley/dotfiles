@@ -1,3 +1,5 @@
+local utils = require('utils')
+
 vim.g.mapleader = ' '
 
 local function nmap(lhs, rhs, opts)
@@ -46,6 +48,14 @@ nmap('<C-s>', '<Cmd>w<Cr>', { noremap = true, silent = true })
 
 nmap('<Esc>', '<Cmd>noh | echo ""<Cr>', { silent = true, noremap = true })
 nmap('QQ', '<Cmd>qall<CR>', { noremap = true })
+
+vim.keymap.set('n', 'g=', function()
+  local dir = utils.find_project_root()
+  vim.cmd.cd(dir)
+end, { noremap = true })
+vim.keymap.set('n', 'g-', function()
+  vim.cmd.cd('-')
+end, { noremap = true })
 
 nmap('gd', '<Cmd>silent Telescope lsp_definitions<Cr>', { silent = true })
 nmap('gD', '<Cmd>Telescope lsp_type_definitions<CR>', { silent = true })

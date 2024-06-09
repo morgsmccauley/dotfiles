@@ -1,3 +1,5 @@
+local utils = require('utils')
+
 return {
   'folke/which-key.nvim',
   keys = { '<leader>', '"', '\'', '`' },
@@ -110,6 +112,7 @@ return {
       s = { '<Cmd>TelescopeStash<Cr>', 'Stash' },
       c = { '<Cmd>Neogit commit<Cr>', 'Commit' },
       L = { '<Cmd>DiffviewFileHistory %<Cr>', 'Buffer commit history' },
+      -- TODO Use DiffviewFileHistory for current line
       B = { '<Cmd>Git blame<Cr>', 'Blame annotations' },
       g = { '<Cmd>Neogit<Cr>', 'Git status' },
       h = git_hunk,
@@ -216,6 +219,13 @@ return {
         end,
         'Open terminal in horizontal split'
       },
+      p = {
+        function()
+          vim.cmd.vsplit()
+          require('termbuf.api').open_terminal({ dir = utils.find_project_root() or vim.uv.cwd() })
+        end,
+        'Open terminal at project root'
+      }
     }
 
     local file = {
