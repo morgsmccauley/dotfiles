@@ -22,8 +22,6 @@ return {
       Q = { '<Cmd>wq<Cr>', 'Save and quit' },
       w = { '<Cmd>silent w<Cr>', 'Save' },
       r = { '<C-w>r', 'Rotate' },
-      c = { '<Cmd>LeapWindow<Cr>', 'Choose window' },
-      C = { '<Cmd>LeapCloseWindow<Cr>', 'Close target window' },
       o = { '<Cmd>only<Cr>', 'Close all other windows' },
       l = { '<Cmd>luafile %<Cr>', 'Source selected lua file' },
       v = { '<Cmd>vsp<Cr>', 'Split window vertically' },
@@ -159,7 +157,13 @@ return {
       l = { vim.diagnostic.open_float, 'Show diagnostics for current line' },
       f = { vim.lsp.buf.format, 'Format' },
       h = { vim.lsp.buf.hover, 'Hover' },
-      g = { vim.lsp.buf.signature_help, 'Signature help' }
+      g = { vim.lsp.buf.signature_help, 'Signature help' },
+      t = {
+        function()
+          require('telescope.builtin').grep_string({ search = 'TODO|FIX|NOTE' })
+        end,
+        'Search TODO comments'
+      }
     }
 
     local neotest = {

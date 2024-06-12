@@ -70,10 +70,6 @@ vim.keymap.set('n', 'gs', '<Cmd>lua vim.lsp.buf.signature_help()<Cr>', { silent 
 vim.keymap.set({ 'n', 'v' }, '<C-e>', '5<C-e>', { noremap = true, silent = true })
 vim.keymap.set({ 'n', 'v' }, '<C-y>', '5<C-y>', { noremap = true, silent = true })
 
-nmap('dl', 'dV:LeapLine<Cr>', { noremap = true, silent = true })
-nmap('yl', 'yV:LeapLine<Cr>', { noremap = true, silent = true })
-nmap('cl', 'cV:LeapLine<Cr>', { noremap = true, silent = true })
-
 cmap('<C-a>', '<C-b>', { noremap = true })
 
 nmap('J', 'mzJ`z', { noremap = true })
