@@ -3,6 +3,10 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
     require 'oil'.setup({
+      view_options = {
+        show_hidden = true,
+      },
+      skip_confirm_for_simple_edits = true,
       keymaps = {
         ["<CR>"] = "actions.select",
         ["<C-l>"] = "actions.select",
@@ -11,7 +15,7 @@ return {
         -- ["<C-h>"] = "actions.select_split",
         ["<C-t>"] = "actions.select_tab",
         ["<C-p>"] = "actions.preview",
-        ["<C-q>"] = "actions.close",
+        ["<C-q>"] = false,
         ["<C-r>"] = "actions.refresh",
         ["<C-h>"] = "actions.parent",
         ["_"] = "actions.open_cwd",

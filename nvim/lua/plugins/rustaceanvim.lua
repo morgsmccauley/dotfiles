@@ -2,7 +2,8 @@ vim.g.rustaceanvim = {
   tools = {
     float_win_config = {
       border = 'rounded',
-    }
+    },
+    -- executor_alias = 'termopen'
   },
   server = {
     on_attach = function(_, bufnr)

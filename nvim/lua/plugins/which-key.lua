@@ -223,7 +223,7 @@ return {
         end,
         'Open terminal in horizontal split'
       },
-      p = {
+      r = {
         function()
           vim.cmd.vsplit()
           require('termbuf.api').open_terminal({ dir = utils.find_project_root() or vim.uv.cwd() })
@@ -236,20 +236,32 @@ return {
       name = '+file',
       o = {
         function()
-          local files = require('mini.files')
+          local oil = require('oil')
 
-          files.open()
+          vim.cmd.tabnew()
+          oil.open()
         end,
         'Open file explorer'
       },
+      r = {
+        function()
+          local oil = require('oil')
+
+          vim.cmd.tabnew()
+          oil.open(utils.find_project_root())
+        end,
+        'Open file explorer from project root'
+      },
       p = {
         function()
-          local files = require('mini.files')
+          local oil = require('oil')
 
-          files.open(vim.api.nvim_buf_get_name(0))
+          local current_dir = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":h")
+          vim.cmd.tabnew()
+          oil.open(current_dir)
         end,
         'Open file explorer from parent'
-      },
+      }
     }
 
     local mappings = {
@@ -275,7 +287,6 @@ return {
       ['\''] = { '<Cmd>Telescope marks<Cr>', 'List marks' },
       [';'] = { '<Cmd>Telescope command_history<Cr>', 'List command history' },
       -- ['?'] = { '<Cmd>Telescope help_tags<Cr>', 'List commands' },
-      ['-'] = { '<Cmd>Oil<Cr>', 'File browser' }
     }
 
     local opts = {
