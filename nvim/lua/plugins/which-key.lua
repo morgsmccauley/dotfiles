@@ -153,7 +153,7 @@ return {
       r = { vim.lsp.buf.rename, 'Rename' },
       d = { '<Cmd>Trouble diagnostics toggle filter.buf=0<Cr>', 'File diagnostics' },
       D = { '<Cmd>Trouble diagnostics toggle<Cr>', 'Workspace diagnostics' },
-      s = { '<Cmd>Trouble symbols toggle<Cr>', 'Code symbols' },
+      s = { '<Cmd>Trouble symbols focus<Cr>', 'Code symbols' },
       l = { vim.diagnostic.open_float, 'Show diagnostics for current line' },
       f = { vim.lsp.buf.format, 'Format' },
       h = { vim.lsp.buf.hover, 'Hover' },

@@ -11,7 +11,8 @@ return {
         vim.keymap.set('t', '<C-w><C-h>', [[<Cmd>tabprev<Cr>]], { noremap = true, buffer = term.bufnr })
         vim.keymap.set('t', '<C-w><C-l>', [[<Cmd>tabnext<Cr>]], { noremap = true, buffer = term.bufnr })
         vim.keymap.set('t', '<C-o>', [[<C-\><C-n><C-o>]], { noremap = true, buffer = term.bufnr })
-        vim.keymap.set('t', '<C-i>', [[<C-\><C-n><C-i>]], { noremap = true, buffer = term.bufnr })
+        -- Prevent conflict with tab
+        -- vim.keymap.set('t', '<C-i>', [[<C-\><C-n><C-i>]], { noremap = true, buffer = term.bufnr })
         vim.keymap.set('t', '<C-q>', [[<C-\><C-n><Cmd>silent q<Cr>]], { noremap = true, buffer = term.bufnr })
 
         vim.keymap.set('t', '<S-space>', ' ', { noremap = true, buffer = term.bufnr })
