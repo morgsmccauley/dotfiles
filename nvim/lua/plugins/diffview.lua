@@ -8,6 +8,12 @@ return {
       default_args = {
         DiffviewOpen = { "--imply-local" },
       },
+      file_panel = {
+        win_config = {
+          position = "bottom",
+          height = 16,
+        },
+      },
       keymaps = {
         view = {
           ['<C-q>'] = diffview.close,
