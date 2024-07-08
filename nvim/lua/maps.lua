@@ -49,7 +49,7 @@ nmap('<C-s>', '<Cmd>w<Cr>', { noremap = true, silent = true })
 nmap('<Esc>', '<Cmd>noh | echo ""<Cr>', { silent = true, noremap = true })
 nmap('QQ', '<Cmd>qall<CR>', { noremap = true })
 
-vim.keymap.set('n', 'g=', function()
+vim.keymap.set('n', 'g.', function()
   local dir = utils.find_project_root()
   vim.cmd.cd(dir)
 end, { noremap = true })
