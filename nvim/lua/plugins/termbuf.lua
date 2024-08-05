@@ -8,8 +8,10 @@ return {
         vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { noremap = true, buffer = term.bufnr })
 
         vim.keymap.set('t', '<C-h>', [[<C-\><C-n><C-W><C-h>]], { noremap = true, buffer = term.bufnr })
-        -- TODO check if there is a window to the left, otherwise clear
-        vim.keymap.set('t', '<C-l>', [[<C-\><C-n><C-W><C-l>]], { noremap = true, buffer = term.bufnr })
+        vim.keymap.set('t', '<C-l>', function()
+          -- using vim api directly to avoid exiting insert mode unnecessarily
+          vim.cmd.wincmd('l')
+        end, { noremap = true, buffer = term.bufnr })
         vim.keymap.set('t', '<C-w><C-h>', [[<Cmd>tabprev<Cr>]], { noremap = true, buffer = term.bufnr })
         vim.keymap.set('t', '<C-w><C-l>', [[<Cmd>tabnext<Cr>]], { noremap = true, buffer = term.bufnr })
         vim.keymap.set('t', '<C-o>', [[<C-\><C-n><C-o>]], { noremap = true, buffer = term.bufnr })
