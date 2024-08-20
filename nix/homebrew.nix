@@ -18,7 +18,6 @@
     };
     brews = [
       "docker-compose"
-      "koekeishiya/formulae/yabai"
       "gh"
       "protobuf"
       "grpcurl"
@@ -33,6 +32,8 @@
       "1password-cli"
       "telegram"
       "google-cloud-sdk"
+      "karabiner-elements"
+      "nikitabobko/tap/aerospace"
     ];
     masApps = {
       "Shortery" = 1594183810;

@@ -169,13 +169,8 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "right_shift",
-                                        "lazy": true,
-                                        "modifiers": [
-                                            "right_command",
-                                            "right_control",
-                                            "right_option"
-                                        ]
+                                        "key_code": "right_option",
+                                        "lazy": true
                                     }
                                 ],
                                 "to_if_alone": [

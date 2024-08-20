@@ -104,6 +104,11 @@ vim.api.nvim_create_autocmd('BufWritePost', {
     command = '!yabai --restart-service',
 })
 
+vim.api.nvim_create_autocmd('BufWritePost', {
+    pattern = { 'aerospace.toml' },
+    command = 'silent !aerospace reload-config',
+})
+
 vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
     pattern = { vim.fn.expand('~') .. '/.dotfiles/kitty/kitty.conf' },
     command = ':silent !kill -SIGUSR1 $(pgrep -a kitty)'
