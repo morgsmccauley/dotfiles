@@ -131,6 +131,12 @@ vim.keymap.set('n', '<leader>dr',
     vim.api.nvim_command "call win_gotoid(win_findbuf(bufnr('dap-repl'))[0])"
   end, { desc = 'Toggle repl' })
 vim.keymap.set('n', '<leader>du', '<Cmd>lua require"dapui".toggle()<Cr>', { desc = 'Toggle ui' })
+vim.keymap.set('n', '<leader>d<Cr>', function()
+  require('which-key').show({
+    keys = '<leader>d',
+    loop = true
+  })
+end, { desc = 'Hydra' })
 
 -- Git Diff keymaps
 vim.keymap.set('n', '<leader>gdi', '<Cmd>DiffviewOpen<Cr>', { desc = 'Index' })
