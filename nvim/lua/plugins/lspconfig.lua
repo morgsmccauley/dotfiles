@@ -143,6 +143,6 @@ return {
     lspconfig.rnix.setup {}
 
 
-    lspconfig.bufls.setup {}
+    lspconfig.buf_ls.setup {}
   end
 }
