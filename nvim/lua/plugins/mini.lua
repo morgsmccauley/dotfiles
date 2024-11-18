@@ -30,7 +30,7 @@ return {
       vim.api.nvim_create_autocmd('User', {
         pattern = 'MiniFilesBufferCreate',
         callback = function(args)
-          vim.keymap.set('n', 'g~', files_set_cwd, { buffer = args.buf })
+          vim.keymap.set('n', 'g.', files_set_cwd, { buffer = args.buf })
         end,
       })
 
