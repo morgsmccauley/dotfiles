@@ -1,0 +1,38 @@
+{
+  "refactor": {
+    "prefix": "r",
+    "body": [
+      "refactor: "
+    ]
+  },
+  "fix": {
+    "prefix": "fi",
+    "body": [
+      "fix: "
+    ]
+  },
+  "chore": {
+    "prefix": "c",
+    "body": [
+      "chore: "
+    ]
+  },
+  "build": {
+    "prefix": "b",
+    "body": [
+      "build: "
+    ]
+  },
+  "feat": {
+    "prefix": "f",
+    "body": [
+      "feat: "
+    ]
+  },
+  "test": {
+    "prefix": "t",
+    "body": [
+      "test: "
+    ]
+  }
+}
