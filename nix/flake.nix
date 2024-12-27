@@ -117,6 +117,7 @@
           "raycast"
           "docker"
           "1password-cli"
+          "1password"
           "karabiner-elements"
         ];
         masApps = {
@@ -237,6 +238,7 @@
                     n = "navi";
                     tf = "terraform";
                     g = "git";
+                    la = "ls -la";
                   };
 
                   # plugins = [
