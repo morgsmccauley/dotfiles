@@ -82,6 +82,30 @@
 
             alt-equal = "balance-sizes";
           };
+
+          # FIX: nix-darwin expects wrong type (https://github.com/LnL7/nix-darwin/issues/1142)
+          on-window-detected = [ ];
+
+          # # Sender Wallet
+          # [[on-window-detected]]
+          # if.window-title-regex-substring = '^chrome-extension://epapihdplajcdnnkdeiahlgigofloibg'
+          # run = 'layout floating'
+          #
+          # [[on-window-detected]]
+          # if.app-id = 'com.apple.finder'
+          # run = 'layout floating'
+          #
+          # [[on-window-detected]]
+          # if.app-id = 'com.apple.MobileSMS'
+          # run = 'layout floating'
+          #
+          # # [[on-window-detected]]
+          # # if.app-id = 'com.apple.Notes'
+          # # run = 'layout floating'
+          #
+          # [[on-window-detected]]
+          # if.app-id = 'com.apple.Home'
+          # run = 'layout floating'
         };
       };
 
@@ -133,6 +157,7 @@
         fi
       '';
 
+      # FIX: conflicts with duplicate script below
       # system.activationScripts.postUserActivation.text = ''
       #   if [ ! -L ~/.docker/cli-plugins/docker-compose ]; then
       #       echo "Linking compose plugin to docker CLI"
@@ -166,6 +191,8 @@
         finder = {
           ShowPathbar = true;
           AppleShowAllFiles = true;
+          AppleShowAllExtensions = true;
+          FXPreferredViewStyle = "clmv";
         };
 
         loginwindow = {
@@ -196,6 +223,7 @@
     darwinConfigurations."Morgans-MacBook-Pro" = nix-darwin.lib.darwinSystem {
       modules = [
         configuration
+        # TODO: Split in to separate file
         home-manager.darwinModules.home-manager
         {
           home-manager = {
@@ -226,6 +254,7 @@
                     enable = true;
                   };
 
+                  # FIX: Not being picked up by shell
                   sessionVariables = {
                     EDITOR = "nvim";
                   };
@@ -249,11 +278,10 @@
                   # ];
 
                   initExtra = ''
-                    export EDITOR="vi"
                     export PATH="/Users/morganmccauley/.cargo/bin:$PATH"
 
                     if [ -d "./node_modules/.bin" ]; then
-                    export PATH=$(pwd)/node_modules/.bin:$PATH
+                      export PATH=$(pwd)/node_modules/.bin:$PATH
                     fi
 
                     export PATH="/opt/homebrew/bin:$PATH"
@@ -299,7 +327,8 @@
                   ignores = [];
                 };
 
-                # TODO How to store cheats?
+                # TODO: How to store cheats?
+                # TODO: dotfile not being stored/linked
                 programs.navi = {
                   enable = true;
 
