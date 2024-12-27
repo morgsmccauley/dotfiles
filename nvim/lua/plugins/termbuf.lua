@@ -1,10 +1,12 @@
 local utils = require('utils')
 
 return {
-  dir = '~/Developer/termbuf.nvim',
+  'morgsmccauley/termbuf.nvim',
   config = function()
     require('termbuf').setup({
       on_open = function(term)
+        vim.cmd.startinsert()
+
         vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { noremap = true, buffer = term.bufnr })
 
         vim.keymap.set('t', '<C-h>', [[<C-\><C-n><C-W><C-h>]], { noremap = true, buffer = term.bufnr })

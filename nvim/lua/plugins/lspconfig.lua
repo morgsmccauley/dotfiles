@@ -7,7 +7,7 @@ return {
       config = function()
         -- needs to be before lspconfig setup
         require('mason-lspconfig').setup {
-          automatic_installation = true
+          automatic_installation = false
         }
       end,
     },
