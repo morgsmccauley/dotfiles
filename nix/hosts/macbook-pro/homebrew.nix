@@ -16,6 +16,7 @@
       "1password-cli"
       "1password"
       "karabiner-elements"
+      "brave-browser"
     ];
     masApps = {
       "Shortery" = 1594183810;
