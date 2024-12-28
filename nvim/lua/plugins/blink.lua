@@ -32,7 +32,7 @@ return {
       -- fuzzy type to get what I am looking for, and then accept. When I don't know what I am looking for then I can open up
       -- this could work well with copilot too so its not too busy having both
       menu = {
-        auto_show = false
+        auto_show = true
       },
       ghost_text = {
         enabled = true

@@ -14,14 +14,11 @@ return {
         })
       end
     },
-    {
-      'microsoft/vscode-js-debug',
-      build =
-      'npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && rm -rf out && mv dist out && git checkout package-lock.json',
-    },
-    {
-      'jay-babu/mason-nvim-dap.nvim',
-    }
+    -- {
+    --   'microsoft/vscode-js-debug',
+    --   build =
+    --   'npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && rm -rf out && mv dist out && git checkout package-lock.json',
+    -- },
   },
   config = function()
     require('dapui').setup()
@@ -134,10 +131,5 @@ return {
     vim.fn.sign_define('DapBreakpointCondition',
       { text = '', texthl = 'DapBreakpointCondition', linehl = '', numhl = '' })
     vim.fn.sign_define('DapStopped', { text = '', texthl = 'white', linehl = '', numhl = '' })
-
-    -- needs to be after nvim-dap setup
-    require("mason-nvim-dap").setup({
-      automatic_installation = true
-    })
   end
 }

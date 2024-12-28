@@ -15,6 +15,11 @@
     rustup
     monitorcontrol
     httpie
+    efm-langserver
+    lua-language-server
+    typescript-language-server
+    vscode-langservers-extracted
+    vscode-js-debug
   ];
   # FIX Doesn't seem to work
   # home.sessionPath = [

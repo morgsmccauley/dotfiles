@@ -2,15 +2,6 @@ return {
   'neovim/nvim-lspconfig',
   dependencies = {
     'b0o/SchemaStore.nvim',
-    {
-      'williamboman/mason-lspconfig.nvim',
-      config = function()
-        -- needs to be before lspconfig setup
-        require('mason-lspconfig').setup {
-          automatic_installation = false
-        }
-      end,
-    },
   },
   config = function()
     local lspconfig = require('lspconfig')
@@ -139,10 +130,5 @@ return {
         },
       },
     }
-
-    lspconfig.rnix.setup {}
-
-
-    lspconfig.buf_ls.setup {}
   end
 }
