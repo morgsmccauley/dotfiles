@@ -47,7 +47,20 @@
         alt-equal = "balance-sizes";
       };
 
-      on-window-detected = [ ];
+      on-window-detected = [
+        {
+          "if".app-name-regex-substring = "notes|finder";
+          run = "layout floating";
+        }
+        {
+          "if".app-name-regex-substring = "slack";
+          run = "move-node-to-workspace 2";
+        }
+        {
+          "if".app-name-regex-substring = "mail";
+          run = "move-node-to-workspace 3";
+        }
+      ];
     };
   };
 }
