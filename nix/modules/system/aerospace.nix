@@ -49,7 +49,7 @@
 
       on-window-detected = [
         {
-          "if".app-name-regex-substring = "notes|finder";
+          "if".app-name-regex-substring = "notes|finder|messages";
           run = "layout floating";
         }
         {
@@ -57,7 +57,7 @@
           run = "move-node-to-workspace 2";
         }
         {
-          "if".app-name-regex-substring = "mail";
+          "if".app-name-regex-substring = "mail|calendar";
           run = "move-node-to-workspace 3";
         }
       ];
