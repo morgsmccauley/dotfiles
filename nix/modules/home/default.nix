@@ -20,6 +20,9 @@
     typescript-language-server
     vscode-langservers-extracted
     vscode-js-debug
+
+    nodejs_22
+    nodePackages.prettier
   ];
   # FIX Doesn't seem to work
   # home.sessionPath = [

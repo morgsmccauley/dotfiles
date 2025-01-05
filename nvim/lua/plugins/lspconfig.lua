@@ -31,27 +31,44 @@ return {
     lspconfig.efm.setup {
       init_options = { documentFormatting = true },
       filetypes = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact' },
+      root_dir = function(fname)
+        return vim.fs.root(fname, {
+          '.prettierrc',
+          '.prettierrc.js',
+          '.prettierrc.cjs',
+          '.prettierrc.json',
+          '.prettierrc.yaml',
+          '.prettierrc.yml',
+          '.prettierrc.toml',
+        })
+      end,
       settings = {
-        rootMarkers = { '.git/' },
         languages = {
           javascript = {
-            { formatCommand = 'prettierd ${INPUT}', formatStdin = true },
+            { formatCommand = 'prettier ${INPUT}', formatStdin = true },
           },
           typescript = {
-            { formatCommand = 'prettierd ${INPUT}', formatStdin = true },
+            { formatCommand = 'prettier ${INPUT}', formatStdin = true },
           },
           javascriptreact = {
-            { formatCommand = 'prettierd ${INPUT}', formatStdin = true },
+            { formatCommand = 'prettier ${INPUT}', formatStdin = true },
           },
           typescriptreact = {
-            { formatCommand = 'prettierd ${INPUT}', formatStdin = true },
+            { formatCommand = 'prettier ${INPUT}', formatStdin = true },
           },
         },
       },
+      on_attach = function(_client, bufnr)
+        vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+          buffer = bufnr,
+          callback = function() vim.lsp.buf.format({ async = false }) end,
+        })
+      end
     }
 
     lspconfig.ts_ls.setup {
       init_options = {
+        documentFormatting = false,
         preferences = {
           disableSuggestions = true,
         },
@@ -102,10 +119,6 @@ return {
           validate = { enable = true },
         },
       },
-    }
-
-    lspconfig.graphql.setup {
-      filetypes = { 'graphql', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact' }
     }
 
     -- provides better diagnostics
