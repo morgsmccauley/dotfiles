@@ -9,7 +9,9 @@
       appdir = "/Applications";
       require_sha = true;
     };
-    brews = [ ];
+    brews = [
+      "ansible"
+    ];
     casks = [
       "raycast"
       "docker"

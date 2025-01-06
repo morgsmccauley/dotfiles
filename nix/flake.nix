@@ -2,8 +2,7 @@
   description = "Example nix-darwin system flake";
 
   inputs = {
-    # NOTE: Fix for broken lua_ls package https://github.com/NixOS/nixpkgs/pull/368248
-    nixpkgs.url = "github:nixos/nixpkgs/1a9767900c410ce390d4eee9c70e59dd81ddecb5";
+    nixpkgs.url = "github:nixos/nixpkgs/master";
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager = {
