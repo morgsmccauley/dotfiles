@@ -28,6 +28,8 @@ return {
       }
     )
 
+    -- TODO: Use https://github.com/fsouza/prettierd?tab=readme-ov-file#local-instance so that locally installed
+    -- prettier instances are used?
     lspconfig.efm.setup {
       init_options = { documentFormatting = true },
       filetypes = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact' },

@@ -20,9 +20,16 @@
     typescript-language-server
     vscode-langservers-extracted
     vscode-js-debug
-
     nodejs_22
     nodePackages.prettier
+    asdf-vm
+    protoc-gen-go
+    go
+    awscli
+    grpcui
+    jq
+    yq
+    fswatch
   ];
   # FIX Doesn't seem to work
   # home.sessionPath = [

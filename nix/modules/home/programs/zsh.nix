@@ -24,6 +24,10 @@
     };
 
     initExtra = ''
+      if command -v asdf >/dev/null; then
+        . "$(dirname $(readlink -f $(which asdf)))/../share/asdf-vm/asdf.sh"
+      fi
+
       export PATH="/Users/morganmccauley/.cargo/bin:$PATH"
 
       if [ -d "./node_modules/.bin" ]; then
