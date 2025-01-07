@@ -1,4 +1,4 @@
-{ ... }: {
+{ pkgs, ... }: {
   programs.zsh = {
     enable = true;
     autocd = true;
@@ -12,6 +12,13 @@
       EDITOR = "nvim";
     };
 
+    plugins = [
+      {
+        name = "fzf-tab";
+        src = "${pkgs.zsh-fzf-tab}/share/fzf-tab";
+      }
+    ];
+
     shellAliases = {
       v = "nvim --listen /tmp/nvimsocket";
       c = "cargo";
@@ -24,6 +31,9 @@
     };
 
     initExtra = ''
+      setopt PROMPT_SUBST
+      PROMPT='%F{blue}%~%f> '
+
       if command -v asdf >/dev/null; then
         . "$(dirname $(readlink -f $(which asdf)))/../share/asdf-vm/asdf.sh"
       fi
