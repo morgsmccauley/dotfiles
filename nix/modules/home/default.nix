@@ -5,7 +5,6 @@
     ./programs/kitty.nix
     ./programs/fzf.nix
     ./programs/navi.nix
-    ./programs/starship.nix
     ./programs/awscli.nix
   ];
 
