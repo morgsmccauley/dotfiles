@@ -4,7 +4,7 @@
     ./programs/zsh.nix
     ./programs/kitty.nix
     ./programs/fzf.nix
-    ./programs/navi.nix
+    ./programs/navi
     ./programs/awscli.nix
   ];
 

@@ -6,7 +6,7 @@
 
     settings = {
       cheats.paths = [
-        "~/.dotfiles/navi/cheats/"
+        "~/.dotfiles/nix/modules/home/programs/navi/cheats"
       ];
 
       styles = {
