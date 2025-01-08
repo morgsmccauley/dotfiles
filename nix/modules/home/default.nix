@@ -5,7 +5,6 @@
     ./programs/kitty.nix
     ./programs/fzf.nix
     ./programs/navi
-    ./programs/awscli.nix
   ];
 
   home.stateVersion = "24.05";
@@ -31,6 +30,7 @@
     yq
     fswatch
     aws-sam-cli
+    awscli2
   ];
   # FIX Doesn't seem to work
   # home.sessionPath = [
