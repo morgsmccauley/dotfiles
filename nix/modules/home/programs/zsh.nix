@@ -32,7 +32,7 @@
 
     initExtra = ''
       setopt PROMPT_SUBST
-      PROMPT='%F{blue}%~%f> '
+      PROMPT='%F{blue}%1~%f> '
 
       if command -v asdf >/dev/null; then
         . "$(dirname $(readlink -f $(which asdf)))/../share/asdf-vm/asdf.sh"
