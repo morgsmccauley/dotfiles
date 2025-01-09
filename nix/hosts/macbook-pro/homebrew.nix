@@ -20,6 +20,7 @@
       "1password"
       "karabiner-elements"
       "brave-browser"
+      "discord"
     ];
     masApps = {
       "Shortery" = 1594183810;

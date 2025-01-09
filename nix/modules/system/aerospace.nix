@@ -53,7 +53,7 @@
           run = "layout floating";
         }
         {
-          "if".app-name-regex-substring = "slack";
+          "if".app-name-regex-substring = "slack|discord";
           run = "move-node-to-workspace 2";
         }
         {
