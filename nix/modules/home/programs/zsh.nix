@@ -48,6 +48,8 @@
 
       # FIX: Feels like navi should pick this up automatically?
       export NAVI_CONFIG=$HOME/Library/Application\ Support/navi/config.yaml
+
+      source /Users/morganmccauley/.config/op/plugins.sh
     '';
   };
 

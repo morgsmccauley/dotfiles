@@ -5,6 +5,7 @@
     ./programs/kitty.nix
     ./programs/fzf.nix
     ./programs/navi
+    ./programs/gh.nix
   ];
 
   home.stateVersion = "24.05";
