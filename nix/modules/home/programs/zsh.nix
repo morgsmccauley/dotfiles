@@ -28,6 +28,8 @@
       tf = "terraform";
       g = "git";
       la = "ls -la";
+      kn = "k9s";
+      kc = "kubectl";
     };
 
     initExtra = ''

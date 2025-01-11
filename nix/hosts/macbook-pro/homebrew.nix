@@ -21,6 +21,9 @@
       "karabiner-elements"
       "brave-browser"
       "discord"
+      "cursor"
+      "dbeaver-community"
+      "postman"
     ];
     masApps = {
       "Shortery" = 1594183810;

@@ -33,6 +33,8 @@
     aws-sam-cli
     awscli2
     postgresql
+    kubectl
+    k9s
   ];
   # FIX Doesn't seem to work
   # home.sessionPath = [
