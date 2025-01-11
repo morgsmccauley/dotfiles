@@ -47,18 +47,23 @@
         alt-equal = "balance-sizes";
       };
 
+      # is it possible to stack cursor/kitty so that I can have both act as 1?
       on-window-detected = [
         {
           "if".app-name-regex-substring = "notes|finder|messages";
           run = "layout floating";
         }
         {
-          "if".app-name-regex-substring = "slack|discord";
+          "if".app-name-regex-substring = "dbeaver|postman";
           run = "move-node-to-workspace 2";
         }
         {
-          "if".app-name-regex-substring = "mail|calendar";
+          "if".app-name-regex-substring = "slack|discord";
           run = "move-node-to-workspace 3";
+        }
+        {
+          "if".app-name-regex-substring = "mail|calendar";
+          run = "move-node-to-workspace 4";
         }
       ];
     };
