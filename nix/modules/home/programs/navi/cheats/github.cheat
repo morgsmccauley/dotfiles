@@ -1,6 +1,64 @@
-% github
+% github, gh
 
 # Open PR in browser
 gh pr view --web <pr>
 
-$ pr: gh pr list --state all --json number,title,state --template '{{range .}}{{tablerow .number .title .state}}{{end}}' --- --column 1
+# Create PR
+gh pr create --title "<title>" --body "<body>"
+
+# Create PR (draft)
+gh pr create --draft --title "<title>" --body "<body>"
+
+# Checkout PR
+gh pr checkout <pr>
+
+# Review PR
+gh pr review <pr> -c "<comment>"
+
+# Merge PR
+gh pr merge <pr> --<merge-strategy>
+
+# List PRs
+gh pr list
+
+# List PRs authored by me
+gh pr list --author @me
+
+# View PR status
+gh pr status
+
+# Create issue
+gh issue create --title "<title>" --body "<body>"
+
+# View issue in browser
+gh issue view --web <issue>
+
+# List issues
+gh issue list
+
+# View repo in browser
+gh repo view --web
+
+# List workflows
+gh workflow list
+
+# Run workflow
+gh workflow run "<workflow>"
+
+# Run workflow interactively
+gh workflow run
+
+# View workflow runs
+gh run list
+
+# Follow in progress workflow run
+gh run watch
+
+# View workflow run logs
+gh run view --log
+
+# NOTE: shells within navi don't source .zshrc and therefore don't pick up the 1pass aliases - need to manually add them
+$ pr: op plugin run -- gh pr list --state all --json number,title,state --template '{{range .}}{{tablerow .number .title .state}}{{end}}' --- --column 1
+$ issue: op plugin run --  gh issue list --json number,title,state --template '{{range .}}{{tablerow .number .title .state}}{{end}}' --- --column 1
+$ workflow: op plugin run -- gh workflow list --json name --jq '.[].name'
+$ merge-strategy: echo -e "merge\nsquash\nrebase" | grep -v '^$'
