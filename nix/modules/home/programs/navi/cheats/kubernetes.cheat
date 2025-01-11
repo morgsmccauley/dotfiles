@@ -1,0 +1,86 @@
+% kubernetes, k8s
+
+# Get pods in namespace
+kubectl get pods -n <namespace>
+
+# Get pods in all namespaces
+kubectl get pods --all-namespaces
+
+# Describe pod
+kubectl describe pod <pod-name> -n <namespace>
+
+# Get pod logs
+kubectl logs -n <namespace> <pod-name>
+
+# Get pod logs (follow)
+kubectl logs -f -n <namespace> <pod-name>
+
+# Get pod logs (previous container)
+kubectl logs -n <namespace> <pod-name> --previous
+
+# Execute command in pod
+kubectl exec -it -n <namespace> <pod-name> -- <command>
+
+# Get shell in pod
+kubectl exec -it -n <namespace> <pod-name> -- /bin/sh
+
+# Port forward to pod
+kubectl port-forward -n <namespace> <pod-name> <local-port>:<pod-port>
+
+# Get deployments
+kubectl get deployments -n <namespace>
+
+# Scale deployment
+kubectl scale deployment <deployment-name> --replicas=<count> -n <namespace>
+
+# Get services
+kubectl get services -n <namespace>
+
+# Get nodes
+kubectl get nodes
+
+# Get events
+kubectl get events -n <namespace>
+
+# Get configmaps
+kubectl get configmaps -n <namespace>
+
+# Get secrets
+kubectl get secrets -n <namespace>
+
+# Apply manifest
+kubectl apply -f <manifest-file>
+
+# Delete resource
+kubectl delete -f <manifest-file>
+
+# Get resource usage
+kubectl top pod -n <namespace>
+
+# Get cluster info
+kubectl cluster-info
+
+# Switch context
+kubectl config use-context <context-name>
+
+# Get current context
+kubectl config current-context
+
+# List contexts
+kubectl config get-contexts
+
+# Create namespace
+kubectl create namespace <namespace>
+
+# Get persistent volumes
+kubectl get pv
+
+# Get persistent volume claims
+kubectl get pvc -n <namespace>
+
+$ namespace: kubectl get namespaces | awk 'NR>1 {print $1}'
+$ pod-name: kubectl get pods -n "$namespace" | awk 'NR>1 {print $1}'
+$ deployment-name: kubectl get deployments -n "$namespace" | awk 'NR>1 {print $1}'
+$ context-name: kubectl config get-contexts -o name
+$ manifest-file: ls *.{yaml,yml} 2>/dev/null || true
+
