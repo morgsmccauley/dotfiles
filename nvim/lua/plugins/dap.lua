@@ -25,27 +25,18 @@ return {
 
     local dap = require('dap')
 
-    dap.adapters.codelldb = {
-      type = 'server',
-      port = '${port}',
-      host = '127.0.0.1',
-      executable = {
-        command = os.getenv('HOME') .. '/.local/share/nvim/mason/packages/codelldb/extension/adapter/codelldb',
-        args = {
-          '--liblldb',
-          os.getenv('HOME') .. '/.local/share/nvim/mason/packages/codelldb/extension/lldb/lib/liblldb.dylib',
-          '--port',
-          '${port}'
-        },
-      },
+    dap.adapters.lldb = {
+      type = 'executable',
+      command = 'lldb-dap',
+      name = 'lldb',
     }
 
     -- TODO dont open term
     -- TODO list cargo binaries https://github.com/vadimcn/vscode-lldb/blob/master/MANUAL.md#cargo-support
     dap.configurations.rust = {
       {
-        name = 'codelldb',
-        type = 'codelldb',
+        name = 'launch',
+        type = 'lldb',
         request = 'launch',
         cwd = '${workspaceFolder}',
         stopOnEntry = false,

@@ -32,6 +32,7 @@
     fswatch
     aws-sam-cli
     awscli2
+    lldb
     postgresql
     kubectl
     k9s
