@@ -36,6 +36,8 @@
     postgresql
     kubectl
     k9s
+    minikube
+    kubernetes-helm
   ];
   # FIX Doesn't seem to work
   # home.sessionPath = [
