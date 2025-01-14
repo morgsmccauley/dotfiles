@@ -5,6 +5,8 @@ return {
   config = function()
     require('termbuf').setup({
       on_open = function(term)
+        vim.o.filetype = 'term'
+
         vim.cmd.startinsert()
 
         vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { noremap = true, buffer = term.bufnr })
