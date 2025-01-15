@@ -2,6 +2,7 @@
   imports = [
     ../../modules/system/defaults.nix
     ../../modules/system/aerospace.nix
+    ../../modules/system/jankyborders.nix
     ./homebrew.nix
   ];
 
