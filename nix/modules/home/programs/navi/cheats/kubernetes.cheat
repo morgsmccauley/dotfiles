@@ -1,5 +1,8 @@
 % kubernetes, k8s
 
+# Set kube config
+export KUBECONFIG=~/.kube/<config-files>
+
 # Get pods in namespace
 kubectl get pods -n <namespace>
 
@@ -31,7 +34,7 @@ kubectl port-forward -n <namespace> <pod-name> <local-port>:<pod-port>
 kubectl get deployments -n <namespace>
 
 # Scale deployment
-kubectl scale deployment <deployment-name> --replicas=<count> -n <namespace>
+kubectl scale deployment -n <namespace> <deployment-name> --replicas=<count>
 
 # Get services
 kubectl get services -n <namespace>
@@ -83,4 +86,5 @@ $ pod-name: kubectl get pods -n "$namespace" | awk 'NR>1 {print $1}'
 $ deployment-name: kubectl get deployments -n "$namespace" | awk 'NR>1 {print $1}'
 $ context-name: kubectl config get-contexts -o name
 $ manifest-file: ls *.{yaml,yml} 2>/dev/null || true
+$ config-files: ls ~/.kube | grep .yml
 
