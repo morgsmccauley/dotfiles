@@ -1,7 +1,7 @@
 { config, ... }: {
   homebrew = {
     enable = true;
-    onActivation.cleanup = "none";
+    onActivation.cleanup = "zap";
     taps = [
       "homebrew/services"
     ];
