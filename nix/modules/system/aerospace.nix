@@ -44,6 +44,8 @@
         alt-0 = "balance-sizes";
         alt-minus = "resize smart -50";
         alt-equal = "resize smart +50";
+        alt-left = ["join-with left" "layout accordion"]; # Merge with left window (cursor/kitty)
+        alt-right = ["join-with right" "layout accordion"];
       };
 
       # is it possible to stack cursor/kitty so that I can have both act as 1?
