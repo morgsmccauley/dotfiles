@@ -1,3 +1,4 @@
+# NOTE: Most of these don't exist in the nix registry, so have to be installed via brew
 { config, ... }: {
   homebrew = {
     enable = true;
@@ -24,6 +25,7 @@
       "cursor"
       "dbeaver-community"
       "postman"
+      "telegram"
     ];
     masApps = {
       "Shortery" = 1594183810;
