@@ -31,20 +31,19 @@
         alt-shift-l = "move right";
         alt-shift-minus = "resize smart -100";
         alt-shift-equal = "resize smart +100";
-        alt-1 = "workspace 1";
-        alt-2 = "workspace 2";
-        alt-3 = "workspace 3";
-        alt-4 = "workspace 4";
-        alt-5 = "workspace 5";
-        alt-shift-1 = "move-node-to-workspace 1";
-        alt-shift-2 = "move-node-to-workspace 2";
-        alt-shift-3 = "move-node-to-workspace 3";
-        alt-shift-4 = "move-node-to-workspace 4";
-        alt-shift-5 = "move-node-to-workspace 5";
+        alt-1 = "workspace 1-code";
+        alt-2 = "workspace 2-tools";
+        alt-3 = "workspace 3-chat";
+        alt-4 = "workspace 4-mail";
+        alt-shift-1 = "move-node-to-workspace 1-code";
+        alt-shift-2 = "move-node-to-workspace 2-tools";
+        alt-shift-3 = "move-node-to-workspace 3-chat";
+        alt-shift-4 = "move-node-to-workspace 4-mail";
         alt-tab = "workspace-back-and-forth";
         alt-shift-tab = "move-workspace-to-monitor --wrap-around next";
-        alt-shift-semicolon = "mode service";
-        alt-equal = "balance-sizes";
+        alt-0 = "balance-sizes";
+        alt-minus = "resize smart -50";
+        alt-equal = "resize smart +50";
       };
 
       # is it possible to stack cursor/kitty so that I can have both act as 1?
@@ -54,17 +53,25 @@
           run = "layout floating";
         }
         {
-          "if".app-name-regex-substring = "dbeaver|postman";
-          run = "move-node-to-workspace 2";
+          "if".app-name-regex-substring = "brave|kitty|cursor";
+          run = "move-node-to-workspace 1-code";
         }
         {
-          "if".app-name-regex-substring = "slack|discord";
-          run = "move-node-to-workspace 3";
+          "if".app-name-regex-substring = "dbeaver|postman";
+          run = "move-node-to-workspace 2-tools";
+        }
+        {
+          "if".app-name-regex-substring = "slack|discord|telegram";
+          run = "move-node-to-workspace 3-chat";
         }
         {
           "if".app-name-regex-substring = "mail|calendar";
-          run = "move-node-to-workspace 4";
+          run = "move-node-to-workspace 4-mail";
         }
+        # {
+        #   "if".app-name-regex-substring = "cursor";
+        #   run = "join-with kitty"
+        # }
       ];
     };
   };
