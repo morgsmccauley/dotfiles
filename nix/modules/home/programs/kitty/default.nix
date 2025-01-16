@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   programs.kitty = {
     enable = true;
 
@@ -47,7 +47,10 @@
       "cmd+9" = "goto_tab 9";
       "kitty_mod+t" = "no_op";
     };
+  };
 
-    themeFile = "Catppuccin-Macchiato";
+  xdg.configFile = {
+    "kitty/dark-theme.auto.conf".source = ./dark-theme.auto.conf;
+    "kitty/light-theme.auto.conf".source = ./light-theme.auto.conf;
   };
 }

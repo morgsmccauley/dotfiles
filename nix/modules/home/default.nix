@@ -2,10 +2,11 @@
   imports = [
     ./programs/git.nix
     ./programs/zsh.nix
-    ./programs/kitty.nix
     ./programs/fzf.nix
-    ./programs/navi
     ./programs/gh.nix
+
+    ./programs/navi
+    ./programs/kitty
   ];
 
   home.stateVersion = "24.05";
