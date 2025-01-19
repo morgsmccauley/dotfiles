@@ -48,8 +48,11 @@ kubectl get events -n <namespace>
 # Get configmaps
 kubectl get configmaps -n <namespace>
 
-# Get secrets
+# List secrets
 kubectl get secrets -n <namespace>
+
+# Get decoded secret
+echo <secret-entry> | base64 -d
 
 # Apply manifest
 kubectl apply -f <manifest-file>
@@ -87,4 +90,5 @@ $ deployment-name: kubectl get deployments -n "$namespace" | awk 'NR>1 {print $1
 $ context-name: kubectl config get-contexts -o name
 $ manifest-file: ls *.{yaml,yml} 2>/dev/null || true
 $ config-files: ls ~/.kube | grep .yml
-
+$ secret: kubectl get secrets -n <namespace> --- --headers 1 --column 1
+$ secret-entry: kubectl get secrets -n <namespace> <secret> -o yaml | yq -r '.data | to_entries | .[] | [.key, .value] | @tsv' --- --column 2 --delimiter '\t'
