@@ -39,6 +39,7 @@
     k9s
     minikube
     kubernetes-helm
+    skopeo
   ];
   # FIX Doesn't seem to work
   # home.sessionPath = [
