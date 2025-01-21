@@ -16,7 +16,7 @@ kubectl describe pod <pod-name> -n <namespace>
 kubectl logs -n <namespace> <pod-name>
 
 # Get pod logs (follow)
-kubectl logs -f -n <namespace> <pod-name>
+kubectl logs -f --tail 0 -n <namespace> <pod-name>
 
 # Get pod logs (previous container)
 kubectl logs -n <namespace> <pod-name> --previous
@@ -84,9 +84,9 @@ kubectl get pv
 # Get persistent volume claims
 kubectl get pvc -n <namespace>
 
-$ namespace: kubectl get namespaces | awk 'NR>1 {print $1}'
-$ pod-name: kubectl get pods -n "$namespace" | awk 'NR>1 {print $1}'
-$ deployment-name: kubectl get deployments -n "$namespace" | awk 'NR>1 {print $1}'
+$ namespace: kubectl get namespaces --- --headers 1 --column 1
+$ pod-name: kubectl get pods -n "$namespace" --- --headers 1 --column 1
+$ deployment-name: kubectl get deployments -n "$namespace" --- --headers 1 --column 1
 $ context-name: kubectl config get-contexts -o name
 $ manifest-file: ls *.{yaml,yml} 2>/dev/null || true
 $ config-files: ls ~/.kube | grep .yml
