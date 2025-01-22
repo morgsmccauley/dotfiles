@@ -4,6 +4,7 @@
       InitialKeyRepeat = 10;
       KeyRepeat = 1;
       _HIHideMenuBar = true;
+      ApplePressAndHoldEnabled = false;
     };
 
     trackpad = {
