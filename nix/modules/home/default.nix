@@ -40,6 +40,7 @@
     minikube
     kubernetes-helm
     skopeo
+    yaml-language-server
   ];
   # FIX Doesn't seem to work
   # home.sessionPath = [

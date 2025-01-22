@@ -26,6 +26,7 @@
       "dbeaver-community"
       "postman"
       "telegram"
+      "grammarly-desktop"
     ];
     masApps = {
       "Shortery" = 1594183810;
