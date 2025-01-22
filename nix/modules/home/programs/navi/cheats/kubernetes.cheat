@@ -15,7 +15,7 @@ kubectl describe pod <pod-name> -n <namespace>
 # Get pod logs
 kubectl logs -n <namespace> <pod-name>
 
-# Get pod logs (follow)
+# Follow pod logs
 kubectl logs -f --tail 0 -n <namespace> <pod-name>
 
 # Get pod logs (previous container)
@@ -35,6 +35,9 @@ kubectl get deployments -n <namespace>
 
 # Scale deployment
 kubectl scale deployment -n <namespace> <deployment-name> --replicas=<count>
+
+# Follow deployment logs
+kubectl logs -n <namespace> -f --tail 0 deployment/<deployment-name>
 
 # Get services
 kubectl get services -n <namespace>
