@@ -10,15 +10,10 @@ return {
       config = function()
         require('dap-vscode-js').setup({
           adapters = { 'pwa-node' },
-          debugger_path = os.getenv('HOME') .. '/.local/share/nvim/lazy/vscode-js-debug'
+          debugger_cmd = { 'js-debug' }
         })
       end
     },
-    -- {
-    --   'microsoft/vscode-js-debug',
-    --   build =
-    --   'npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && rm -rf out && mv dist out && git checkout package-lock.json',
-    -- },
   },
   config = function()
     require('dapui').setup()
@@ -66,6 +61,21 @@ return {
     }
 
     dap.configurations.javascript = {
+      {
+        name = 'Current file',
+        type = 'pwa-node',
+        request = 'launch',
+        program = '${file}',
+        cwd = vim.fn.getcwd(),
+        sourceMaps = true,
+        protocol = 'inspector',
+        console = 'integratedTerminal',
+        port = "${port}",
+        executable = {
+          command = "js-debug",
+          args = { "${port}" },
+        }
+      },
       {
         name = 'Current file',
         type = 'pwa-node',
