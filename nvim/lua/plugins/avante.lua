@@ -3,7 +3,11 @@ return {
   event = "VeryLazy",
   lazy = false,
   version = false,
-  opts = {},
+  opts = {
+    file_selector = {
+      provider = "telescope"
+    },
+  },
   build = "make",
   dependencies = {
     "stevearc/dressing.nvim",
