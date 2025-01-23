@@ -47,23 +47,31 @@ return {
       settings = {
         languages = {
           javascript = {
-            { formatCommand = 'prettier ${INPUT}', formatStdin = true },
+            { formatCommand = 'prettier --stdin-filepath ${INPUT}', formatStdin = true },
           },
           typescript = {
-            { formatCommand = 'prettier ${INPUT}', formatStdin = true },
+            { formatCommand = 'prettier --stdin-filepath ${INPUT}', formatStdin = true },
           },
           javascriptreact = {
-            { formatCommand = 'prettier ${INPUT}', formatStdin = true },
+            { formatCommand = 'prettier --stdin-filepath ${INPUT}', formatStdin = true },
           },
           typescriptreact = {
-            { formatCommand = 'prettier ${INPUT}', formatStdin = true },
+            { formatCommand = 'prettier --stdin-filepath ${INPUT}', formatStdin = true },
           },
         },
       },
       on_attach = function(_client, bufnr)
         vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
           buffer = bufnr,
-          callback = function() vim.lsp.buf.format({ async = false }) end,
+          callback = function()
+            vim.lsp.buf.format({
+              async = false,
+              timeout_ms = 2000,
+              filter = function(client)
+                return client.name == "efm"
+              end
+            })
+          end,
         })
       end
     }
