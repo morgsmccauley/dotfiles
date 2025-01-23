@@ -41,6 +41,7 @@
     kubernetes-helm
     skopeo
     yaml-language-server
+    aider-chat
   ];
   # FIX Doesn't seem to work
   # home.sessionPath = [

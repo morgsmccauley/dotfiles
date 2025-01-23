@@ -30,6 +30,7 @@
       la = "ls -la";
       kn = "k9s";
       kc = "kubectl";
+      a = "aider";
     };
 
     initExtra = ''

@@ -29,6 +29,8 @@
         autoSetupRemote = true;
       };
     };
-    ignores = [];
+    ignores = [
+      ".aider*"
+    ];
   };
 }
