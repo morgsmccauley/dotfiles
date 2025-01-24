@@ -1,6 +1,7 @@
 { config, pkgs, lib, ... }:
 
 let
+  # TODO update so key bindings like c-r/c-t use the theme wrapper
   fzf-wrapper = pkgs.writeScriptBin "fzf-wrapper" (builtins.readFile ./fzf-wrapper.sh);
 in
 {
@@ -11,11 +12,6 @@ in
       "--layout reverse"
       "--bind ctrl-u:preview-page-up,ctrl-d:preview-page-down"
     ];
-
-    # ai! this is wrong, these are input commands like fd, not the processer command fzf
-    defaultCommand = "${fzf-wrapper}/bin/fzf-wrapper";
-    fileWidgetCommand = "${fzf-wrapper}/bin/fzf-wrapper";
-    changeDirWidgetCommand = "${fzf-wrapper}/bin/fzf-wrapper";
   };
 
   home.packages = [ fzf-wrapper ];
