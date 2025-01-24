@@ -12,10 +12,9 @@ in
       "--bind ctrl-u:preview-page-up,ctrl-d:preview-page-down"
     ];
 
-    # AI! Fix this so the c-r command uses fzf wrapper, these define the input commands e.g. fd
-    # defaultCommand = "${fzf-wrapper}/bin/fzf-wrapper";
-    # fileWidgetCommand = "${fzf-wrapper}/bin/fzf-wrapper";
-    # changeDirWidgetCommand = "${fzf-wrapper}/bin/fzf-wrapper";
+    defaultCommand = "${fzf-wrapper}/bin/fzf-wrapper";
+    fileWidgetCommand = "${fzf-wrapper}/bin/fzf-wrapper";
+    changeDirWidgetCommand = "${fzf-wrapper}/bin/fzf-wrapper";
   };
 
   home.packages = [ fzf-wrapper ];
