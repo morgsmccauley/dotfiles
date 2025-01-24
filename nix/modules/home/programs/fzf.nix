@@ -12,6 +12,7 @@ in
       "--bind ctrl-u:preview-page-up,ctrl-d:preview-page-down"
     ];
 
+    # ai! this is wrong, these are input commands like fd, not the processer command fzf
     defaultCommand = "${fzf-wrapper}/bin/fzf-wrapper";
     fileWidgetCommand = "${fzf-wrapper}/bin/fzf-wrapper";
     changeDirWidgetCommand = "${fzf-wrapper}/bin/fzf-wrapper";
