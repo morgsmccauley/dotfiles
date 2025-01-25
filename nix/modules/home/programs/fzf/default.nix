@@ -1,7 +1,6 @@
 { config, pkgs, lib, ... }:
 
 let
-  # TODO update so key bindings like c-r/c-t use the theme wrapper
   fzf-wrapper = pkgs.writeScriptBin "fzf-wrapper" (builtins.readFile ./fzf-wrapper.sh);
 in
 {

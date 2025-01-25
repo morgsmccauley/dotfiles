@@ -2,9 +2,9 @@
   imports = [
     ./programs/git.nix
     ./programs/zsh.nix
-    ./programs/fzf.nix
     ./programs/gh.nix
 
+    ./programs/fzf
     ./programs/navi
     ./programs/kitty
   ];

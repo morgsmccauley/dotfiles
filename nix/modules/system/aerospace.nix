@@ -20,7 +20,7 @@
       };
 
       mode.main.binding = {
-        alt-slash = "layout tiles horizontal accordion horizontal";
+        alt-slash = "layout tiles accordion";
         alt-h = "focus left";
         alt-j = "focus down";
         alt-k = "focus up";
