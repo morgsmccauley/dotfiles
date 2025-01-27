@@ -35,6 +35,9 @@
 
     initExtra = ''
       setopt PROMPT_SUBST
+      setopt AUTO_CD
+      setopt CASE_GLOB
+      zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
       PROMPT='%F{blue}%1~%f> '
 
       if command -v asdf >/dev/null; then
