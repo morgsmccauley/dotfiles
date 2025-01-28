@@ -1,5 +1,10 @@
 % aws
 
+# Login with AWS SSO
+aws sso login --profile <profile>
+
+$ profile: aws configure list-profiles
+
 # View cloudwatch logs since time
 aws logs tail --since=<since> <log_group_name>
 
