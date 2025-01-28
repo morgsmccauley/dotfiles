@@ -3,15 +3,11 @@
 # Login with AWS SSO
 aws sso login --profile <profile>
 
-$ profile: aws configure list-profiles
-
 # View cloudwatch logs since time
 aws logs tail --since=<since> <log_group_name>
 
 # Follow cloudwatch logs
 aws logs tail --follow <log_group_name>
-
-$ log_group_name: aws logs describe-log-groups | jq -r '.logGroups | .[].logGroupName'
 
 # Receive SQS message
 
@@ -20,8 +16,6 @@ aws sqs receive-message --queue-url <queue_url>
 # Send SQS message
 
 aws sqs send-message --queue-url <queue_url> --message-body <message_body>
-
-$ queue_url: aws sqs list-queues | jq -r '.QueueUrls[]'
 
 # Generate temporary access keys
 aws sts get-session-token --duration-seconds 3600 | jq -r '("AWS_ACCESS_KEY_ID=\(.Credentials.AccessKeyId)\nAWS_SECRET_ACCESS_KEY=\(.Credentials.SecretAccessKey)\nAWS_SESSION_TOKEN=\(.Credentials.SessionToken)")'\n
@@ -32,8 +26,6 @@ eval $(op plugin run -- aws sts get-session-token --duration-seconds 3600 | jq -
 # Set AWS_PROFILE environment variable
 export AWS_PROFILE=<profile>
 
-$ profile: aws configure list-profiles
-
 % aws, aws-vault
 
 # Execute command under aws-vault
@@ -43,3 +35,6 @@ aws-vault exec <vault> -- <command>
 aws-vault exec <vault>
 
 $ vault: aws-vault ls --- --headers 2 --column 1
+$ queue_url: aws sqs list-queues | jq -r '.QueueUrls[]'
+$ profile: aws configure list-profiles
+$ log_group_name: aws logs describe-log-groups | jq -r '.logGroups | .[].logGroupName'
