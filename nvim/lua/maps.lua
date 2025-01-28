@@ -278,3 +278,19 @@ vim.keymap.set('n', '<leader>.', function()
 end, { desc = 'Find file' })
 vim.keymap.set('n', '<leader>\'', '<Cmd>Telescope marks<Cr>', { desc = 'List marks' })
 vim.keymap.set('n', '<leader>;', '<Cmd>Telescope command_history<Cr>', { desc = 'List command history' })
+
+vim.keymap.set({ 'i', 's' }, '<c-n>', function()
+  if vim.snippet.active({ direction = 1 }) then
+    return '<cmd>lua vim.snippet.jump(1)<cr>'
+  else
+    return '<c-n>'
+  end
+end, { expr = true })
+
+vim.keymap.set({ 'i', 's' }, '<c-p>', function()
+  if vim.snippet.active({ direction = -1 }) then
+    return '<cmd>lua vim.snippet.jump(-1)<cr>'
+  else
+    return '<c-p>'
+  end
+end, { expr = true })
