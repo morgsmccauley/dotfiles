@@ -276,12 +276,11 @@ vim.keymap.set('n', '<leader>as', function()
         return
     end
     
-    -- Get current buffer content
-    local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
-    local content = table.concat(lines, "\n")
+    -- Get current buffer filename
+    local filename = vim.fn.expand('%:p')
     
-    -- Send to aider terminal
-    aider_term:send(content)
+    -- Send add command to aider terminal
+    aider_term:send("/add " .. filename)
 end, { desc = 'Send buffer to aider' })
 
 -- Search and other keymaps

@@ -32,9 +32,9 @@ function M.find_aider_terminal()
 
     -- Look for a terminal running aider
     for _, term in ipairs(terms) do
-        local cmd = term.command
-        if cmd and cmd:match("aider") then
-            return term
+        local process = term.process
+        if process and process:match("aider") then
+            return term.terminal
         end
     end
     return nil
