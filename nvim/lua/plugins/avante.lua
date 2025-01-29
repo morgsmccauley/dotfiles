@@ -3,6 +3,7 @@ return {
   event = "VeryLazy",
   lazy = false,
   version = false,
+  enabled = false,
   opts = {
     file_selector = {
       provider = "telescope"
