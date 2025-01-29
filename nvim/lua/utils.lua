@@ -28,7 +28,7 @@ end
 
 function M.find_aider_terminal()
     -- Get all terminal buffers
-    local terms = require('termbuf.api').get_terminals()
+    local terms = require('termbuf.api').list_terminals()
 
     -- Look for a terminal running aider
     for _, term in ipairs(terms) do
