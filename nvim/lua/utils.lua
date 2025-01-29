@@ -26,4 +26,18 @@ function M.find_project_root()
     return nil
 end
 
+function M.find_aider_terminal()
+    -- Get all terminal buffers
+    local terms = require('termbuf.api').get_terminals()
+    
+    -- Look for a terminal running aider
+    for _, term in ipairs(terms) do
+        local cmd = term.command
+        if cmd and cmd:match("aider") then
+            return term
+        end
+    end
+    return nil
+end
+
 return M

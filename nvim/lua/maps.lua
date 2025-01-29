@@ -268,6 +268,22 @@ vim.keymap.set('n', '<leader>fp', function()
   require('mini.files').open(vim.api.nvim_buf_get_name(0))
 end, { desc = 'Open file explorer from parent' })
 
+-- Aider keymaps
+vim.keymap.set('n', '<leader>as', function()
+    local aider_term = require('utils').find_aider_terminal()
+    if not aider_term then
+        vim.notify("No aider terminal found!", vim.log.levels.ERROR)
+        return
+    end
+    
+    -- Get current buffer content
+    local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+    local content = table.concat(lines, "\n")
+    
+    -- Send to aider terminal
+    aider_term:send(content)
+end, { desc = 'Send buffer to aider' })
+
 -- Search and other keymaps
 vim.keymap.set('n', '<leader>/', '<Cmd>Telescope current_buffer_fuzzy_find<Cr>', { desc = 'Search buffer' })
 vim.keymap.set('n', '<leader>*', '<Cmd>Telescope grep_string<Cr>', { desc = 'Search for symbol globally' })
