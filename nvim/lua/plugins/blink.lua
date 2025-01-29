@@ -1,3 +1,4 @@
+-- TODO: don't autoselect first item, and use c-n to select
 return {
   'saghen/blink.cmp',
   -- optional: provides snippets for the snippet source

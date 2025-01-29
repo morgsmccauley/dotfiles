@@ -2,6 +2,7 @@ local utils = require('utils')
 
 return {
   'morgsmccauley/termbuf.nvim',
+  branch = 'feat/list-terminals',
   config = function()
     require('termbuf').setup({
       on_open = function(term)
