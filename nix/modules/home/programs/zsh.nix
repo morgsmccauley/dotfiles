@@ -30,7 +30,9 @@
       la = "ls -la";
       kn = "k9s";
       kc = "kubectl";
-      a = "aider --subtree-only --deepseek";
+      a = "aider --subtree-only";
+      ad = "aider --subtree-only --deepseek";
+      ac = "aider --subtree-only --sonnet";
     };
 
     initExtra = ''
