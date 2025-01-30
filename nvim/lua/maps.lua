@@ -94,19 +94,6 @@ vim.keymap.set('n', '<leader>wv', '<Cmd>vsp<Cr>', { desc = 'Split window vertica
 vim.keymap.set('n', '<leader>w=', '<C-w>=', { desc = 'Balance windows' })
 vim.keymap.set('n', '<leader>wm', '<C-w>|', { desc = 'Maximise window' })
 
--- Git Remote keymaps
-vim.keymap.set('n', '<leader>grp', '<Cmd>Git push<Cr>', { desc = 'Push' })
-vim.keymap.set('n', '<leader>gru', '<Cmd>Git push --set-upstream origin<Cr>', { desc = 'Push creating upstream' })
-vim.keymap.set('n', '<leader>grl', '<Cmd>Git pull<Cr>', { desc = 'Pull' })
-vim.keymap.set('n', '<leader>grf', '<Cmd>echo "Fetching remote..." | Git fetch<Cr>', { desc = 'Fetch' })
-vim.keymap.set('n', '<leader>gry', 'V:GBrowse!<Cr>', { desc = 'Copy GitHub URL of current line' })
-vim.keymap.set('n', '<leader>grb', '<Cmd>GBrowse<Cr>', { desc = 'View current file in Github' })
-
--- Git Rebase keymaps
-vim.keymap.set('n', '<leader>grs', 'Git rebase --skip', { desc = 'Skip' })
-vim.keymap.set('n', '<leader>grc', 'Git rebase --continue', { desc = 'Continue' })
-vim.keymap.set('n', '<leader>gra', 'Git rebase --abort', { desc = 'Abort' })
-
 -- Git Hunk keymaps
 vim.keymap.set('n', '<leader>ghs', '<Cmd>lua require\'gitsigns\'.stage_hunk()<Cr>', { desc = 'Stage' })
 vim.keymap.set('n', '<leader>ghu', '<Cmd>lua require\'gitsigns\'.undo_stage_hunk()<Cr>', { desc = 'Undo stage' })
@@ -145,18 +132,6 @@ vim.keymap.set('n', '<leader>gdc', '<Cmd>DiffviewClose<Cr>', { desc = 'Close' })
 vim.keymap.set('n', '<leader>gdf', '<Cmd>DiffviewToggleFiles<Cr>', { desc = 'Toggle files pane' })
 vim.keymap.set('n', '<leader>gdh', '<Cmd>DiffviewFileHistory %<Cr>', { desc = 'File history' })
 
--- Git keymaps
-vim.keymap.set('n', '<leader>g<Space>', function() vim.fn.feedkeys(':Git ') end, { desc = ':Git' })
-vim.keymap.set('n', '<leader>gl', function() require('neogit').open({ 'log' }) end, { desc = 'Log' })
-vim.keymap.set('n', '<leader>gp', '<Cmd>Telescope gh pull_request<Cr>', { desc = 'Pull requests' })
-vim.keymap.set('n', '<leader>gi', '<Cmd>Telescope gh issues assignee=@me search=-label:Epic<Cr>', { desc = 'Issues' })
-vim.keymap.set('n', '<leader>gb', '<Cmd>Neogit branch<Cr>', { desc = 'Branches' })
-vim.keymap.set('n', '<leader>gs', '<Cmd>TelescopeStash<Cr>', { desc = 'Stash' })
-vim.keymap.set('n', '<leader>gc', '<Cmd>Neogit commit<Cr>', { desc = 'Commit' })
-vim.keymap.set('n', '<leader>gL', '<Cmd>DiffviewFileHistory %<Cr>', { desc = 'Buffer commit history' })
-vim.keymap.set('n', '<leader>gB', '<Cmd>Git blame<Cr>', { desc = 'Blame annotations' })
-vim.keymap.set('n', '<leader>gg', '<Cmd>Neogit<Cr>', { desc = 'Git status' })
-
 -- Marks keymaps
 vim.keymap.set('n', '<leader>mD', '<Cmd>delmarks!<Cr>', { desc = 'Delete all marks for current buffer' })
 vim.keymap.set('n', '<leader>mm', '<Cmd>norm\'<Cr>', { desc = 'List marks' })
@@ -191,32 +166,25 @@ vim.keymap.set('n', '<leader>ct', function() require('telescope.builtin').grep_s
 
 -- Neotest keymaps
 vim.keymap.set('n', '<leader>nt', function()
-  vim.bo.buflisted = true
   require('neotest').run.run()
 end, { desc = 'Run nearest' })
 vim.keymap.set('n', '<leader>nf', function()
-  vim.bo.buflisted = true
   require('neotest').run.run(vim.fn.expand('%'))
 end, { desc = 'Run file' })
 vim.keymap.set('n', '<leader>nd', function()
-  vim.bo.buflisted = true
   require('neotest').run.run({ strategy = 'dap' })
 end, { desc = 'Run with debugger' })
 vim.keymap.set('n', '<leader>nl', function()
-  vim.bo.buflisted = true
   require('neotest').run.run_last()
 end, { desc = 'Run last' })
 vim.keymap.set('n', '<leader>ns', function()
-  vim.bo.buflisted = true
   require('neotest').summary.toggle()
 end, { desc = 'Toggle summary' })
 vim.keymap.set('n', '<leader>no', function()
-  vim.bo.buflisted = true
   require('neotest').output_panel.toggle()
 end, { desc = 'Toggle output panel' })
 
 -- Terminal keymaps
---
 vim.keymap.set('n', '<C-t><C-t>', function()
   local dir = utils.find_project_root() or vim.uv.cwd()
   vim.cmd.tabnew()
@@ -259,11 +227,6 @@ end, { desc = 'Open terminal at project root' })
 vim.keymap.set('n', '<leader>fo', function()
   require('mini.files').open()
 end, { desc = 'Open file explorer' })
--- vim.keymap.set('n', '<leader>fr', function()
---   local oil = require('oil')
---   vim.cmd.tabnew()
---   oil.open(utils.find_project_root())
--- end, { desc = 'Open file explorer from project root' })
 vim.keymap.set('n', '<leader>fp', function()
   require('mini.files').open(vim.api.nvim_buf_get_name(0))
 end, { desc = 'Open file explorer from parent' })
@@ -282,6 +245,8 @@ vim.keymap.set('n', '<leader>as', function()
   -- Send add command to aider terminal
   aider_term:send("/add " .. filename)
 end, { desc = 'Add file to aider' })
+
+-- TODO add aider comment
 
 -- Search and other keymaps
 vim.keymap.set('n', '<leader>/', '<Cmd>Telescope current_buffer_fuzzy_find<Cr>', { desc = 'Search buffer' })
