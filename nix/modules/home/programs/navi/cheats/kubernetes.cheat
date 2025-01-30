@@ -40,25 +40,25 @@ kubectl scale deployment -n <namespace> <deployment-name> --replicas=<count>
 kubectl logs -n <namespace> -f --tail 0 deployment/<deployment-name>
 
 # Rollout status of deployment
-kubectl rollout status deployment/<deployment-name> -n <namespace>
+kubectl rollout -n <namespace> status deployment/<deployment-name>
 
 # Rollback deployment
-kubectl rollout undo deployment/<deployment-name> -n <namespace>
+kubectl rollout -n <namespace> undo deployment/<deployment-name>
 
 # Rollback to specific revision
-kubectl rollout undo deployment/<deployment-name> -n <namespace> --to-revision=<revision>
+kubectl rollout -n <namespace> undo deployment/<deployment-name> --to-revision=<revision>
 
 # Pause deployment rollout
-kubectl rollout pause deployment/<deployment-name> -n <namespace>
+kubectl rollout -n <namespace> pause deployment/<deployment-name>
 
 # Resume deployment rollout
-kubectl rollout resume deployment/<deployment-name> -n <namespace>
+kubectl rollout -n <namespace> resume deployment/<deployment-name>
 
 # View rollout history
-kubectl rollout history deployment/<deployment-name> -n <namespace>
+kubectl rollout -n <namespace> history deployment/<deployment-name>
 
 # Restart deployment (rolling restart)
-kubectl rollout restart deployment/<deployment-name> -n <namespace>
+kubectl rollout -n <namespace> restart deployment/<deployment-name>
 
 # Get services
 kubectl get services -n <namespace>
