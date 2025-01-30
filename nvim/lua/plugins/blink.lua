@@ -1,4 +1,3 @@
--- TODO: don't autoselect first item, and use c-n to select
 return {
   'saghen/blink.cmp',
   -- optional: provides snippets for the snippet source
@@ -25,6 +24,12 @@ return {
     },
 
     completion = {
+      list = {
+        selection = {
+          auto_insert = true,
+          preselect = false,
+        }
+      },
       documentation = {
         auto_show = true,
         auto_show_delay_ms = 500,
@@ -39,7 +44,7 @@ return {
         }
       },
       ghost_text = {
-        enabled = true
+        enabled = false
       },
     },
 
