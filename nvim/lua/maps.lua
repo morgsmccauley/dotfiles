@@ -270,18 +270,18 @@ end, { desc = 'Open file explorer from parent' })
 
 -- Aider keymaps
 vim.keymap.set('n', '<leader>as', function()
-    local aider_term = require('utils').find_aider_terminal()
-    if not aider_term then
-        vim.notify("No aider terminal found!", vim.log.levels.ERROR)
-        return
-    end
-    
-    -- Get current buffer filename
-    local filename = vim.fn.expand('%:p')
-    
-    -- Send add command to aider terminal
-    aider_term:send("/add " .. filename)
-end, { desc = 'Send buffer to aider' })
+  local aider_term = require('utils').find_aider_terminal()
+  if not aider_term then
+    vim.notify("No aider terminal found!", vim.log.levels.ERROR)
+    return
+  end
+
+  -- Get current buffer filename
+  local filename = vim.fn.expand('%:p')
+
+  -- Send add command to aider terminal
+  aider_term:send("/add " .. filename)
+end, { desc = 'Add file to aider' })
 
 -- Search and other keymaps
 vim.keymap.set('n', '<leader>/', '<Cmd>Telescope current_buffer_fuzzy_find<Cr>', { desc = 'Search buffer' })
