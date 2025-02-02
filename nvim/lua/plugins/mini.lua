@@ -31,7 +31,17 @@ return {
       vim.api.nvim_create_autocmd('User', {
         pattern = 'MiniFilesBufferCreate',
         callback = function(args)
-          vim.keymap.set('n', 'g.', files_set_cwd, { buffer = args.data.buf_id })
+          local buf_id = args.data.buf_id
+          -- Set working directory mapping
+          vim.keymap.set('n', 'g.', files_set_cwd, { buffer = buf_id })
+
+          -- Set vertical split mapping
+          vim.keymap.set('n', '<C-v>', function()
+            local fs_entry = mini_files.get_fs_entry()
+            if fs_entry == nil then return end
+            mini_files.close()
+            vim.cmd('vsplit ' .. fs_entry.path)
+          end, { buffer = buf_id })
         end,
       })
 
@@ -49,22 +59,6 @@ return {
         options = {
           use_as_default_explorer = true,
         },
-      })
-
-      -- Add custom mapping for vertical split
-      vim.api.nvim_create_autocmd('User', {
-        pattern = 'MiniFilesBufferCreate',
-        callback = function(args)
-          local buf_id = args.data.buf_id
-          vim.keymap.set('n', 'gs', function()
-            local fs_entry = MiniFiles.get_fs_entry()
-            if fs_entry == nil then return end
-            -- Close mini.files
-            MiniFiles.close()
-            -- Open file in vertical split
-            vim.cmd('vsplit ' .. fs_entry.path)
-          end, { buffer = buf_id })
-        end,
       })
     end
   }
