@@ -40,7 +40,31 @@ return {
           go_out_plus = 'h',
           go_in_plus = 'l',
           close = '<C-q>'
-        }
+        },
+        windows = {
+          preview = true,
+          width_focus = 30,
+          width_preview = 40,
+        },
+        options = {
+          use_as_default_explorer = true,
+        },
+      })
+
+      -- Add custom mapping for vertical split
+      vim.api.nvim_create_autocmd('User', {
+        pattern = 'MiniFilesBufferCreate',
+        callback = function(args)
+          local buf_id = args.data.buf_id
+          vim.keymap.set('n', 'gs', function()
+            local fs_entry = MiniFiles.get_fs_entry()
+            if fs_entry == nil then return end
+            -- Close mini.files
+            MiniFiles.close()
+            -- Open file in vertical split
+            vim.cmd('vsplit ' .. fs_entry.path)
+          end, { buffer = buf_id })
+        end,
       })
     end
   }
