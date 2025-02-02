@@ -14,11 +14,20 @@ return {
       ["<leader>"] = {
         w = { name = "+window", ["🚫"] = "which_key_ignore" },
         v = { name = "+view", ["🚫"] = "which_key_ignore" },
+        g = {
+          name = "+git",
+          h = { name = "+hunk" },
+          d = { name = "+diff" },
+        },
+        d = { name = "+debug" },
+        m = { name = "+marks" },
+        b = { name = "+buffer" },
+        c = { name = "+code" },
+        n = { name = "+test" },
+        t = { name = "+terminal" },
+        f = { name = "+file" },
+        a = { name = "+ai" },
       },
-    })
-
-    wk.add({
-      { '<leader>a', group = 'ai' }
     })
   end
 }
