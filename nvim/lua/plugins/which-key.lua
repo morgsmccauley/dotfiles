@@ -7,7 +7,7 @@ return {
   init = function()
     vim.api.nvim_set_hl(0, 'WhichKeyFloat', { bg = 'NONE' })
   end,
-  setup = function()
+  config = function()
     local wk = require("which-key")
 
     wk.register({
