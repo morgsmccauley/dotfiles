@@ -9,6 +9,7 @@ return {
   },
   {
     'echasnovski/mini.pairs',
+    enabled = false,
     version = '*',
     event = 'InsertEnter',
     config = function()
