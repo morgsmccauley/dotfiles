@@ -247,8 +247,12 @@ vim.keymap.set('n', '<leader>aa', function()
 end, { desc = 'Add file to aider' })
 
 vim.keymap.set('n', '<leader>ac', function()
-  -- Insert "ai!" at current cursor position
-  vim.api.nvim_put({ 'ai!' }, 'c', true, true)
+  -- Get current line
+  local line = vim.api.nvim_get_current_line()
+  -- Comment prefix based on filetype
+  local prefix = vim.bo.commentstring:gsub('%%s.*', '')
+  -- Insert "ai!" as a comment
+  vim.api.nvim_set_current_line(prefix .. ' ai!')
 end, { desc = 'Insert aider comment' })
 
 -- Search and other keymaps
