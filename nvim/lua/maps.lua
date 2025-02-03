@@ -246,6 +246,11 @@ vim.keymap.set('n', '<leader>aa', function()
   aider_term:send("/add " .. filename)
 end, { desc = 'Add file to aider' })
 
+vim.keymap.set('n', '<leader>ac', function()
+  -- Insert "ai!" at current cursor position
+  vim.api.nvim_put({ 'ai!' }, 'c', true, true)
+end, { desc = 'Insert aider comment' })
+
 -- Search and other keymaps
 vim.keymap.set('n', '<leader>/', '<Cmd>Telescope current_buffer_fuzzy_find<Cr>', { desc = 'Search buffer' })
 vim.keymap.set('n', '<leader>*', '<Cmd>Telescope grep_string<Cr>', { desc = 'Search for symbol globally' })
