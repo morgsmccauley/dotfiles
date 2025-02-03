@@ -19,6 +19,15 @@ return {
     },
   },
   config = function()
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = "NeogitPopup",
+      callback = function()
+        if vim.fn.bufname():match("NeogitCommitPopup") then
+          vim.fn.feedkeys("-h")
+        end
+      end,
+    })
+
     require('neogit').setup({
       disable_commit_confirmation = true,
       disable_hint = true,
@@ -63,6 +72,15 @@ return {
       },
       popup = {
         kind = "split",
+      },
+      commit_popup = {
+        kind = "split",
+        defaults = {
+          ["a"] = "commit --amend",
+          ["A"] = "commit --amend --no-verify",
+          ["c"] = "commit --no-verify",
+          ["C"] = "commit",
+        },
       },
     })
   end,
