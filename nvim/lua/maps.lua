@@ -69,9 +69,6 @@ cmap('<C-a>', '<C-b>', { noremap = true })
 
 nmap('J', 'mzJ`z', { noremap = true })
 
--- vmap('J', ':m \'>+1<Cr>gv=gv', { noremap = true })
--- vmap('K', ':m \'<-2<Cr>gv=gv', { noremap = true })
-
 vim.keymap.set('c', '<C-r>', function()
   return '<Plug>(TelescopeFuzzyCommandSearch)'
 end, { expr = true, remap = true })
@@ -232,6 +229,7 @@ vim.keymap.set('n', '<leader>fp', function()
 end, { desc = 'Open file explorer from parent' })
 
 -- Aider keymaps
+--  ai! for some reason I end up in insert mode after executing this
 vim.keymap.set('n', '<leader>at', function()
   vim.cmd.tabnew()
   require('termbuf.api').open_terminal({ cmd = 'aider --subtree-only --watch-files' })
