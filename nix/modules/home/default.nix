@@ -43,6 +43,7 @@
     skopeo
     yaml-language-server
     aider-chat
+    grpcurl
   ];
   # FIX Doesn't seem to work
   # home.sessionPath = [
