@@ -10,24 +10,20 @@ return {
   config = function()
     local wk = require("which-key")
 
-    wk.register({
-      ["<leader>"] = {
-        w = { name = "+window", ["🚫"] = "which_key_ignore" },
-        v = { name = "+view", ["🚫"] = "which_key_ignore" },
-        g = {
-          name = "+git",
-          h = { name = "+hunk" },
-          d = { name = "+diff" },
-        },
-        d = { name = "+debug" },
-        m = { name = "+marks" },
-        b = { name = "+buffer" },
-        c = { name = "+code" },
-        n = { name = "+test" },
-        t = { name = "+terminal" },
-        f = { name = "+file" },
-        a = { name = "+ai" },
-      },
+    wk.add({
+      { "<leader>a",  group = "ai" },
+      { "<leader>b",  group = "buffer" },
+      { "<leader>c",  group = "code" },
+      { "<leader>d",  group = "debug" },
+      { "<leader>f",  group = "file" },
+      { "<leader>g",  group = "git" },
+      { "<leader>gd", group = "diff" },
+      { "<leader>gh", group = "hunk" },
+      { "<leader>m",  group = "marks" },
+      { "<leader>n",  group = "test" },
+      { "<leader>t",  group = "terminal" },
+      { "<leader>v",  group = "view" },
+      { "<leader>w",  group = "window" },
     })
   end
 }
