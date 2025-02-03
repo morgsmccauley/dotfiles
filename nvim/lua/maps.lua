@@ -229,11 +229,12 @@ vim.keymap.set('n', '<leader>fp', function()
 end, { desc = 'Open file explorer from parent' })
 
 -- Aider keymaps
---  ai! for some reason I end up in insert mode after executing this
 vim.keymap.set('n', '<leader>at', function()
   vim.cmd.tabnew()
   require('termbuf.api').open_terminal({ cmd = 'aider --subtree-only --watch-files' })
   vim.cmd.tabprev()
+  -- termbuf triggers startinsert on open
+  vim.cmd.stopinsert()
 end, { desc = 'Open aider terminal in new tab' })
 
 vim.keymap.set('n', '<leader>aa', function()
