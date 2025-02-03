@@ -12,8 +12,8 @@ return {
 
     wk.register({
       ["<leader>"] = {
-        w = { name = "+window" },
-        v = { name = "+view" },
+        w = { name = "+window", ["🚫"] = "which_key_ignore" },
+        v = { name = "+view", ["🚫"] = "which_key_ignore" },
         g = {
           name = "+git",
           h = { name = "+hunk" },
