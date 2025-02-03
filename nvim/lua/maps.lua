@@ -185,6 +185,12 @@ vim.keymap.set('n', '<leader>no', function()
 end, { desc = 'Toggle output panel' })
 
 -- Terminal keymaps
+vim.keymap.set('n', '<leader>ta', function()
+  vim.cmd.tabnew()
+  require('termbuf.api').open_terminal({ cmd = 'aider' })
+  vim.cmd.tabprev()
+end, { desc = 'Open aider terminal in new tab' })
+
 vim.keymap.set('n', '<C-t><C-t>', function()
   local dir = utils.find_project_root() or vim.uv.cwd()
   vim.cmd.tabnew()
