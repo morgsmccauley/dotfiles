@@ -184,12 +184,6 @@ vim.keymap.set('n', '<leader>no', function()
   require('neotest').output_panel.toggle()
 end, { desc = 'Toggle output panel' })
 
--- Terminal keymaps
-vim.keymap.set('n', '<leader>ta', function()
-  vim.cmd.tabnew()
-  require('termbuf.api').open_terminal({ cmd = 'aider' })
-  vim.cmd.tabprev()
-end, { desc = 'Open aider terminal in new tab' })
 
 vim.keymap.set('n', '<C-t><C-t>', function()
   local dir = utils.find_project_root() or vim.uv.cwd()
@@ -238,6 +232,12 @@ vim.keymap.set('n', '<leader>fp', function()
 end, { desc = 'Open file explorer from parent' })
 
 -- Aider keymaps
+vim.keymap.set('n', '<leader>at', function()
+  vim.cmd.tabnew()
+  require('termbuf.api').open_terminal({ cmd = 'aider --subtree-only --watch-files' })
+  vim.cmd.tabprev()
+end, { desc = 'Open aider terminal in new tab' })
+
 vim.keymap.set('n', '<leader>aa', function()
   local aider_term = require('utils').find_aider_terminal()
   if not aider_term then

@@ -1,4 +1,3 @@
--- TODO add default args, i.e. commit --no-verify
 return {
   'NeogitOrg/neogit',
   -- dir = '~/Developer/neogit',
