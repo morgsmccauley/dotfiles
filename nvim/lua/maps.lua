@@ -232,7 +232,7 @@ vim.keymap.set('n', '<leader>fp', function()
 end, { desc = 'Open file explorer from parent' })
 
 -- Aider keymaps
-vim.keymap.set('n', '<leader>as', function()
+vim.keymap.set('n', '<leader>aa', function()
   local aider_term = require('utils').find_aider_terminal()
   if not aider_term then
     vim.notify("No aider terminal found!", vim.log.levels.ERROR)
@@ -245,8 +245,6 @@ vim.keymap.set('n', '<leader>as', function()
   -- Send add command to aider terminal
   aider_term:send("/add " .. filename)
 end, { desc = 'Add file to aider' })
-
--- TODO add aider comment
 
 -- Search and other keymaps
 vim.keymap.set('n', '<leader>/', '<Cmd>Telescope current_buffer_fuzzy_find<Cr>', { desc = 'Search buffer' })
