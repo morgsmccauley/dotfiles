@@ -30,9 +30,9 @@
       la = "ls -la";
       kn = "k9s";
       kc = "kubectl";
-      a = "aider --subtree-only";
-      ad = "aider --subtree-only --deepseek";
-      ac = "aider --subtree-only --sonnet";
+      a = "aider --subtree-only --no-attribute-author --no-attribute-committer";
+      ad = "aider --subtree-only --deepseek --no-attribute-author --no-attribute-committer";
+      ac = "aider --subtree-only --sonnet --no-attribute-author --no-attribute-committer";
     };
 
     initExtra = ''
