@@ -3,6 +3,7 @@
     ./programs/git.nix
     ./programs/zsh.nix
     ./programs/gh.nix
+    ./programs/aider.nix
 
     ./programs/fzf
     ./programs/navi
