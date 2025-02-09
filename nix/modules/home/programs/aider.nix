@@ -9,5 +9,6 @@
     no-attribute-author: true
     no-attribute-committer: true
     subtree-only: true
+    dark-mode: true
   '';
 }

@@ -231,7 +231,7 @@ end, { desc = 'Open file explorer from parent' })
 -- Aider keymaps
 vim.keymap.set('n', '<leader>at', function()
   vim.cmd.tabnew()
-  require('termbuf.api').open_terminal({ cmd = 'aider --subtree-only --watch-files' })
+  require('termbuf.api').open_terminal({ cmd = 'aider --watch-files' })
   vim.cmd.tabprev()
   -- termbuf triggers startinsert on open
   vim.cmd.stopinsert()

@@ -32,7 +32,6 @@
       kc = "kubectl";
       a = "aider";
       ad = "aider --model deepseek-coder";
-      ac = "aider --model claude-3-sonnet";
     };
 
     initExtra = ''

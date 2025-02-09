@@ -4,7 +4,7 @@
 ssh ubuntu@<host>
 
 # TODO change this to return host-name instead of IP now that it is accessible
-# ai! this only looks at the single inventory directory, can you update it to get every inventory file within the ansible dir, is it possible with glob?
+# TODO look for all inventory files including subdirectories
 $ host: ansible-inventory -i ~/Developer/helius-monorepo/infra/ansible/inventory/ --list 2>/dev/null |\
   jq -r '._meta.hostvars | to_entries | .[] | "\(.key)\t\(.value.ansible_host)"' |\
   column -t -s $'\t' \
