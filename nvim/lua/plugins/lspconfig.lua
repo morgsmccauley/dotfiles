@@ -61,8 +61,9 @@ return {
         },
       },
       on_attach = function(_client, bufnr)
-        -- ai! this is getting attachdd multiple times to the same buffer - prevent that
+        local augroup = vim.api.nvim_create_augroup('LspFormatting_' .. bufnr, { clear = true })
         vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+          group = augroup,
           buffer = bufnr,
           callback = function()
             vim.lsp.buf.format({
