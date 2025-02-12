@@ -228,21 +228,25 @@ vim.keymap.set('n', '<leader>fp', function()
   require('mini.files').open(vim.api.nvim_buf_get_name(0))
 end, { desc = 'Open file explorer from parent' })
 
--- Aider keymaps
-vim.keymap.set('n', '<leader>at', function()
+local function open_aider_term()
   vim.cmd.tabnew()
   require('termbuf.api').open_terminal({ cmd = 'aider --watch-files' })
   vim.cmd.tabprev()
   -- termbuf triggers startinsert on open
   vim.cmd.stopinsert()
+end
+
+-- Aider keymaps
+vim.keymap.set('n', '<leader>at', function()
+  open_aider_term()
 end, { desc = 'Open aider terminal in new tab' })
 
 vim.keymap.set('n', '<leader>aa', function()
   local aider_term = require('utils').find_aider_terminal()
   if not aider_term then
-    vim.notify("No aider terminal found!", vim.log.levels.ERROR)
-    return
+    open_aider_term()
   end
+  aider_term = require('utils').find_aider_terminal()
 
   -- Get current buffer filename
   local filename = vim.fn.expand('%:p')
