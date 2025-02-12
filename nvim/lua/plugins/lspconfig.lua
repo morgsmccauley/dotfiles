@@ -61,6 +61,7 @@ return {
         },
       },
       on_attach = function(_client, bufnr)
+        -- ai! this is getting attachdd multiple times to the same buffer - prevent that
         vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
           buffer = bufnr,
           callback = function()
