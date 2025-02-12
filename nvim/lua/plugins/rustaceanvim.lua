@@ -14,6 +14,7 @@ vim.g.rustaceanvim = {
       vim.keymap.set('n', '<leader>co', '<Cmd>RustLsp openDocs<Cr>',
         { silent = true, buffer = bufnr, desc = 'Open docs (rust)' })
 
+      -- ai! do the same here
       vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
         buffer = bufnr,
         callback = function() vim.lsp.buf.format() end,
