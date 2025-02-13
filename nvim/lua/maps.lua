@@ -269,17 +269,35 @@ vim.keymap.set('n', '<leader>ac', function()
 end, { desc = 'Insert aider comment' })
 
 -- Search and other keymaps
-vim.keymap.set('n', '<leader>/', '<Cmd>Telescope current_buffer_fuzzy_find<Cr>', { desc = 'Search buffer' })
-vim.keymap.set('n', '<leader>*', '<Cmd>Telescope grep_string<Cr>', { desc = 'Search for symbol globally' })
-vim.keymap.set('n', '<leader>?', '<Cmd>Telescope live_grep<Cr>', { desc = 'Search globally' })
+vim.keymap.set('n', '<leader>/', function()
+  require('snacks').picker.lines()
+end, { desc = 'Search buffer' })
+
+vim.keymap.set('n', '<leader>*', function()
+  require('snacks').picker.grep_word()
+end, { desc = 'Search for symbol globally' })
+
+vim.keymap.set('n', '<leader>?', function()
+  require('snacks').picker.grep()
+end, { desc = 'Search globally' })
+
 vim.keymap.set('n', '<leader>,', function()
-  require('telescope.builtin').git_files({ cwd = utils.find_project_root(), use_git_root = false, show_untracked = true })
-end, { desc = 'Find file in project directory' })
+  require('snacks').picker.buffers()
+end, { desc = 'Find buffer' })
+
 vim.keymap.set('n', '<leader>.', function()
-  require('telescope.builtin').git_files({ use_git_root = false, show_untracked = true })
+  require('snacks').picker.smart()
 end, { desc = 'Find file' })
-vim.keymap.set('n', '<leader>\'', '<Cmd>Telescope marks<Cr>', { desc = 'List marks' })
-vim.keymap.set('n', '<leader>;', '<Cmd>Telescope command_history<Cr>', { desc = 'List command history' })
+
+vim.keymap.set('n', '<leader>\'', function()
+  require('snacks').picker.marks()
+end, { desc = 'List marks' })
+
+vim.keymap.set('n', '<leader>;', function()
+  require('snacks').picker.command_history({
+    layout = { preset = "ivy" }
+  })
+end, { desc = 'List command history' })
 
 vim.keymap.set({ 'i', 's' }, '<c-n>', function()
   if vim.snippet.active({ direction = 1 }) then
