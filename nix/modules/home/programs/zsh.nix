@@ -20,7 +20,7 @@
     ];
 
     shellAliases = {
-      v = "nvim --listen /tmp/nvimsocket";
+      v = "nvim";
       c = "cargo";
       dc = "docker compose";
       d = "docker";
@@ -57,6 +57,20 @@
       export NAVI_CONFIG=$HOME/Library/Application\ Support/navi/config.yaml
 
       source /Users/morganmccauley/.config/op/plugins.sh
+
+      edit_in_parent_nvim() {
+          local file="''${@: -1}"
+          nvr --servername "$SERVER_NAME" -cc "rightbelow split" --remote-wait +'set bufhidden=delete' "$file"
+      }
+
+      autoload -U edit-command-line
+      zle -N edit-command-line
+
+      export EDITOR=edit_in_parent_nvim
+
+      bindkey '^xe' edit-command-line
+      bindkey '^x^e' edit-command-line
+
     '';
   };
 

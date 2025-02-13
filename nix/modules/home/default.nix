@@ -45,6 +45,7 @@
     yaml-language-server
     grpcurl
     git-absorb
+    neovim-remote
   ];
   # FIX Doesn't seem to work
   # home.sessionPath = [
