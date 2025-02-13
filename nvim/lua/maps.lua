@@ -52,13 +52,17 @@ vim.keymap.set('n', 'g-', function()
   vim.cmd.cd('-')
 end, { noremap = true })
 
-nmap('gd', '<Cmd>silent Telescope lsp_definitions<Cr>', { silent = true })
-nmap('gD', '<Cmd>Telescope lsp_type_definitions<CR>', { silent = true })
-nmap('gi', '<Cmd>Telescope lsp_implementations<Cr>', { silent = true })
 vim.keymap.set('n', 'gr', function()
-  require('telescope.builtin').lsp_references({
-    show_line = false,
-  })
+  require('snacks').picker.lsp_references()
+end, { silent = true })
+vim.keymap.set('n', 'gd', function()
+  require('snacks').picker.lsp_definitions()
+end, { silent = true })
+vim.keymap.set('n', 'gD', function()
+  require('snacks').picker.lsp_type_definitions()
+end, { silent = true })
+vim.keymap.set('n', 'gi', function()
+  require('snacks').picker.lsp_implementations()
 end, { silent = true })
 vim.keymap.set('n', 'gs', '<Cmd>lua vim.lsp.buf.signature_help()<Cr>', { silent = true })
 
