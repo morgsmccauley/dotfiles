@@ -37,8 +37,6 @@ vim.cmd 'syntax on'
 vim.env['GIT_EDITOR'] = 'nvr -cc "botright split" --remote-wait'
 vim.env['GIT_SEQUENCE_EDITOR'] = 'nvr -cc "botright split" --remote-wait'
 
-vim.env['SERVER_NAME'] = vim.v.servername
-
 vim.diagnostic.config({
     float = {
         border = 'single'

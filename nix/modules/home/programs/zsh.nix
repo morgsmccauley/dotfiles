@@ -60,7 +60,7 @@
 
       edit_in_parent_nvim() {
           local file="''${@: -1}"
-          nvr --servername "$SERVER_NAME" -cc "rightbelow split" --remote-wait +'set bufhidden=delete' "$file"
+          nvr -cc "rightbelow split" --remote-wait +'set bufhidden=delete | set wrap | set autowriteall' "$file"
       }
 
       autoload -U edit-command-line
@@ -68,9 +68,7 @@
 
       export EDITOR=edit_in_parent_nvim
 
-      bindkey '^xe' edit-command-line
-      bindkey '^x^e' edit-command-line
-
+      bindkey '^u' edit-command-line
     '';
   };
 
