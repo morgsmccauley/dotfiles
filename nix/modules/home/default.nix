@@ -44,6 +44,7 @@
     skopeo
     yaml-language-server
     grpcurl
+    git-absorb
   ];
   # FIX Doesn't seem to work
   # home.sessionPath = [
