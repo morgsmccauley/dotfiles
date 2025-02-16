@@ -46,7 +46,24 @@
     grpcurl
     git-absorb
     neovim-remote
+    python312Packages.playwright
   ];
+
+  home.activation = {
+    installPlaywrightDeps = {
+      after = [ "writeBoundary" "linkGeneration" ];
+      before = [ ];
+      data = ''
+        if [ ! -d "$HOME/Library/Caches/ms-playwright" ]; then
+          echo "Installing Playwright dependencies..."
+          ${pkgs.python312Packages.playwright}/bin/playwright install --with-deps chromium
+        else
+          echo "Playwright dependencies already installed, skipping..."
+        fi
+      '';
+    };
+  };
+
   # FIX Doesn't seem to work
   # home.sessionPath = [
   #   "$HOME/.npm-packages/bin"
