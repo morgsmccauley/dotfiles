@@ -286,7 +286,7 @@ vim.keymap.set('n', '<leader>,', function()
 end, { desc = 'Find buffer' })
 
 vim.keymap.set('n', '<leader>.', function()
-  require('snacks').picker.smart()
+  require('snacks').picker.smart({ hidden = true })
 end, { desc = 'Find file' })
 
 vim.keymap.set('n', '<leader>\'', function()
