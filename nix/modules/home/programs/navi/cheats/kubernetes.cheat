@@ -10,55 +10,55 @@ kubectl get pods -n <namespace>
 kubectl get pods --all-namespaces
 
 # Describe pod
-kubectl describe -n <namespace> pod <pod-name>
+kubectl -n <namespace> describe pod <pod-name>
 
 # Get pod logs
-kubectl logs -n <namespace> <pod-name>
+kubectl -n <namespace> logs <pod-name>
 
 # Follow pod logs
-kubectl logs -f --tail 0 -n <namespace> <pod-name>
+kubectl -n <namespace> logs -f --tail 0 <pod-name>
 
 # Get pod logs (previous container)
-kubectl logs -n <namespace> <pod-name> --previous
+kubectl -n <namespace> logs <pod-name> --previous
 
 # Execute command in pod
-kubectl exec -it -n <namespace> <pod-name> -- <command>
+kubectl -n <namespace> exec -it <pod-name> -- <command>
 
 # Get shell in pod
-kubectl exec -it -n <namespace> <pod-name> -- /bin/sh
+kubectl -n <namespace> exec -it <pod-name> -- /bin/sh
 
 # Port forward to pod
-kubectl port-forward -n <namespace> <pod-name> <local-port>:<pod-port>
+kubectl -n <namespace> port-forward <pod-name> <local-port>:<pod-port>
 
 # Get deployments
 kubectl get deployments -n <namespace>
 
 # Scale deployment
-kubectl scale deployment -n <namespace> <deployment-name> --replicas=<count>
+kubectl -n <namespace> scale deployment <deployment-name> --replicas=<count>
 
 # Follow deployment logs
-kubectl logs -n <namespace> -f --tail 0 deployment/<deployment-name>
+kubectl -n <namespace> logs -f --tail 0 deployment/<deployment-name>
 
 # Rollout status of deployment
-kubectl rollout -n <namespace> status deployment/<deployment-name>
+kubectl -n <namespace> rollout status deployment/<deployment-name>
 
 # Rollback deployment
-kubectl rollout -n <namespace> undo deployment/<deployment-name>
+kubectl -n <namespace> rollout undo deployment/<deployment-name>
 
 # Rollback to specific revision
-kubectl rollout -n <namespace> undo deployment/<deployment-name> --to-revision=<revision>
+kubectl -n <namespace> rollout undo deployment/<deployment-name> --to-revision=<revision>
 
 # Pause deployment rollout
-kubectl rollout -n <namespace> pause deployment/<deployment-name>
+kubectl -n <namespace> rollout pause deployment/<deployment-name>
 
 # Resume deployment rollout
-kubectl rollout -n <namespace> resume deployment/<deployment-name>
+kubectl -n <namespace> rollout resume deployment/<deployment-name>
 
 # View rollout history
-kubectl rollout -n <namespace> history deployment/<deployment-name>
+kubectl -n <namespace> rollout history deployment/<deployment-name>
 
 # Restart deployment (rolling restart)
-kubectl rollout -n <namespace> restart deployment/<deployment-name>
+kubectl -n <namespace> rollout restart deployment/<deployment-name>
 
 # Get services
 kubectl get services -n <namespace>
