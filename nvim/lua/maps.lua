@@ -299,18 +299,26 @@ vim.keymap.set('n', '<leader>;', function()
   })
 end, { desc = 'List command history' })
 
-vim.keymap.set({ 'i', 's' }, '<c-n>', function()
+vim.keymap.set({ 'i', 's' }, '<c-l>', function()
   if vim.snippet.active({ direction = 1 }) then
     return '<cmd>lua vim.snippet.jump(1)<cr>'
   else
-    return '<c-n>'
+    return '<c-l>'
   end
 end, { expr = true })
 
-vim.keymap.set({ 'i', 's' }, '<c-p>', function()
+vim.keymap.set({ 'i', 's' }, '<c-h>', function()
   if vim.snippet.active({ direction = -1 }) then
     return '<cmd>lua vim.snippet.jump(-1)<cr>'
   else
-    return '<c-p>'
+    return '<c-h>'
+  end
+end, { expr = true })
+
+vim.keymap.set({ 'i', 's' }, '<c-n>', function()
+  if vim.snippet.active({ direction = -1 }) then
+    return '<cmd>lua vim.snippet.jump(-1)<cr>'
+  else
+    return '<c-h>'
   end
 end, { expr = true })

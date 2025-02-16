@@ -7,45 +7,47 @@ return {
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
   opts = {
-    -- 'default' for mappings similar to built-in completion
-    -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
-    -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
-    -- See the full "keymap" documentation for information on defining your own keymap.
-    keymap = { preset = 'default' },
+    keymap = {
+      preset = 'default',
+      ['<C-n>'] = {
+        'show',
+        'select_next'
+      },
+    },
 
     appearance = {
-      -- Sets the fallback highlight groups to nvim-cmp's highlight groups
-      -- Useful for when your theme doesn't support blink.cmp
-      -- Will be removed in a future release
       use_nvim_cmp_as_default = true,
-      -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-      -- Adjusts spacing to ensure icons are aligned
       nerd_font_variant = 'mono',
     },
 
     completion = {
       list = {
         selection = {
-          auto_insert = true,
-          preselect = false,
+          auto_insert = false,
+          preselect = true,
         }
       },
       documentation = {
         auto_show = true,
         auto_show_delay_ms = 500,
       },
-      -- NOTE: use ghost_text by default, and open menu manually? less busy??
-      -- fuzzy type to get what I am looking for, and then accept. When I don't know what I am looking for then I can open up
-      -- this could work well with copilot too so its not too busy having both
       menu = {
-        auto_show = true,
+        -- is it possible to have auto_show false, but still show on trigger character etc
+        -- want false so that we can rely mainly on ghost text, but have it show for triggers
+        auto_show = false,
         draw = {
           columns = { { "label", "label_description", gap = 1 }, { "kind" } }
         }
       },
+      -- only shows when menu "should" show
       ghost_text = {
-        enabled = false
+        enabled = true
       },
+      -- these require auto_show to be true
+      trigger = {
+        -- false will prevent ghost text from showing in most cases
+        show_on_keyword = true
+      }
     },
 
     sources = {
