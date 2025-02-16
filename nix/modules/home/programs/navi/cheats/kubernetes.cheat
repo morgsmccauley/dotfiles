@@ -10,7 +10,7 @@ kubectl get pods -n <namespace>
 kubectl get pods --all-namespaces
 
 # Describe pod
-kubectl describe pod <pod-name> -n <namespace>
+kubectl describe -n <namespace> pod <pod-name>
 
 # Get pod logs
 kubectl logs -n <namespace> <pod-name>
