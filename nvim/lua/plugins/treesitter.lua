@@ -1,7 +1,6 @@
 return {
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
-        'sheerun/vim-polyglot',
         'nvim-treesitter/nvim-treesitter-textobjects',
     },
     build = ':TSUpdate',
