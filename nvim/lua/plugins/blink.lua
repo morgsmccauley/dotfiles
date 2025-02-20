@@ -1,11 +1,6 @@
 return {
   'saghen/blink.cmp',
-  -- optional: provides snippets for the snippet source
-  dependencies = 'rafamadriz/friendly-snippets',
   version = '*',
-
-  ---@module 'blink.cmp'
-  ---@type blink.cmp.Config
   opts = {
     keymap = {
       preset = 'default',
@@ -49,6 +44,8 @@ return {
         show_on_keyword = true
       }
     },
+
+    snippets = { preset = 'luasnip' },
 
     sources = {
       default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
