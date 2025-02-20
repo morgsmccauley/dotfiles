@@ -87,9 +87,8 @@ return {
         }
       }
     },
-    -- ai! is it possible to hide indent lines other than the current context/scope
     indent = {
-      enabled = true,
+      enabled = false,
       animate = { enabled = false },
       only_scope = true,
       only_current = true,
