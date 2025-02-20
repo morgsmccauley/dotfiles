@@ -2,15 +2,7 @@
   programs.kitty = {
     enable = true;
 
-    package = pkgs.kitty.overrideAttrs (oldAttrs: {
-      version = "0.38.1";
-      src = pkgs.fetchFromGitHub {
-        owner = "kovidgoyal";
-        repo = "kitty";
-        rev = "v0.38.1";
-        hash = "sha256-0M4Bvhh3j9vPedE/d+8zaiZdET4mXcrSNUgLllhaPJw=";
-      };
-    });
+    package = pkgs.kitty;
 
     settings = {
       font_family = "Hack Nerd Font Regular";
