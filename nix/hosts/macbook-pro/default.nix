@@ -17,7 +17,7 @@
     home = "/Users/morganmccauley";
   };
 
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   home-manager = {
     useUserPackages = true;
