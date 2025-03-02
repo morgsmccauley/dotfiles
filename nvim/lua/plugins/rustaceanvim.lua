@@ -4,6 +4,9 @@ vim.g.rustaceanvim = {
       border = 'rounded',
     },
     -- executor_alias = 'termopen'
+    env = {
+      PROTOC = "/usr/local/bin/protoc"
+    },
   },
   server = {
     on_attach = function(_, bufnr)
