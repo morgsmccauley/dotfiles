@@ -69,6 +69,8 @@
       export EDITOR=edit_in_parent_nvim
 
       bindkey '^u' edit-command-line
+
+      export _ZO_ECHO='1'
     '';
   };
 
