@@ -11,12 +11,11 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-vim.env.PATH = '/opt/homebrew/bin:' .. vim.env.PATH
-
 require('options')
 require('maps')
 require('highlights')
 require('autocommand')
+require('env')
 require('lazy').setup('plugins', {
   change_detection = {
     notify = false

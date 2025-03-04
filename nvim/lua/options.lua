@@ -34,13 +34,10 @@ vim.cmd [[set undodir=~/.vim/undo]]
 vim.cmd 'syntax enable'
 vim.cmd 'syntax on'
 
-vim.env['GIT_EDITOR'] = 'nvr -cc "botright split" --remote-wait'
-vim.env['GIT_SEQUENCE_EDITOR'] = 'nvr -cc "botright split" --remote-wait'
-
 vim.diagnostic.config({
-    float = {
-        border = 'single'
-    }
+  float = {
+    border = 'single'
+  }
 })
 
 vim.opt.scrolloff = 8
