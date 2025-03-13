@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  home.packages = [ pkgs.aider-chat ];
+  home.packages = [ pkgs.aider-chat.withPlaywright ];
 
   home.file.".aider.conf.yml".text = ''
     # Default model
