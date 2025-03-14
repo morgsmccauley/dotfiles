@@ -46,7 +46,7 @@
     grpcurl
     git-absorb
     neovim-remote
-    python312Packages.playwright
+    tokio-console
   ];
 
   home.activation = {

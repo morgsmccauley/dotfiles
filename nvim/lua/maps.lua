@@ -270,11 +270,11 @@ vim.keymap.set('n', '<leader>/', function()
 end, { desc = 'Search buffer' })
 
 vim.keymap.set('n', '<leader>*', function()
-  require('snacks').picker.grep_word()
+  require('snacks').picker.grep_word({ hidden = true })
 end, { desc = 'Search for symbol globally' })
 
 vim.keymap.set('n', '<leader>?', function()
-  require('snacks').picker.grep()
+  require('snacks').picker.grep({ hidden = true })
 end, { desc = 'Search globally' })
 
 vim.keymap.set('n', '<leader>,', function()

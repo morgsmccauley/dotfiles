@@ -45,13 +45,14 @@
         . "$(dirname $(readlink -f $(which asdf)))/../share/asdf-vm/asdf.sh"
       fi
 
-      export PATH="/Users/morganmccauley/.cargo/bin:$PATH"
 
       if [ -d "./node_modules/.bin" ]; then
         export PATH=$(pwd)/node_modules/.bin:$PATH
       fi
 
+      export PATH="/Users/morganmccauley/.cargo/bin:$PATH"
       export PATH="/opt/homebrew/bin:$PATH"
+      export PATH="/Users/morganmccauley/.asdf/shims/:$PATH"
 
       # FIX: Feels like navi should pick this up automatically?
       export NAVI_CONFIG=$HOME/Library/Application\ Support/navi/config.yaml
