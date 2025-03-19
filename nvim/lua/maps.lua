@@ -187,21 +187,18 @@ end, { desc = 'Toggle output panel' })
 
 
 vim.keymap.set('n', '<C-t><C-t>', function()
-  local dir = utils.find_project_root() or vim.uv.cwd()
   vim.cmd.tabnew()
-  require('termbuf.api').open_terminal({ dir })
+  require('termbuf.api').open_terminal({ dir = utils.find_project_root() or vim.uv.cwd() })
 end, { desc = 'Open terminal in new tab' })
 
 vim.keymap.set('n', '<C-t><C-l>', function()
-  local dir = utils.find_project_root() or vim.uv.cwd()
   vim.cmd.vsplit()
-  require('termbuf.api').open_terminal({ dir })
+  require('termbuf.api').open_terminal({ dir = utils.find_project_root() or vim.uv.cwd() })
 end, { desc = 'Open terminal to right' })
 
 vim.keymap.set('n', '<C-t><C-j>', function()
-  local dir = utils.find_project_root() or vim.uv.cwd()
   vim.cmd('belowright split')
-  require('termbuf.api').open_terminal({ dir })
+  require('termbuf.api').open_terminal({ dir = utils.find_project_root() or vim.uv.cwd() })
 end, { desc = 'Open terminal below' })
 
 vim.keymap.set('n', '<leader>to', function()
