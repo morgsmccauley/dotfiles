@@ -34,6 +34,9 @@ vim.g.rustaceanvim = {
           buildScripts = {
             enable = true
           }
+        },
+        env = {
+          PROTOC = "/Users/morganmccauley/.asdf/shims/protoc"
         }
       },
     },
