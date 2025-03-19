@@ -16,6 +16,14 @@ return {
           -- using vim api directly to avoid exiting insert mode unnecessarily
           vim.cmd.wincmd('l')
         end, { noremap = true, buffer = term.bufnr })
+        vim.keymap.set('t', '<C-j>', function()
+          -- using vim api directly to avoid exiting insert mode unnecessarily
+          vim.cmd.wincmd('j')
+        end, { noremap = true, buffer = term.bufnr })
+        vim.keymap.set('t', '<C-k>', function()
+          -- using vim api directly to avoid exiting insert mode unnecessarily
+          vim.cmd.wincmd('k')
+        end, { noremap = true, buffer = term.bufnr })
         vim.keymap.set('t', '<C-w><C-h>', [[<Cmd>tabprev<Cr>]], { noremap = true, buffer = term.bufnr })
         vim.keymap.set('t', '<C-w><C-l>', [[<Cmd>tabnext<Cr>]], { noremap = true, buffer = term.bufnr })
         vim.keymap.set('t', '<C-o>', [[<C-\><C-n><C-o>]], { noremap = true, buffer = term.bufnr })
