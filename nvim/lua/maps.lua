@@ -128,7 +128,21 @@ end, { desc = 'Hydra' })
 
 -- Git Diff keymaps
 vim.keymap.set('n', '<leader>gdi', '<Cmd>DiffviewOpen<Cr>', { desc = 'Index' })
-vim.keymap.set('n', '<leader>gdb', '<Cmd>DiffviewOpen main...HEAD<Cr>', { desc = 'Branch' })
+vim.keymap.set('n', '<leader>gdd', function()
+  local repo = vim.json.decode(
+    vim.fn.system({ 'gh', 'api', 'repos/:owner/:repo' })
+  )
+  local default_branch = repo.default_branch
+
+  vim.cmd('DiffviewOpen ' .. default_branch .. '..HEAD')
+end, { desc = 'Diff default branch' })
+vim.keymap.set('n', '<leader>gdp', function()
+  local branch = vim.fn.system({ 'git', 'branch', '--show-current' }):gsub('%s*$', '')
+  local reflog = vim.fn.system({ 'git', 'reflog', 'show', branch })
+  local parentBranch = string.match(reflog, 'branch: Created from ([%w%-]+)')
+
+  vim.cmd('DiffviewOpen ' .. parentBranch .. '..HEAD')
+end, { desc = 'Diff parent branch' })
 vim.keymap.set('n', '<leader>gdc', '<Cmd>DiffviewClose<Cr>', { desc = 'Close' })
 vim.keymap.set('n', '<leader>gdf', '<Cmd>DiffviewToggleFiles<Cr>', { desc = 'Toggle files pane' })
 vim.keymap.set('n', '<leader>gdh', '<Cmd>DiffviewFileHistory %<Cr>', { desc = 'File history' })
