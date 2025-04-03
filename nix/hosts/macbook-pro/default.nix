@@ -6,10 +6,6 @@
     ./homebrew.nix
   ];
 
-  environment.systemPackages = [
-    pkgs.neovim
-  ];
-
   nix.settings.experimental-features = "nix-command flakes";
 
   users.users.morganmccauley = {

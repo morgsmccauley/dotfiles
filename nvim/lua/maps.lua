@@ -69,6 +69,10 @@ vim.keymap.set('n', 'gs', '<Cmd>lua vim.lsp.buf.signature_help()<Cr>', { silent 
 vim.keymap.set({ 'n', 'v' }, '<C-e>', '5<C-e>', { noremap = true, silent = true })
 vim.keymap.set({ 'n', 'v' }, '<C-y>', '5<C-y>', { noremap = true, silent = true })
 
+vim.keymap.set('n', 'K', function()
+  vim.lsp.buf.hover({ border = 'single' })
+end, { desc = 'Hover' })
+
 cmap('<C-a>', '<C-b>', { noremap = true })
 
 nmap('J', 'mzJ`z', { noremap = true })
@@ -174,7 +178,9 @@ vim.keymap.set('n', '<leader>cD', '<Cmd>Trouble diagnostics toggle filter.severi
 vim.keymap.set('n', '<leader>cs', '<Cmd>Trouble symbols focus<Cr>', { desc = 'Code symbols' })
 vim.keymap.set('n', '<leader>cl', vim.diagnostic.open_float, { desc = 'Show diagnostics for current line' })
 vim.keymap.set('n', '<leader>cf', vim.lsp.buf.format, { desc = 'Format' })
-vim.keymap.set('n', '<leader>ch', vim.lsp.buf.hover, { desc = 'Hover' })
+vim.keymap.set('n', '<leader>ch', function()
+  vim.lsp.buf.hover({ border = 'single' })
+end, { desc = 'Hover' })
 vim.keymap.set('n', '<leader>cg', vim.lsp.buf.signature_help, { desc = 'Signature help' })
 vim.keymap.set('n', '<leader>ct', function() require('telescope.builtin').grep_string({ search = 'TODO|FIX|NOTE' }) end,
   { desc = 'Search TODO comments' })

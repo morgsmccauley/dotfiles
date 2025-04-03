@@ -28,6 +28,9 @@ vim.o.completeopt = 'menuone,noselect,noinsert'
 vim.cmd [[set shortmess+=c]]
 vim.o.encoding = 'UTF-8'
 
+-- FIX applied to all windows therefore conflicts, ideally want to set this for lsp hover
+-- vim.o.winborder = 'single'
+
 vim.o.undofile = true
 vim.cmd [[set undodir=~/.vim/undo]]
 
@@ -35,9 +38,26 @@ vim.cmd 'syntax enable'
 vim.cmd 'syntax on'
 
 vim.diagnostic.config({
+  signs = {
+    numhl = {
+      [vim.diagnostic.severity.ERROR] = 'DiagnosticSignError',
+      [vim.diagnostic.severity.WARN] = 'DiagnosticSignWarn',
+      [vim.diagnostic.severity.INFO] = 'DiagnosticSignInfo',
+      [vim.diagnostic.severity.HINT] = 'DiagnosticSignHint',
+    },
+    text = {
+      [vim.diagnostic.severity.ERROR] = '',
+      [vim.diagnostic.severity.WARN] = '',
+      [vim.diagnostic.severity.INFO] = '',
+      [vim.diagnostic.severity.HINT] = '',
+    },
+  },
+  underline = false,
   float = {
     border = 'single'
-  }
+  },
+  -- virtual_text = { current_line = true },
+  virtual_lines = { current_line = true },
 })
 
 vim.opt.scrolloff = 8

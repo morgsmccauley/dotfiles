@@ -47,6 +47,7 @@
     git-absorb
     neovim-remote
     tokio-console
+    neovim
   ];
 
   home.activation = {

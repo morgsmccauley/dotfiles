@@ -1,3 +1,4 @@
+-- TODO use builtin autocomplete
 return {
   'saghen/blink.cmp',
   version = '*',
@@ -67,7 +68,6 @@ return {
         }
       }
     },
-    signature = { enabled = true }
   },
   opts_extend = { "sources.default" },
 }

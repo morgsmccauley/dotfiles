@@ -10,6 +10,7 @@ return {
         vim.cmd.startinsert()
 
         vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { noremap = true, buffer = term.bufnr })
+        vim.keymap.set('t', '<c-[>', [[<C-\><C-n>]], { noremap = true, buffer = term.bufnr })
 
         vim.keymap.set('t', '<C-h>', [[<C-\><C-n><C-W><C-h>]], { noremap = true, buffer = term.bufnr })
         vim.keymap.set('t', '<C-l>', function()
