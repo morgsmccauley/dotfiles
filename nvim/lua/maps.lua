@@ -332,3 +332,11 @@ vim.keymap.set({ 'i', 's' }, '<c-n>', function()
     return '<c-h>'
   end
 end, { expr = true })
+
+-- Octo
+
+vim.keymap.set({ 'n' }, '<leader>opc', '<Cmd>Octo pr create<Cr>', { desc = 'Create PR' })
+vim.keymap.set({ 'n' }, '<leader>opm', '<Cmd>Octo pr merge squash<Cr>', { desc = 'Squash merge PR' })
+vim.keymap.set({ 'n' }, '<leader>opb', '<Cmd>Octo pr browser<Cr>', { desc = 'Open PR in browser' })
+vim.keymap.set({ 'n' }, '<leader>opr', '<Cmd>Octo pr reload<Cr>', { desc = 'Reload PR' })
+vim.keymap.set({ 'n' }, '<leader>opy', '<Cmd>Octo pr url<Cr>', { desc = 'Yank PR URL' })
