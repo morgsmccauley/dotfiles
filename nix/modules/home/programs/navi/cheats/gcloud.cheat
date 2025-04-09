@@ -1,7 +1,7 @@
 % gcloud
 
 # SSH in to GCE instance
-gcloud --project <project> compute ssh ubuntu@<machine>
+# gcloud --project <project> compute ssh ubuntu@<machine>
 
 # Describe compute instance
 gcloud --project <project> compute instances describe <machine>
@@ -25,7 +25,7 @@ gcloud --project=<project> builds log --stream <build_id>
 gcloud --project=<project> builds triggers run <trigger_id> --branch=<branch> 
 
 # SSH tunnel through compute instance
-gcloud --project=<project> compute ssh ubuntu@<machine> -- -L <port>:<host>:<port> 
+# gcloud --project=<project> compute ssh ubuntu@<machine> -- -L <port>:<host>:<port> 
 
 # List Cloud Run service revisions
 : <project>;: <run_service>; gcloud --project=<project> run revisions list --service=<run_service_name> --region=<run_service_region>

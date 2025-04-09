@@ -3,10 +3,9 @@
 # SSH in to host
 ssh ubuntu@<host>
 
-# TODO change this to return host-name instead of IP now that it is accessible
-# TODO look for all inventory files including subdirectories
-# ansible-inventory --graph -i $(rg --files | rg -i "inventor[yi]" | tr '\n' ',') 
-$ host: ansible-inventory -i ~/Developer/helius-monorepo/infra/ansible/inventory/ --list 2>/dev/null |\
+$ host: ansible-inventory \
+  $(rg --files -g "*.yml" ~/Developer/helius-monorepo | grep -E "inventory|inventories" |\
+  xargs rg --files-with-matches "^all:" | awk '{print "-i " $0}') --list 2>/dev/null |\
   jq -r '._meta.hostvars | to_entries | .[] | "\(.key)\t\(.value.ansible_host)"' |\
   column -t -s $'\t' \
   --- --column 2
