@@ -41,18 +41,14 @@
       zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
       PROMPT='%F{blue}%1~%f> '
 
-      if command -v asdf >/dev/null; then
-        . "$(dirname $(readlink -f $(which asdf)))/../share/asdf-vm/asdf.sh"
-      fi
-
-
       if [ -d "./node_modules/.bin" ]; then
         export PATH=$(pwd)/node_modules/.bin:$PATH
       fi
 
+      export PROTOC=${pkgs.protobuf_23}/bin/protoc
+
       export PATH="/Users/morganmccauley/.cargo/bin:$PATH"
       export PATH="/opt/homebrew/bin:$PATH"
-      export PATH="/Users/morganmccauley/.asdf/shims/:$PATH"
 
       # FIX: Feels like navi should pick this up automatically?
       export NAVI_CONFIG=$HOME/Library/Application\ Support/navi/config.yaml

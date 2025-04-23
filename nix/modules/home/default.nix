@@ -26,7 +26,6 @@
     nodejs_22
     nodePackages.prettier
     nodePackages.aws-cdk
-    asdf-vm
     protoc-gen-go
     go
     grpcui
@@ -48,6 +47,7 @@
     neovim-remote
     tokio-console
     neovim
+    protobuf_23
   ];
 
   home.activation = {

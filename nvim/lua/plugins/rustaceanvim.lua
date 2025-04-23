@@ -3,10 +3,6 @@ vim.g.rustaceanvim = {
     float_win_config = {
       border = 'rounded',
     },
-    -- executor_alias = 'termopen'
-    env = {
-      PROTOC = "/usr/local/bin/protoc"
-    },
   },
   server = {
     on_attach = function(_, bufnr)
@@ -35,9 +31,6 @@ vim.g.rustaceanvim = {
             enable = true
           }
         },
-        env = {
-          PROTOC = "/Users/morganmccauley/.asdf/shims/protoc"
-        }
       },
     },
   },

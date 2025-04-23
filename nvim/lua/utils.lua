@@ -3,7 +3,7 @@ local M = {}
 function M.find_project_root()
   local root_files = {
     "Cargo.lock",
-    "package.lock",
+    "package-lock.json",
     ".terraform"
   }
 
