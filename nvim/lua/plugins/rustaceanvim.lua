@@ -22,14 +22,26 @@ vim.g.rustaceanvim = {
     end,
     default_settings = {
       ['rust-analyzer'] = {
-        checkOnSave = {
-          command = 'clippy',
-          extraArgs = { '--no-deps' }
+        diagnostics = {
+          enable = true,
+          styleLints = {
+            enable = true,
+          }
+        },
+        procMacro = {
+          enable = true,
         },
         cargo = {
           buildScripts = {
-            enable = true
-          }
+            enable = true,
+          },
+        },
+        checkOnSave = true,
+        check = {
+          -- command = 'clippy',
+          -- extraArgs = { '--no-deps' }
+
+          command = 'check'
         },
       },
     },
@@ -38,6 +50,6 @@ vim.g.rustaceanvim = {
 }
 return {
   'mrcjkb/rustaceanvim',
-  version = '^4',
+  version = '^6',
   lazy = false,
 }
