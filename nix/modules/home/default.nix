@@ -48,6 +48,7 @@
     tokio-console
     neovim
     protobuf_23
+    websocat
   ];
 
   home.activation = {
