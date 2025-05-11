@@ -145,7 +145,7 @@ vim.keymap.set('n', '<leader>gdp', function()
   local reflog = vim.fn.system({ 'git', 'reflog', 'show', branch })
   local parentBranch = string.match(reflog, 'branch: Created from ([%w%-]+)')
 
-  vim.cmd('DiffviewOpen ' .. parentBranch .. '..HEAD')
+  vim.cmd('DiffviewOpen ' .. parentBranch .. '...HEAD')
 end, { desc = 'Diff parent branch' })
 vim.keymap.set('n', '<leader>gdc', '<Cmd>DiffviewClose<Cr>', { desc = 'Close' })
 vim.keymap.set('n', '<leader>gdf', '<Cmd>DiffviewToggleFiles<Cr>', { desc = 'Toggle files pane' })
