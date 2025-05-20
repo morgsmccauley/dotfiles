@@ -56,14 +56,15 @@ vim.diagnostic.config({
   float = {
     border = 'single'
   },
-  virtual_text = {
-    format = function(diagnostic)
-      local lines = vim.split(diagnostic.message, '\n')
-      return lines[1]
-    end,
-    virt_text_pos = 'right_align',
-    suffix = ' ',
-  },
+  virtual_text = true,
+  -- virtual_text = {
+  --   format = function(diagnostic)
+  --     local lines = vim.split(diagnostic.message, '\n')
+  --     return lines[1]
+  --   end,
+  --   virt_text_pos = 'right_align',
+  --   suffix = ' ',
+  -- },
   -- virtual_lines = { current_line = true },
 })
 
