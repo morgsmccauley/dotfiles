@@ -49,6 +49,7 @@
     neovim
     protobuf_23
     websocat
+    stats
   ];
 
   home.activation = {
