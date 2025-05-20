@@ -87,7 +87,18 @@ return {
           truncate = 1000,
           -- filename_first = true,
         }
-      }
+      },
+      win = {
+        input = {
+          keys = {
+            ["<Esc>"] = { "cancel", mode = { "i", "n" } },
+            ["<C-d>"] = { "preview_scroll_down", mode = { "i", "n" } },
+            ["<C-u>"] = { "preview_scroll_up", mode = { "i", "n" } },
+            ["<C-q>"] = { "cancel", mode = { "i", "n" } },
+            ["<C-f>"] = { "qflist", mode = { "i", "n" } }
+          },
+        },
+      },
     },
     indent = {
       enabled = false,
