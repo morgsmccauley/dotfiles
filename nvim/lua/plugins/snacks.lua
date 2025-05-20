@@ -105,6 +105,7 @@ return {
       animate = { enabled = false },
       only_scope = true,
       only_current = true,
-    }
+    },
+    words = {}
   }
 }
