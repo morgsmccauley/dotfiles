@@ -10,7 +10,6 @@
     ./programs/kitty
   ];
 
-
   home.stateVersion = "24.05";
   home.packages = with pkgs; [
     jq
@@ -50,7 +49,9 @@
     protobuf_23
     websocat
     stats
+    claude-code
   ];
+
 
   home.activation = {
     installPlaywrightDeps = {
