@@ -106,6 +106,6 @@ return {
       only_scope = true,
       only_current = true,
     },
-    words = {}
+    -- words = {}
   }
 }

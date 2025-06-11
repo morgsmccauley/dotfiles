@@ -7,7 +7,7 @@ return {
       '<C-g>',
       function()
         -- ensure telescope-ui-select is loaded
-        require('telescope')
+        -- require('telescope')
 
         if vim.bo.filetype == 'NeogitStatus' then
           vim.api.nvim_command('q')
@@ -36,11 +36,8 @@ return {
       auto_show_console = false,
       integrations = {
         diffview = true,
-        telescope = true
+        snacks = true
       },
-      telescope_sorter = function()
-        return require("telescope").extensions.fzf.native_fzf_sorter()
-      end,
       mappings = {
         finder = {
           ["<c-j>"] = "Next",
