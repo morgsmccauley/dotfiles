@@ -157,7 +157,8 @@ vim.keymap.set('n', '<leader>mm', '<Cmd>norm\'<Cr>', { desc = 'List marks' })
 
 -- Buffer keymaps
 vim.keymap.set('n', '<leader>be', '<Cmd>edit<Cr>', { desc = 'Edit buffer' })
-vim.keymap.set('n', '<leader>by', '<Cmd>let @* = expand("%")<Cr>', { desc = 'Yank filename' })
+vim.keymap.set('n', '<leader>by', '<Cmd>let @* = expand("%") . ":" . line(".")<Cr>',
+  { desc = 'Yank filename with line number' })
 vim.keymap.set('n', '<leader>bl', function() vim.bo[0].buflisted = true end, { desc = 'List buffer' })
 vim.keymap.set('n', '<leader>bx', ':source %<Cr>', { desc = 'Source buffer' })
 vim.keymap.set('n', '<leader>bs', function()
@@ -262,7 +263,8 @@ end
 
 -- Aider keymaps
 vim.keymap.set('n', '<leader>at', function()
-  open_aider_term()
+  vim.cmd.tabnew()
+  require('termbuf.api').open_terminal({ dir = vim.uv.cwd(), cmd = 'claude' })
 end, { desc = 'Open aider terminal in new tab' })
 
 vim.keymap.set('n', '<leader>aa', function()

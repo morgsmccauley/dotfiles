@@ -152,3 +152,11 @@ vim.api.nvim_create_autocmd("ModeChanged", {
     end
   end
 })
+
+-- does this even work?
+vim.api.nvim_create_autocmd("FileChangedShell", {
+  pattern = "*",
+  callback = function()
+    vim.cmd.checktime()
+  end,
+})
