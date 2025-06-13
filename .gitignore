@@ -5,3 +5,4 @@ kitty/kitty.conf.bak
 .env
 tmuxinator
 lazygit/state.yml
+.claude/settings.local.json
