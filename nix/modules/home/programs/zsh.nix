@@ -32,6 +32,8 @@
       kc = "kubectl";
       a = "aider";
       ad = "aider --model deepseek-coder";
+      cl = "claude";
+      clp = "claude --print";
     };
 
     initExtra = ''
