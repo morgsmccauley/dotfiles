@@ -45,7 +45,7 @@
         export PATH=$(pwd)/node_modules/.bin:$PATH
       fi
 
-      export PROTOC=${pkgs.protobuf_23}/bin/protoc
+      export PROTOC=${pkgs.protobuf_24}/bin/protoc
 
       export PATH="/Users/morganmccauley/.cargo/bin:$PATH"
       export PATH="/opt/homebrew/bin:$PATH"

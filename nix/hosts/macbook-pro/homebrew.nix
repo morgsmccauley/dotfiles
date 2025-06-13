@@ -33,20 +33,22 @@
       "Slack" = 803453959;
     };
   };
-
-  system.activationScripts.preUserActivation.text = ''
+  
+  system.activationScripts.brewInstallCheck.text = ''
     if ! command -v ${config.homebrew.brewPrefix}/brew &> /dev/null; then
       echo "Installing brew"
       /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
   '';
-
-  system.activationScripts.postUserActivation.text = ''
-    if [ ! -L ~/.docker/cli-plugins/docker-compose ]; then
-        echo "Linking compose plugin to docker CLI"
-
-        mkdir -p ~/.docker/cli-plugins
-        ln -sfn ${config.homebrew.brewPrefix}/docker-compose ~/.docker/cli-plugins/docker-compose
-    fi
+  
+  system.activationScripts.dockerComposeLink.text = ''
+    # Run as the primary user since we're modifying user home directory
+    sudo -u ${config.system.primaryUser} bash -c '
+      if [ ! -L ~/.docker/cli-plugins/docker-compose ]; then
+          echo "Linking compose plugin to docker CLI"
+          mkdir -p ~/.docker/cli-plugins
+          ln -sfn ${config.homebrew.brewPrefix}/docker-compose ~/.docker/cli-plugins/docker-compose
+      fi
+    '
   '';
 }

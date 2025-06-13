@@ -46,7 +46,8 @@
     neovim-remote
     tokio-console
     neovim
-    protobuf_23
+    # should be using 3
+    protobuf_24
     websocat
     stats
     claude-code

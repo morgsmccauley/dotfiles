@@ -6,6 +6,8 @@
     ./homebrew.nix
   ];
 
+  system.primaryUser = "morganmccauley";
+
   nix.settings.experimental-features = "nix-command flakes";
 
   users.users.morganmccauley = {
