@@ -6,6 +6,10 @@ return {
       project_paths = {
         { vim.env.HOME .. '/Developer' },
         { vim.env.HOME .. '/.local/share/nvim/lazy' },
+        vim.env.HOME .. '/Developer/monorepo/monorepo-main',
+        vim.env.HOME .. '/Developer/monorepo/monorepo-dev',
+        vim.env.HOME .. '/Developer/monorepo/monorepo-review',
+        vim.env.HOME .. '/Developer/monorepo/monorepo-scratch',
         vim.env.HOME .. '/.dotfiles'
       }
     })
