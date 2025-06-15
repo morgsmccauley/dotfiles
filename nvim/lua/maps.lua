@@ -30,7 +30,9 @@ vim.keymap.set('n', '<C-w>gf', '<C-w>vgf',
 vim.keymap.set('n', '<C-w>gd', '<Cmd>silent vsp | Telescope lsp_definitions<Cr>',
   { desc = 'Go to definition in new split' })
 
-vim.keymap.set('n', '<C-space>', '<Cmd>Telescope kitty projects<Cr>', { noremap = true })
+vim.keymap.set('n', '<C-space>', function()
+  require('kitty').projects()
+end, { noremap = true })
 
 nmap('<C-p>', '@:', { noremap = true })
 
@@ -263,9 +265,10 @@ end
 
 -- Aider keymaps
 vim.keymap.set('n', '<leader>at', function()
-  vim.cmd.tabnew()
-  require('termbuf.api').open_terminal({ dir = vim.uv.cwd(), cmd = 'claude' })
-end, { desc = 'Open aider terminal in new tab' })
+  local filename = vim.fn.expand('%:p')
+  vim.cmd.vsplit()
+  require('termbuf.api').open_terminal({ dir = vim.uv.cwd(), cmd = 'echo ' .. filename .. ' | claude' })
+end, { desc = 'Open claude-code terminal in vsplit with current file' })
 
 vim.keymap.set('n', '<leader>aa', function()
   local aider_term = require('utils').find_aider_terminal()
@@ -285,6 +288,16 @@ vim.keymap.set('n', '<leader>ac', function()
   local prefix = vim.bo.commentstring:gsub('%%s.*', '')
   vim.fn.feedkeys('O' .. prefix .. 'ai! ')
 end, { desc = 'Insert aider comment' })
+
+vim.keymap.set('v', '<leader>av', function()
+  local claude_term = require('utils').find_claude_terminal()
+  if claude_term then
+    local selection = require('utils').get_visual_selection()
+    claude_term:send(selection)
+  else
+    vim.notify('No Claude terminal found in current tab', vim.log.levels.WARN)
+  end
+end, { desc = 'Send visual selection to Claude terminal' })
 
 -- Search and other keymaps
 vim.keymap.set('n', '<leader>/', function()

@@ -40,6 +40,47 @@ function M.find_aider_terminal()
   return nil
 end
 
+function M.find_claude_terminal()
+  -- Get current tab
+  local current_tab = vim.api.nvim_get_current_tabpage()
+
+  -- Get all windows in current tab
+  local windows = vim.api.nvim_tabpage_list_wins(current_tab)
+
+  -- Look for terminal buffers in current tab
+  for _, win in ipairs(windows) do
+    local buf = vim.api.nvim_win_get_buf(win)
+    local buf_name = vim.api.nvim_buf_get_name(buf)
+
+    -- Check if it's a terminal buffer
+    if vim.bo[buf].buftype == 'terminal' then
+      -- Get all terminal instances from termbuf
+      local terms = require('termbuf.api').list_terminals()
+
+      -- Find matching terminal and check if it's running claude
+      for _, term in ipairs(terms) do
+        if term.bufnr == buf then
+          local process = term.process
+          if process and process:match("claude") then
+            return term.terminal
+          end
+        end
+      end
+    end
+  end
+  return nil
+end
+
+function M.get_visual_selection()
+  local start_pos = vim.fn.getpos("'<")
+  local end_pos = vim.fn.getpos("'>")
+  local start_line = start_pos[2]
+  local end_line = end_pos[2]
+
+  local lines = vim.api.nvim_buf_get_lines(0, start_line - 1, end_line, false)
+  return table.concat(lines, '\n')
+end
+
 local function get_node_at_cursor()
   local bufnr = vim.api.nvim_get_current_buf()
   local cursor = vim.api.nvim_win_get_cursor(0)
@@ -85,6 +126,18 @@ function M.get_node_path_at_cursor()
   local node = get_node_at_cursor()
   if not node then return nil end
   return format_node_path(get_node_path(get_node_at_cursor()))
+end
+
+function M.get_git_worktree()
+  local handle = io.popen('git rev-parse --show-toplevel 2>/dev/null')
+  if not handle then return nil end
+
+  local git_root = handle:read("*a"):gsub("%s+", "")
+  handle:close()
+
+  if git_root == "" then return nil end
+
+  return vim.fn.fnamemodify(git_root, ':t')
 end
 
 return M
