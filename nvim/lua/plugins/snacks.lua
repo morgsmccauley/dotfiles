@@ -89,6 +89,12 @@ return {
         }
       },
       win = {
+        -- preview = {
+        --   on_buf = function(self)
+        --     vim.print(self)
+        --   end
+        -- },
+        -- preview = { wo = { number = false, relativenumber = false, signcolumn = "no" } },
         input = {
           keys = {
             ["<Esc>"] = { "cancel", mode = { "i", "n" } },

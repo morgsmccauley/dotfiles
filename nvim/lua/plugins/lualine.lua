@@ -27,18 +27,14 @@ return {
       return table.concat(buf_client_names, ', ')
     end
 
+    local worktree = require('utils').get_git_worktree()
+
     lualine.setup({
       options = {
         theme = 'catppuccin',
         section_separators = { left = '', right = '' },
         component_separators = { left = '', right = '' },
       },
-      --[[ winbar = {
-    lualine_x = { 'filename' }
-  },
-  inactive_winbar = {
-    lualine_x = { 'filename' }
-  }, ]]
       sections = {
         lualine_a = {
           {
@@ -89,7 +85,7 @@ return {
             function()
               return require('dap').status()
             end,
-            icon = { '', color = { fg = '#ed8796' } },
+            icon = { '', color = { fg = '#ed8796' } },
             cond = function()
               return package.loaded.dap ~= nil
             end
@@ -103,21 +99,31 @@ return {
               hint = 'H: ',
             }
           },
-          -- {
-          --   -- vim.lsp.status,
-          --   color = { fg = theme.inactive.c.fg },
-          -- },
+          {
+            vim.lsp.status,
+            color = { fg = theme.inactive.c.fg },
+          },
           {
             lsp_name,
             icon = { ' ' },
           },
           {
+            icon = '',
+            function()
+              return worktree .. ':'
+            end,
+            padding = { left = 1, right = -1 },
+          },
+          {
             'branch',
-            icon = ''
-          }
+            icon = '',
+            padding = { left = -1, right = 1 },
+          },
         },
-        lualine_y = {},
-        lualine_z = {}
+        lualine_y = {
+        },
+        lualine_z = {
+        }
       },
     })
   end
