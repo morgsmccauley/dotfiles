@@ -151,7 +151,8 @@ vim.keymap.set('n', '<leader>gdp', function()
 end, { desc = 'Diff parent branch' })
 vim.keymap.set('n', '<leader>gdc', '<Cmd>DiffviewClose<Cr>', { desc = 'Close' })
 vim.keymap.set('n', '<leader>gdf', '<Cmd>DiffviewToggleFiles<Cr>', { desc = 'Toggle files pane' })
-vim.keymap.set('n', '<leader>gdh', '<Cmd>DiffviewFileHistory %<Cr>', { desc = 'File history' })
+vim.keymap.set('n', '<leader>gdh', '<Cmd>DiffviewFileHistory %<Cr>', { desc = 'Buffer history' })
+vim.keymap.set('n', '<leader>gdH', '<Cmd>DiffviewFileHistory<Cr>', { desc = 'File history' })
 
 -- Marks keymaps
 vim.keymap.set('n', '<leader>mD', '<Cmd>delmarks!<Cr>', { desc = 'Delete all marks for current buffer' })
