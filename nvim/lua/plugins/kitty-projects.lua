@@ -1,5 +1,5 @@
 return {
-  dir = '~/Developer/kitty-projects.nvim',
+  'morgsmccauley/kitty-projects.nvim',
   config = function()
     require('kitty').setup({
       command = 'zsh --login -c /etc/profiles/per-user/morganmccauley/bin/nvim',
