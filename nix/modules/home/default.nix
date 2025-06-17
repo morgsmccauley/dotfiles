@@ -69,6 +69,28 @@
     };
   };
 
+  launchd.agents.file-sync = {
+    enable = true;
+    config = {
+      ProgramArguments = [ "/Users/morganmccauley/.dotfiles/scripts/sync.sh" ];
+      WorkingDirectory = "/Users/morganmccauley/Developer";
+      EnvironmentVariables = {
+        FSWATCH_BIN = "${pkgs.fswatch}/bin/fswatch";
+        RSYNC_BIN = "${pkgs.rsync}/bin/rsync";
+        REMOTE_HOST = "morgs@dev-morgan";
+        REMOTE_PATH = "/home/morgs/repos/";
+        DEBOUNCE_TIME = "1";
+        FSWATCH_LATENCY = "1";
+        EXCLUDE_FILE = ".rsync-exclude";
+      };
+      StandardOutPath = "/tmp/file-sync.log";
+      StandardErrorPath = "/tmp/file-sync.log";
+      RunAtLoad = true;
+      KeepAlive = false;
+      Label = "com.user.file-sync";
+    };
+  };
+
   # FIX Doesn't seem to work
   # home.sessionPath = [
   #   "$HOME/.npm-packages/bin"
