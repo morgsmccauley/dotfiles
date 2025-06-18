@@ -34,6 +34,8 @@
       ad = "aider --model deepseek-coder";
       cl = "claude";
       clp = "claude --print";
+      # TODO: set git config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'
+      gcb = "f() { local repo_name=$(basename \"$1\" .git); mkdir -p \"$repo_name\" && cd \"$repo_name\" && git clone --bare \"$1\" .git && git worktree add \"$repo_name-main\" main 2>/dev/null || git worktree add \"$repo_name-main\" master && git worktree add \"$repo_name-develop\" develop 2>/dev/null || true && git worktree add \"$repo_name-review\" && git worktree add \"$repo_name-scratch\"; }; f";
     };
 
     initExtra = ''
