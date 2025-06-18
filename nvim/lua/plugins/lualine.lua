@@ -27,7 +27,7 @@ return {
       return table.concat(buf_client_names, ', ')
     end
 
-    local worktree = require('utils').get_git_worktree()
+    -- local worktree = require('utils').get_git_worktree()
 
     lualine.setup({
       options = {
@@ -99,25 +99,17 @@ return {
               hint = 'H: ',
             }
           },
-          {
-            vim.lsp.status,
-            color = { fg = theme.inactive.c.fg },
-          },
+          -- {
+          --   vim.lsp.status,
+          --   color = { fg = theme.inactive.c.fg },
+          -- },
           {
             lsp_name,
             icon = { ' ' },
           },
           {
-            icon = '',
-            function()
-              return worktree .. ':'
-            end,
-            padding = { left = 1, right = -1 },
-          },
-          {
             'branch',
-            icon = '',
-            padding = { left = -1, right = 1 },
+            icon = '',
           },
         },
         lualine_y = {
