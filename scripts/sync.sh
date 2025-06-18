@@ -17,7 +17,7 @@ EXCLUDE_FILE=${EXCLUDE_FILE}
 FULL_SYNC_OPTS="-az --compress-level=1 --exclude-from=$EXCLUDE_FILE --partial --inplace --whole-file"
 
 # Rsync options for single file sync
-SINGLE_FILE_OPTS="--whole-file --inplace -t"
+SINGLE_FILE_OPTS="-az"
 
 log "Starting file sync..."
 
@@ -46,8 +46,13 @@ ${FSWATCH_BIN:-fswatch} \
       continue
     fi
     
+    # Check if file should be skipped
+    IS_BACKUP_FILE=[[ "$RELATIVE_FILE" =~ \~$ ]]
+    IS_TEMP_FILE=[[ "$RELATIVE_FILE" =~ /[0-9]{4}$ ]]
+    FILE_EXISTS=[ -f "$RELATIVE_FILE" ]
+    
     # Skip temp files and check if file exists
-    if [[ "$RELATIVE_FILE" =~ \~$ ]] || [[ "$RELATIVE_FILE" =~ /[0-9]{4}$ ]] || [ ! -f "$RELATIVE_FILE" ]; then
+    if $IS_BACKUP_FILE || $IS_TEMP_FILE || ! $FILE_EXISTS; then
       # Skip without updating timer
       continue
     fi
@@ -55,11 +60,13 @@ ${FSWATCH_BIN:-fswatch} \
     if [ $((NOW - LAST_SYNC)) -gt $DEBOUNCE_TIME ]; then
       log "Syncing file: $RELATIVE_FILE"
       TIMEFORMAT="%3Rs"
-      TIMING=$( (time ${RSYNC_BIN:-rsync} $SINGLE_FILE_OPTS "$RELATIVE_FILE" $REMOTE_HOST:$REMOTE_PATH"$RELATIVE_FILE" >/dev/null) 2>&1 )
+      # Create parent directory on remote if needed
+      TIMING=$( (time ${RSYNC_BIN:-rsync} $SINGLE_FILE_OPTS "$RELATIVE_FILE" $REMOTE_HOST:$REMOTE_PATH"$RELATIVE_FILE" 2>&1) 2>&1 )
       log "Sync took: $TIMING"
       LAST_SYNC=$NOW
     else
       RELATIVE_FILE=$(echo "$file" | sed "s|$(pwd)/||")
+      # log "File changed: $RELATIVE_FILE (debounced)"
       # Only show debounce for files we'd actually sync
       # if [[ ! "$RELATIVE_FILE" =~ \~$ ]] && [[ ! "$RELATIVE_FILE" =~ /[0-9]{4}$ ]] && [[ ! "$RELATIVE_FILE" =~ \.git/ ]] && [ -f "$RELATIVE_FILE" ]; then
       #   log "File changed: $RELATIVE_FILE (debounced)"
