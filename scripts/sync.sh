@@ -86,14 +86,6 @@ ${FSWATCH_BIN:-fswatch} \
       continue  # Skip without updating timer
     fi
     
-    # ----------------------------------------
-    # Sync Individual Files
-    # ----------------------------------------
-    # Limit concurrent jobs to prevent overwhelming the system
-    while [ $(jobs -r | wc -l) -ge 4 ]; do
-      sleep 0.01
-    done
-    
     # Run sync in background for parallel processing
     (
       # log "Syncing file: $RELATIVE_FILE"
