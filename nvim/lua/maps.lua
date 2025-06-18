@@ -163,7 +163,7 @@ vim.keymap.set('n', '<leader>be', '<Cmd>edit<Cr>', { desc = 'Edit buffer' })
 vim.keymap.set('n', '<leader>by', '<Cmd>let @* = expand("%") . ":" . line(".")<Cr>',
   { desc = 'Yank filename with line number' })
 vim.keymap.set('n', '<leader>bl', function() vim.bo[0].buflisted = true end, { desc = 'List buffer' })
-vim.keymap.set('n', '<leader>bx', ':source %<Cr>', { desc = 'Source buffer' })
+vim.keymap.set('n', '<leader>bx', ':!%<Cr>', { desc = 'Execute buffer' })
 vim.keymap.set('n', '<leader>bs', function()
   vim.cmd.new('[Scratch]')
   vim.bo.buftype = 'nofile'
