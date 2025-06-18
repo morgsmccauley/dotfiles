@@ -1,6 +1,16 @@
-- cmp delayed results affecting auto completion
 - save global marks to session
 - refactoring.nvim
 - Use diagnostics for neotest
 - syntax highlight colours change on save
 - neotest toggleterm strategy
+- hot reload neovim config
+- show worktree in lualine
+- keymaps for faster project switching
+    - require('kitty').switch({ last = true })
+- make snacks exclude files outside current dir, even recent ones
+- remove relnumber in terminals
+- make kitty-projects support delete multi
+- checkout detached for neogit
+    - can just checkout an origin branch, but would also be good to have something for local branches
+- put copilot responses at bottom so they don't override my current selection
+- [b ]b to cycle through previous buffers
