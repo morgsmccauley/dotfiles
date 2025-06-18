@@ -77,15 +77,13 @@ ${FSWATCH_BIN:-fswatch} \
     # ----------------------------------------
     # Sync Individual Files
     # ----------------------------------------
-    # Apply debouncing to prevent excessive syncs
-    if [ $((NOW - LAST_SYNC)) -gt $DEBOUNCE_TIME ]; then
+    # Run sync in background for parallel processing
+    (
       log "Syncing file: $RELATIVE_FILE"
       TIMEFORMAT="%3Rs"
       
       # Sync the file to remote, preserving directory structure
       TIMING=$( (time ${RSYNC_BIN:-rsync} $SINGLE_FILE_OPTS "$RELATIVE_FILE" $REMOTE_HOST:$REMOTE_PATH"$RELATIVE_FILE" 2>&1) 2>&1 )
-      log "Sync took: $TIMING"
-      LAST_SYNC=$NOW
-    fi
-    # Files within debounce window are silently ignored
+      log "Sync completed: $RELATIVE_FILE ($TIMING)"
+    ) &
   done
