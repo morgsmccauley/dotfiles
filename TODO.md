@@ -14,3 +14,4 @@
     - can just checkout an origin branch, but would also be good to have something for local branches
 - put copilot responses at bottom so they don't override my current selection
 - [b ]b to cycle through previous buffers
+- snacks buffer lines to use `zt` instead of `zz`
