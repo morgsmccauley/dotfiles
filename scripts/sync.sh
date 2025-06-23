@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# TODO for git changes, only sync relevant dir
+# why are we seeing frequest git chagnes - maybe add debounce
+
 # File sync daemon that watches for local changes and syncs them to a remote server
 # Uses fswatch for file monitoring and rsync for efficient file transfer
 
@@ -63,12 +66,25 @@ ${FSWATCH_BIN:-fswatch} \
     # ----------------------------------------
     # Handle Git Changes
     # ----------------------------------------
-    # Git changes require full directory sync to maintain consistency
+    # Git changes sync only the affected directory
     if [[ "$RELATIVE_FILE" =~ \.git/ ]]; then
       if [ $((NOW - LAST_SYNC)) -gt $DEBOUNCE_TIME ]; then
-        log "Git change detected, syncing dir: $REMOTE_HOST:$REMOTE_PATH"
+        # Extract the directory containing the git change
+        CHANGED_DIR=$(dirname "$RELATIVE_FILE")
+        
+        # If it's a root .git file, sync the whole directory
+        if [[ "$CHANGED_DIR" == ".git" ]]; then
+          SYNC_PATH="."
+          log "Git change detected in root, syncing entire dir: $REMOTE_HOST:$REMOTE_PATH"
+        else
+          # Find the project root (directory containing .git folder)
+          PROJECT_ROOT=$(echo "$CHANGED_DIR" | sed 's|/.git.*||')
+          SYNC_PATH="$PROJECT_ROOT"
+          log "Git change detected, syncing project: $PROJECT_ROOT -> $REMOTE_HOST:$REMOTE_PATH"
+        fi
+        
         TIMEFORMAT="%3Rs"
-        TIMING=$( (time ${RSYNC_BIN:-rsync} $FULL_SYNC_OPTS . $REMOTE_HOST:$REMOTE_PATH >/dev/null) 2>&1 )
+        TIMING=$( (time ${RSYNC_BIN:-rsync} $FULL_SYNC_OPTS "$SYNC_PATH" $REMOTE_HOST:$REMOTE_PATH >/dev/null) 2>&1 )
         log "Sync took: $TIMING"
         LAST_SYNC=$NOW
       fi
