@@ -160,7 +160,7 @@ vim.keymap.set('n', '<leader>mm', '<Cmd>norm\'<Cr>', { desc = 'List marks' })
 
 -- Buffer keymaps
 vim.keymap.set('n', '<leader>be', '<Cmd>edit<Cr>', { desc = 'Edit buffer' })
-vim.keymap.set('n', '<leader>by', '<Cmd>let @* = expand("%") . ":" . line(".")<Cr>',
+vim.keymap.set('n', '<leader>by', '<Cmd>let @* = expand("%")<Cr>',
   { desc = 'Yank filename with line number' })
 vim.keymap.set('n', '<leader>bl', function() vim.bo[0].buflisted = true end, { desc = 'List buffer' })
 vim.keymap.set('n', '<leader>bx', ':!%<Cr>', { desc = 'Execute buffer' })
