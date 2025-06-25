@@ -6,3 +6,6 @@ kitty/kitty.conf.bak
 tmuxinator
 lazygit/state.yml
 .claude/settings.local.json
+claude/todos
+claude/statsig
+claude/projects
