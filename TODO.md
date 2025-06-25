@@ -15,3 +15,4 @@
 - put copilot responses at bottom so they don't override my current selection
 - [b ]b to cycle through previous buffers
 - snacks buffer lines to use `zt` instead of `zz`
+- auto update buffer on external (ai) change
