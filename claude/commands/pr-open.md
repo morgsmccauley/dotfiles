@@ -1,10 +1,16 @@
-Create a new pr for the current branch
+---
+allowed-tools: Bash(git diff:*), Bash(git log:*), Bash(gh pr create:*)
+description: Create a pull request for the current branch
+---
 
-Follow these steps:
-1. Commit all uncommited changes with an appropriate message
-2. Create a new branch with an appropriate name
-3. Reset the existing branch to its origin
-4. Checkout the new branch
-5. Create a new PR with appropriate title and description
+## Context
 
-Remember to use the GitHub CLI (`gh`) for all GitHub-related tasks.
+- Base branch: ${ARGUMENTS:-main}
+- Branch diff: !`git diff ${ARGUMENTS:-main}..`
+- Branch commits: !`git log --oneline ${ARGUMENTS:-main}`
+
+## Your task
+
+- Use the GitHub cli (`gh`) to create a pull request for the current branch pointing to the Base branch
+- If possible, use the content of this conversation, as well as the Branch diff and Branch commits, to create the description and title
+- Before submitting, let me know the PR contents (title/description)
