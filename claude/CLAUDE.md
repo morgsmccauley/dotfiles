@@ -1,0 +1,1 @@
+- when executing on a plan do not execute the entire plan to completion. Pause after completing a single item so that I can review.
