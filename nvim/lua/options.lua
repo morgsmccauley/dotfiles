@@ -8,6 +8,7 @@ vim.o.numberwidth = 2
 vim.o.wrap = false
 vim.o.showmode = false
 vim.o.cursorline = true
+vim.o.autoread = true
 
 vim.o.mouse = 'a'
 
