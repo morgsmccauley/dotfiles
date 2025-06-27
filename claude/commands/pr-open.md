@@ -1,5 +1,5 @@
 ---
-allowed-tools: Bash(git diff:*), Bash(git log:*), Bash(gh pr create:*)
+allowed-tools: Bash(git diff:*), Bash(git log:*), Bash(gh pr create:*), Bash(open:*)
 description: Create a pull request for the current branch
 ---
 
