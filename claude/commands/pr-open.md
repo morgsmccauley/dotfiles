@@ -16,3 +16,10 @@ description: Create a pull request for the current branch
 - If possible, use the content of this conversation, as well as the Branch diff and Branch commits, to create the description and title
 - Let me know the contents and wait for my approval before submitting
 - Execute `open` on the PR url so it is automatically opened in my browser
+- PR description should follow the structure:
+```md
+# Summary
+[Briefly describe the overall changes]
+# Changes
+[bullet list of the actual changes made]
+```
