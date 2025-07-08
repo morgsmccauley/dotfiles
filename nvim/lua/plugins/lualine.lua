@@ -27,7 +27,7 @@ return {
       return table.concat(buf_client_names, ', ')
     end
 
-    -- local worktree = require('utils').get_git_worktree()
+    local worktree = nil;
 
     lualine.setup({
       options = {
@@ -111,6 +111,15 @@ return {
             'branch',
             icon = '',
           },
+          {
+            function()
+              if worktree == nil then
+                worktree = require('utils').get_git_worktree()
+              end
+
+              return worktree or ''
+            end,
+          }
         },
         lualine_y = {
         },
