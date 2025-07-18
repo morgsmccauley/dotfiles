@@ -1,1 +1,2 @@
 - when executing on a plan do not execute the entire plan to completion. Pause after completing a single item so that I can review.
+- when asking general questions, only read the code when explicitly asked. But, if it is already related to the task you are doing feel free to read other files etc.

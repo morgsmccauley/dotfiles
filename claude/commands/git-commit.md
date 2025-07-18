@@ -15,3 +15,4 @@ description: Create a git commit
 - Follow conventional commits format
 - if it exists, use the context of the conversation to help derive the message
 - if possible, commit message should state why the change was made not what the change is
+- After commiting, output the commit message only. Nothing else.

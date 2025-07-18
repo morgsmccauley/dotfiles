@@ -11,8 +11,9 @@ description: Create a pull request for the current branch
 
 ## Your task
 
-- If $ARGUMENTS is not defined, used `main` or `master` as the base branch
+- If $ARGUMENTS is not defined, used `main` as the base branch
 - Use the GitHub cli (`gh`) to create a pull request for the current branch pointing to the Base branch
+- If we are currently on the base brach, or detached, create a new branch with an appropriate name. Push the branch.
 - If possible, use the content of this conversation, as well as the Branch diff and Branch commits, to create the description and title
 - Let me know the contents and wait for my approval before submitting
 - Execute `open` on the PR url so it is automatically opened in my browser
