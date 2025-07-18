@@ -57,8 +57,31 @@ gh run watch
 # View workflow run logs
 gh run view --log
 
+# View specific run
+gh run view <run-id>
+
+# View specific run in browser
+gh run view <run-id> --web
+
+# View specific run logs
+gh run view <run-id> --log
+
+# View specific run's job logs
+gh run view <run-id> --log --job <job-id>
+
+# Download run artifacts
+gh run download <run-id>
+
+# Rerun failed jobs in a run
+gh run rerun <run-id> --failed
+
+# Cancel a run
+gh run cancel <run-id>
+
 # NOTE: shells within navi don't source .zshrc and therefore don't pick up the 1pass aliases - need to manually add them
-$ pr: op plugin run -- gh pr list --state all --json number,title,state --template '{{range .}}{{tablerow .number .title .state}}{{end}}' --- --column 1
-$ issue: op plugin run --  gh issue list --json number,title,state --template '{{range .}}{{tablerow .number .title .state}}{{end}}' --- --column 1
-$ workflow: op plugin run -- gh workflow list --json name --jq '.[].name'
+$ pr: gh pr list --state all --json number,title,state --template '{{range .}}{{tablerow .number .title .state}}{{end}}' --- --column 1
+$ issue: gh issue list --json number,title,state --template '{{range .}}{{tablerow .number .title .state}}{{end}}' --- --column 1
+$ workflow: gh workflow list --json name --jq '.[].name'
 $ merge-strategy: echo -e "merge\nsquash\nrebase" | grep -v '^$'
+$ run-id: gh run list --json databaseId,displayTitle,status --template '{{range .}}{{tablerow .databaseId .displayTitle .status}}{{end}}' --- --column 1
+$ job-id: gh run view <run-id> --json jobs --jq '.jobs[] | "\(.databaseId) \(.name)"' --- --column 1
