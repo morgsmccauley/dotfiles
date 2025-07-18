@@ -27,6 +27,14 @@ return {
       end,
     })
 
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "NeogitWorktreeCreate",
+      -- use to copy secret files
+      -- callback = function(_buf_id, data)
+      --   data.copy_if_present();
+      -- end,
+    })
+
     require('neogit').setup({
       disable_commit_confirmation = true,
       disable_hint = true,
