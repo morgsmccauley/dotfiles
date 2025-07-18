@@ -1,0 +1,161 @@
+% perf, performance, profiling
+
+# Record CPU cycles for a command
+perf record -g <command>
+
+# Record with call graph (dwarf format for better unwinding)
+perf record --call-graph=dwarf <command>
+
+# Record for a specific duration (seconds)
+perf record -a -g sleep <duration>
+
+# Record specific PID
+perf record -p <pid> -g
+
+# Record all CPUs system-wide for duration
+perf record -a -g -- sleep <duration>
+
+# View recorded data
+perf report
+
+# View with specific sort order
+perf report --sort=comm,dso,symbol
+
+# Generate flame graph data
+perf script > out.perf
+
+# List available events
+perf list
+
+# Count cache misses for a command
+perf stat -e cache-misses <command>
+
+# Detailed CPU statistics
+perf stat -d <command>
+
+# Monitor CPU performance counters in real-time
+perf top
+
+# Monitor specific event in real-time
+perf top -e <event>
+
+# Profile kernel functions
+sudo perf top -g -K
+
+# Trace system calls
+perf trace <command>
+
+# Trace specific syscalls
+perf trace -e <syscall> <command>
+
+# Record branch misses
+perf record -e branch-misses <command>
+
+# Record page faults
+perf record -e page-faults <command>
+
+# Record L1 data cache misses
+perf record -e L1-dcache-load-misses <command>
+
+# Profile with sampling frequency (Hz)
+perf record -F <frequency> <command>
+
+# Annotate specific function
+perf annotate <function_name>
+
+# Show assembly with percentages
+perf annotate --stdio
+
+# Diff two perf data files
+perf diff perf.data.old perf.data
+
+# Inject JIT data for interpreted languages
+perf inject -j -i perf.data -o perf.data.jit
+
+# Record scheduler events
+perf sched record <command>
+
+# Analyze scheduling latencies
+perf sched latency
+
+# Memory access profiling
+perf mem record <command>
+
+# Memory access report
+perf mem report
+
+# Lock contention analysis
+perf lock record <command>
+
+# Lock contention report
+perf lock report
+
+# Generate call graph
+perf report -g 'graph,0.5,caller'
+
+# Export to CSV
+perf report --stdio -g none | head -n -3 | tail -n +6 > report.csv
+
+# Profile specific CPU
+perf record -C <cpu_number> -g
+
+# KVM guest profiling
+perf kvm record -a
+
+# Power consumption events
+perf stat -e power/energy-pkg/ <command>
+
+# Instructions per cycle
+perf stat -e instructions,cycles <command>
+
+# Branch prediction statistics
+perf stat -e branches,branch-misses <command>
+
+# Context switches and migrations
+perf stat -e context-switches,cpu-migrations <command>
+
+# Profile with stack size
+perf record --call-graph=fp,4096 <command>
+
+# Generate diff flamegraph data
+perf script -i perf.data.old > out.old.perf && perf script -i perf.data > out.new.perf
+
+# C++ symbol demangling
+perf report --demangle
+
+# Filter by symbol pattern
+perf report --symbols=<pattern>
+
+# Show only specific DSO
+perf report --dso=<library>
+
+# Probe specific function
+sudo perf probe -a <function>
+
+# List active probes
+sudo perf probe -l
+
+# Remove probe
+sudo perf probe -d <probe>
+
+# Record hardware events
+perf record -e cpu/event=0x3c,umask=0x0/ <command>
+
+# Intel PT (Processor Trace) recording
+perf record -e intel_pt// <command>
+
+# Show event raw counters
+perf stat -e r<hex_code> <command>
+
+$ command: Command to profile
+$ duration: Duration in seconds --- --column 1
+$ pid: Process ID --- --column 1
+$ event: Performance event --- --column 1
+$ syscall: System call name --- --column 1
+$ frequency: Sampling frequency in Hz --- --column 1
+$ function_name: Function to annotate --- --column 1
+$ cpu_number: CPU number to profile --- --column 1
+$ pattern: Symbol pattern to filter --- --column 1
+$ library: Shared library name --- --column 1
+$ probe: Probe name --- --column 1
+$ hex_code: Raw event hex code --- --column 1
