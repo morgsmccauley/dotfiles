@@ -47,12 +47,14 @@
     tokio-console
     neovim
     # should be using 23
-    protobuf_24
+    protobuf_25
     websocat
     stats
     claude-code
     lsyncd
     rsync
+    bun
+    clickhouse
   ];
 
 
@@ -79,8 +81,8 @@
       EnvironmentVariables = {
         FSWATCH_BIN = "${pkgs.fswatch}/bin/fswatch";
         RSYNC_BIN = "${pkgs.rsync}/bin/rsync";
-        REMOTE_HOST = "morgs@dev-morgan";
-        REMOTE_PATH = "/home/morgs/repos/";
+        REMOTE_HOST = "ubuntu@dev-morgan-2";
+        REMOTE_PATH = "/home/ubuntu/repos/";
         DEBOUNCE_TIME = "1";
         FSWATCH_LATENCY = "1";
         EXCLUDE_FILE = ".rsync-exclude";

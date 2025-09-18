@@ -22,7 +22,7 @@ return {
 
     dap.adapters.lldb = {
       type = 'executable',
-      command = 'lldb-dap',
+      command = '/etc/profiles/per-user/morganmccauley/bin/lldb-dap',
       name = 'lldb',
     }
 
