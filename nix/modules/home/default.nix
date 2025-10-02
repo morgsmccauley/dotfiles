@@ -55,6 +55,7 @@
     rsync
     bun
     clickhouse
+    capnproto
   ];
 
 

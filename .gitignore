@@ -9,3 +9,6 @@ lazygit/state.yml
 claude/todos
 claude/statsig
 claude/projects
+claude/file-history
+claude/shell-snapshots
+claude/history.jsonl
