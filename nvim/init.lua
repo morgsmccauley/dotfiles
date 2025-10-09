@@ -16,6 +16,7 @@ require('maps')
 require('highlights')
 require('autocommand')
 require('env')
+require('lsp')
 require('lazy').setup('plugins', {
   change_detection = {
     notify = false

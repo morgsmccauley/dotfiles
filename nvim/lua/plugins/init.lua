@@ -6,4 +6,6 @@ return {
   'nvim-lua/plenary.nvim',
   'nvim-lua/popup.nvim',
   'folke/lazy.nvim',
+  'b0o/SchemaStore.nvim',
+  'neovim/nvim-lspconfig'
 }

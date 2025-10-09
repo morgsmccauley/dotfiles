@@ -1,8 +1,9 @@
 {
   "includeCoAuthoredBy": false,
-  "model": "opusplan",
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline.sh"
-  }
+  },
+  "alwaysThinkingEnabled": false,
+  "model": "opus"
 }
