@@ -1,0 +1,11 @@
+% das-db, database, postgres
+
+# asset by ID
+psql $<db_url> -x -c "select * from asset where asset.id = '\x<hex_pubkey>';"
+
+# price by mint
+psql $<db_url> -x -c "select * from price where price.mint = '\x<hex_pubkey>';"
+
+$ db_url: echo -e "DAS_MAINNET_PITT_DB_URL\nDAS_MAINNET_FRA_DB_URL"
+$ pubkey: 
+$ hex_pubkey: python3 -c "alphabet='123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'; s='<pubkey>'; decoded=sum(alphabet.index(c)*58**(len(s)-i-1) for i,c in enumerate(s)); print(decoded.to_bytes(32,'big').hex())"
