@@ -3,4 +3,20 @@
 # getAsset
 http POST <endpoint> x-api-key:$HELIUS_MAINNET_API_KEY jsonrpc="2.0" id="helius-test" method="getAsset" params:='{"id": "<asset_id>", "options": {"showRawData": true}}'
 
+# getBlock (full)
+http POST <endpoint> x-api-key:$HELIUS_MAINNET_API_KEY jsonrpc="2.0" id="helius-test" method="getBlock" params:='[<block_height>, {"encoding": "json",  "maxSupportedTransactionVersion": 0, "transactionDetails": "full", "rewards": false}]'
+
+# getBlock (signatures)
+http POST <endpoint> x-api-key:$HELIUS_MAINNET_API_KEY jsonrpc="2.0" id="helius-test" method="getBlock" params:='[<block_height>, {"encoding": "json",  "maxSupportedTransactionVersion": 0, "transactionDetails": "signatures", "rewards": false}]'
+
+# getTransaction
+http POST <endpoint> x-api-key:$HELIUS_MAINNET_API_KEY jsonrpc="2.0" id="helius-test" method="getTransaction" params:='["<signature>", {"encoding": "json",  "maxSupportedTransactionVersion": 0}]'
+
+# getSignaturesForAddress
+http POST <endpoint> x-api-key:$HELIUS_MAINNET_API_KEY jsonrpc="2.0" id="helius-test" method="getSignaturesForAddress" params:='["<address>", {"limit": 1000 <before> <until>}]'
+$ until_signature:
+$ until: [ -n "<until_signature>" ] && echo ', "until": "<until_signature>"' || echo ""
+$ before_signature:
+$ before: [ -n "<before_signature>" ] && echo ', "before": "<before_signature>"' || echo ""
+
 $ endpoint: echo -e "https://mainnet.helius-rpc.com\n$DAS_MAINNET_PITT_ENDPOINT\n$DAS_MAINNET_FRA_ENDPOINT"
