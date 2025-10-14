@@ -1,118 +1,119 @@
 % kubernetes, k8s
 
-# Set kube config
-export KUBECONFIG=~/.kube/<config-files>
-
 # Get pods in namespace
-kubectl get pods -n <namespace>
-
-# Get pods in all namespaces
-kubectl get pods --all-namespaces
+kubectl -n <namespace> --kubeconfig <kubeconfig> get pods
 
 # Describe pod
-kubectl -n <namespace> describe pod <pod-name>
+kubectl -n <namespace> --kubeconfig <kubeconfig> describe pod <pod-name>
 
 # Get pod logs
-kubectl -n <namespace> logs <pod-name>
+kubectl -n <namespace> --kubeconfig <kubeconfig> logs <pod-name>
 
 # Follow pod logs
-kubectl -n <namespace> logs -f --tail 0 <pod-name>
+kubectl -n <namespace> --kubeconfig <kubeconfig> logs -f --tail 0 <pod-name>
 
 # Get pod logs (previous container)
-kubectl -n <namespace> logs <pod-name> --previous
+kubectl -n <namespace> --kubeconfig <kubeconfig> logs <pod-name> --previous
 
 # Execute command in pod
-kubectl -n <namespace> exec -it <pod-name> -- <command>
+kubectl -n <namespace> --kubeconfig <kubeconfig> exec -it <pod-name> -- <command>
+
+# Get env from pod
+kubectl -n <namespace> --kubeconfig <kubeconfig> exec -it <pod-name> -- env
 
 # Get shell in pod
-kubectl -n <namespace> exec -it <pod-name> -- /bin/sh
+kubectl -n <namespace> --kubeconfig <kubeconfig> exec -it <pod-name> -- /bin/sh
 
 # Port forward to pod
-kubectl -n <namespace> port-forward <pod-name> <local-port>:<pod-port>
+kubectl -n <namespace> --kubeconfig <kubeconfig> port-forward <pod-name> <local-port>:<pod-port>
 
 # Get deployments
-kubectl get deployments -n <namespace>
+kubectl -n <namespace> --kubeconfig <kubeconfig> get deployments
 
 # Scale deployment
-kubectl -n <namespace> scale deployment <deployment-name> --replicas=<count>
+kubectl -n <namespace> --kubeconfig <kubeconfig> scale deployment <deployment-name> --replicas=<count>
 
-# Follow deployment logs
-kubectl -n <namespace> logs -f --tail 0 deployment/<deployment-name>
+# Follow deployment logs (single)
+kubectl -n <namespace> --kubeconfig <kubeconfig> logs -f --tail 10 deployment/<deployment-name>
+
+# Follow deployment logs (all)
+kubectl -n <namespace> --kubeconfig <kubeconfig> logs -f --tail 10 --all-pods=true --max-log-requests=30 deployment/<deployment-name>
 
 # Rollout status of deployment
-kubectl -n <namespace> rollout status deployment/<deployment-name>
+kubectl -n <namespace> --kubeconfig <kubeconfig> rollout status deployment/<deployment-name>
 
 # Rollback deployment
-kubectl -n <namespace> rollout undo deployment/<deployment-name>
+kubectl -n <namespace> --kubeconfig <kubeconfig> rollout undo deployment/<deployment-name>
 
 # Rollback to specific revision
-kubectl -n <namespace> rollout undo deployment/<deployment-name> --to-revision=<revision>
+kubectl -n <namespace> --kubeconfig <kubeconfig> rollout undo deployment/<deployment-name> --to-revision=<revision>
 
 # Pause deployment rollout
-kubectl -n <namespace> rollout pause deployment/<deployment-name>
+kubectl -n <namespace> --kubeconfig <kubeconfig> rollout pause deployment/<deployment-name>
 
 # Resume deployment rollout
-kubectl -n <namespace> rollout resume deployment/<deployment-name>
+kubectl -n <namespace> --kubeconfig <kubeconfig> rollout resume deployment/<deployment-name>
 
 # View rollout history
-kubectl -n <namespace> rollout history deployment/<deployment-name>
+kubectl -n <namespace> --kubeconfig <kubeconfig> rollout history deployment/<deployment-name>
 
 # Restart deployment (rolling restart)
-kubectl -n <namespace> rollout restart deployment/<deployment-name>
+kubectl -n <namespace> --kubeconfig <kubeconfig> rollout restart deployment/<deployment-name>
 
 # Get services
-kubectl get services -n <namespace>
+kubectl -n <namespace> --kubeconfig <kubeconfig> get services
 
 # Get nodes
-kubectl get nodes
+kubectl --kubeconfig <kubeconfig> get nodes
 
 # Get events
-kubectl get events -n <namespace>
+kubectl -n <namespace> --kubeconfig <kubeconfig> get events
 
 # Get configmaps
-kubectl get configmaps -n <namespace>
+kubectl -n <namespace> --kubeconfig <kubeconfig> get configmaps
 
 # List secrets
-kubectl get secrets -n <namespace>
+kubectl -n <namespace> --kubeconfig <kubeconfig> get secrets
 
 # Get decoded secret
-echo <secret-entry> | base64 -d
+<namespace>; <kubeconfig> echo <secret-entry> | base64 -d
 
 # Apply manifest
-kubectl apply -f <manifest-file>
+kubectl --kubeconfig <kubeconfig> apply -f <manifest-file>
 
 # Delete resource
-kubectl delete -f <manifest-file>
+kubectl --kubeconfig <kubeconfig> delete -f <manifest-file>
 
 # Get resource usage
-kubectl top pod -n <namespace>
+kubectl -n <namespace> --kubeconfig <kubeconfig> top pod
 
 # Get cluster info
-kubectl cluster-info
+kubectl --kubeconfig <kubeconfig> cluster-info
 
 # Switch context
-kubectl config use-context <context-name>
+kubectl --kubeconfig <kubeconfig> config use-context <context-name>
 
 # Get current context
-kubectl config current-context
+kubectl --kubeconfig <kubeconfig> config current-context
 
 # List contexts
-kubectl config get-contexts
+kubectl --kubeconfig <kubeconfig> config get-contexts
 
 # Create namespace
-kubectl create namespace <namespace>
+kubectl --kubeconfig <kubeconfig> create namespace <namespace>
 
 # Get persistent volumes
-kubectl get pv
+kubectl --kubeconfig <kubeconfig> get pv
 
 # Get persistent volume claims
-kubectl get pvc -n <namespace>
+kubectl -n <namespace> --kubeconfig <kubeconfig> get pvc
 
-$ namespace: kubectl get namespaces --- --headers 1 --column 1
-$ pod-name: kubectl get pods -n "$namespace" --- --headers 1 --column 1
-$ deployment-name: kubectl get deployments -n "$namespace" --- --headers 1 --column 1
-$ context-name: kubectl config get-contexts -o name
+$ namespace: echo -e "das-v2-mainnet-fra\ndas-v2-mainnet-pitt\ndas-v2-devnet-pitt\ndas-devnet-pitt"
+$ kubeconfig: [[ "$namespace" == *"pitt"* ]] && echo ~/.kube/photon-pitt.yml || echo ~/.kube/photon-fra.yml
+$ pod-name: kubectl get pods -n "$namespace" --kubeconfig "$kubeconfig" --- --headers 1 --column 1
+$ deployment-name: kubectl --kubeconfig="$kubeconfig" get deployments -n="$namespace" --- --headers 1 --column 1
+$ context-name: kubectl config get-contexts -o name --kubeconfig "$kubeconfig"
 $ manifest-file: ls *.{yaml,yml} 2>/dev/null || true
 $ config-files: ls ~/.kube | grep .yml
-$ secret: kubectl get secrets -n <namespace> --- --headers 1 --column 1
-$ secret-entry: kubectl get secrets -n <namespace> <secret> -o yaml | yq -r '.data | to_entries | .[] | [.key, .value] | @tsv' --- --column 2 --delimiter '\t'
+$ secret: kubectl get secrets -n=$namespace --kubeconfig=$kubeconfig --- --headers 1 --column 1
+$ secret-entry: kubectl get secrets -n=$namespace $secret -o yaml --kubeconfig=$kubeconfig | yq -r '.data | to_entries | .[] | [.key, .value] | @tsv' --- --column 2 --delimiter '\t'
