@@ -38,7 +38,7 @@
       gcb = "f() { local repo_name=$(basename \"$1\" .git); mkdir -p \"$repo_name\" && cd \"$repo_name\" && git clone --bare \"$1\" .git && git worktree add \"$repo_name-main\" main 2>/dev/null || git worktree add \"$repo_name-main\" master && git worktree add \"$repo_name-develop\" develop 2>/dev/null || true && git worktree add \"$repo_name-review\" && git worktree add \"$repo_name-scratch\"; }; f";
     };
 
-    initExtra = ''
+    initContent = ''
       setopt PROMPT_SUBST
       setopt AUTO_CD
       setopt CASE_GLOB
@@ -53,6 +53,10 @@
 
       export PATH="/Users/morganmccauley/.cargo/bin:$PATH"
       export PATH="/opt/homebrew/bin:$PATH"
+
+      # Ensure rustc knows where clang is
+      export LIBCLANG_PATH="/opt/homebrew/opt/llvm/lib"  
+      export DYLD_LIBRARY_PATH="/opt/homebrew/opt/llvm/lib:$DYLD_LIBRARY_PATH"  
 
       # FIX: Feels like navi should pick this up automatically?
       export NAVI_CONFIG=$HOME/Library/Application\ Support/navi/config.yaml

@@ -15,7 +15,7 @@ in
 
   home.packages = [ fzf-wrapper ];
 
-  programs.zsh.initExtra = ''
+  programs.zsh.initContent = ''
     # Use fzf-wrapper instead of fzf directly
     alias fzf=${fzf-wrapper}/bin/fzf-wrapper
   '';
