@@ -13,10 +13,11 @@
     brews = [
       "ansible"
       "docker-compose"
+      "llvm"
     ];
     casks = [
       "raycast"
-      "docker"
+      # "docker"
       "1password-cli"
       "1password"
       "karabiner-elements"

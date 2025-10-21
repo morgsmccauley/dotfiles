@@ -76,7 +76,10 @@ kubectl -n <namespace> --kubeconfig <kubeconfig> get configmaps
 kubectl -n <namespace> --kubeconfig <kubeconfig> get secrets
 
 # Get decoded secret
-<namespace>; <kubeconfig> echo <secret-entry> | base64 -d
+<namespace>; <kubeconfig>; echo <secret-entry> | base64 -d
+
+# something
+<namespace>; <kubeconfig>; echo <secret>
 
 # Apply manifest
 kubectl --kubeconfig <kubeconfig> apply -f <manifest-file>
@@ -115,5 +118,7 @@ $ deployment-name: kubectl --kubeconfig="$kubeconfig" get deployments -n="$names
 $ context-name: kubectl config get-contexts -o name --kubeconfig "$kubeconfig"
 $ manifest-file: ls *.{yaml,yml} 2>/dev/null || true
 $ config-files: ls ~/.kube | grep .yml
-$ secret: kubectl get secrets -n=$namespace --kubeconfig=$kubeconfig --- --headers 1 --column 1
-$ secret-entry: kubectl get secrets -n=$namespace $secret -o yaml --kubeconfig=$kubeconfig | yq -r '.data | to_entries | .[] | [.key, .value] | @tsv' --- --column 2 --delimiter '\t'
+# $ secret: echo $namespace
+$ secret: kubectl -n=$namespace --kubeconfig=$kubeconfig get secrets --- --headers 1 --column 1
+# $ secret-entry: echo $kubeconfig
+$ secret-entry: kubectl -n=$namespace --kubeconfig=$kubeconfig get secrets $secret -o yaml | yq -r '.data | to_entries | .[] | [.key, .value] | @tsv' --- --column 2 --delimiter '\t'
