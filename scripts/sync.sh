@@ -232,7 +232,20 @@ ${FSWATCH_BIN:-fswatch} \
       log "Skipping invalid/temp file: $RELATIVE_FILE"
       continue  # Skip without updating timer
     fi
-    
+
+    # ----------------------------------------
+    # Skip Excluded Paths
+    # ----------------------------------------
+    # Skip files matching common exclude patterns
+    if [[ "$RELATIVE_FILE" =~ /target/ ]] || \
+       [[ "$RELATIVE_FILE" =~ /node_modules/ ]] || \
+       [[ "$RELATIVE_FILE" =~ /\.git/ ]] || \
+       [[ "$RELATIVE_FILE" =~ /dist/ ]] || \
+       [[ "$RELATIVE_FILE" =~ /build/ ]]; then
+      log "Skipping excluded path: $RELATIVE_FILE"
+      continue
+    fi
+
     # Check if we have too many background jobs before spawning more
     CURRENT_JOBS=$(jobs -r | wc -l)
     if [ $CURRENT_JOBS -gt $MAX_BACKGROUND_JOBS ]; then

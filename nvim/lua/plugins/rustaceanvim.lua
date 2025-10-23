@@ -44,6 +44,7 @@ vim.g.rustaceanvim = {
           buildScripts = {
             enable = true,
           },
+          targetDir = true,
         },
         checkOnSave = true,
         check = {
@@ -51,6 +52,9 @@ vim.g.rustaceanvim = {
           -- extraArgs = { '--no-deps' }
 
           command = 'check'
+        },
+        rustc = {
+          source = 'discover',
         },
       },
     },
