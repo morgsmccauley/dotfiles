@@ -3,7 +3,7 @@
     enable = true;
     autocd = true;
     enableCompletion = true;
-    
+
     syntaxHighlighting.enable = true;
     autosuggestion.enable = true;
 
@@ -11,6 +11,24 @@
     sessionVariables = {
       EDITOR = "nvim";
     };
+
+    # envExtra goes into .zshenv - sourced by ALL shells (login, interactive, non-interactive)
+    # This ensures nvim launched from kitty can find LSPs, formatters, and other tools
+    envExtra = ''
+      export PATH="/Users/morganmccauley/.cargo/bin:$PATH"
+      export PATH="/opt/homebrew/bin:$PATH"
+
+      # Ensure rustc knows where clang is
+      export LIBCLANG_PATH="/opt/homebrew/opt/llvm/lib"
+      export DYLD_LIBRARY_PATH="/opt/homebrew/opt/llvm/lib:$DYLD_LIBRARY_PATH"
+
+      export PROTOC=${pkgs.protobuf_25}/bin/protoc
+
+      # FIX: Feels like navi should pick this up automatically?
+      export NAVI_CONFIG=$HOME/Library/Application\ Support/navi/config.yaml
+
+      export _ZO_ECHO='1'  # Print directory path after zoxide jump
+    '';
 
     plugins = [
       {
@@ -49,18 +67,6 @@
         export PATH=$(pwd)/node_modules/.bin:$PATH
       fi
 
-      export PROTOC=${pkgs.protobuf_25}/bin/protoc
-
-      export PATH="/Users/morganmccauley/.cargo/bin:$PATH"
-      export PATH="/opt/homebrew/bin:$PATH"
-
-      # Ensure rustc knows where clang is
-      export LIBCLANG_PATH="/opt/homebrew/opt/llvm/lib"  
-      export DYLD_LIBRARY_PATH="/opt/homebrew/opt/llvm/lib:$DYLD_LIBRARY_PATH"  
-
-      # FIX: Feels like navi should pick this up automatically?
-      export NAVI_CONFIG=$HOME/Library/Application\ Support/navi/config.yaml
-
       source /Users/morganmccauley/.config/op/plugins.sh
 
       edit_in_parent_nvim() {
@@ -74,8 +80,6 @@
       export EDITOR=edit_in_parent_nvim
 
       bindkey '^u' edit-command-line
-
-      export _ZO_ECHO='1'
     '';
   };
 
