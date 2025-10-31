@@ -12,6 +12,10 @@ vim.g.rustaceanvim = {
         { silent = true, buffer = bufnr, desc = 'Expand macro (rust)' })
       vim.keymap.set('n', '<leader>co', '<Cmd>RustLsp openDocs<Cr>',
         { silent = true, buffer = bufnr, desc = 'Open docs (rust)' })
+      vim.keymap.set('n', '<leader>cc', '<Cmd>RustLsp openCargo<Cr>',
+        { silent = true, buffer = bufnr, desc = 'Open docs (rust)' })
+      vim.keymap.set('n', '<leader>cp', '<Cmd>RustLsp parentModule<Cr>',
+        { silent = true, buffer = bufnr, desc = 'Open docs (rust)' })
 
       vim.keymap.set(
         "n",
@@ -44,7 +48,7 @@ vim.g.rustaceanvim = {
           buildScripts = {
             enable = true,
           },
-          targetDir = true,
+          -- targetDir = true,
         },
         checkOnSave = true,
         check = {
