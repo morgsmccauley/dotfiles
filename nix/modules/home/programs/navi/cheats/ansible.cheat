@@ -3,9 +3,14 @@
 # SSH in to host
 ssh ubuntu@<host>
 
-$ host: ansible-inventory \
-  $(rg --files -g "*.yml" ~/Developer/monorepo/monorepo-main | grep -E "inventory|inventories" |\
-  xargs rg --files-with-matches "^all:" | awk '{print "-i " $0}') --list 2>/dev/null |\
-  jq -r '._meta.hostvars | to_entries | .[] | "\(.key)\t\(.value.ansible_host)"' |\
-  column -t -s $'\t' \
+$ host: REPO_PATH="$HOME/Developer/monorepo/monorepo-main"; \
+  CACHE_FILE="/tmp/ansible-inventory-hosts-$(cd $REPO_PATH && git rev-parse HEAD)"; \
+  if [ ! -f "$CACHE_FILE" ]; then \
+    rm -f /tmp/ansible-inventory-hosts-* 2>/dev/null; \
+    ansible-inventory \
+      $(rg --files -g "*.yml" $REPO_PATH | grep -E "inventory|inventories" | \
+      xargs -P 4 rg --files-with-matches "^all:" | awk '{print "-i " $0}') --list 2>/dev/null | \
+    jq -r '._meta.hostvars | to_entries | .[] | "\(.key)\t\(.value.ansible_host)"' > "$CACHE_FILE"; \
+  fi; \
+  cat "$CACHE_FILE" | column -t -s $'\t' \
   --- --column 2
