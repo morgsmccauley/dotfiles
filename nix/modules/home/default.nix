@@ -31,7 +31,6 @@
     jq
     yq
     fswatch
-    aws-sam-cli
     awscli2
     lldb
     postgresql
@@ -55,7 +54,7 @@
     rsync
     bun
     clickhouse
-    capnproto
+    gemini-cli
   ];
 
 
