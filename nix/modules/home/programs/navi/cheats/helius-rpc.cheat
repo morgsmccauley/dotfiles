@@ -19,4 +19,42 @@ $ until: [ -n "<until_signature>" ] && echo ', "until": "<until_signature>"' || 
 $ before_signature:
 $ before: [ -n "<before_signature>" ] && echo ', "before": "<before_signature>"' || echo ""
 
-$ endpoint: echo -e "https://mainnet.helius-rpc.com\n$DAS_MAINNET_PITT_ENDPOINT\n$DAS_MAINNET_FRA_ENDPOINT\n$DAS_DEVNET_PITT_ENDPOINT\n$DAS_V2_DEVNET_PITT_ENDPOINT"
+# getClusterNodes
+http POST <endpoint> x-api-key:$HELIUS_MAINNET_API_KEY jsonrpc="2.0" id="helius-test" method="getClusterNodes"
+
+# getLeaderSchedule
+http POST <endpoint> x-api-key:$HELIUS_MAINNET_API_KEY jsonrpc="2.0" id="helius-test" method="getLeaderSchedule" params:='[<slot_param>, {"identity": "<identity_param>"}]'
+$ slot_input:
+$ slot_param: [ -n "<slot_input>" ] && echo "<slot_input>" || echo "null"
+$ identity_input:
+$ identity_param: [ -n "<identity_input>" ] && echo "<identity_input>" || echo ""
+
+# getEpochInfo
+http POST <endpoint> x-api-key:$HELIUS_MAINNET_API_KEY jsonrpc="2.0" id="helius-test" method="getEpochInfo"
+
+# getEpochSchedule
+http POST <endpoint> x-api-key:$HELIUS_MAINNET_API_KEY jsonrpc="2.0" id="helius-test" method="getEpochSchedule"
+
+# getSlot
+http POST <endpoint> x-api-key:$HELIUS_MAINNET_API_KEY jsonrpc="2.0" id="helius-test" method="getSlot"
+
+# getBlockHeight
+http POST <endpoint> x-api-key:$HELIUS_MAINNET_API_KEY jsonrpc="2.0" id="helius-test" method="getBlockHeight"
+
+# getBlockTime
+http POST <endpoint> x-api-key:$HELIUS_MAINNET_API_KEY jsonrpc="2.0" id="helius-test" method="getBlockTime" params:='[<block_slot>]'
+
+# getRecentBlockhash
+http POST <endpoint> x-api-key:$HELIUS_MAINNET_API_KEY jsonrpc="2.0" id="helius-test" method="getLatestBlockhash"
+
+# getVersion
+http POST <endpoint> x-api-key:$HELIUS_MAINNET_API_KEY jsonrpc="2.0" id="helius-test" method="getVersion"
+
+# getHealth
+http POST <endpoint> x-api-key:$HELIUS_MAINNET_API_KEY jsonrpc="2.0" id="helius-test" method="getHealth"
+
+# getSupply
+http POST <endpoint> x-api-key:$HELIUS_MAINNET_API_KEY jsonrpc="2.0" id="helius-test" method="getSupply"
+
+# getVoteAccounts
+http POST <endpoint> x-api-key:$HELIUS_MAINNET_API_KEY jsonrpc="2.0" id="helius-test" method="getVoteAccounts"
