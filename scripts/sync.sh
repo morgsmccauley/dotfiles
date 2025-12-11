@@ -1,84 +1,88 @@
 #!/bin/bash
 
-# Simple file sync daemon: watches for changes and rsyncs to remote
+# File sync daemon: watches for changes and rsyncs only changed directories
 # Uses fswatch for monitoring, rsync for transfer, SSH multiplexing for speed
 
 set -u
 
-# Configuration (set via environment)
 REMOTE_HOST="${REMOTE_HOST:?REMOTE_HOST required}"
 REMOTE_PATH="${REMOTE_PATH:?REMOTE_PATH required}"
 EXCLUDE_FILE="${EXCLUDE_FILE:-}"
-DEBOUNCE="${DEBOUNCE:-1}"
+LATENCY="${LATENCY:-0.5}"
 
-# SSH multiplexing for persistent connections
 SSH_OPTS="-o ControlMaster=auto -o ControlPath=~/.ssh/cm-%r@%h:%p -o ControlPersist=10m -o ServerAliveInterval=60 -o ServerAliveCountMax=3"
 
-log() {
-  echo "$(date '+%H:%M:%S'): $1"
-}
+log() { echo "$(date '+%H:%M:%S'): $1"; }
 
-do_full_sync() {
+do_sync() {
+  local dir="${1:-.}"
   local exclude_arg=""
   [[ -n "$EXCLUDE_FILE" ]] && exclude_arg="--exclude-from=$EXCLUDE_FILE"
 
-  rsync -av --delete \
-    --exclude='.git' --exclude='target' --exclude='node_modules' \
-    --exclude='dist' --exclude='build' --exclude='*.swp' --exclude='*~' \
-    $exclude_arg \
-    -e "ssh $SSH_OPTS" \
-    ./ "$REMOTE_HOST:$REMOTE_PATH"
+  local relative="${dir#$PWD/}"
+  [[ "$relative" == "$dir" ]] && relative="."
+
+  if [[ "$relative" == "." ]]; then
+    rsync -a --delete \
+      --exclude='.git' --exclude='target' --exclude='node_modules' \
+      --exclude='dist' --exclude='build' --exclude='*.swp' --exclude='*~' \
+      $exclude_arg -e "ssh $SSH_OPTS" \
+      ./ "$REMOTE_HOST:$REMOTE_PATH"
+  else
+    rsync -a --delete \
+      --exclude='.git' --exclude='target' --exclude='node_modules' \
+      --exclude='dist' --exclude='build' --exclude='*.swp' --exclude='*~' \
+      $exclude_arg -e "ssh $SSH_OPTS" \
+      "./$relative/" "$REMOTE_HOST:$REMOTE_PATH$relative/"
+  fi
 }
 
-do_file_sync() {
+get_sync_dir() {
   local file="$1"
-  local relative="${file#$PWD/}"
+  local dir
 
-  # Skip if file doesn't exist (deleted) - return 2 to indicate no sync happened
-  if [[ ! -e "$file" ]]; then
-    log "File deleted, skipping: $relative"
-    return 2
-  fi
+  [[ -d "$file" ]] && dir="$file" || dir=$(dirname "$file")
 
-  rsync -av -e "ssh $SSH_OPTS" "$file" "$REMOTE_HOST:$REMOTE_PATH$relative"
+  # If deleted, walk up to existing parent
+  while [[ ! -d "$dir" ]] && [[ "$dir" != "." ]] && [[ "$dir" != "/" ]]; do
+    dir=$(dirname "$dir")
+  done
+
+  echo "$dir"
 }
 
 log "Starting sync: . -> $REMOTE_HOST:$REMOTE_PATH"
-log "Debounce: ${DEBOUNCE}s"
 
-# Initial sync
 log "Initial sync..."
-if do_full_sync; then
-  log "Initial sync complete"
-else
-  log "Initial sync failed, continuing anyway..."
-fi
+do_sync && log "Initial sync complete" || log "Initial sync failed"
 
-# Watch for changes and sync
-/etc/profiles/per-user/morganmccauley/bin/fswatch --latency="$DEBOUNCE" --recursive \
-  --exclude='/\.git/' --exclude='/target/' --exclude='/node_modules/' \
+# Watch for changes and sync affected directories
+/etc/profiles/per-user/morganmccauley/bin/fswatch --latency="$LATENCY" --recursive \
+  --exclude='/target/' --exclude='/node_modules/' \
   --exclude='/dist/' --exclude='/build/' --exclude='~$' --exclude='\.swp$' \
   . | {
-    last_sync=0
-    while read -r file; do
-      log "Change detected: $file"
+    while IFS= read -r file; do
+      # Batch: collect this event + any more within 200ms
+      dirs=("$(get_sync_dir "$file")")
+      while IFS= read -r -t 1 file; do
+        dirs+=("$(get_sync_dir "$file")")
+      done
 
-      # Skip if we synced recently (within DEBOUNCE seconds)
-      now=$(date +%s)
-      if (( now - last_sync < DEBOUNCE )); then
-        log "Skipping (synced $((now - last_sync))s ago)"
-        continue
-      fi
+      # Dedupe directories
+      unique_dirs=$(printf '%s\n' "${dirs[@]}" | sort -u)
+      count=$(echo "$unique_dirs" | wc -l | tr -d ' ')
 
-      do_file_sync "$file"
-      rc=$?
-      if (( rc == 0 )); then
-        log "Sync complete"
-        last_sync=$(date +%s)
-      elif (( rc == 2 )); then
-        : # Skipped, don't update last_sync
+      if [[ $count -gt 5 ]]; then
+        log "Many changes ($count dirs), full sync..."
+        do_sync
       else
-        log "Sync failed (exit $rc)"
+        for dir in $unique_dirs; do
+          relative="${dir#$PWD/}"
+          [[ "$relative" == "$dir" ]] && relative="."
+          log "Syncing: $relative/"
+          do_sync "$dir"
+        done
       fi
+      log "Done"
     done
   }

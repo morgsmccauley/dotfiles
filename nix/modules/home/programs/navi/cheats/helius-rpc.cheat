@@ -58,3 +58,5 @@ http POST <endpoint> x-api-key:$HELIUS_MAINNET_API_KEY jsonrpc="2.0" id="helius-
 
 # getVoteAccounts
 http POST <endpoint> x-api-key:$HELIUS_MAINNET_API_KEY jsonrpc="2.0" id="helius-test" method="getVoteAccounts"
+
+$ endpoint: echo -e "https://mainnet.helius-rpc.com\n$DAS_MAINNET_PITT_ENDPOINT\n$DAS_MAINNET_FRA_ENDPOINT\n$DAS_DEVNET_PITT_ENDPOINT\n$DAS_V2_DEVNET_PITT_ENDPOINT"
