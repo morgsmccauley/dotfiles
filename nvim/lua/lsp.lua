@@ -156,4 +156,4 @@ vim.lsp.config.yamlls = {
 }
 
 -- Enable all configured LSP servers
-vim.lsp.enable({ 'efm', 'ts_ls', 'lua_ls', 'eslint', 'jsonls', 'yamlls' })
+vim.lsp.enable({ 'efm', 'ts_ls', 'lua_ls', 'eslint', 'jsonls', 'yamlls', 'clangd' })
