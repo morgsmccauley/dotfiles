@@ -55,6 +55,7 @@
     bun
     clickhouse
     gemini-cli
+    codex
   ];
 
 

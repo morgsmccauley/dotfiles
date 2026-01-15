@@ -45,6 +45,9 @@ vim.g.rustaceanvim = {
           enable = true,
         },
         cargo = {
+          extraEnv = {
+            RUSTFLAGS = '--cfg tokio_unstable',
+          },
           buildScripts = {
             enable = true,
           },
