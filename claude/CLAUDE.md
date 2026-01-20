@@ -1,1 +1,2 @@
 - when asking general questions, only read the code when explicitly asked. But, if it is already related to the task you are doing feel free to read other files etc.
+- When writing code, dont add additional comments

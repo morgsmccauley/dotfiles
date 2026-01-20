@@ -1,8 +1,47 @@
 {
-  "includeCoAuthoredBy": false,
+  "permissions": {
+    "allow": [
+      "Bash(cd:*)",
+      "Bash(cargo fmt:*)",
+      "Bash(cargo check:*)",
+      "Bash(cargo clippy:*)",
+      "Bash(cargo build:*)",
+      "Bash(cargo bench:*)",
+      "Bash(cargo test:*)",
+      "Bash(cargo nextest:*)",
+      "Bash(cargo doc:*)",
+      "Bash(cargo rustdoc:*)",
+      "Bash(git status:*)",
+      "Bash(git log:*)",
+      "Bash(git show:*)",
+      "Bash(git diff:*)",
+      "Bash(git blame:*)",
+      "Bash(git grep:*)",
+      "Bash(git ls-files:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(ls:*)",
+      "Bash(rg:*)",
+      "Bash(tee:*)",
+      "Bash(grep:*)",
+      "Bash(find:*)",
+      "Bash(echo:*)",
+      "Bash(wc:*)",
+      "Bash(sort:*)",
+      "Bash(uniq:*)",
+      "Bash(which:*)",
+      "Bash(cat:*)",
+      "Bash(chc:*)",
+      "Bash(chcq:*)",
+      "Read(*)",
+      "Fetch(*)"
+    ]
+  },
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline.sh"
   },
+  "includeCoAuthoredBy": false,
   "alwaysThinkingEnabled": false
 }
