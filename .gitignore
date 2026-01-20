@@ -12,3 +12,7 @@ claude/projects
 claude/file-history
 claude/shell-snapshots
 claude/history.jsonl
+claude/cache/*
+claude/debug/*
+claude/stats-cache.json
+claude/plugins/*

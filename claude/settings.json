@@ -1,4 +1,5 @@
 {
+  "includeCoAuthoredBy": false,
   "permissions": {
     "allow": [
       "Bash(cd:*)",
@@ -42,6 +43,7 @@
     "type": "command",
     "command": "~/.claude/statusline.sh"
   },
-  "includeCoAuthoredBy": false,
-  "alwaysThinkingEnabled": false
+  "enabledPlugins": {
+    "rust-analyzer-lsp@claude-plugins-official": true
+  }
 }
