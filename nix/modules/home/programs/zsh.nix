@@ -17,6 +17,7 @@
     envExtra = ''
       export PATH="/Users/morganmccauley/.cargo/bin:$PATH"
       export PATH="/opt/homebrew/bin:$PATH"
+      export PATH="/opt/homebrew/opt/ansible@10/bin:$PATH"
 
       # Ensure rustc knows where clang is
       export LIBCLANG_PATH="/opt/homebrew/opt/llvm/lib"

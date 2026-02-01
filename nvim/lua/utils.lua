@@ -4,7 +4,8 @@ function M.find_project_root()
   local root_files = {
     "Cargo.lock",
     "package-lock.json",
-    ".terraform"
+    ".terraform",
+    ".root"
   }
 
   local current_file = vim.api.nvim_buf_get_name(0)
