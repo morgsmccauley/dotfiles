@@ -8,6 +8,7 @@
     ./programs/fzf
     ./programs/navi
     ./programs/kitty
+    ./programs/ghostty
   ];
 
   home.stateVersion = "24.05";
@@ -56,6 +57,8 @@
     clickhouse
     gemini-cli
     codex
+    capnproto
+    # solana-cli
   ];
 
 
