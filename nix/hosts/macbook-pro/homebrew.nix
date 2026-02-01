@@ -28,7 +28,6 @@
       "postman"
       "telegram"
       "grammarly-desktop"
-      "ghostty"
     ];
     masApps = {
       "Shortery" = 1594183810;

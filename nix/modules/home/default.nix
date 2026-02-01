@@ -8,7 +8,7 @@
     ./programs/fzf
     ./programs/navi
     ./programs/kitty
-    ./programs/ghostty
+    ./programs/wezterm
   ];
 
   home.stateVersion = "24.05";
