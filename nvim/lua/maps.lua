@@ -31,7 +31,7 @@ vim.keymap.set('n', '<C-w>gd', '<Cmd>silent vsp | Telescope lsp_definitions<Cr>'
   { desc = 'Go to definition in new split' })
 
 vim.keymap.set('n', '<C-space>', function()
-  require('kitty').projects()
+  require('multiplexer').projects()
 end, { noremap = true })
 
 nmap('<C-p>', '@:', { noremap = true })

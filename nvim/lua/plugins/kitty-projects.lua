@@ -1,7 +1,8 @@
 return {
-  'morgsmccauley/kitty-projects.nvim',
+  'morgsmccauley/multiplexer.nvim',
   config = function()
-    require('kitty').setup({
+    require('multiplexer').setup({
+      terminal = 'auto',
       -- `--login` ensures env vars from .zprofile/.zlogin are sourced
       -- Required for nvim plugins to find LSPs, formatters, and other tools
       command = 'zsh --login -c /etc/profiles/per-user/morganmccauley/bin/nvim',
