@@ -15,6 +15,8 @@ return {
 
   default_cursor_style = 'SteadyUnderline',
 
+  enable_tab_bar = false,
+
   hide_mouse_cursor_when_typing = true,
 
   color_scheme = scheme_for_appearance(wezterm.gui.get_appearance()),

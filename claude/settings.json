@@ -1,19 +1,24 @@
 {
+  "hooks": {
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.dotfiles/claude/hooks/notify.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  },
   "includeCoAuthoredBy": false,
   "permissions": {
     "allow": [
       "Bash(cd:*)",
-      "Bash(cargo *)",
-      "Bash(git status:*)",
-      "Bash(git log:*)",
-      "Bash(git show:*)",
-      "Bash(git diff:*)",
-      "Bash(git blame:*)",
-      "Bash(git grep:*)",
-      "Bash(git ls-files:*)",
-      "Bash(git rev-parse:*)",
-      "Bash(git checkout:*)",
-      "Bash(git branch:*)",
+      "Bash(gh:*)",
+      "Bash(cargo:*)",
+      "Bash(git:*)",
       "Bash(head:*)",
       "Bash(tail:*)",
       "Bash(ls:*)",
@@ -29,10 +34,11 @@
       "Bash(cat:*)",
       "Bash(chc:*)",
       "Bash(chcq:*)",
-      "Read(*)",
-      "Search(pattern:*)",
+      "Read",
+      "Search",
       "WebSearch",
-      "WebFetch(domain:*)"
+      "WebFetch",
+      "Skill"
     ]
   },
   "statusLine": {
