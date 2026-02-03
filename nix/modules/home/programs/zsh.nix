@@ -15,6 +15,7 @@
     # envExtra goes into .zshenv - sourced by ALL shells (login, interactive, non-interactive)
     # This ensures nvim launched from kitty can find LSPs, formatters, and other tools
     envExtra = ''
+      export PATH="/Users/morganmccauley/.dotfiles/scripts:$PATH"
       export PATH="/Users/morganmccauley/.cargo/bin:$PATH"
       export PATH="/opt/homebrew/bin:$PATH"
       export PATH="/opt/homebrew/opt/ansible@10/bin:$PATH"
@@ -69,11 +70,6 @@
       fi
 
       source /Users/morganmccauley/.config/op/plugins.sh
-
-      edit_in_parent_nvim() {
-          local file="''${@: -1}"
-          nvr -cc "rightbelow split" --remote-wait +'set bufhidden=delete | set wrap | set autowriteall' "$file"
-      }
 
       autoload -U edit-command-line
       zle -N edit-command-line

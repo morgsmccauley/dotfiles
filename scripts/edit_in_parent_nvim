@@ -1,0 +1,3 @@
+#!/bin/bash
+file="${@: -1}"
+nvr -cc "rightbelow split" --remote-wait +'set bufhidden=delete | set wrap | set autowriteall' "$file"

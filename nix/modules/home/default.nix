@@ -23,7 +23,7 @@
     typescript-language-server
     vscode-langservers-extracted
     vscode-js-debug
-    nodejs_22
+    nodejs_24
     nodePackages.prettier
     nodePackages.aws-cdk
     protoc-gen-go
