@@ -5,23 +5,6 @@
     "pr": ""
   },
   "showTurnDuration": true,
-  "sandbox": {
-    "enabled": true,
-    "autoAllowBashIfSandboxed": true,
-    "excludedCommands": ["docker"],
-    "allowUnsandboxedCommands": false,
-    "network": {
-      "allowedDomains": [
-        "github.com",
-        "*.githubusercontent.com",
-        "*.npmjs.org",
-        "registry.npmjs.org",
-        "crates.io",
-        "*.crates.io"
-      ],
-      "allowLocalBinding": true
-    }
-  },
   "permissions": {
     "defaultMode": "acceptEdits",
     "allow": [
@@ -70,6 +53,17 @@
           {
             "type": "command",
             "command": "~/.dotfiles/claude/hooks/notify.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.dotfiles/claude/hooks/nvim-clear.sh",
             "timeout": 5
           }
         ]

@@ -8,4 +8,8 @@ if [ -z "$REPO" ]; then
   REPO=$(basename "$CWD")
 fi
 
+if [ -n "$NVIM" ]; then
+  nvim --server "$NVIM" --remote-expr "luaeval('require(\"multiplexer\").set_metadata(_A)', {['claude']='waiting'})"
+fi
+
 osascript -e "display notification \"$MSG\" with title \"Claude Code ($REPO)\""
