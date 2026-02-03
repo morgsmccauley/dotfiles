@@ -9,7 +9,13 @@ if [ -z "$REPO" ]; then
 fi
 
 if [ -n "$NVIM" ]; then
-  nvim --server "$NVIM" --remote-expr "luaeval('require(\"multiplexer\").set_metadata(_A)', {['claude']='waiting'})"
+  TYPE=$(echo "$INPUT" | jq -r '.notification_type')
+  if [ "$TYPE" = "permission_prompt" ]; then
+    STATUS="waiting"
+  else
+    STATUS="idle"
+  fi
+  nvim --server "$NVIM" --remote-expr "luaeval('require(\"multiplexer\").set_metadata(_A)', {'claude': '${STATUS}'})"
 fi
 
 osascript -e "display notification \"$MSG\" with title \"Claude Code ($REPO)\""
