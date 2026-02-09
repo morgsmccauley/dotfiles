@@ -11,6 +11,10 @@
       l = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
     };
 
+    hooks = {
+      post-checkout = ./git/post-checkout;
+    };
+
     settings = {
       core = {
         editor = "nvim";

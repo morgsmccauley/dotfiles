@@ -29,10 +29,10 @@
       "telegram"
       "grammarly-desktop"
     ];
-    masApps = {
-      "Shortery" = 1594183810;
-      "Slack" = 803453959;
-    };
+    # masApps = {
+    #   "Shortery" = 1594183810;
+    #   "Slack" = 803453959;
+    # };
   };
   
   system.activationScripts.brewInstallCheck.text = ''

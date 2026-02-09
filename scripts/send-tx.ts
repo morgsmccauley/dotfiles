@@ -10,7 +10,7 @@ if (args.length < 1) {
   process.exit(1);
 }
 
-const rpcUrl = "https://api.mainnet-beta.solana.com";
+const rpcUrl = `https://mainnet.helius-rpc.com?api-key=${process.env.HELIUS_MAINNET_API_KEY}`;
 const [senderUrl] = args;
 const keypair = Keypair.generate();
 

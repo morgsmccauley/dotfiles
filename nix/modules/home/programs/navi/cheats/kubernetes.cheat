@@ -78,8 +78,8 @@ kubectl -n <namespace> --kubeconfig <kubeconfig> get secrets
 # Get decoded secret
 <namespace>; <kubeconfig>; echo <secret-entry> | base64 -d
 
-# something
-<namespace>; <kubeconfig>; echo <secret>
+# get secret entry
+kubectl -n <namespace> --kubeconfig <kubeconfig> get secrets $secret -o yaml | yq -r '.data | to_entries | .[] | [.key, .value] | @tsv' --- --column 2 --delimiter '\t' | base64 -d
 
 # Apply manifest
 kubectl --kubeconfig <kubeconfig> apply -f <manifest-file>
@@ -111,7 +111,7 @@ kubectl --kubeconfig <kubeconfig> get pv
 # Get persistent volume claims
 kubectl -n <namespace> --kubeconfig <kubeconfig> get pvc
 
-$ namespace: echo -e "das-v2-mainnet-fra\ndas-v2-mainnet-pitt\ndas-v2-devnet-pitt\ndas-devnet-pitt"
+$ namespace: echo -e "das-v2-mainnet-fra\ndas-v2-mainnet-pitt\ndas-v2-devnet-pitt\ndas-devnet-pitt\ndas-v2-dev-mainnet-pitt-2"
 $ kubeconfig: [[ "$namespace" == *"pitt"* ]] && echo ~/.kube/photon-pitt.yml || echo ~/.kube/photon-fra.yml
 $ pod-name: kubectl get pods -n "$namespace" --kubeconfig "$kubeconfig" --- --headers 1 --column 1
 $ deployment-name: kubectl --kubeconfig="$kubeconfig" get deployments -n="$namespace" --- --headers 1 --column 1

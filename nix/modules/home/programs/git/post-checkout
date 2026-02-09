@@ -1,0 +1,13 @@
+#!/bin/bash
+prev_ref=$1
+new_ref=$2
+is_branch=$3
+
+if [ "$is_branch" != "1" ]; then
+  exit 0
+fi
+
+if [ -n "$NVIM" ]; then
+  BRANCH=$(git symbolic-ref --short HEAD 2>/dev/null)
+  nvim --server "$NVIM" --remote-expr "luaeval('require(\"multiplexer\").set_metadata(_A)', {branch = '$BRANCH'})"
+fi

@@ -59,6 +59,9 @@ http POST <endpoint> x-api-key:$HELIUS_MAINNET_API_KEY jsonrpc="2.0" id="helius-
 # getVoteAccounts
 http POST <endpoint> x-api-key:$HELIUS_MAINNET_API_KEY jsonrpc="2.0" id="helius-test" method="getVoteAccounts"
 
+# getProgramAccounts
+http POST <endpoint> x-api-key:$HELIUS_MAINNET_API_KEY jsonrpc="2.0" id="helius-test" method="getProgramAccounts" params:='["<program_id>", {"encoding": "jsonParsed", "withContext": true}]'
+
 # Send dummy Solana transaction to custom endpoint
 send-tx.ts <sender_url>
 

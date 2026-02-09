@@ -4,11 +4,10 @@
     "commit": "",
     "pr": ""
   },
-  "showTurnDuration": true,
   "permissions": {
-    "defaultMode": "acceptEdits",
     "allow": [
       "Bash(npm *)",
+      "Bash(clickhouse-client:*)",
       "Bash(git *)",
       "Bash(cargo *)",
       "Bash(gh *)",
@@ -42,9 +41,9 @@
       "Read(./.env.*)",
       "Read(~/.ssh/**)",
       "Read(~/.aws/**)",
-      "Bash(rm -rf *)",
-      "Bash(sudo *)"
-    ]
+      "Bash(rm -rf *)"
+    ],
+    "defaultMode": "acceptEdits"
   },
   "hooks": {
     "Notification": [
@@ -80,5 +79,6 @@
     "commit-commands@claude-plugins-official": true,
     "Notion@claude-plugins-official": true,
     "slack@claude-plugins-official": true
-  }
+  },
+  "showTurnDuration": true
 }
