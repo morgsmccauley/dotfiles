@@ -357,6 +357,14 @@ end, { expr = true })
 
 -- Octo
 
+vim.keymap.set('n', '<leader>pn', function()
+  vim.ui.input({ prompt = 'name: ' }, function(name)
+    if name and name ~= '' then
+      require('multiplexer').set_metadata({ name = name })
+    end
+  end)
+end, { desc = 'Name project' })
+
 vim.keymap.set({ 'n' }, '<leader>opc', '<Cmd>Octo pr create<Cr>', { desc = 'Create PR' })
 vim.keymap.set({ 'n' }, '<leader>opm', '<Cmd>Octo pr merge squash<Cr>', { desc = 'Squash merge PR' })
 vim.keymap.set({ 'n' }, '<leader>opb', '<Cmd>Octo pr browser<Cr>', { desc = 'Open PR in browser' })

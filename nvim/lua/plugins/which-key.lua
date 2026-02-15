@@ -26,6 +26,7 @@ return {
       { "<leader>w",  group = "window" },
       { "<leader>o",  group = "octo" },
       { "<leader>op", group = "octo pr" },
+      { "<leader>p",  group = "project" },
     })
   end
 }
