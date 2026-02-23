@@ -2,9 +2,9 @@
   programs.git = {
     enable = true;
 
-    hooks = {
-      post-checkout = ./git/post-checkout;
-    };
+    # hooks = {
+    #   post-checkout = ./git/post-checkout;
+    # };
 
     settings = {
       user = {
