@@ -22,6 +22,9 @@ $ before: [ -n "<before_signature>" ] && echo ', "before": "<before_signature>"'
 # getClusterNodes
 http POST <endpoint> x-api-key:$HELIUS_MAINNET_API_KEY jsonrpc="2.0" id="helius-test" method="getClusterNodes"
 
+# getClusterNodes (find validator by pubkey)
+http POST <endpoint> x-api-key:$HELIUS_MAINNET_API_KEY jsonrpc="2.0" id="helius-test" method="getClusterNodes" | jq '.result[] | select(.pubkey == "<pubkey>")'
+
 # getLeaderSchedule
 http POST <endpoint> x-api-key:$HELIUS_MAINNET_API_KEY jsonrpc="2.0" id="helius-test" method="getLeaderSchedule" params:='[<slot_param>, {"identity": "<identity_param>"}]'
 $ slot_input:

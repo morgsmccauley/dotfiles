@@ -19,3 +19,6 @@ claude/plugins/*
 claude/plans/*
 claude/tasks/*
 claude/paste-cache/*
+claude/chrome/chrome-native-host
+claude/telemetry/1p_failed_events.4fd5f7b7-a2cc-45e7-a7ee-2e96144b4a51.49706302-7d84-44f7-9ef1-3b8bfa2680c2.json
+claude/telemetry/*
