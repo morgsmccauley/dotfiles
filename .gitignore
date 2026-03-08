@@ -16,3 +16,8 @@ claude/*
 !claude/hooks/**
 !claude/settings.json
 !claude/statusline.sh
+codex/*
+!codex/config.toml
+!codex/skills/
+!codex/skills/**
+codex/skills/.system/

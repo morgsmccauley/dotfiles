@@ -1,0 +1,4 @@
+interface:
+  display_name: "Open GitHub PR"
+  short_description: "Prepare and open a pull request with gh."
+  default_prompt: "Use $pr-open to prepare a pull request with gh, confirm the title and body, then submit it and open the PR URL."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Git Commit"
+  short_description: "Create a clean git commit from the current changes."
+  default_prompt: "Use $git-commit to review the current changes, stage only the intended files, and create a single well-scoped commit."
