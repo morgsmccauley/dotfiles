@@ -56,7 +56,7 @@
     bun
     clickhouse
     gemini-cli
-    codex
+    (pkgs.callPackage ./pkgs/codex.nix { })
     capnproto
     # solana-cli
   ];
