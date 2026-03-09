@@ -15,6 +15,9 @@ gh pr checkout <pr>
 # Review PR
 gh pr review <pr> -c "<comment>"
 
+# Approve PR
+gh pr review <pr> --approve
+
 # Merge PR
 gh pr merge <pr> --<merge-strategy>
 
