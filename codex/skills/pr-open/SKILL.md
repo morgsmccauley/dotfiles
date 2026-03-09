@@ -13,6 +13,7 @@ Inspect branch state before drafting the PR.
 
 Prepare the branch if needed.
 
+- If the working tree has uncommitted changes, use the `git-commit` skill first so the PR is opened from committed work.
 - If the current branch is the base branch, create a new branch with a sensible name before opening the PR.
 - If HEAD is detached, treat that as a normal workflow, especially when detached at `origin/main`. Create a new branch from the current commit before opening the PR.
 - Push the branch if it is not yet on the remote.
@@ -21,7 +22,9 @@ Prepare the branch if needed.
 Draft the PR before submission.
 
 - Use the conversation context, commit list, and diff to draft the title and description.
-- Show the proposed title and body to the user and wait for approval before running `gh pr create`.
+- Format the PR title as a conventional commit and include the service or package name as the scope when it is identifiable from the changed files or repository context, for example `feat(sender): add retry guard`.
+- Treat extra invocation tokens as modifiers when they are unambiguous. If the user invokes `$pr-open non_prod`, suffix the PR title with ` (non_prod)`.
+- Do not pause for title/body approval unless the user explicitly asks to review the copy first.
 - Keep the title concise and specific.
 
 Use this PR body structure unless the repository already has a stronger convention:
@@ -35,8 +38,8 @@ Use this PR body structure unless the repository already has a stronger conventi
 - [Concrete change]
 ```
 
-Submit and open the PR after approval.
+Submit and open the PR.
 
 - Run `gh pr create` against the chosen base branch.
-- Open the created PR URL in the browser.
+- If the user invoked `$pr-open non_prod`, run `gh pr merge --auto --squash <pr-url-or-number>` after creating the PR.
 - Return the PR URL in the final response.
