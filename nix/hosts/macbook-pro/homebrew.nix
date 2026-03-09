@@ -16,6 +16,7 @@
       "llvm"
     ];
     casks = [
+      "codex"
       "raycast"
       # "docker"
       "1password-cli"

@@ -3,6 +3,7 @@ model = "gpt-5.4"
 model_reasoning_effort = "high"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
+service_tier = "fast"
 
 [projects."/Users/morganmccauley/.dotfiles"]
 trust_level = "trusted"
