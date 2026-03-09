@@ -16,7 +16,7 @@ gh pr checkout <pr>
 gh pr review <pr> -c "<comment>"
 
 # Approve PR
-gh pr review <pr> --approve
+gh pr review <open_prs> --approve
 
 # Merge PR
 gh pr merge <pr> --<merge-strategy>
@@ -83,6 +83,7 @@ gh run cancel <run-id>
 
 # NOTE: shells within navi don't source .zshrc and therefore don't pick up the 1pass aliases - need to manually add them
 $ pr: gh pr list --state all --json number,title,state --template '{{range .}}{{tablerow .number .title .state}}{{end}}' --- --column 1
+$ open_prs: gh pr list --json number,title,state --template '{{range .}}{{tablerow .number .title .state}}{{end}}' --- --column 1
 $ issue: gh issue list --json number,title,state --template '{{range .}}{{tablerow .number .title .state}}{{end}}' --- --column 1
 $ workflow: gh workflow list --json name --jq '.[].name'
 $ merge-strategy: echo -e "merge\nsquash\nrebase" | grep -v '^$'
