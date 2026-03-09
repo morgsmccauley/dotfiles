@@ -35,6 +35,9 @@ vim.g.rustaceanvim = {
     end,
     default_settings = {
       ['rust-analyzer'] = {
+        references = {
+          excludeTests = true
+        },
         diagnostics = {
           enable = true,
           styleLints = {
