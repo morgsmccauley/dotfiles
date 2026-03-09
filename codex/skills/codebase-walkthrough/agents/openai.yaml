@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codebase Walkthrough"
+  short_description: "Understand a new codebase faster."
+  default_prompt: "Use $codebase-walkthrough to inspect this repository, map the architecture, and walk me through the important files and flows."
