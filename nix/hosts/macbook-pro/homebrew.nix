@@ -8,7 +8,8 @@
     ];
     caskArgs = {
       appdir = "/Applications";
-      require_sha = true;
+      # Nightly/latest casks like kitty@nightly use `sha256 :no_check`.
+      require_sha = false;
     };
     brews = [
       "ansible"
@@ -18,6 +19,10 @@
     casks = [
       "codex"
       "raycast"
+      {
+        name = "kitty@nightly";
+        greedy = true;
+      }
       # "docker"
       "1password-cli"
       "1password"

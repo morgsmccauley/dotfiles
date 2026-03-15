@@ -1,6 +1,6 @@
 personality = "pragmatic"
 model = "gpt-5.4"
-model_reasoning_effort = "high"
+model_reasoning_effort = "xhigh"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
 service_tier = "fast"
@@ -9,4 +9,10 @@ service_tier = "fast"
 trust_level = "trusted"
 
 [projects."/Users/morganmccauley/Developer/monorepo"]
+trust_level = "trusted"
+
+[projects."/Users/morganmccauley"]
+trust_level = "trusted"
+
+[projects."/Users/morganmccauley/Developer/agave"]
 trust_level = "trusted"

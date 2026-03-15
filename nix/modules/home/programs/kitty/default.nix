@@ -1,8 +1,8 @@
-{ pkgs, lib, ... }: {
+{ ... }: {
   programs.kitty = {
     enable = true;
 
-    package = pkgs.kitty;
+    package = null;
 
     settings = {
       font_family = "Hack Nerd Font Regular";
