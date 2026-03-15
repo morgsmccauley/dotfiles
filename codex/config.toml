@@ -4,6 +4,7 @@ model_reasoning_effort = "xhigh"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
 service_tier = "fast"
+notify = ["/Users/morganmccauley/.dotfiles/codex/hooks/nvim-reload.sh"]
 
 [projects."/Users/morganmccauley/.dotfiles"]
 trust_level = "trusted"
