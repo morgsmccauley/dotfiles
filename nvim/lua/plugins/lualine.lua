@@ -2,7 +2,7 @@ return {
   'nvim-lualine/lualine.nvim',
   config = function()
     local lualine = require('lualine')
-    local theme = require('lualine/themes/catppuccin')
+    local theme = require('catppuccin.utils.lualine')('mocha')
 
     local function lsp_name(msg)
       msg = msg or ''
