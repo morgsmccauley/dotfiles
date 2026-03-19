@@ -6,6 +6,9 @@ sandbox_mode = "workspace-write"
 service_tier = "fast"
 notify = ["/Users/morganmccauley/.dotfiles/codex/hooks/nvim-reload.sh"]
 
+[sandbox_workspace_write]
+network_access = true
+
 [projects."/Users/morganmccauley/.dotfiles"]
 trust_level = "trusted"
 
