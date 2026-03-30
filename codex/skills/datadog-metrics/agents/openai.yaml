@@ -1,0 +1,4 @@
+interface:
+  display_name: "Datadog Metrics"
+  short_description: "Query Datadog metrics from Codex."
+  default_prompt: "Use $datadog-metrics to inspect Datadog metric series, active metric names, or metric tags in us5."
