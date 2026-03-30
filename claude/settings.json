@@ -26,40 +26,9 @@
     "defaultMode": "acceptEdits"
   },
   "hooks": {
-    "Notification": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.dotfiles/claude/hooks/notify.sh",
-            "timeout": 5
-          }
-        ]
-      }
-    ],
-    "PostToolUse": [
-      {
-        "matcher": "Edit|MultiEdit|Write",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.dotfiles/claude/hooks/nvim-reload.sh",
-            "timeout": 5
-          }
-        ]
-      }
-    ],
-    "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.dotfiles/claude/hooks/nvim-clear.sh",
-            "timeout": 5
-          }
-        ]
-      }
-    ]
+    "Notification": [],
+    "PostToolUse": [],
+    "UserPromptSubmit": []
   },
   "statusLine": {
     "type": "command",

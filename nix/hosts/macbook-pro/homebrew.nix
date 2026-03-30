@@ -15,6 +15,7 @@
       "ansible"
       "docker-compose"
       "llvm"
+      "neovim"
     ];
     casks = [
       "codex"

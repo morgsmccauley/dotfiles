@@ -45,7 +45,6 @@
     git-absorb
     neovim-remote
     tokio-console
-    neovim
     # should be using 23
     protobuf_25
     websocat

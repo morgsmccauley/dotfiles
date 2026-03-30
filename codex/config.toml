@@ -20,3 +20,9 @@ trust_level = "trusted"
 
 [projects."/Users/morganmccauley/Developer/agave"]
 trust_level = "trusted"
+
+[projects."/Users/morganmccauley/Developer/homebridge-airtouch5-platform"]
+trust_level = "trusted"
+
+[plugins."github@openai-curated"]
+enabled = true
