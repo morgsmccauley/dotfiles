@@ -1,5 +1,6 @@
 return {
   'nvim-treesitter/nvim-treesitter',
+  lazy = false,
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
     'nvim-treesitter/nvim-treesitter-context',
@@ -11,7 +12,7 @@ return {
       highlight = {
         enable = true,
         use_languagetree = true,
-        additional_vim_regex_highlighting = false
+        additional_vim_regex_highlighting = false,
       },
       textobjects = {
         select = {
@@ -30,9 +31,6 @@ return {
             ['am'] = { query = '@parameter.outer', desc = 'Outer parameter' },
             ['im'] = { query = '@parameter.inner', desc = 'Inner parameter' },
           },
-          include_surrounding_whitespace = function(args)
-            return args.query_string:gmatch('.outer$') ~= nil and args.selection_mode == 'V'
-          end
         },
       },
     })
@@ -43,13 +41,16 @@ return {
       trim_scope = 'inner',
       multiline_threshold = 1,
       on_attach = function(bufnr)
+        if vim.bo[bufnr].filetype == "markdown" then
+          return false
+        end
+
         vim.keymap.set("n", "[c", function()
           require("treesitter-context").go_to_context(vim.v.count1)
         end, { buffer = bufnr, silent = true })
+
+        return true
       end
     })
-
-    local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
-    parser_config.markdown.filetype_to_parsername = 'octo'
   end
 }
