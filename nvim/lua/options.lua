@@ -22,6 +22,33 @@ vim.o.timeoutlen = 250
 
 vim.o.laststatus = 3
 
+vim.o.cmdheight = 0
+
+do
+  local ok, ui2 = pcall(require, 'vim._core.ui2')
+  if ok then
+    ui2.enable({
+      enable = true,
+      msg = {
+        targets = 'cmd',
+        cmd = {
+          height = 0.5,
+        },
+        dialog = {
+          height = 0.5,
+        },
+        msg = {
+          height = 0.5,
+          timeout = 4000,
+        },
+        pager = {
+          height = 0.5,
+        },
+      },
+    })
+  end
+end
+
 vim.o.expandtab = true
 vim.o.shiftwidth = 2
 
