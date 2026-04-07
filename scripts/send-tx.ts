@@ -5,17 +5,37 @@ import bs58 from "bs58";
 const args = process.argv.slice(2);
 
 if (args.length < 1) {
-  console.error("Usage: send-tx.ts <sender_url>");
+  console.error("Usage: send-tx.ts <sender_url> [private_key]");
   console.error("  sender_url: Atlas txn sender HTTP endpoint (e.g. http://localhost:4014)");
+  console.error("  private_key: Optional base58 secret key or JSON array secret key");
   process.exit(1);
 }
 
+function getKeypair(privateKey?: string): Keypair {
+  if (!privateKey) {
+    return Keypair.generate();
+  }
+
+  try {
+    if (privateKey.trim().startsWith("[")) {
+      return Keypair.fromSecretKey(Uint8Array.from(JSON.parse(privateKey)));
+    }
+
+    return Keypair.fromSecretKey(bs58.decode(privateKey));
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    console.error(`Invalid private key: ${message}`);
+    process.exit(1);
+  }
+}
+
 const rpcUrl = `https://mainnet.helius-rpc.com?api-key=${process.env.HELIUS_MAINNET_API_KEY}`;
-const [senderUrl] = args;
-const keypair = Keypair.generate();
+const [senderUrl, privateKey] = args;
+const keypair = getKeypair(privateKey);
 
 console.log("RPC URL:", rpcUrl);
 console.log("Sender URL:", senderUrl);
+console.log("Key source:", privateKey ? "provided" : "generated");
 console.log("Pubkey:", keypair.publicKey.toBase58());
 
 const connection = new Connection(rpcUrl, "confirmed");

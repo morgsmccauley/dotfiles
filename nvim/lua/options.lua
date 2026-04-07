@@ -22,7 +22,7 @@ vim.o.timeoutlen = 250
 
 vim.o.laststatus = 3
 
-vim.o.cmdheight = 0
+-- vim.o.cmdheight = 0
 
 do
   local ok, ui2 = pcall(require, 'vim._core.ui2')
