@@ -16,6 +16,7 @@
       "docker-compose"
       "llvm"
       "neovim"
+      "mutagen-io/mutagen/mutagen"
     ];
     casks = [
       "codex"

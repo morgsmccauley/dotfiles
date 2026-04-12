@@ -87,12 +87,13 @@
         REMOTE_PATH = "/home/ubuntu/repos/";
         DEBOUNCE_TIME = "1";
         FSWATCH_LATENCY = "1";
+        FULL_SYNC_INTERVAL = "900";
         EXCLUDE_FILE = ".rsync-exclude";
       };
       StandardOutPath = "/tmp/file-sync.log";
       StandardErrorPath = "/tmp/file-sync.log";
       RunAtLoad = true;
-      KeepAlive = false;
+      KeepAlive = true;
       Label = "com.user.file-sync";
     };
   };
