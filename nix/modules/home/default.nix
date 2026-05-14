@@ -3,7 +3,6 @@
     ./programs/git.nix
     ./programs/zsh.nix
     ./programs/gh.nix
-    ./programs/aider.nix
 
     ./programs/fzf
     ./programs/navi
@@ -24,8 +23,8 @@
     vscode-langservers-extracted
     vscode-js-debug
     nodejs_24
-    nodePackages.prettier
-    nodePackages.aws-cdk
+    # prettier
+    # nodePackages.aws-cdk
     protoc-gen-go
     go
     grpcui
