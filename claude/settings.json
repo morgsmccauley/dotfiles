@@ -41,5 +41,7 @@
     "Notion@claude-plugins-official": true,
     "slack@claude-plugins-official": true
   },
+  "effortLevel": "high",
+  "preferredNotifChannel": "terminal_bell",
   "showTurnDuration": true
 }
