@@ -69,5 +69,18 @@ return {
       }
     },
   },
+  config = function(_, opts)
+    local utils = require('blink.cmp.lib.utils')
+
+    -- Some live-reload/plugin-state combinations can leave this helper absent
+    -- even though the pinned blink.cmp version expects it during menu render.
+    if type(utils.to_string_or_empty) ~= 'function' then
+      function utils.to_string_or_empty(v)
+        return (v ~= nil and v ~= vim.NIL and type(v) == 'string') and v or ''
+      end
+    end
+
+    require('blink.cmp').setup(opts)
+  end,
   opts_extend = { "sources.default" },
 }
