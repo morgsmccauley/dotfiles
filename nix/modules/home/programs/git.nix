@@ -1,6 +1,7 @@
 { ... }: {
   programs.git = {
     enable = true;
+    signing.format = "openpgp";
 
     # hooks = {
     #   post-checkout = ./git/post-checkout;
@@ -10,6 +11,7 @@
       user = {
         name = "Morgan Mccauley";
         email = "morgan@mccauley.co.nz";
+        signingKey = "D34BEDB427EACAFA";
       };
       alias = {
         w = "worktree";
@@ -31,6 +33,9 @@
       };
       push = {
         autoSetupRemote = true;
+      };
+      commit = {
+        gpgsign = true;
       };
     };
     ignores = [

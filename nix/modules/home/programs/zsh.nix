@@ -50,8 +50,6 @@
       la = "ls -la";
       kn = "k9s";
       kc = "kubectl";
-      a = "aider";
-      ad = "aider --model deepseek-coder";
       cl = "claude";
       cx = "codex";
       clp = "claude --print";
@@ -74,10 +72,60 @@
 
       autoload -U edit-command-line
       zle -N edit-command-line
+      autoload -Uz add-zsh-hook
 
       export EDITOR=edit_in_parent_nvim
 
       bindkey '^u' edit-command-line
+
+      typeset -g NOTIF_LAST_CMD=""
+      typeset -gi NOTIF_LAST_START=0
+
+      _notif_preexec() {
+        NOTIF_LAST_CMD="$1"
+        NOTIF_LAST_START=$SECONDS
+      }
+
+      notif() {
+        emulate -L zsh
+        setopt extended_glob
+
+        local raw_cmd cmd cwd title subtitle message elapsed
+        cwd="''${PWD/#$HOME/~}"
+        raw_cmd="''${NOTIF_LAST_CMD:-$(fc -ln -1 2>/dev/null)}"
+        cmd=$(print -r -- "$raw_cmd" | sed -E 's/[[:space:]]*(&&|;)[[:space:]]*notif([[:space:]].*)?$//')
+
+        if [[ -z "$cmd" ]]; then
+          cmd="command"
+        fi
+
+        elapsed=""
+        if (( NOTIF_LAST_START > 0 )); then
+          elapsed="$(( SECONDS - NOTIF_LAST_START ))s"
+        fi
+
+        title="job done"
+        subtitle="$cwd"
+        if [[ -n "$elapsed" ]]; then
+          subtitle="$subtitle in $elapsed"
+        fi
+
+        if [[ $# -gt 0 ]]; then
+          message="$*"
+        else
+          message="$cmd"
+        fi
+
+        NOTIF_TITLE="$title" \
+        NOTIF_SUBTITLE="$subtitle" \
+        NOTIF_MESSAGE="$message" \
+          osascript -e 'display notification (system attribute "NOTIF_MESSAGE") with title (system attribute "NOTIF_TITLE") subtitle (system attribute "NOTIF_SUBTITLE")'
+      }
+
+      add-zsh-hook preexec _notif_preexec
+
+      export GPG_TTY=$(tty)
+      export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
     '';
   };
 

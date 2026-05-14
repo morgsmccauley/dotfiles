@@ -17,6 +17,9 @@
       "llvm"
       "neovim"
       "mutagen-io/mutagen/mutagen"
+      "gpg"
+      "ykman"
+      "pinentry-mac"
     ];
     casks = [
       "codex"
