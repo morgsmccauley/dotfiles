@@ -50,9 +50,11 @@ vim.g.rustaceanvim = {
         cargo = {
           extraEnv = {
             RUSTFLAGS = '--cfg tokio_unstable',
+            SKIP_CAPNP_COMPAT_CHECK = '1',
           },
           buildScripts = {
             enable = true,
+            useRustcWrapper = false,
           },
           -- targetDir = true,
         },

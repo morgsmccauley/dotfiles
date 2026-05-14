@@ -25,6 +25,11 @@ return {
       'markdown',
       'markdown_inline',
       'vim',
+      'yaml',
+      'toml',
+      'json',
+      'proto',
+      'csv',
     }
     local alreadyInstalled = require('nvim-treesitter.config').get_installed()
     local parsersToInstall = vim.iter(ensureInstalled)
