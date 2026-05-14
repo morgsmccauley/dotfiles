@@ -1,0 +1,7 @@
+% tsw, teraswitch
+
+# Get metal service by id
+http -A bearer -a ${TSW_AUTH_HEADER} https://api.tsw.io/v2/Metal/<id>
+
+# List metal services with tag
+http -A bearer -a ${TSW_AUTH_HEADER} https://api.tsw.io/v2/Metal\?tag=<tag>
