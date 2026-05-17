@@ -30,7 +30,14 @@ return {
       menu = {
         -- is it possible to have auto_show false, but still show on trigger character etc
         -- want false so that we can rely mainly on ghost text, but have it show for triggers
-        auto_show = false,
+        auto_show = function(context)
+          if vim.bo[context.bufnr].filetype ~= 'zsh-edit-command-line' then
+            return false
+          end
+
+          local line_before_cursor = context.line:sub(1, context.cursor[2])
+          return line_before_cursor:match('^@%S*$') ~= nil or line_before_cursor:match('%s@%S*$') ~= nil
+        end,
         draw = {
           columns = { { "label", "label_description", gap = 1 }, { "kind" } }
         }
@@ -50,7 +57,15 @@ return {
 
     sources = {
       default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
+      per_filetype = {
+        ['zsh-edit-command-line'] = { inherit_defaults = true, 'at_path' },
+      },
       providers = {
+        at_path = {
+          name = 'Files',
+          module = 'plugins.blink.completion.at_path',
+          score_offset = 100,
+        },
         copilot = {
           name = 'copilot',
           module = 'blink-cmp-copilot',

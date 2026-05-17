@@ -4,6 +4,23 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
 })
 
 vim.api.nvim_create_autocmd({ 'FileType' }, {
+  pattern = { 'zsh-edit-command-line' },
+  callback = function(event)
+    vim.bo[event.buf].bufhidden = 'delete'
+    vim.wo.wrap = true
+
+    vim.keymap.set('n', '<C-s>', '<Cmd>wq<Cr>',
+      { buffer = event.buf, silent = true, desc = 'Accept command line' })
+    vim.keymap.set('i', '<C-s>', '<Esc><Cmd>wq<Cr>',
+      { buffer = event.buf, silent = true, desc = 'Accept command line' })
+    vim.keymap.set('n', '<C-q>', '<Cmd>q!<Cr>',
+      { buffer = event.buf, silent = true, desc = 'Cancel command line' })
+    vim.keymap.set('i', '<C-q>', '<Esc><Cmd>q!<Cr>',
+      { buffer = event.buf, silent = true, desc = 'Cancel command line' })
+  end
+})
+
+vim.api.nvim_create_autocmd({ 'FileType' }, {
   pattern = { 'TelescopePrompt' },
   command = 'let b:autopairs_enabled = 0'
 })

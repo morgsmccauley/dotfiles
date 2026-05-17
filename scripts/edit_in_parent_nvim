@@ -1,3 +1,4 @@
 #!/bin/bash
 file="${@: -1}"
-nvr -cc "rightbelow split" --remote-wait +'set bufhidden=delete | set wrap | set autowriteall' "$file"
+cwd="${PWD//\'/\'\'}"
+nvr -cc "rightbelow split" --remote-wait +"let b:edit_command_line_cwd = '$cwd' | setlocal filetype=zsh-edit-command-line" "$file"
