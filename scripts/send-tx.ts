@@ -68,7 +68,10 @@ const response = await fetch(senderUrl, {
     jsonrpc: "2.0",
     id: 1,
     method: "sendTransaction",
-    params: [serialized.toString("base64"), { encoding: "base64", skipPreflight: true }],
+    params: [
+      serialized.toString("base64"),
+      { encoding: "base64", skipPreflight: false },
+    ],
   }),
 });
 
