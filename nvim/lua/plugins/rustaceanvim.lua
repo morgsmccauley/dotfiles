@@ -1,3 +1,22 @@
+local rust_analyzer_disabled_roots = {
+  vim.fs.normalize(vim.fn.expand('~/Developer/jito-solana-private')),
+}
+
+local function path_is_under(path, root)
+  return path == root or vim.startswith(path, root .. '/')
+end
+
+local function rust_analyzer_is_disabled(path)
+  local normalized = vim.fs.normalize(path)
+  for _, root in ipairs(rust_analyzer_disabled_roots) do
+    if path_is_under(normalized, root) then
+      return true
+    end
+  end
+
+  return false
+end
+
 vim.g.rustaceanvim = {
   tools = {
     float_win_config = {
@@ -5,6 +24,18 @@ vim.g.rustaceanvim = {
     },
   },
   server = {
+    auto_attach = function(bufnr)
+      if #vim.bo[bufnr].buftype > 0 then
+        return false
+      end
+
+      local path = vim.api.nvim_buf_get_name(bufnr)
+      if path == '' then
+        return false
+      end
+
+      return not rust_analyzer_is_disabled(path)
+    end,
     on_attach = function(_, bufnr)
       vim.keymap.set('n', '<leader>ce', '<Cmd>RustLsp explainError<Cr>',
         { silent = true, buffer = bufnr, desc = 'Explain error (rust)' })
@@ -56,7 +87,7 @@ vim.g.rustaceanvim = {
             enable = true,
             useRustcWrapper = false,
           },
-          -- targetDir = true,
+          targetDir = true,
         },
         checkOnSave = true,
         check = {
