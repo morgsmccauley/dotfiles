@@ -27,12 +27,20 @@ nmap('<C-k>', '<C-w>k', { noremap = true })
 
 vim.keymap.set('n', '<C-w>gf', '<C-w>vgf',
   { desc = 'Go to file in new split' })
-vim.keymap.set('n', '<C-w>gd', '<Cmd>silent vsp | Telescope lsp_definitions<Cr>',
-  { desc = 'Go to definition in new split' })
+vim.keymap.set('n', '<C-w>gd', function()
+  vim.cmd('silent vsp')
+  require('snacks').picker.lsp_definitions()
+end, { desc = 'Go to definition in new split' })
 
-vim.keymap.set('n', '<C-space>', function()
+local function open_projects()
   require('multiplexer').projects()
-end, { noremap = true })
+end
+
+for _, key in ipairs({ '<C-space>', '<C-@>' }) do
+  vim.keymap.set({ 'n', 'v', 'i', 's' }, key, open_projects, { noremap = true, desc = 'Open projects' })
+  vim.keymap.set('t', key, [[<C-\><C-n><Cmd>lua require('multiplexer').projects()<Cr>]],
+    { noremap = true, desc = 'Open projects' })
+end
 
 nmap('<C-p>', '@:', { noremap = true })
 
@@ -79,9 +87,12 @@ cmap('<C-a>', '<C-b>', { noremap = true })
 
 nmap('J', 'mzJ`z', { noremap = true })
 
-vim.keymap.set('c', '<C-r>', function()
-  return '<Plug>(TelescopeFuzzyCommandSearch)'
-end, { expr = true, remap = true })
+vim.keymap.set(
+  'c',
+  '<C-r>',
+  [[<C-\>e "lua require('snacks').picker.command_history({ pattern = [=[" . escape(getcmdline(), '"') . "]=] })"<CR><CR>]],
+  { silent = true, noremap = true }
+)
 
 vim.keymap.set('n', ';', ':', { noremap = true })
 
@@ -186,7 +197,7 @@ vim.keymap.set('n', '<leader>ch', function()
   vim.lsp.buf.hover({ border = 'single' })
 end, { desc = 'Hover' })
 vim.keymap.set('n', '<leader>cg', vim.lsp.buf.signature_help, { desc = 'Signature help' })
-vim.keymap.set('n', '<leader>ct', function() require('telescope.builtin').grep_string({ search = 'TODO|FIX|NOTE' }) end,
+vim.keymap.set('n', '<leader>ct', function() require('snacks').picker.grep({ search = 'TODO|FIX|NOTE' }) end,
   { desc = 'Search TODO comments' })
 
 -- Neotest keymaps

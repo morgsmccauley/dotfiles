@@ -4,11 +4,6 @@ return {
   lazy = false,
   version = false,
   enabled = false,
-  opts = {
-    file_selector = {
-      provider = "telescope"
-    },
-  },
   build = "make",
   dependencies = {
     "stevearc/dressing.nvim",

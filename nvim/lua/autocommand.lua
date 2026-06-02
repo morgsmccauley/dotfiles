@@ -20,16 +20,6 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
   end
 })
 
-vim.api.nvim_create_autocmd({ 'FileType' }, {
-  pattern = { 'TelescopePrompt' },
-  command = 'let b:autopairs_enabled = 0'
-})
-
-vim.api.nvim_create_autocmd({ 'FileType' }, {
-  pattern = { 'TelescopeResults', 'TelescopePrompt', 'TelescopePreview' },
-  command = 'set nocursorline'
-})
-
 vim.api.nvim_create_autocmd({ 'WinEnter' }, {
   pattern = { '*' },
   command = 'set cursorline'

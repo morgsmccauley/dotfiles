@@ -82,6 +82,9 @@ return {
     picker = {
       enabled = true,
       layout = { preset = "ivy", position = "bottom" },
+      actions = {
+        paste_file = { action = "paste", field = "file" },
+      },
       formatters = {
         file = {
           truncate = 1000,
@@ -101,7 +104,13 @@ return {
             ["<C-d>"] = { "preview_scroll_down", mode = { "i", "n" } },
             ["<C-u>"] = { "preview_scroll_up", mode = { "i", "n" } },
             ["<C-q>"] = { "cancel", mode = { "i", "n" } },
-            ["<C-f>"] = { "qflist", mode = { "i", "n" } }
+            ["<C-f>"] = { "qflist", mode = { "i", "n" } },
+            ["<C-y>"] = { "paste_file", mode = { "i", "n" } }
+          },
+        },
+        list = {
+          keys = {
+            ["<C-y>"] = "paste_file",
           },
         },
       },

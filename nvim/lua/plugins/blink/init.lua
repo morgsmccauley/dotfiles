@@ -5,6 +5,7 @@ return {
   opts = {
     keymap = {
       preset = 'default',
+      ['<C-space>'] = false,
       ['<C-n>'] = {
         'show',
         'select_next'

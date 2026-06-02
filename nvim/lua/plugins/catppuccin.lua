@@ -21,7 +21,6 @@ return {
         path = vim.fn.stdpath 'cache' .. '/catppuccin'
       },
       integrations = {
-        telescope = true,
         mason = true,
         neotest = true,
         neogit = true,

@@ -6,9 +6,6 @@ return {
     {
       '<C-g>',
       function()
-        -- ensure telescope-ui-select is loaded
-        -- require('telescope')
-
         if vim.bo.filetype == 'NeogitStatus' then
           vim.api.nvim_command('q')
         else
