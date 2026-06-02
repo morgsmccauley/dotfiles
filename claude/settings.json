@@ -43,5 +43,6 @@
   },
   "effortLevel": "high",
   "preferredNotifChannel": "terminal_bell",
-  "showTurnDuration": true
+  "showTurnDuration": true,
+  "skipAutoPermissionPrompt": true
 }
